@@ -1,0 +1,661 @@
+[
+  {
+    "id": "wireframe",
+    "term": "Wireframe",
+    "aliases": [
+      "wire",
+      "lo-fi wireframe"
+    ],
+    "categories": [
+      "Deliverables & Artifacts"
+    ],
+    "shortDef": "A layout sketch showing structure and priority, not visual design.",
+    "longDef": "Wireframes answer what goes on the screen, in what order and at what relative importance, using boxes and placeholder text. Keeping them grey and rough is deliberate: it directs feedback to structure rather than to colour choices. They are fastest to change and therefore the right place to argue about hierarchy.",
+    "example": "A grey block for the hero, a stack of labelled rectangles for the product list, and a note reading \"filters, 6 max\".",
+    "misuse": "A wireframe is not a low-quality mockup. It is a different question — structure, not appearance — and adding colour undermines it.",
+    "relatedIds": [
+      "mockup",
+      "prototype",
+      "sketch",
+      "information-architecture",
+      "fidelity"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/wireframe"
+      }
+    ]
+  },
+  {
+    "id": "mockup",
+    "term": "Mockup",
+    "aliases": [
+      "visual comp",
+      "high-fidelity design"
+    ],
+    "categories": [
+      "Deliverables & Artifacts",
+      "Visual & Typography"
+    ],
+    "shortDef": "A static, fully styled picture of what a screen will look like.",
+    "longDef": "A mockup applies real typography, colour, imagery and spacing to the structure a wireframe established. It is still static: nothing responds, and no flow is demonstrated. It is what stakeholders usually mean when they ask to \"see the design\", and what should be reviewed for visual craft and brand.",
+    "example": "The checkout screen with real product photography, final type sizes and the actual button colours, as a flat image.",
+    "misuse": "Showing a mockup is not testing a design. Without interaction, nobody can attempt the task it depicts.",
+    "relatedIds": [
+      "wireframe",
+      "prototype",
+      "fidelity",
+      "style-guide",
+      "design-system"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/mockup"
+      }
+    ]
+  },
+  {
+    "id": "prototype",
+    "term": "Prototype",
+    "aliases": [
+      "clickable prototype",
+      "interactive prototype"
+    ],
+    "categories": [
+      "Deliverables & Artifacts"
+    ],
+    "shortDef": "Something interactive enough for a person to attempt a task.",
+    "longDef": "A prototype simulates behaviour — taps lead somewhere, states change — which is what makes it testable. Fidelity is a choice per question: paper is enough to test a flow, a coded prototype may be needed to test a gesture or a transition. It exists to answer a question and then be thrown away.",
+    "example": "A linked set of screens where tapping \"Pay\" shows a processing state and then a receipt, used in a usability test.",
+    "misuse": "The wireframe / mockup / prototype distinction is about what each demonstrates: structure, appearance, and behaviour. A prototype can be at any visual fidelity.",
+    "relatedIds": [
+      "wireframe",
+      "mockup",
+      "fidelity",
+      "usability-testing",
+      "iteration",
+      "wizard-of-oz"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/prototyping"
+      }
+    ]
+  },
+  {
+    "id": "fidelity",
+    "term": "Fidelity",
+    "aliases": [
+      "lo-fi",
+      "hi-fi",
+      "low fidelity",
+      "high fidelity"
+    ],
+    "categories": [
+      "Deliverables & Artifacts",
+      "Design Process"
+    ],
+    "shortDef": "How closely an artefact resembles the finished product.",
+    "longDef": "Fidelity varies independently along several axes: visual polish, content realism, and interactivity. A grey prototype with real copy and working navigation is low fidelity visually and high fidelity functionally. Choosing fidelity is choosing what kind of feedback you will get, so match it to the question you are asking.",
+    "example": "Testing whether people understand a term needs real content at low visual fidelity; testing legibility needs the opposite.",
+    "misuse": "High fidelity is not the same as finished. A polished prototype invites polish feedback whether or not you wanted it.",
+    "relatedIds": [
+      "wireframe",
+      "mockup",
+      "prototype",
+      "sketch",
+      "aesthetic-usability-effect"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/prototyping"
+      }
+    ]
+  },
+  {
+    "id": "sketch",
+    "term": "Sketch",
+    "aliases": [
+      "paper sketch",
+      "thumbnail"
+    ],
+    "categories": [
+      "Deliverables & Artifacts",
+      "Design Process"
+    ],
+    "shortDef": "A fast, rough drawing used to think and to share options.",
+    "longDef": "Sketching is the cheapest way to externalise an idea, which is why it belongs early and in volume. Its roughness is protective: nobody argues about the corner radius of a pencil line. The skill being practised is generating variety, not drawing well.",
+    "example": "Twelve pencil thumbnails of a dashboard on one page, three of which are worth turning into wireframes.",
+    "relatedIds": [
+      "crazy-eights",
+      "ideation",
+      "wireframe",
+      "fidelity"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/sketching"
+      }
+    ]
+  },
+  {
+    "id": "persona",
+    "term": "Persona",
+    "aliases": [
+      "user persona"
+    ],
+    "categories": [
+      "Deliverables & Artifacts",
+      "Research"
+    ],
+    "shortDef": "A research-based character standing for a group of users.",
+    "longDef": "A persona compresses patterns found in research into one memorable figure with goals, context and constraints, so a team can ask what that person needs rather than what \"the user\" needs. It is only as good as the research beneath it. Demographic detail is usually decoration; the goals and behaviours are the substance.",
+    "example": "\"Priya, ward pharmacist, checks stock between rounds on a shared tablet and cannot log in twice in one shift.\"",
+    "misuse": "A persona invented in a workshop is a proto-persona, and should be labelled as such so nobody cites it as evidence.",
+    "relatedIds": [
+      "proto-persona",
+      "jobs-to-be-done",
+      "empathy-map",
+      "scenario",
+      "generative-research"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/persona/"
+      }
+    ]
+  },
+  {
+    "id": "proto-persona",
+    "term": "Proto-persona",
+    "aliases": [
+      "assumption persona"
+    ],
+    "categories": [
+      "Deliverables & Artifacts",
+      "Research"
+    ],
+    "shortDef": "A persona built from team assumptions, pending research.",
+    "longDef": "Proto-personas capture what the team currently believes about its users, explicitly as hypotheses to be checked. They are useful for surfacing disagreement early and for prioritising which research to run first. The danger is that they harden into fact once they are printed on the wall.",
+    "example": "A kickoff workshop produces three proto-personas; two survive the first round of interviews and one turns out not to exist.",
+    "relatedIds": [
+      "persona",
+      "hypothesis",
+      "generative-research",
+      "empathy-map"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/persona/"
+      }
+    ]
+  },
+  {
+    "id": "empathy-map",
+    "term": "Empathy map",
+    "aliases": [],
+    "categories": [
+      "Deliverables & Artifacts",
+      "Research"
+    ],
+    "shortDef": "A grid capturing what a user says, thinks, does and feels.",
+    "longDef": "Research observations are sorted into quadrants to make the gap between stated and actual behaviour visible — what someone says versus what they do is often the finding. It is a synthesis tool, best filled from transcripts rather than from imagination. Its output usually feeds a persona or a journey map.",
+    "example": "A participant says the process is fine, but the \"does\" quadrant records three attempts and a call to support.",
+    "relatedIds": [
+      "persona",
+      "journey-map",
+      "synthesis",
+      "affinity-diagram"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/empathy-mapping/"
+      }
+    ]
+  },
+  {
+    "id": "journey-map",
+    "term": "Journey map",
+    "aliases": [
+      "customer journey map",
+      "experience map"
+    ],
+    "categories": [
+      "Deliverables & Artifacts",
+      "Research"
+    ],
+    "shortDef": "A timeline of a person's experience across touchpoints.",
+    "longDef": "A journey map lays out the stages someone passes through, what they do and feel at each, and where the pain concentrates. Its value is showing the gaps between channels that no single team owns. It must be grounded in research, or it is a diagram of the team's assumptions with an emotion line drawn on top.",
+    "example": "Mapping insurance claims end to end reveals the worst moment is the silence between submitting and hearing back.",
+    "misuse": "Not the same as a user flow. A journey spans channels and time; a flow is the steps inside one interface.",
+    "relatedIds": [
+      "service-blueprint",
+      "user-flow",
+      "touchpoint",
+      "empathy-map",
+      "workshop"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/journey-mapping-101/"
+      }
+    ]
+  },
+  {
+    "id": "service-blueprint",
+    "term": "Service blueprint",
+    "aliases": [
+      "blueprint"
+    ],
+    "categories": [
+      "Deliverables & Artifacts",
+      "Research"
+    ],
+    "shortDef": "A journey map extended to show the backstage work behind it.",
+    "longDef": "Above the line of visibility sits what the customer experiences; below it sit staff actions, systems and policies that produce it. It is the tool for diagnosing why a customer-facing problem exists, because the cause is usually backstage. It requires operations people in the room, not just design.",
+    "example": "A blueprint of a refund shows the four-day wait is caused by a manual approval queue nobody in design knew about.",
+    "relatedIds": [
+      "journey-map",
+      "touchpoint",
+      "service-design",
+      "workshop"
+    ],
+    "difficulty": "advanced",
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/service-blueprints-definition/"
+      }
+    ]
+  },
+  {
+    "id": "touchpoint",
+    "term": "Touchpoint",
+    "aliases": [
+      "channel"
+    ],
+    "categories": [
+      "Deliverables & Artifacts",
+      "Product & Business"
+    ],
+    "shortDef": "Any point where a person interacts with a service.",
+    "longDef": "Touchpoints include the app, the email, the letter, the call centre and the physical shop — anywhere the organisation meets the person. Experience quality is set by the worst one and by the joins between them, not by the best. Most journey mapping exists to make the joins visible.",
+    "example": "A booking confirmation email that uses different reference numbers from the app is a broken join between two touchpoints.",
+    "relatedIds": [
+      "journey-map",
+      "service-blueprint",
+      "omnichannel",
+      "service-design"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/service-blueprints-definition/"
+      }
+    ]
+  },
+  {
+    "id": "user-flow",
+    "term": "User flow",
+    "aliases": [
+      "flow diagram",
+      "task flow"
+    ],
+    "categories": [
+      "Deliverables & Artifacts"
+    ],
+    "shortDef": "A diagram of the steps and decisions to complete a task.",
+    "longDef": "Flows show screens as nodes and decisions as branches, which makes missing states and dead ends visible before anything is designed. They are the fastest way to agree scope with engineering, because every branch is work. Keeping them at the level of decisions rather than screens keeps them readable.",
+    "example": "A password reset flow showing the branch where the email is not recognised, which the happy-path design had ignored.",
+    "misuse": "A flow is not a sitemap. One describes movement through a task, the other the structure of the content.",
+    "relatedIds": [
+      "journey-map",
+      "sitemap",
+      "edge-case",
+      "wireframe",
+      "error-state"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/user-flows"
+      }
+    ]
+  },
+  {
+    "id": "sitemap",
+    "term": "Sitemap",
+    "aliases": [
+      "site map",
+      "content map"
+    ],
+    "categories": [
+      "Deliverables & Artifacts"
+    ],
+    "shortDef": "A tree diagram of every page and how they nest.",
+    "longDef": "The sitemap makes the hierarchy visible: what sits at the top level, what is buried three clicks down, and where duplication has crept in. It is the artefact most often tested with tree testing before any interface exists. On large products it is generated from the taxonomy rather than drawn by hand.",
+    "example": "A sitemap showing that help content exists in three places under different names, none of them linked to each other.",
+    "relatedIds": [
+      "information-architecture",
+      "tree-testing",
+      "taxonomy",
+      "navigation",
+      "user-flow"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/information-architecture"
+      }
+    ]
+  },
+  {
+    "id": "storyboard",
+    "term": "Storyboard",
+    "aliases": [],
+    "categories": [
+      "Deliverables & Artifacts",
+      "Design Process"
+    ],
+    "shortDef": "A short comic showing a person's situation before and after.",
+    "longDef": "Storyboards place a design in the context that surrounds it — where the person is, what interrupted them, what they do next. That context is exactly what a screen mockup omits and where most product ideas fail. Six frames is usually enough, and drawing quality is irrelevant.",
+    "example": "Four frames showing a parent trying to pay for a school trip on a phone while walking, which rules out a desktop-first flow.",
+    "relatedIds": [
+      "scenario",
+      "concept-testing",
+      "journey-map",
+      "sketch"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/storyboards"
+      }
+    ]
+  },
+  {
+    "id": "scenario",
+    "term": "Scenario",
+    "aliases": [
+      "use scenario",
+      "user scenario"
+    ],
+    "categories": [
+      "Deliverables & Artifacts",
+      "Research"
+    ],
+    "shortDef": "A short narrative of someone using the product to reach a goal.",
+    "longDef": "A scenario names the person, their situation, their goal and the constraints acting on them, then describes what happens. It keeps design conversations concrete and doubles as the script for usability test tasks. The constraints are the useful part — a scenario with no pressure in it describes nobody.",
+    "example": "\"Priya has four minutes between rounds, one hand free, and needs to confirm a dose she half-remembers.\"",
+    "relatedIds": [
+      "persona",
+      "storyboard",
+      "user-story",
+      "jobs-to-be-done",
+      "usability-testing"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/scenarios"
+      }
+    ]
+  },
+  {
+    "id": "user-story",
+    "term": "User story",
+    "aliases": [
+      "story"
+    ],
+    "categories": [
+      "Deliverables & Artifacts",
+      "Product & Business"
+    ],
+    "shortDef": "A one-sentence unit of work framed around a user's goal.",
+    "longDef": "Usually written as \"As a [role], I want [something], so that [outcome]\", it exists to hold a conversation rather than to replace one. The \"so that\" clause is the part that matters and the part most often dropped. Stories are sized to fit in a sprint, which makes them a planning unit, not a design brief.",
+    "example": "\"As a returning customer, I want my last address offered, so that I do not retype it on a phone.\"",
+    "misuse": "A story is not a specification. Anything not discussed will be interpreted by whoever picks it up.",
+    "relatedIds": [
+      "acceptance-criteria",
+      "scenario",
+      "agile",
+      "backlog",
+      "jobs-to-be-done"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/agile-methods"
+      }
+    ]
+  },
+  {
+    "id": "acceptance-criteria",
+    "term": "Acceptance criteria",
+    "aliases": [
+      "definition of done"
+    ],
+    "categories": [
+      "Deliverables & Artifacts",
+      "Tech & Development"
+    ],
+    "shortDef": "The conditions a piece of work must meet to be finished.",
+    "longDef": "Criteria are written before the work and phrased so that each one is either met or not. For design-heavy work they should include states, responsive behaviour and accessibility requirements, otherwise those become optional. They are how \"done\" stops being a matter of opinion.",
+    "example": "\"Keyboard focus order follows the visual order\" and \"error text is announced by a screen reader\" as explicit criteria.",
+    "relatedIds": [
+      "user-story",
+      "handoff",
+      "edge-case",
+      "wcag",
+      "agile"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/agile-methods"
+      }
+    ]
+  },
+  {
+    "id": "moodboard",
+    "term": "Moodboard",
+    "aliases": [
+      "style tile",
+      "mood board"
+    ],
+    "categories": [
+      "Deliverables & Artifacts",
+      "Visual & Typography"
+    ],
+    "shortDef": "A collage that establishes visual direction before layout.",
+    "longDef": "Collecting type, colour, imagery and reference work in one place lets a team agree on a feeling before anyone commits to a screen. It is much cheaper to reject a direction here than after three mockups. Pairing each board with the adjectives it is meant to convey makes the conversation specific.",
+    "example": "Two boards labelled \"authoritative and calm\" and \"friendly and quick\", presented side by side to choose between.",
+    "relatedIds": [
+      "style-guide",
+      "brand",
+      "desirability-testing",
+      "mockup"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/visual-design"
+      }
+    ]
+  },
+  {
+    "id": "style-guide",
+    "term": "Style guide",
+    "aliases": [
+      "brand guidelines",
+      "visual style guide"
+    ],
+    "categories": [
+      "Deliverables & Artifacts",
+      "Visual & Typography"
+    ],
+    "shortDef": "The documented rules for how the product should look and sound.",
+    "longDef": "A style guide records typography, colour, spacing, imagery, logo use and tone of voice, with the reasoning behind each. It is a reference document rather than working code, which is what distinguishes it from a design system. On its own it drifts from the product within a couple of releases.",
+    "example": "A page defining the type scale, the two permitted weights, and when to use sentence case rather than title case.",
+    "misuse": "A style guide is not a design system. Guidance without shared components has no mechanism to keep the product in line.",
+    "relatedIds": [
+      "design-system",
+      "voice-and-tone",
+      "brand",
+      "design-token",
+      "moodboard"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/design-systems"
+      }
+    ]
+  },
+  {
+    "id": "design-system",
+    "term": "Design system",
+    "aliases": [
+      "component library",
+      "pattern library"
+    ],
+    "categories": [
+      "Deliverables & Artifacts",
+      "Tech & Development"
+    ],
+    "shortDef": "Shared components, tokens and rules used to build a product.",
+    "longDef": "A design system pairs documented principles and patterns with the actual code and design components teams build from, so consistency is the default rather than an act of discipline. Its hard parts are governance and adoption, not the components. An unmaintained system is worse than none, because teams work around it and lose trust in it.",
+    "example": "One Button component with defined variants, states and accessibility behaviour, used by every squad and versioned like any dependency.",
+    "misuse": "A file of Figma components is not a design system unless the built product actually consumes the equivalent code.",
+    "relatedIds": [
+      "design-token",
+      "component",
+      "style-guide",
+      "consistency",
+      "design-ops",
+      "handoff",
+      "semantic-versioning"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/design-systems"
+      }
+    ]
+  },
+  {
+    "id": "design-token",
+    "term": "Design token",
+    "aliases": [
+      "token",
+      "design variable"
+    ],
+    "categories": [
+      "Deliverables & Artifacts",
+      "Tech & Development"
+    ],
+    "shortDef": "A named value for a design decision, used everywhere it applies.",
+    "longDef": "Tokens store decisions — a colour, a spacing step, a radius, a duration — as names rather than raw values, so the decision has one home. Semantic names such as `surface-raised` outlive literal ones such as `grey-100`, because the meaning survives a rebrand. They are what makes theming and dark mode a configuration change rather than a rewrite.",
+    "example": "`color.text.muted` resolves to one grey in light mode and a different one in dark, with no component knowing either value.",
+    "misuse": "Naming a token after its value defeats the purpose. `blue-500` cannot be changed to green without lying.",
+    "relatedIds": [
+      "design-system",
+      "component",
+      "dark-mode",
+      "theming",
+      "style-guide"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/design-systems"
+      }
+    ]
+  },
+  {
+    "id": "component",
+    "term": "Component",
+    "aliases": [
+      "UI component",
+      "widget"
+    ],
+    "categories": [
+      "Deliverables & Artifacts",
+      "Tech & Development"
+    ],
+    "shortDef": "A reusable interface part with defined variants and states.",
+    "longDef": "A component packages appearance and behaviour together, including its focus, hover, disabled, loading and error states. Defining it once means fixing an accessibility bug once. The design skill is choosing the right level of abstraction — too specific and nothing reuses it, too general and every use needs configuration.",
+    "example": "A single text field component handling label, hint, error, disabled and character count, used across forty forms.",
+    "relatedIds": [
+      "design-system",
+      "design-token",
+      "consistency",
+      "handoff",
+      "pattern"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/design-systems"
+      }
+    ]
+  },
+  {
+    "id": "pattern",
+    "term": "Design pattern",
+    "aliases": [
+      "UI pattern"
+    ],
+    "categories": [
+      "Deliverables & Artifacts",
+      "Interaction & UI Patterns"
+    ],
+    "shortDef": "A reusable solution to a recurring interface problem.",
+    "longDef": "A pattern describes the problem, the context it applies in, and the shape of the solution — search-as-you-type, the empty state, the confirmation dialog. It is more abstract than a component: one pattern may be built from several components, or realised differently on each platform. Patterns document why, components deliver what.",
+    "example": "The \"select from recent items\" pattern appears as a dropdown on desktop and a bottom sheet on mobile.",
+    "relatedIds": [
+      "component",
+      "design-system",
+      "consistency",
+      "jakobs-law",
+      "anti-pattern"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/design-patterns"
+      }
+    ]
+  }
+]

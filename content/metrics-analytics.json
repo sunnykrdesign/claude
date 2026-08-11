@@ -1,0 +1,560 @@
+[
+  {
+    "id": "funnel",
+    "term": "Funnel",
+    "aliases": [
+      "conversion funnel",
+      "drop-off"
+    ],
+    "categories": [
+      "Metrics & Analytics"
+    ],
+    "shortDef": "The sequence of steps toward a goal, and the loss at each.",
+    "longDef": "A funnel counts how many people reach each step, making the biggest drop visible. The largest fall is not always the best target — a small drop at a high-value step can be worth more. Funnels only describe the path you defined, so people who succeed by another route look like failures.",
+    "example": "Basket to delivery loses 12%, delivery to payment loses 41%, which points the work at the payment step.",
+    "misuse": "A funnel says where people leave, never why. Pair it with session replay or interviews before redesigning anything.",
+    "relatedIds": [
+      "conversion-rate",
+      "survivorship-bias",
+      "session-replay",
+      "activation",
+      "telemetry"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/analytics"
+      }
+    ]
+  },
+  {
+    "id": "conversion-rate",
+    "term": "Conversion rate",
+    "aliases": [
+      "CVR"
+    ],
+    "categories": [
+      "Metrics & Analytics"
+    ],
+    "shortDef": "The share of people who complete a defined goal.",
+    "longDef": "Conversion needs a stated denominator to mean anything — of visitors, of sessions, of people who reached step two. Rates move with traffic mix as much as with design, so a change in marketing can look like a design win. Always report the definition alongside the number.",
+    "example": "\"4.2% of first-time visitors completed checkout\" is interpretable; \"4.2% conversion\" is not.",
+    "misuse": "Comparing conversion rates across periods with different traffic sources compares audiences, not designs.",
+    "relatedIds": [
+      "funnel",
+      "a-b-test",
+      "success-metric",
+      "segmentation",
+      "bounce-rate"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/analytics"
+      }
+    ]
+  },
+  {
+    "id": "bounce-rate",
+    "term": "Bounce rate",
+    "aliases": [
+      "single-page sessions"
+    ],
+    "categories": [
+      "Metrics & Analytics"
+    ],
+    "shortDef": "The share of visits that end without a second interaction.",
+    "longDef": "A high bounce rate can mean the page failed or that it answered the question immediately — a phone number, an opening time, a definition. Interpretation depends entirely on the page's job. On its own it is one of the most misread numbers in analytics.",
+    "example": "A reference page with a 78% bounce rate and long time on page is probably succeeding, not failing.",
+    "misuse": "Treating bounce rate as a quality score punishes pages that do their job in one screen.",
+    "relatedIds": [
+      "conversion-rate",
+      "vanity-metric",
+      "engagement",
+      "funnel"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/analytics"
+      }
+    ]
+  },
+  {
+    "id": "retention",
+    "term": "Retention",
+    "aliases": [
+      "return rate"
+    ],
+    "categories": [
+      "Metrics & Analytics"
+    ],
+    "shortDef": "The share of users who come back after a given period.",
+    "longDef": "Retention is the closest single measure to whether a product delivers value, because people return to things that work. It should be read as a curve by cohort: a curve that flattens indicates a group who genuinely need the product, while one that decays to zero indicates none. The natural frequency matters — a tax tool that is used yearly should not be judged weekly.",
+    "example": "Week-one retention of 40% falling to a flat 22% by week six is a healthier signal than 60% still falling.",
+    "relatedIds": [
+      "churn",
+      "cohort-analysis",
+      "product-market-fit",
+      "engagement",
+      "activation"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/analytics"
+      }
+    ]
+  },
+  {
+    "id": "churn",
+    "term": "Churn",
+    "aliases": [
+      "attrition"
+    ],
+    "categories": [
+      "Metrics & Analytics",
+      "Product & Business"
+    ],
+    "shortDef": "The rate at which users or customers stop using a product.",
+    "longDef": "Churn is retention's mirror, usually measured against subscribers or accounts over a period. Voluntary churn — people choosing to leave — is a product signal, while involuntary churn from expired cards is an operations problem with a design fix. The most informative research is with people who have just left, and it is the least often done.",
+    "example": "Splitting 6% monthly churn reveals a third of it is failed payments, not dissatisfaction.",
+    "relatedIds": [
+      "retention",
+      "survivorship-bias",
+      "cohort-analysis",
+      "product-market-fit"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/analytics"
+      }
+    ]
+  },
+  {
+    "id": "engagement",
+    "term": "Engagement",
+    "aliases": [
+      "usage"
+    ],
+    "categories": [
+      "Metrics & Analytics"
+    ],
+    "shortDef": "How much people use a product, however you define use.",
+    "longDef": "Engagement is only meaningful once you say which action counts and why it indicates value. More time in a product can mean it is compelling or that it is confusing, and the two are indistinguishable in the number alone. For tools whose value is speed, falling engagement time is a success.",
+    "example": "For a lookup tool, more sessions and shorter ones is the good direction, not more minutes per session.",
+    "misuse": "Optimising engagement without asking what the user came for is how products end up designed against their users.",
+    "relatedIds": [
+      "vanity-metric",
+      "north-star-metric",
+      "retention",
+      "dau-mau",
+      "novelty-effect"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/analytics"
+      }
+    ]
+  },
+  {
+    "id": "dau-mau",
+    "term": "DAU/MAU",
+    "aliases": [
+      "stickiness",
+      "daily active users",
+      "monthly active users"
+    ],
+    "categories": [
+      "Metrics & Analytics"
+    ],
+    "shortDef": "Daily actives over monthly actives, as a stickiness ratio.",
+    "longDef": "The ratio estimates how many days a month a typical user shows up. It suits products meant to be used daily and misleads badly for those with a natural weekly or seasonal rhythm. \"Active\" has to be defined as something meaningful — an app open is not use.",
+    "example": "A ratio of 0.5 means the average monthly user opens the product about fifteen days a month.",
+    "misuse": "Chasing the ratio for a product people should only need occasionally optimises for a behaviour nobody wants.",
+    "relatedIds": [
+      "engagement",
+      "retention",
+      "vanity-metric",
+      "north-star-metric"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/analytics"
+      }
+    ]
+  },
+  {
+    "id": "cohort-analysis",
+    "term": "Cohort analysis",
+    "aliases": [
+      "cohorts"
+    ],
+    "categories": [
+      "Metrics & Analytics",
+      "Research"
+    ],
+    "shortDef": "Comparing groups defined by when they joined or what they did.",
+    "longDef": "Grouping users by signup month, acquisition channel or first action lets you see whether behaviour is genuinely changing, rather than being masked by new arrivals. It is what turns a flat aggregate line into an actual finding. It is also the honest way to judge whether a change helped, since only later cohorts experienced it.",
+    "example": "Overall retention looks flat, but each new monthly cohort retains better than the last — growth was hiding the improvement.",
+    "relatedIds": [
+      "retention",
+      "longitudinal-study",
+      "segmentation",
+      "churn",
+      "a-b-test"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/analytics"
+      }
+    ]
+  },
+  {
+    "id": "segmentation",
+    "term": "Segmentation",
+    "aliases": [
+      "user segments"
+    ],
+    "categories": [
+      "Metrics & Analytics",
+      "Research"
+    ],
+    "shortDef": "Splitting users into groups that behave differently.",
+    "longDef": "Averages hide the thing you need: a flat overall number often contains one group improving and another collapsing. Behavioural segments — new versus returning, mobile versus desktop, power versus occasional — usually explain more than demographic ones. Every headline metric deserves at least one split before anyone acts on it.",
+    "example": "A neutral overall result splits into a 9% gain for new users and a 6% loss for returning ones.",
+    "relatedIds": [
+      "cohort-analysis",
+      "persona",
+      "sampling-bias",
+      "conversion-rate",
+      "a-b-test"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/analytics"
+      }
+    ]
+  },
+  {
+    "id": "activation",
+    "term": "Activation",
+    "aliases": [
+      "aha moment",
+      "time to value"
+    ],
+    "categories": [
+      "Metrics & Analytics",
+      "Product & Business"
+    ],
+    "shortDef": "The point where a new user first gets real value.",
+    "longDef": "Activation is defined by finding the early action that best predicts retention, then measuring how many new users reach it and how long it takes. It gives onboarding a target more useful than completion of a tour. The action has to be genuine value, not a proxy the team finds convenient to count.",
+    "example": "Users who look up three terms in their first session retain far better, so that becomes the activation event.",
+    "relatedIds": [
+      "onboarding",
+      "retention",
+      "funnel",
+      "north-star-metric",
+      "cohort-analysis"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/analytics"
+      }
+    ]
+  },
+  {
+    "id": "nps",
+    "term": "Net Promoter Score",
+    "aliases": [
+      "NPS"
+    ],
+    "categories": [
+      "Metrics & Analytics"
+    ],
+    "shortDef": "Promoters minus detractors on a nought-to-ten recommendation question.",
+    "longDef": "Scores of nine and ten count as promoters, seven and eight are ignored, and nought to six are detractors; the score is the difference as a percentage. Its popularity comes from being comparable across companies rather than from being sensitive. The free-text follow-up is usually worth more than the number.",
+    "example": "An NPS of 22 is meaningless alone but informative against the same product's 8 last quarter, measured identically.",
+    "misuse": "NPS measures stated likelihood to recommend, not usability or satisfaction. It cannot tell you what to change.",
+    "relatedIds": [
+      "csat",
+      "ces",
+      "survey",
+      "vanity-metric",
+      "sus"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/net-promoter-score"
+      }
+    ]
+  },
+  {
+    "id": "csat",
+    "term": "Customer satisfaction score",
+    "aliases": [
+      "CSAT"
+    ],
+    "categories": [
+      "Metrics & Analytics"
+    ],
+    "shortDef": "A direct rating of satisfaction with a specific experience.",
+    "longDef": "CSAT asks how satisfied someone was, usually on a five-point scale, immediately after an interaction. Because it is tied to a moment it is far more actionable than a relationship-level score. Response bias is strong — the delighted and the furious answer, the indifferent do not.",
+    "example": "A one-question rating after a support chat, reported per agent, per topic and per channel.",
+    "relatedIds": [
+      "nps",
+      "ces",
+      "survey",
+      "likert-scale",
+      "sus"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/analytics"
+      }
+    ]
+  },
+  {
+    "id": "ces",
+    "term": "Customer effort score",
+    "aliases": [
+      "CES"
+    ],
+    "categories": [
+      "Metrics & Analytics"
+    ],
+    "shortDef": "How much effort a task felt like it took.",
+    "longDef": "Users rate agreement with a statement such as \"the company made it easy to handle my issue\". Effort predicts loyalty better than delight does, particularly in service interactions, because reducing friction retains people more reliably than exceeding expectations. It is asked immediately after the task, while the effort is remembered accurately.",
+    "example": "Asking \"how easy was it to change your delivery date?\" right after the change, not in a monthly survey.",
+    "relatedIds": [
+      "csat",
+      "nps",
+      "sus",
+      "time-on-task",
+      "efficiency"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/analytics"
+      }
+    ]
+  },
+  {
+    "id": "efficiency",
+    "term": "Efficiency",
+    "aliases": [
+      "task efficiency"
+    ],
+    "categories": [
+      "Metrics & Analytics",
+      "Research"
+    ],
+    "shortDef": "How much effort a task takes once someone knows how.",
+    "longDef": "One of usability's core dimensions alongside learnability, memorability, errors and satisfaction. It is measured in time, steps or interactions for experienced users, which makes it distinct from how easy something is the first time. Optimising for first-time ease can quietly make daily use slower, which is the classic tension in expert tools.",
+    "example": "A keyboard shortcut cuts a five-step routine task to one, while the visible menu path stays for newcomers.",
+    "relatedIds": [
+      "time-on-task",
+      "task-success-rate",
+      "ces",
+      "parkinsons-law",
+      "density",
+      "heart-framework"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/usability-101-introduction-to-usability/"
+      }
+    ]
+  },
+  {
+    "id": "heart-framework",
+    "term": "HEART framework",
+    "aliases": [
+      "HEART"
+    ],
+    "categories": [
+      "Metrics & Analytics"
+    ],
+    "shortDef": "Five UX metric categories: happiness, engagement, adoption, retention, task success.",
+    "longDef": "Developed at Google to give user experience a metric set beyond business numbers. Each category is turned into concrete measures through goals, signals and metrics — deciding what success means, what behaviour would show it, and what to count. Teams are advised to pick one or two categories, not all five.",
+    "example": "For a lookup tool: task success measured as searches that end in a term being opened, and happiness by a periodic CSAT.",
+    "relatedIds": [
+      "success-metric",
+      "north-star-metric",
+      "task-success-rate",
+      "engagement",
+      "csat"
+    ],
+    "difficulty": "advanced",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/analytics"
+      }
+    ]
+  },
+  {
+    "id": "success-metric",
+    "term": "Success metric",
+    "aliases": [
+      "primary metric",
+      "OEC"
+    ],
+    "categories": [
+      "Metrics & Analytics"
+    ],
+    "shortDef": "The number chosen in advance to judge whether a change worked.",
+    "longDef": "Declaring it before the work prevents the team picking whichever number moved afterwards. A good one is sensitive enough to move within the measurement window and close enough to user value to be worth moving. Pair it with guardrail metrics so an improvement in one place cannot quietly damage another.",
+    "example": "\"Share of searches ending in a term being opened\", agreed before the search redesign began.",
+    "misuse": "Choosing the metric after seeing the results is the most common analytical failure in product work.",
+    "relatedIds": [
+      "guardrail-metric",
+      "hypothesis",
+      "okr",
+      "north-star-metric",
+      "a-b-test",
+      "heart-framework"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/analytics"
+      }
+    ]
+  },
+  {
+    "id": "guardrail-metric",
+    "term": "Guardrail metric",
+    "aliases": [
+      "counter metric",
+      "health metric"
+    ],
+    "categories": [
+      "Metrics & Analytics"
+    ],
+    "shortDef": "A number watched to make sure a win is not causing harm elsewhere.",
+    "longDef": "Guardrails catch the damage a primary metric cannot see: complaints, unsubscribes, load time, accessibility failures, support volume. They are agreed with the success metric and given thresholds that would stop a rollout. Without them, local optimisation reliably produces global harm.",
+    "example": "A conversion win is not shipped because refund requests and support contacts both rose beyond their thresholds.",
+    "relatedIds": [
+      "success-metric",
+      "a-b-test",
+      "vanity-metric",
+      "dark-pattern",
+      "north-star-metric"
+    ],
+    "difficulty": "advanced",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/analytics"
+      }
+    ]
+  },
+  {
+    "id": "vanity-metric",
+    "term": "Vanity metric",
+    "aliases": [],
+    "categories": [
+      "Metrics & Analytics"
+    ],
+    "shortDef": "A number that looks good but cannot change a decision.",
+    "longDef": "Cumulative totals, raw page views and app downloads all rise regardless of whether anything improved, which makes them comfortable to report and useless to act on. The test is whether a movement would change what you do next. Replace them with rates, cohorts and outcomes.",
+    "example": "\"Two million downloads\" says nothing; \"32% of installs return in week two\" is a number you can work with.",
+    "relatedIds": [
+      "success-metric",
+      "engagement",
+      "dau-mau",
+      "north-star-metric",
+      "bounce-rate"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/analytics"
+      }
+    ]
+  },
+  {
+    "id": "heatmap",
+    "term": "Heatmap",
+    "aliases": [
+      "click map",
+      "scroll map"
+    ],
+    "categories": [
+      "Metrics & Analytics"
+    ],
+    "shortDef": "A colour overlay showing where people click, move or scroll.",
+    "longDef": "Heatmaps show aggregate attention or activity on a page, which is useful for spotting ignored regions and unexpected clicks on non-interactive elements. They flatten different intentions into one picture and cannot distinguish a confident click from a confused one. They also break on dynamic content, where the same coordinates hold different things for different people.",
+    "example": "A scroll map showing 70% of visitors never reach the pricing table halfway down the page.",
+    "misuse": "A click heatmap is not eye tracking, though the output looks similar. It records the hand, not the eye.",
+    "relatedIds": [
+      "session-replay",
+      "eye-tracking",
+      "banner-blindness",
+      "above-the-fold"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
+  },
+  {
+    "id": "session-replay",
+    "term": "Session replay",
+    "aliases": [
+      "session recording"
+    ],
+    "categories": [
+      "Metrics & Analytics",
+      "Research"
+    ],
+    "shortDef": "A replay of a real user's interactions with the product.",
+    "longDef": "Replays show hesitation, rage clicks and repeated attempts that no funnel captures, which makes them the fastest way to understand a drop-off you have already located. They carry real privacy weight: inputs must be masked and consent handled properly. Watching them at random is a poor use of time — sample from a known problem.",
+    "example": "Watching ten sessions that abandoned at payment reveals people tapping a non-interactive total, expecting a breakdown.",
+    "misuse": "Replays show what happened, not why. They generate hypotheses to test, not conclusions.",
+    "relatedIds": [
+      "funnel",
+      "heatmap",
+      "privacy-by-design",
+      "qualitative-research",
+      "telemetry"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
+  }
+]

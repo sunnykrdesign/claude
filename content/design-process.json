@@ -1,0 +1,671 @@
+[
+  {
+    "id": "double-diamond",
+    "term": "Double Diamond",
+    "aliases": [
+      "discover define develop deliver"
+    ],
+    "categories": [
+      "Design Process"
+    ],
+    "shortDef": "A four-stage model alternating between widening and narrowing.",
+    "longDef": "Discover and Develop are divergent, opening up problems and then solutions; Define and Deliver are convergent, committing to one problem and then one answer. Its value is making explicit that you should not narrow while you are still exploring. Its weakness is that real projects loop rather than march through it once.",
+    "example": "A team spends three weeks on research and opportunity mapping before writing a single problem statement to design against.",
+    "misuse": "Not a project plan. Treating the four stages as sequential phases with sign-off gates recreates waterfall with nicer diagrams.",
+    "relatedIds": [
+      "problem-framing",
+      "generative-research",
+      "divergent-thinking",
+      "design-thinking"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/design-thinking"
+      }
+    ]
+  },
+  {
+    "id": "design-thinking",
+    "term": "Design thinking",
+    "aliases": [
+      "human-centred design"
+    ],
+    "categories": [
+      "Design Process"
+    ],
+    "shortDef": "A problem-solving approach that starts from people's needs.",
+    "longDef": "Usually taught as empathise, define, ideate, prototype and test, repeated. Its contribution was making user-centred method legible to people outside design, especially executives. It is criticised for reducing craft to workshops, and it works best as a shared vocabulary rather than as the whole of a design practice.",
+    "example": "A hospital team runs the five stages over six weeks to redesign discharge paperwork, testing three paper prototypes with patients.",
+    "misuse": "Running a sticky-note workshop is not design thinking. Without research and iteration it is just a meeting.",
+    "relatedIds": [
+      "double-diamond",
+      "generative-research",
+      "prototype",
+      "workshop"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/design-thinking"
+      }
+    ]
+  },
+  {
+    "id": "problem-framing",
+    "term": "Problem framing",
+    "aliases": [
+      "problem definition",
+      "reframing"
+    ],
+    "categories": [
+      "Design Process"
+    ],
+    "shortDef": "Deciding which problem you are actually solving.",
+    "longDef": "The frame determines the range of solutions anyone will consider, which makes it the highest-leverage decision in a project. Reframing — moving from \"make the form shorter\" to \"reduce the reasons people abandon it\" — often unlocks better answers than any amount of ideation inside the original frame. Write the frame down, because unwritten frames go unchallenged.",
+    "example": "\"People cannot find the export button\" reframed as \"people need this data in a spreadsheet\" leads to scheduled email exports instead.",
+    "misuse": "A problem statement containing a solution is not a frame. \"Users need a dashboard\" has already decided the answer.",
+    "relatedIds": [
+      "how-might-we",
+      "jobs-to-be-done",
+      "double-diamond",
+      "insight",
+      "hypothesis"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/design-thinking"
+      }
+    ]
+  },
+  {
+    "id": "how-might-we",
+    "term": "How Might We",
+    "aliases": [
+      "HMW"
+    ],
+    "categories": [
+      "Design Process"
+    ],
+    "shortDef": "A question format that turns a problem into an invitation.",
+    "longDef": "Phrasing an insight as \"How might we…\" keeps it open enough to allow several answers while staying specific enough to be useful. Too broad and it is unanswerable; too narrow and it contains the solution already. Teams usually generate many and then vote on which to work against.",
+    "example": "\"How might we help first-time sellers price an item without research?\" sits between \"how might we improve selling\" and \"how might we add a price slider\".",
+    "relatedIds": [
+      "problem-framing",
+      "ideation",
+      "workshop",
+      "insight"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/design-thinking"
+      }
+    ]
+  },
+  {
+    "id": "ideation",
+    "term": "Ideation",
+    "aliases": [
+      "idea generation"
+    ],
+    "categories": [
+      "Design Process"
+    ],
+    "shortDef": "Deliberately generating many options before choosing one.",
+    "longDef": "The point is volume and range, produced under a rule that judgement is suspended until later. Working individually before sharing produces more variety than group brainstorming, which tends to converge on the first idea voiced. The output is raw material, not a decision.",
+    "example": "Each person sketches eight ideas in eight minutes alone, then the group posts them all up and clusters before discussing any.",
+    "misuse": "Ideating without a frame produces a wall of unusable ideas. Decide what question you are answering first.",
+    "relatedIds": [
+      "divergent-thinking",
+      "crazy-eights",
+      "how-might-we",
+      "workshop"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/ideation"
+      }
+    ]
+  },
+  {
+    "id": "divergent-thinking",
+    "term": "Divergent and convergent thinking",
+    "aliases": [
+      "divergence",
+      "convergence"
+    ],
+    "categories": [
+      "Design Process"
+    ],
+    "shortDef": "Opening up options, then deliberately narrowing them down.",
+    "longDef": "Divergence generates possibilities without judging them; convergence evaluates and commits. Mixing the two in one conversation is what makes design meetings unproductive, because critique kills generation. Naming which mode the room is in is a small intervention with a large effect.",
+    "example": "A workshop where the first hour has an explicit no-critique rule and the second hour is nothing but critique.",
+    "relatedIds": [
+      "ideation",
+      "double-diamond",
+      "workshop",
+      "critique"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/design-thinking"
+      }
+    ]
+  },
+  {
+    "id": "crazy-eights",
+    "term": "Crazy Eights",
+    "aliases": [],
+    "categories": [
+      "Design Process"
+    ],
+    "shortDef": "Sketching eight ideas in eight minutes, one per fold.",
+    "longDef": "A sheet folded into eight panels, one minute per panel, forces quantity past the point where the obvious answers run out. The constraint is the method: with more time people polish their first idea instead of finding a fifth. Output is deliberately rough and mostly discarded.",
+    "example": "Six people produce 48 sketches in eight minutes; three genuinely new directions come from panels six to eight.",
+    "relatedIds": [
+      "ideation",
+      "sketch",
+      "workshop",
+      "design-sprint"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "Design Sprint",
+        "url": "https://www.thesprintbook.com/"
+      }
+    ]
+  },
+  {
+    "id": "design-sprint",
+    "term": "Design sprint",
+    "aliases": [
+      "sprint"
+    ],
+    "categories": [
+      "Design Process"
+    ],
+    "shortDef": "A structured week to go from problem to tested prototype.",
+    "longDef": "Five days: understand the problem, sketch, decide, build a realistic prototype, then test with five people. Its value is the forcing function — a decision and evidence inside a week, with the right people in one room. It is expensive in senior time and works badly on problems that are not yet well framed.",
+    "example": "A team spends Monday to Thursday on a booking-flow prototype and interviews five customers on Friday morning.",
+    "misuse": "A design sprint is not an agile sprint. One is a five-day workshop format, the other a recurring delivery cadence.",
+    "relatedIds": [
+      "crazy-eights",
+      "prototype",
+      "usability-testing",
+      "workshop",
+      "agile"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "The Sprint Book",
+        "url": "https://www.thesprintbook.com/"
+      }
+    ]
+  },
+  {
+    "id": "workshop",
+    "term": "Workshop",
+    "aliases": [
+      "design workshop"
+    ],
+    "categories": [
+      "Design Process",
+      "Roles & Career"
+    ],
+    "shortDef": "A structured working session with a defined output.",
+    "longDef": "A workshop differs from a meeting by having activities, a facilitator and something concrete produced by the end. It is the right tool when a decision needs several people's knowledge, and the wrong one when a decision needs a single owner. Preparation cost is high and usually underestimated.",
+    "example": "A two-hour session where engineering, support and design map the refund journey and mark the three worst moments.",
+    "misuse": "Not a substitute for research. A room full of colleagues guessing is still guessing, however well facilitated.",
+    "relatedIds": [
+      "ideation",
+      "divergent-thinking",
+      "journey-map",
+      "participatory-design",
+      "design-sprint"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/workshops"
+      }
+    ]
+  },
+  {
+    "id": "critique",
+    "term": "Design critique",
+    "aliases": [
+      "crit"
+    ],
+    "categories": [
+      "Design Process",
+      "Roles & Career"
+    ],
+    "shortDef": "Structured feedback on work against its stated goals.",
+    "longDef": "A critique judges the work against the problem it set out to solve, not against the reviewer's taste. It works when the presenter states the goal and the specific question they want answered, and when feedback describes an observed effect rather than prescribing a fix. Without that structure it becomes a series of preferences.",
+    "example": "\"The primary action reads as secondary to me because it is quieter than the cancel link\" — an observation, not an instruction.",
+    "misuse": "\"I don't like the blue\" is not critique. Feedback without a reason cannot be acted on or argued with.",
+    "relatedIds": [
+      "divergent-thinking",
+      "design-review",
+      "heuristic-evaluation",
+      "workshop"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/design-critique"
+      }
+    ]
+  },
+  {
+    "id": "design-review",
+    "term": "Design review",
+    "aliases": [
+      "sign-off review"
+    ],
+    "categories": [
+      "Design Process",
+      "Roles & Career"
+    ],
+    "shortDef": "A checkpoint where stakeholders assess work before it proceeds.",
+    "longDef": "Unlike critique, a review exists to make a decision: proceed, change, or stop. It needs the decision-maker present, the criteria known in advance and the work at a fidelity that matches the question. Reviews held too late produce expensive changes and resentful teams.",
+    "example": "A pre-build review confirms the flow, the states and the edge cases before engineering estimates the work.",
+    "misuse": "Reviews are not for gathering opinions from everyone available. Invite people who own a decision or a constraint.",
+    "relatedIds": [
+      "critique",
+      "stakeholder",
+      "design-system",
+      "handoff"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
+  },
+  {
+    "id": "heuristic-evaluation",
+    "term": "Heuristic evaluation",
+    "aliases": [
+      "expert review"
+    ],
+    "categories": [
+      "Design Process",
+      "Research"
+    ],
+    "shortDef": "Experts inspect an interface against a set of usability rules.",
+    "longDef": "Several evaluators independently walk the interface against a checklist such as Nielsen's ten, then merge and rate their findings by severity. It is fast, needs no participants, and catches obvious problems before spending research time. It predicts problems rather than observing them, and evaluators find things real users never hit.",
+    "example": "Three reviewers each list violations in a signup flow; the merged list of 27 issues is cut to nine rated severe.",
+    "misuse": "Not a replacement for usability testing. It is a cheap first pass that makes the testing you do more valuable.",
+    "relatedIds": [
+      "nielsen-heuristics",
+      "evaluative-research",
+      "cognitive-walkthrough",
+      "usability-testing",
+      "critique"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/ten-usability-heuristics/"
+      }
+    ]
+  },
+  {
+    "id": "cognitive-walkthrough",
+    "term": "Cognitive walkthrough",
+    "aliases": [],
+    "categories": [
+      "Design Process",
+      "Research"
+    ],
+    "shortDef": "Stepping through a task asking what a first-time user would do.",
+    "longDef": "At each step the reviewers ask whether the user would know what to do, whether they would see the control, and whether they would understand that their action worked. It is specifically aimed at learnability, which makes it well suited to onboarding and rarely used features. Like any expert method, it produces hypotheses rather than findings.",
+    "example": "Walking the two-factor setup step by step exposes that nothing on screen explains where the code will arrive.",
+    "relatedIds": [
+      "heuristic-evaluation",
+      "gulf-of-evaluation",
+      "onboarding",
+      "evaluative-research"
+    ],
+    "difficulty": "advanced",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/cognitive-walkthrough"
+      }
+    ]
+  },
+  {
+    "id": "information-architecture",
+    "term": "Information architecture",
+    "aliases": [
+      "IA"
+    ],
+    "categories": [
+      "Design Process",
+      "Deliverables & Artifacts"
+    ],
+    "shortDef": "How content is organised, labelled and connected.",
+    "longDef": "IA covers the structure beneath the interface: the groupings, the names, the hierarchy and the paths between things. It is mostly invisible when right and blamed for everything when wrong, because bad structure cannot be rescued by navigation design. It is also the most expensive thing to change after launch.",
+    "example": "Deciding whether billing lives under Account or under Settings, and what each of those words will mean to a customer.",
+    "misuse": "IA is not the navigation menu. The menu is one exposure of a structure that also drives search, URLs and permissions.",
+    "relatedIds": [
+      "taxonomy",
+      "card-sorting",
+      "tree-testing",
+      "findability",
+      "navigation",
+      "sitemap"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/information-architecture"
+      }
+    ]
+  },
+  {
+    "id": "taxonomy",
+    "term": "Taxonomy",
+    "aliases": [
+      "classification scheme",
+      "controlled vocabulary"
+    ],
+    "categories": [
+      "Design Process",
+      "Deliverables & Artifacts"
+    ],
+    "shortDef": "The agreed set of categories and terms for classifying content.",
+    "longDef": "A taxonomy fixes what the categories are and what each is called, so that content, filters, search and analytics all speak the same language. It usually needs to accommodate items belonging in more than one place. Its hardest part is not the structure but agreeing the words with everyone who uses them.",
+    "example": "Settling that a garment is tagged \"outerwear\" rather than \"coats\" or \"jackets\", everywhere, including in the filters.",
+    "misuse": "A taxonomy is not the same as a sitemap. One classifies content; the other describes the pages you built from it.",
+    "relatedIds": [
+      "information-architecture",
+      "card-sorting",
+      "metadata",
+      "findability"
+    ],
+    "difficulty": "advanced",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/information-architecture"
+      }
+    ]
+  },
+  {
+    "id": "findability",
+    "term": "Findability",
+    "aliases": [],
+    "categories": [
+      "Design Process",
+      "Metrics & Analytics"
+    ],
+    "shortDef": "How easily people locate something they are looking for.",
+    "longDef": "Findability depends on labels matching the words people use, on structure matching their expectations, and on search covering the gaps. It is measurable: give people a target and count how many reach it and by which route. It is distinct from discoverability, which is about noticing things you were not looking for.",
+    "example": "Only 30% of participants find the returns policy, and half of those reach it through search rather than navigation.",
+    "misuse": "Adding a search box does not fix findability. Search that returns nothing for the words people actually use is worse.",
+    "relatedIds": [
+      "discoverability",
+      "tree-testing",
+      "information-architecture",
+      "search",
+      "taxonomy"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/information-architecture"
+      }
+    ]
+  },
+  {
+    "id": "discoverability",
+    "term": "Discoverability",
+    "aliases": [],
+    "categories": [
+      "Design Process",
+      "Interaction & UI Patterns"
+    ],
+    "shortDef": "Whether people notice a feature exists at all.",
+    "longDef": "A feature nobody finds is a feature nobody has. Discoverability is driven by signifiers, by placement in the flow where the need arises, and by whether the interface hints that more is available. Hidden gestures are the classic failure — powerful for those who know, invisible to everyone else.",
+    "example": "Pull-to-refresh is undiscoverable on its own, which is why apps that rely on it also provide a visible refresh control.",
+    "misuse": "Not the same as findability. People can fail to find a page they knew about, and fail to discover a feature they did not.",
+    "relatedIds": [
+      "signifier",
+      "affordance",
+      "findability",
+      "onboarding",
+      "gesture"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
+  },
+  {
+    "id": "hypothesis",
+    "term": "Hypothesis",
+    "aliases": [
+      "design hypothesis"
+    ],
+    "categories": [
+      "Design Process",
+      "Metrics & Analytics"
+    ],
+    "shortDef": "A testable statement of what you expect and why.",
+    "longDef": "A usable hypothesis names the change, the expected effect, the audience and the measure — and it is falsifiable. Writing it before the work stops the team from reinterpreting whatever happened as a success. It also forces the question of what result would make you revert.",
+    "example": "\"Showing delivery cost on the product page will reduce basket abandonment for new customers by at least three points.\"",
+    "misuse": "\"We think this will improve the experience\" is not a hypothesis. Nothing could disprove it.",
+    "relatedIds": [
+      "a-b-test",
+      "problem-framing",
+      "statistical-significance",
+      "confirmation-bias",
+      "success-metric"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
+  },
+  {
+    "id": "iteration",
+    "term": "Iteration",
+    "aliases": [
+      "iterative design"
+    ],
+    "categories": [
+      "Design Process"
+    ],
+    "shortDef": "Repeated cycles of making, testing and revising.",
+    "longDef": "Each pass is deliberately small enough to be cheap to throw away, and each one is informed by evidence from the last. The value is compounding: three modest rounds beat one heroic attempt, because the second round knows something the first could not. It requires the organisation to accept that the first version is not the deliverable.",
+    "example": "A form is tested with five people, fixed, tested with five more, and fixed again inside two weeks.",
+    "misuse": "Shipping repeatedly is not iteration unless each release changes what you believe. Otherwise it is just a release cadence.",
+    "relatedIds": [
+      "prototype",
+      "evaluative-research",
+      "agile",
+      "minimum-viable-product"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/iterative-design"
+      }
+    ]
+  },
+  {
+    "id": "design-ops",
+    "term": "DesignOps",
+    "aliases": [
+      "design operations"
+    ],
+    "categories": [
+      "Design Process",
+      "Roles & Career"
+    ],
+    "shortDef": "The systems that let a design team work at scale.",
+    "longDef": "DesignOps covers tooling, file structure, onboarding, rituals, hiring pipelines and the health of the design system — the work that is nobody's project but everybody's problem. It becomes necessary somewhere around ten designers, when coordination cost starts to exceed craft cost. The measure of success is designers spending more time designing.",
+    "example": "Standardising component libraries and file naming across six squads cuts the time to start a new project from days to hours.",
+    "relatedIds": [
+      "design-system",
+      "research-ops",
+      "workshop",
+      "handoff"
+    ],
+    "difficulty": "advanced",
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/design-operations-101/"
+      }
+    ]
+  },
+  {
+    "id": "handoff",
+    "term": "Handoff",
+    "aliases": [
+      "design handoff",
+      "developer handoff"
+    ],
+    "categories": [
+      "Design Process",
+      "Deliverables & Artifacts"
+    ],
+    "shortDef": "Passing design decisions to the people who will build them.",
+    "longDef": "Handoff covers specs, states, behaviours, edge cases and the reasoning behind the choices — not just the visual file. It works best as a conversation running throughout the work rather than an event at the end. The word itself is contested, because teams that hand off tend to produce work that neither side owns.",
+    "example": "A shared page listing every state of a component, including empty, loading, error and 200-character content.",
+    "misuse": "A link to the design file is not a handoff. Anything not specified will be decided by whoever builds it.",
+    "relatedIds": [
+      "design-review",
+      "design-system",
+      "edge-case",
+      "design-token",
+      "component"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
+  },
+  {
+    "id": "edge-case",
+    "term": "Edge case",
+    "aliases": [
+      "corner case",
+      "stress case"
+    ],
+    "categories": [
+      "Design Process",
+      "Tech & Development"
+    ],
+    "shortDef": "A rare input or state that breaks the intended design.",
+    "longDef": "Long names, zero results, no network, a hundred items, a negative balance, someone in crisis — these are where a design either holds or falls apart. Many so-called edge cases are common for someone, which is why some teams call them stress cases instead. Designing them is not optional work left for engineering.",
+    "example": "A profile card designed for \"Ada Lovelace\" that breaks entirely on a 40-character name with no spaces.",
+    "misuse": "Labelling something an edge case is often a way of deciding not to design it. Check how many people it actually affects.",
+    "relatedIds": [
+      "empty-state",
+      "error-state",
+      "handoff",
+      "inclusive-design",
+      "content-design"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
+  },
+  {
+    "id": "content-design",
+    "term": "Content design",
+    "aliases": [
+      "UX writing",
+      "content strategy"
+    ],
+    "categories": [
+      "Design Process",
+      "Roles & Career"
+    ],
+    "shortDef": "Deciding what to say, in what order, in what words.",
+    "longDef": "Content design treats language as part of the interface rather than a layer applied at the end, covering labels, error messages, empty states and the structure of the information itself. It often removes a screen rather than filling one. Done well it is the cheapest usability improvement available.",
+    "example": "Replacing \"Submission unsuccessful\" with \"We could not take that card — check the expiry date\" halves calls to support.",
+    "misuse": "Not the same as copywriting. Content design answers what the user needs to know; copywriting persuades.",
+    "relatedIds": [
+      "microcopy",
+      "plain-language",
+      "error-state",
+      "edge-case",
+      "voice-and-tone"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/ux-writing"
+      }
+    ]
+  },
+  {
+    "id": "agile",
+    "term": "Agile",
+    "aliases": [
+      "scrum",
+      "agile development"
+    ],
+    "categories": [
+      "Design Process",
+      "Tech & Development"
+    ],
+    "shortDef": "Delivering software in short cycles with frequent feedback.",
+    "longDef": "Agile methods favour working software, close collaboration and responding to change over long upfront specification. For designers the challenge is that two-week cycles suit building better than they suit discovery, which is why research usually runs a cycle ahead. Most organisations practise a partial version shaped by their existing structure.",
+    "example": "Design works one sprint ahead on the next flow while engineering builds the one validated last sprint.",
+    "misuse": "Agile is not \"no documentation\" or \"no plan\". It is a preference between competing goods, not the abolition of one of them.",
+    "relatedIds": [
+      "iteration",
+      "minimum-viable-product",
+      "design-sprint",
+      "backlog"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/agile-methods"
+      }
+    ]
+  }
+]

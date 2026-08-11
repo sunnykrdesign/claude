@@ -1458,5 +1458,34 @@
         "url": "https://www.interaction-design.org/literature/topics/participatory-design"
       }
     ]
+  },
+  {
+    "id": "wizard-of-oz",
+    "term": "Wizard of Oz",
+    "aliases": [
+      "WOZ testing"
+    ],
+    "categories": [
+      "Research",
+      "Deliverables & Artifacts"
+    ],
+    "shortDef": "A person secretly performs what the system is meant to do.",
+    "longDef": "Participants believe they are using a working product while a researcher behind the scenes produces the responses. It lets you test an experience that would be expensive to build — a recommendation engine, a voice assistant, anything with a model behind it — before committing to building it. The illusion has to hold, including the delays, or people adjust their behaviour to the human.",
+    "example": "Testing an assistant by having a researcher type the replies, to learn what people actually ask before any model is chosen.",
+    "misuse": "It is not a shortcut to a demo. The point is observing unprompted behaviour, which means the participant must not know.",
+    "relatedIds": [
+      "prototype",
+      "usability-testing",
+      "concept-testing",
+      "fidelity",
+      "generative-ai"
+    ],
+    "difficulty": "advanced",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/wizard-of-oz-prototyping"
+      }
+    ]
   }
 ]

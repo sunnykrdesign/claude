@@ -1,0 +1,734 @@
+[
+  {
+    "id": "visual-hierarchy",
+    "term": "Visual hierarchy",
+    "aliases": [
+      "hierarchy"
+    ],
+    "categories": [
+      "Visual & Typography"
+    ],
+    "shortDef": "The order in which a layout leads the eye through content.",
+    "longDef": "Size, weight, colour, position and space combine to say what matters most, second and third. A page where everything is emphasised has no hierarchy, and one where nothing is has the same problem. The test is whether someone glancing for two seconds takes away the thing you intended.",
+    "example": "A term page where the headword dominates, the one-line definition is next, and metadata sits quietly beneath both.",
+    "misuse": "Hierarchy is not just font size. Space and position often do more work than making something bigger.",
+    "relatedIds": [
+      "type-scale",
+      "white-space",
+      "contrast",
+      "five-second-test",
+      "law-of-pragnanz"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/visual-hierarchy"
+      }
+    ]
+  },
+  {
+    "id": "type-scale",
+    "term": "Type scale",
+    "aliases": [
+      "modular scale",
+      "typographic scale"
+    ],
+    "categories": [
+      "Visual & Typography"
+    ],
+    "shortDef": "The fixed set of text sizes a design is allowed to use.",
+    "longDef": "Choosing five or six sizes with meaningful gaps between them creates hierarchy that holds across a whole product, and removes a decision from every screen. Steps that are too close read as accidents; steps that are too far apart leave nothing usable in the middle. The scale should be defined as tokens so nothing can quietly introduce a seventh size.",
+    "example": "13, 15, 17, 22 and 34, where 15 is list text, 17 is prose and 34 is reserved for the headword.",
+    "misuse": "A scale generated from a mathematical ratio still needs judgement. Rounding to whole pixels and checking each step in situ matters more than the formula.",
+    "relatedIds": [
+      "visual-hierarchy",
+      "design-token",
+      "leading",
+      "dynamic-type",
+      "typeface"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/typography"
+      }
+    ]
+  },
+  {
+    "id": "typeface",
+    "term": "Typeface",
+    "aliases": [
+      "font family"
+    ],
+    "categories": [
+      "Visual & Typography"
+    ],
+    "shortDef": "A designed set of letterforms; a font is one instance of it.",
+    "longDef": "The typeface is the design — Inter, Fraunces, Georgia — while a font is a specific weight, style and size of it. The distinction survives from metal type, where each size was physically separate. Choosing one is a legibility decision before it is an aesthetic one: x-height, character width and how easily similar shapes are told apart.",
+    "example": "Fraunces is the typeface; Fraunces SemiBold Italic at 34pt is a font.",
+    "misuse": "The words are used interchangeably in everyday conversation, but in a type conversation the distinction still carries weight.",
+    "relatedIds": [
+      "x-height",
+      "legibility",
+      "type-scale",
+      "tracking",
+      "brand"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/typography"
+      }
+    ]
+  },
+  {
+    "id": "x-height",
+    "term": "x-height",
+    "aliases": [],
+    "categories": [
+      "Visual & Typography"
+    ],
+    "shortDef": "The height of a lowercase x, which drives apparent size.",
+    "longDef": "Two typefaces set at the same point size can look very different because their x-heights differ. A large x-height generally reads better at small sizes and on screens, which is why interface faces tend to have one. It also means point size alone is not comparable between families.",
+    "example": "Inter at 15px appears noticeably larger than Garamond at 15px, because its lowercase letters are taller.",
+    "relatedIds": [
+      "typeface",
+      "legibility",
+      "type-scale",
+      "leading"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/typography"
+      }
+    ]
+  },
+  {
+    "id": "leading",
+    "term": "Leading",
+    "aliases": [
+      "line height",
+      "line spacing"
+    ],
+    "categories": [
+      "Visual & Typography"
+    ],
+    "shortDef": "The vertical space between lines of text.",
+    "longDef": "Body text usually wants around 1.4 to 1.6 times its size; large headings want proportionally less, because the gap looks bigger at scale. Too tight and lines interfere with each other, too loose and they stop reading as a paragraph. WCAG asks that users be able to increase it to 1.5 without breaking the layout.",
+    "example": "17px body text set at 27px line height, with a 34px headword set at 40px.",
+    "misuse": "Applying one line-height multiplier across every size is the common shortcut, and it makes large text look gappy.",
+    "relatedIds": [
+      "type-scale",
+      "measure",
+      "readability",
+      "text-spacing",
+      "x-height"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "W3C",
+        "url": "https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html"
+      }
+    ]
+  },
+  {
+    "id": "tracking",
+    "term": "Tracking",
+    "aliases": [
+      "letter-spacing"
+    ],
+    "categories": [
+      "Visual & Typography"
+    ],
+    "shortDef": "Uniform spacing applied across a run of letters.",
+    "longDef": "Tracking is adjusted for optical reasons: large display text usually needs slight negative tracking, and small uppercase labels need positive tracking to stay readable. Body text almost never needs any. It differs from kerning, which adjusts the space between one specific pair of letters.",
+    "example": "A 34px serif headword set at −0.6 tracking, and a 13px uppercase label opened up to +0.6.",
+    "misuse": "Tracking and kerning are often conflated. Kerning is per-pair and usually the typeface's job, not yours.",
+    "relatedIds": [
+      "typeface",
+      "type-scale",
+      "legibility",
+      "visual-hierarchy"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/typography"
+      }
+    ]
+  },
+  {
+    "id": "measure",
+    "term": "Measure",
+    "aliases": [
+      "line length"
+    ],
+    "categories": [
+      "Visual & Typography"
+    ],
+    "shortDef": "The width of a text column, counted in characters.",
+    "longDef": "Around 45 to 75 characters per line is comfortable for continuous reading; much longer and the eye loses its place returning to the left edge, much shorter and the rhythm breaks. On phones the constraint is the screen, so measure matters most on tablets and desktops where a column can otherwise run to 150 characters.",
+    "example": "Capping a definition column at roughly 560px keeps it near 65 characters at 17px.",
+    "relatedIds": [
+      "leading",
+      "readability",
+      "responsive-design",
+      "grid",
+      "widow-and-orphan"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/typography"
+      }
+    ]
+  },
+  {
+    "id": "legibility",
+    "term": "Legibility",
+    "aliases": [],
+    "categories": [
+      "Visual & Typography",
+      "Accessibility"
+    ],
+    "shortDef": "How easily individual characters are told apart.",
+    "longDef": "Legibility is a property of the letterforms: whether capital I, lowercase l and the digit 1 are distinguishable, whether counters stay open at small sizes, whether the face survives low contrast. It is decided mostly at the point of choosing a typeface. It is the precondition for readability, not the same thing.",
+    "example": "A face where 0 and O differ clearly matters on a screen showing reference numbers.",
+    "misuse": "Legibility concerns characters; readability concerns whether a body of text is comfortable to read. Both are needed.",
+    "relatedIds": [
+      "readability",
+      "typeface",
+      "x-height",
+      "contrast",
+      "dyslexia-friendly"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/typography"
+      }
+    ]
+  },
+  {
+    "id": "readability",
+    "term": "Readability",
+    "aliases": [],
+    "categories": [
+      "Visual & Typography",
+      "Accessibility"
+    ],
+    "shortDef": "How comfortably a body of text can be read at length.",
+    "longDef": "Readability comes from measure, leading, size, contrast, alignment and the language itself. A perfectly legible typeface set in a 140-character line at tight leading is still unreadable. It is also affected by writing: shorter sentences and common words genuinely reduce effort.",
+    "example": "The same paragraph becomes markedly easier at 65 characters per line with 1.55 leading than at 140 characters with 1.2.",
+    "relatedIds": [
+      "legibility",
+      "measure",
+      "leading",
+      "plain-language",
+      "contrast",
+      "widow-and-orphan"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "W3C",
+        "url": "https://www.w3.org/WAI/tips/writing/"
+      }
+    ]
+  },
+  {
+    "id": "white-space",
+    "term": "White space",
+    "aliases": [
+      "negative space"
+    ],
+    "categories": [
+      "Visual & Typography"
+    ],
+    "shortDef": "The empty area around and between elements.",
+    "longDef": "Space groups, separates and creates emphasis, and it does so faster than borders or colour. Micro white space — inside and between components — drives legibility; macro white space drives the sense of calm and hierarchy. It is the first thing sacrificed under pressure and the first thing that should not be.",
+    "example": "Doubling the gap between form sections while halving the gap between a label and its field makes the grouping unambiguous.",
+    "misuse": "White space does not have to be white. It is any unoccupied area, including over a dark background or an image.",
+    "relatedIds": [
+      "law-of-proximity",
+      "spacing-scale",
+      "visual-hierarchy",
+      "grid",
+      "density"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/visual-design"
+      }
+    ]
+  },
+  {
+    "id": "spacing-scale",
+    "term": "Spacing scale",
+    "aliases": [
+      "spacing system",
+      "4pt grid",
+      "8pt grid"
+    ],
+    "categories": [
+      "Visual & Typography",
+      "Deliverables & Artifacts"
+    ],
+    "shortDef": "A fixed set of spacing values used everywhere in a design.",
+    "longDef": "Building every gap from multiples of a base unit — usually four or eight — makes rhythm consistent and removes an arbitrary decision from every component. It also makes design and code agree, since both reference the same steps. The scale needs enough small steps to handle text spacing and enough large ones to separate sections.",
+    "example": "A 4pt base giving 4, 8, 12, 16, 20, 24, 32 and 40, with nothing in between permitted.",
+    "relatedIds": [
+      "design-token",
+      "white-space",
+      "grid",
+      "design-system",
+      "law-of-proximity"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "Material Design",
+        "url": "https://m3.material.io/foundations/layout/understanding-layout/spacing"
+      }
+    ]
+  },
+  {
+    "id": "grid",
+    "term": "Grid",
+    "aliases": [
+      "layout grid",
+      "column grid"
+    ],
+    "categories": [
+      "Visual & Typography"
+    ],
+    "shortDef": "An underlying structure of columns and gutters for placing content.",
+    "longDef": "A grid gives alignment and proportion without re-deciding them per screen, and it makes responsive behaviour describable — what merges, what stacks, what disappears. It should be a servant: breaking it deliberately for one element is often what creates emphasis. A grid that nothing ever breaks tends to produce very even, very dull layouts.",
+    "example": "A four-column phone grid becoming twelve columns on desktop, with the reading column capped regardless.",
+    "relatedIds": [
+      "spacing-scale",
+      "responsive-design",
+      "alignment",
+      "measure",
+      "breakpoint"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "Material Design",
+        "url": "https://m3.material.io/foundations/layout/understanding-layout/overview"
+      }
+    ]
+  },
+  {
+    "id": "alignment",
+    "term": "Alignment",
+    "aliases": [
+      "optical alignment"
+    ],
+    "categories": [
+      "Visual & Typography"
+    ],
+    "shortDef": "Lining elements up so the eye reads an intentional edge.",
+    "longDef": "Shared edges create relationships and calm; stray ones read as errors even when nobody can say why. Optical alignment sometimes overrides mathematical alignment — a circle or a piece of punctuation must sit slightly outside the true edge to look aligned. Fewer alignment lines generally means a stronger layout.",
+    "example": "A quotation mark hung slightly into the margin so the first letter of the quote lines up with the paragraph below.",
+    "relatedIds": [
+      "grid",
+      "visual-hierarchy",
+      "white-space",
+      "law-of-similarity"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/visual-design"
+      }
+    ]
+  },
+  {
+    "id": "contrast",
+    "term": "Contrast",
+    "aliases": [
+      "colour contrast",
+      "contrast ratio"
+    ],
+    "categories": [
+      "Visual & Typography",
+      "Accessibility"
+    ],
+    "shortDef": "The difference in luminance between two colours.",
+    "longDef": "Expressed as a ratio, contrast determines whether text can be read and whether a control can be seen. WCAG 2.2 asks for at least 4.5:1 for body text, 3:1 for large text, and 3:1 for interface components and focus indicators. It is also a design tool: hierarchy is largely built from controlled differences in contrast.",
+    "example": "Muted grey body text on a white background must reach 4.5:1, which rules out most light greys designers reach for first.",
+    "misuse": "Contrast ratio is about luminance, not hue. Two colours can be very different and still fail.",
+    "relatedIds": [
+      "wcag",
+      "colour-palette",
+      "visual-hierarchy",
+      "colour-blindness",
+      "dark-mode"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "W3C",
+        "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html"
+      }
+    ]
+  },
+  {
+    "id": "colour-palette",
+    "term": "Colour palette",
+    "aliases": [
+      "color palette",
+      "colour system"
+    ],
+    "categories": [
+      "Visual & Typography"
+    ],
+    "shortDef": "The restricted set of colours a product is built from.",
+    "longDef": "A working palette is usually a neutral ramp, one accent for interaction, and a small set of status colours — far fewer than teams expect. Deriving related hues from a single accent keeps a large system coherent where twelve unrelated colours would not. Every pair that can appear together needs its contrast checked, in both themes.",
+    "example": "Twelve category tints generated by rotating one accent's hue, so they read as a family rather than a rainbow.",
+    "misuse": "Colour must never be the only carrier of meaning; anything a colour says must also be said in text or shape.",
+    "relatedIds": [
+      "contrast",
+      "design-token",
+      "colour-blindness",
+      "dark-mode",
+      "brand"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "Material Design",
+        "url": "https://m3.material.io/styles/color/system/overview"
+      }
+    ]
+  },
+  {
+    "id": "elevation",
+    "term": "Elevation",
+    "aliases": [
+      "depth",
+      "z-index",
+      "shadow"
+    ],
+    "categories": [
+      "Visual & Typography"
+    ],
+    "shortDef": "The apparent layering of surfaces, usually shown by shadow.",
+    "longDef": "Elevation communicates which surface is on top and therefore which is currently in play — a sheet over a page, a menu over content. Shadow is one way to show it; in dark themes a lighter surface colour usually reads better than a shadow, which is invisible against black. Whatever the technique, layers should be a small defined set.",
+    "example": "A dialog raised over a dimmed page, and a dark-mode version that lightens the surface instead of adding a shadow.",
+    "relatedIds": [
+      "figure-ground",
+      "card",
+      "modal",
+      "dark-mode",
+      "design-token"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "Material Design",
+        "url": "https://m3.material.io/styles/elevation/overview"
+      }
+    ]
+  },
+  {
+    "id": "dark-mode",
+    "term": "Dark mode",
+    "aliases": [
+      "dark theme",
+      "night mode"
+    ],
+    "categories": [
+      "Visual & Typography",
+      "Accessibility"
+    ],
+    "shortDef": "A theme with light content on dark surfaces.",
+    "longDef": "Dark mode is not an inversion: pure white on pure black causes halation and is uncomfortable for many people, so both ends are usually pulled in. Shadows stop working, saturated colours look more intense, and every contrast pair needs re-checking. Following the system setting by default is the expected behaviour, with an override available.",
+    "example": "Body text at #EEEFF3 on a #101116 surface, with the accent lightened so it still passes contrast.",
+    "misuse": "Dark mode is not universally more accessible. Some people with astigmatism read light-on-dark considerably more slowly.",
+    "relatedIds": [
+      "theming",
+      "contrast",
+      "elevation",
+      "design-token",
+      "colour-palette"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "Material Design",
+        "url": "https://m3.material.io/styles/color/roles"
+      }
+    ]
+  },
+  {
+    "id": "theming",
+    "term": "Theming",
+    "aliases": [
+      "themes",
+      "white-labelling"
+    ],
+    "categories": [
+      "Visual & Typography",
+      "Tech & Development"
+    ],
+    "shortDef": "Swapping a design's values without changing its components.",
+    "longDef": "Theming works when components read semantic tokens rather than literal values, so light, dark, high-contrast or brand variants are configuration rather than forks. The hard part is naming: tokens must describe role, not appearance. A theme that requires component changes is not a theme.",
+    "example": "One Button component rendering correctly in light, dark and a partner's brand palette with no conditional code.",
+    "relatedIds": [
+      "design-token",
+      "dark-mode",
+      "design-system",
+      "component",
+      "colour-palette"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "Material Design",
+        "url": "https://m3.material.io/styles/color/roles"
+      }
+    ]
+  },
+  {
+    "id": "responsive-design",
+    "term": "Responsive design",
+    "aliases": [
+      "adaptive design",
+      "responsive web design"
+    ],
+    "categories": [
+      "Visual & Typography",
+      "Tech & Development"
+    ],
+    "shortDef": "One layout that reflows to fit any screen size.",
+    "longDef": "Content and layout adapt fluidly to the space available, rather than being switched between fixed designs. Doing it well means deciding what reorders, what collapses and what is dropped, at each size. Orientation, window resizing on desktop, and text scaling all count as size changes too.",
+    "example": "A two-column term page that stacks on a phone and caps its reading column on a tablet.",
+    "misuse": "Responsive is not the same as mobile-friendly. A layout can resize perfectly and still have unreachable touch targets.",
+    "relatedIds": [
+      "breakpoint",
+      "grid",
+      "measure",
+      "dynamic-type",
+      "platform-convention"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design"
+      }
+    ]
+  },
+  {
+    "id": "breakpoint",
+    "term": "Breakpoint",
+    "aliases": [
+      "media query breakpoint"
+    ],
+    "categories": [
+      "Visual & Typography",
+      "Tech & Development"
+    ],
+    "shortDef": "A width at which the layout changes to a different arrangement.",
+    "longDef": "Breakpoints should be set where the design stops working, not at the dimensions of particular devices, which change every year. Fewer, well-chosen breakpoints are easier to maintain than many device-specific ones. Container queries increasingly let a component respond to its own space rather than the whole viewport.",
+    "example": "Adding a second column at the width where the reading measure would otherwise exceed 75 characters.",
+    "misuse": "Naming breakpoints after phones and tablets ages badly and ignores split-screen and resized desktop windows.",
+    "relatedIds": [
+      "responsive-design",
+      "grid",
+      "measure",
+      "component"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries"
+      }
+    ]
+  },
+  {
+    "id": "above-the-fold",
+    "term": "Above the fold",
+    "aliases": [
+      "the fold"
+    ],
+    "categories": [
+      "Visual & Typography"
+    ],
+    "shortDef": "The part of a page visible before any scrolling.",
+    "longDef": "Borrowed from newspapers, it still matters because what is visible first sets expectations about whether the page is worth continuing. People scroll willingly, so the goal is not cramming everything in but making the top compelling and clearly continuing. The fold is not one line — it differs on every device.",
+    "example": "Ending a section slightly below the viewport edge so it is obvious there is more, rather than exactly at it.",
+    "misuse": "\"Everything important above the fold\" is outdated advice that produces cramped tops and empty pages beneath.",
+    "relatedIds": [
+      "scroll-affordance",
+      "visual-hierarchy",
+      "five-second-test",
+      "f-pattern"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/page-fold-manifesto/"
+      }
+    ]
+  },
+  {
+    "id": "f-pattern",
+    "term": "F-pattern",
+    "aliases": [
+      "F-shaped reading pattern"
+    ],
+    "categories": [
+      "Visual & Typography",
+      "Research"
+    ],
+    "shortDef": "The F-shaped path eyes take across dense unformatted text.",
+    "longDef": "Eye-tracking shows readers scanning the first lines fully, then progressively less of each line, forming an F. It is a symptom of text that has not been structured, not a layout to design toward. The response is subheadings, front-loaded sentences and lists, which change the pattern entirely.",
+    "example": "A wall of paragraphs produces the F; the same content with subheadings and bold lead-ins is scanned much more evenly.",
+    "misuse": "It is not a template. Designing an F-shaped layout misreads a description of failure as a recommendation.",
+    "relatedIds": [
+      "eye-tracking",
+      "visual-hierarchy",
+      "readability",
+      "banner-blindness",
+      "above-the-fold"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/"
+      }
+    ]
+  },
+  {
+    "id": "icon",
+    "term": "Icon",
+    "aliases": [
+      "iconography",
+      "glyph"
+    ],
+    "categories": [
+      "Visual & Typography",
+      "Interaction & UI Patterns"
+    ],
+    "shortDef": "A small symbol standing for an object or an action.",
+    "longDef": "Only a handful of icons are universally understood — home, search, print, close — and everything else is learned or guessed. Pairing an icon with a text label removes the guessing and costs very little space. Icons still earn their place: they speed recognition for familiar users and anchor scanning.",
+    "example": "A bookmark icon with the word \"Saved\" beneath it in a tab bar, so neither has to carry the meaning alone.",
+    "misuse": "An unlabelled icon whose meaning is only revealed on hover is the mystery-meat problem, and it fails entirely on touch.",
+    "relatedIds": [
+      "signifier",
+      "tooltip",
+      "discoverability",
+      "screen-reader",
+      "consistency"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/icon-usability/"
+      }
+    ]
+  },
+  {
+    "id": "brand",
+    "term": "Brand",
+    "aliases": [
+      "brand identity"
+    ],
+    "categories": [
+      "Visual & Typography",
+      "Product & Business"
+    ],
+    "shortDef": "The impression a product leaves, and the system that shapes it.",
+    "longDef": "Brand is not the logo — it is the accumulated result of everything the product does, of which the visual identity is one part. In interface terms it lives in typography, colour, tone of voice and how the product behaves when something goes wrong. Consistency across those does more for recognition than any single asset.",
+    "example": "A bank whose error messages are calm, specific and never blame the customer builds more brand than its logo does.",
+    "relatedIds": [
+      "voice-and-tone",
+      "style-guide",
+      "moodboard",
+      "desirability-testing",
+      "colour-palette"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/branding"
+      }
+    ]
+  },
+  {
+    "id": "density",
+    "term": "Density",
+    "aliases": [
+      "information density",
+      "compact mode"
+    ],
+    "categories": [
+      "Visual & Typography"
+    ],
+    "shortDef": "How much information is packed into a given area.",
+    "longDef": "High density suits expert tools where scanning and comparison matter more than comfort; low density suits occasional use and small screens. It is a deliberate setting, not a side effect, and some products offer it as a user preference. Density must never be achieved by shrinking touch targets or contrast.",
+    "example": "A dictionary list showing term and one line of definition per row, so scanning beats tapping into each entry.",
+    "relatedIds": [
+      "white-space",
+      "spacing-scale",
+      "touch-target",
+      "visual-hierarchy",
+      "dynamic-type"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "Material Design",
+        "url": "https://m3.material.io/foundations/layout/understanding-layout/overview"
+      }
+    ]
+  },
+  {
+    "id": "widow-and-orphan",
+    "term": "Widow and orphan",
+    "aliases": [
+      "orphan",
+      "widow"
+    ],
+    "categories": [
+      "Visual & Typography"
+    ],
+    "shortDef": "A stray single line or word left alone by a text break.",
+    "longDef": "A widow is a last line stranded at the top of a column; an orphan is a first line stranded at the bottom. In interfaces the common version is a single word left on the last line of a heading. Non-breaking spaces and balanced text wrapping fix most cases without manual intervention.",
+    "example": "A three-word button label breaking so the last word sits alone, fixed by keeping the final two words together.",
+    "relatedIds": [
+      "readability",
+      "measure",
+      "typeface",
+      "content-design"
+    ],
+    "difficulty": "advanced",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/typography"
+      }
+    ]
+  }
+]

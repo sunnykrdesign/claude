@@ -1,0 +1,675 @@
+[
+  {
+    "id": "api",
+    "term": "API",
+    "aliases": [
+      "application programming interface",
+      "endpoint"
+    ],
+    "categories": [
+      "Tech & Development"
+    ],
+    "shortDef": "A defined way for one piece of software to ask another for something.",
+    "longDef": "When a designer hears \"the API doesn't return that\", it means the data needed for a screen is not available in the shape or at the time the design assumes. API limits explain a surprising number of interface compromises: why a count is missing, why a list cannot be sorted that way, why a step needs its own screen. Knowing what the API can do early changes what you design.",
+    "example": "A design showing total results needs the endpoint to return a count; if it only returns a page, the number cannot be shown.",
+    "relatedIds": [
+      "caching",
+      "offline-first",
+      "performance",
+      "handoff",
+      "optimistic-ui"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Glossary/API"
+      }
+    ]
+  },
+  {
+    "id": "feature-flag",
+    "term": "Feature flag",
+    "aliases": [
+      "feature toggle",
+      "dark launch"
+    ],
+    "categories": [
+      "Tech & Development",
+      "Product & Business"
+    ],
+    "shortDef": "A switch that turns a feature on for some users without redeploying.",
+    "longDef": "Flags separate deploying code from releasing a feature, which makes gradual rollouts, experiments and instant rollbacks possible. They are the mechanism behind most A/B tests. They also accumulate: an old flag left in place is a permanent branch in the product's behaviour that nobody remembers.",
+    "example": "Releasing a new checkout to 5% of traffic, watching error rates for a day, then widening it.",
+    "relatedIds": [
+      "a-b-test",
+      "technical-debt",
+      "iteration",
+      "novelty-effect"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Glossary"
+      }
+    ]
+  },
+  {
+    "id": "technical-debt",
+    "term": "Technical debt",
+    "aliases": [
+      "tech debt"
+    ],
+    "categories": [
+      "Tech & Development"
+    ],
+    "shortDef": "Future cost created by choosing a faster solution now.",
+    "longDef": "Some debt is deliberate and sensible — ship now, refactor after the experiment resolves — and some accumulates through neglect. Either way the interest shows up as slower delivery and more bugs. For designers it matters because it explains why a small visual change is quoted at three weeks.",
+    "example": "Three separate form implementations mean one validation change has to be made and tested three times.",
+    "relatedIds": [
+      "design-debt",
+      "feature-flag",
+      "design-system",
+      "backlog",
+      "semantic-versioning"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Glossary"
+      }
+    ]
+  },
+  {
+    "id": "progressive-enhancement",
+    "term": "Progressive enhancement",
+    "aliases": [],
+    "categories": [
+      "Tech & Development",
+      "Accessibility"
+    ],
+    "shortDef": "Build a working baseline first, then layer improvements on top.",
+    "longDef": "The core content and function work with the simplest capabilities, and richer behaviour is added where supported. It produces resilient products: a failed script degrades a feature rather than emptying the page. It also tends to produce better accessibility, because the baseline is usually semantic and keyboard-operable.",
+    "example": "A form that submits and works without JavaScript, then gains inline validation when the script loads.",
+    "misuse": "Not the same as graceful degradation, which starts from the full experience and removes parts for weaker clients.",
+    "relatedIds": [
+      "graceful-degradation",
+      "semantic-html",
+      "offline-first",
+      "performance",
+      "server-side-rendering"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement"
+      }
+    ]
+  },
+  {
+    "id": "graceful-degradation",
+    "term": "Graceful degradation",
+    "aliases": [
+      "fault tolerance"
+    ],
+    "categories": [
+      "Tech & Development"
+    ],
+    "shortDef": "Failing partially and usefully rather than completely.",
+    "longDef": "When something is unavailable — the network, a font, a permission, a third-party service — the product should lose that capability and keep the rest. It requires designing the degraded state deliberately, including what the user is told. The alternative is a blank screen, which is a design decision made by omission.",
+    "example": "Losing connectivity disables the update check and leaves search, saved terms and revision fully working.",
+    "relatedIds": [
+      "progressive-enhancement",
+      "offline-first",
+      "error-state",
+      "edge-case"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Glossary/Graceful_degradation"
+      }
+    ]
+  },
+  {
+    "id": "offline-first",
+    "term": "Offline-first",
+    "aliases": [
+      "local-first"
+    ],
+    "categories": [
+      "Tech & Development"
+    ],
+    "shortDef": "Treating the network as an enhancement, not a requirement.",
+    "longDef": "Data lives locally and syncs when a connection exists, so the interface never waits on a request it does not need. It removes whole categories of loading and error state, and it makes the product usable on a train or a plane. The cost is handling sync conflicts and deciding what a stale local copy is allowed to do.",
+    "example": "A dictionary that ships its content in the bundle, reads from a local database, and checks for updates in the background.",
+    "misuse": "Caching responses is not offline-first. The test is whether the product works from a cold start with no network at all.",
+    "relatedIds": [
+      "caching",
+      "graceful-degradation",
+      "optimistic-ui",
+      "performance",
+      "api"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps"
+      }
+    ]
+  },
+  {
+    "id": "caching",
+    "term": "Caching",
+    "aliases": [
+      "cache"
+    ],
+    "categories": [
+      "Tech & Development"
+    ],
+    "shortDef": "Keeping a copy of data so it does not have to be fetched again.",
+    "longDef": "Caches make things fast and make them stale, and the design question is which of those the user notices. Anything that must be current — a balance, a stock level — needs a visible freshness signal or a way to refresh. Cache invalidation is genuinely hard, which is why \"try clearing your cache\" persists as advice.",
+    "example": "Showing cached search results instantly with a quiet \"updated 2 minutes ago\", refreshing in the background.",
+    "relatedIds": [
+      "offline-first",
+      "performance",
+      "perceived-performance",
+      "api"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching"
+      }
+    ]
+  },
+  {
+    "id": "performance",
+    "term": "Performance",
+    "aliases": [
+      "speed"
+    ],
+    "categories": [
+      "Tech & Development",
+      "Metrics & Analytics"
+    ],
+    "shortDef": "How quickly a product responds and completes work.",
+    "longDef": "Performance is a usability property, not a technical afterthought: it changes task success, bounce and satisfaction more reliably than most visual decisions. It should be measured on the devices and networks the audience actually has, not on a developer's machine. Design choices — image weight, font loading, animation — are among its main drivers.",
+    "example": "Cutting a bundle from ten megabytes to four by importing only the font weights the product uses.",
+    "relatedIds": [
+      "perceived-performance",
+      "core-web-vitals",
+      "doherty-threshold",
+      "lazy-loading",
+      "caching",
+      "server-side-rendering"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/Performance"
+      }
+    ]
+  },
+  {
+    "id": "perceived-performance",
+    "term": "Perceived performance",
+    "aliases": [
+      "felt performance"
+    ],
+    "categories": [
+      "Tech & Development",
+      "Interaction & UI Patterns"
+    ],
+    "shortDef": "How fast something feels, regardless of measured time.",
+    "longDef": "Feedback within a hundred milliseconds, skeletons that show shape, optimistic updates and prefetching all make identical elapsed time feel shorter. Occupied waits feel shorter than idle ones, and known waits shorter than unknown. It is not a substitute for being fast, but it is often the cheaper half of the improvement.",
+    "example": "Rendering cached results instantly while fresher ones load makes a 600ms request feel immediate.",
+    "misuse": "Perceived performance work that hides a genuine failure — a spinner over a request that never returns — spends trust.",
+    "relatedIds": [
+      "doherty-threshold",
+      "skeleton-screen",
+      "optimistic-ui",
+      "performance",
+      "progress-indicator"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Performance/Perceived_performance"
+      }
+    ]
+  },
+  {
+    "id": "core-web-vitals",
+    "term": "Core Web Vitals",
+    "aliases": [
+      "LCP",
+      "INP",
+      "CLS"
+    ],
+    "categories": [
+      "Tech & Development",
+      "Metrics & Analytics"
+    ],
+    "shortDef": "Google's three field metrics for loading, responsiveness and stability.",
+    "longDef": "Largest Contentful Paint measures when the main content appears, Interaction to Next Paint measures responsiveness to input, and Cumulative Layout Shift measures unexpected movement. They are collected from real users rather than lab runs, and they influence search ranking. For designers, CLS is the most directly controllable — it is usually caused by images and fonts without reserved space.",
+    "example": "Reserving the exact height of a hero image removes the shift that pushes the headline down as it loads.",
+    "relatedIds": [
+      "layout-shift",
+      "performance",
+      "perceived-performance",
+      "lazy-loading"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "web.dev",
+        "url": "https://web.dev/articles/vitals"
+      }
+    ]
+  },
+  {
+    "id": "layout-shift",
+    "term": "Layout shift",
+    "aliases": [
+      "content jump",
+      "reflow"
+    ],
+    "categories": [
+      "Tech & Development",
+      "Visual & Typography"
+    ],
+    "shortDef": "Content moving after it has already been rendered.",
+    "longDef": "Shifts happen when images, fonts, ads or late-loading data arrive without space reserved, and they cause mis-taps on exactly the wrong control. The fix is reserving dimensions in advance and matching placeholder sizes to real content. It is one of the most irritating defects to experience and one of the easiest to prevent.",
+    "example": "A banner loading above a list pushes the first row down just as the user taps it.",
+    "relatedIds": [
+      "core-web-vitals",
+      "skeleton-screen",
+      "performance",
+      "lazy-loading"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "web.dev",
+        "url": "https://web.dev/articles/cls"
+      }
+    ]
+  },
+  {
+    "id": "lazy-loading",
+    "term": "Lazy loading",
+    "aliases": [
+      "deferred loading"
+    ],
+    "categories": [
+      "Tech & Development"
+    ],
+    "shortDef": "Loading content only when it is about to be needed.",
+    "longDef": "Deferring offscreen images, screens and code cuts the initial payload and gets people to the first useful moment sooner. It needs reserved space so nothing shifts, and a small lead time so content is ready just before it scrolls into view. Lazy-loading things that are immediately visible makes the experience worse, not better.",
+    "example": "Loading a list's images as they approach the viewport, with each slot already at its final height.",
+    "misuse": "Applying lazy loading to the first screen's hero image delays the very thing the metric measures.",
+    "relatedIds": [
+      "performance",
+      "layout-shift",
+      "core-web-vitals",
+      "infinite-scroll"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Lazy_loading"
+      }
+    ]
+  },
+  {
+    "id": "server-side-rendering",
+    "term": "Server-side rendering",
+    "aliases": [
+      "SSR",
+      "client-side rendering"
+    ],
+    "categories": [
+      "Tech & Development"
+    ],
+    "shortDef": "Building the page on the server rather than in the browser.",
+    "longDef": "Server rendering sends usable HTML immediately, which helps first paint, weak devices and search indexing; client rendering builds the page in the browser, which suits highly interactive apps after load. Most products now mix them. For designers it decides how much appears before scripts run, and therefore what the first frame looks like.",
+    "example": "An article rendered on the server is readable before any script executes; a dashboard is not.",
+    "relatedIds": [
+      "performance",
+      "progressive-enhancement",
+      "core-web-vitals",
+      "perceived-performance"
+    ],
+    "difficulty": "advanced",
+    "sources": [
+      {
+        "label": "MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Glossary/SSR"
+      }
+    ]
+  },
+  {
+    "id": "cross-platform",
+    "term": "Cross-platform",
+    "aliases": [
+      "hybrid app",
+      "native app"
+    ],
+    "categories": [
+      "Tech & Development"
+    ],
+    "shortDef": "One codebase producing apps for several operating systems.",
+    "longDef": "Frameworks such as React Native and Flutter share most logic and interface code across iOS and Android, trading some platform fidelity for speed of delivery. The design consequence is deciding where to follow each platform's conventions and where a single shared pattern is acceptable. Navigation, back behaviour, typography and system gestures are where the difference is felt most.",
+    "example": "One component library rendering a shared design, with platform-specific back behaviour and system fonts respected.",
+    "misuse": "Cross-platform does not mean identical. Shipping an iOS interface unchanged to Android reads as a port, not an app.",
+    "relatedIds": [
+      "platform-convention",
+      "responsive-design",
+      "design-system",
+      "progressive-web-app"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "Apple HIG",
+        "url": "https://developer.apple.com/design/human-interface-guidelines/"
+      }
+    ]
+  },
+  {
+    "id": "progressive-web-app",
+    "term": "Progressive web app",
+    "aliases": [
+      "PWA"
+    ],
+    "categories": [
+      "Tech & Development"
+    ],
+    "shortDef": "A website that can be installed and work offline.",
+    "longDef": "A PWA adds an installable icon, offline capability and background updates to a normal web app, without an app store. It suits products where discovery through a link matters more than deep device integration. Capabilities still lag native on iOS, particularly around notifications and background work.",
+    "example": "A reference site that installs to the home screen and keeps working on the underground.",
+    "relatedIds": [
+      "offline-first",
+      "caching",
+      "cross-platform",
+      "deep-link"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps"
+      }
+    ]
+  },
+  {
+    "id": "deep-link",
+    "term": "Deep link",
+    "aliases": [
+      "universal link",
+      "app link"
+    ],
+    "categories": [
+      "Tech & Development",
+      "Interaction & UI Patterns"
+    ],
+    "shortDef": "A link that opens a specific screen inside an app.",
+    "longDef": "Deep links let a search result, an email or a shared message land someone exactly where they need to be rather than on a home screen. They require the destination to be reachable from a cold start, with the right back behaviour when there is no history. Handling the case where the app is not installed is part of the design.",
+    "example": "Tapping a shared definition opens that term directly, with a back action that goes to search rather than out of the app.",
+    "relatedIds": [
+      "navigation",
+      "progressive-web-app",
+      "onboarding",
+      "platform-convention"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "Apple HIG",
+        "url": "https://developer.apple.com/design/human-interface-guidelines/"
+      }
+    ]
+  },
+  {
+    "id": "internationalisation",
+    "term": "Internationalisation",
+    "aliases": [
+      "i18n",
+      "internationalization"
+    ],
+    "categories": [
+      "Tech & Development",
+      "Accessibility"
+    ],
+    "shortDef": "Building a product so it can be adapted to other languages and regions.",
+    "longDef": "It means no text baked into images, no assumptions about name or address shape, no concatenated sentences, and layouts that survive text expanding by a third or running right to left. It is preparation, done once; localisation is the per-locale work that follows. Retrofitting it is expensive and touches every screen.",
+    "example": "Leaving room for German labels roughly 35% longer than English, and mirroring the layout for Arabic.",
+    "misuse": "i18n is the preparation and l10n the adaptation. Teams that conflate them usually discover the difference during their first translation.",
+    "relatedIds": [
+      "localisation",
+      "date-picker",
+      "input-mask",
+      "responsive-design",
+      "content-design"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "W3C",
+        "url": "https://www.w3.org/International/questions/qa-i18n"
+      }
+    ]
+  },
+  {
+    "id": "localisation",
+    "term": "Localisation",
+    "aliases": [
+      "l10n",
+      "localization"
+    ],
+    "categories": [
+      "Tech & Development",
+      "Product & Business"
+    ],
+    "shortDef": "Adapting a product for a specific language and region.",
+    "longDef": "Beyond translation it covers date and number formats, currency, address forms, name order, units, imagery and legal requirements. Good localisation needs context for translators — a string with no note is guessed at. Machine translation without review reliably produces confident, wrong interface text.",
+    "example": "Switching to day-month-year, local currency, and a postcode field that matches the country's actual format.",
+    "relatedIds": [
+      "internationalisation",
+      "content-design",
+      "date-picker",
+      "plain-language"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "W3C",
+        "url": "https://www.w3.org/International/questions/qa-i18n"
+      }
+    ]
+  },
+  {
+    "id": "privacy-by-design",
+    "term": "Privacy by design",
+    "aliases": [
+      "data minimisation"
+    ],
+    "categories": [
+      "Tech & Development",
+      "Product & Business"
+    ],
+    "shortDef": "Treating privacy as a default, built in from the start.",
+    "longDef": "The principles are collecting only what is needed, keeping it only as long as it is useful, defaulting to the most protective setting, and being clear about what happens. Designers control much of this through what a form asks for and how a permission is requested. Data you never collected cannot leak.",
+    "example": "Logging searches that found nothing on the device only, so the content backlog exists without any data leaving the phone.",
+    "relatedIds": [
+      "consent",
+      "ethics",
+      "informed-consent",
+      "telemetry",
+      "smart-default"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/design-ethics"
+      }
+    ]
+  },
+  {
+    "id": "telemetry",
+    "term": "Telemetry",
+    "aliases": [
+      "instrumentation",
+      "event tracking"
+    ],
+    "categories": [
+      "Tech & Development",
+      "Metrics & Analytics"
+    ],
+    "shortDef": "Code that records what happens in a product.",
+    "longDef": "Events have to be designed: what is captured, what it is named, what properties travel with it, and what is deliberately not collected. Poorly planned instrumentation produces data nobody can answer a question with, and often more personal data than intended. Deciding the question first is what makes the event useful.",
+    "example": "Recording that a search returned no results, with the query length but not the query itself, when privacy requires it.",
+    "misuse": "Tracking everything \"in case we need it\" creates a privacy liability and a dataset too noisy to analyse.",
+    "relatedIds": [
+      "privacy-by-design",
+      "funnel",
+      "cohort-analysis",
+      "success-metric",
+      "consent"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/analytics"
+      }
+    ]
+  },
+  {
+    "id": "metadata",
+    "term": "Metadata",
+    "aliases": [
+      "tags",
+      "attributes"
+    ],
+    "categories": [
+      "Tech & Development",
+      "Design Process"
+    ],
+    "shortDef": "Structured data describing a piece of content.",
+    "longDef": "Categories, tags, dates, authorship and relationships are what make filtering, sorting, search and recommendation possible. Interfaces that promise powerful filtering on content with thin metadata cannot deliver it. Deciding the metadata is therefore a design decision, not a back-office one.",
+    "example": "Filtering terms by difficulty only works because every entry carries a difficulty value.",
+    "relatedIds": [
+      "taxonomy",
+      "filter",
+      "search",
+      "information-architecture",
+      "findability"
+    ],
+    "difficulty": "core",
+    "sources": [
+      {
+        "label": "MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Glossary/Metadata"
+      }
+    ]
+  },
+  {
+    "id": "device-pixel-ratio",
+    "term": "Device pixel ratio",
+    "aliases": [
+      "dp",
+      "pt",
+      "@2x",
+      "logical pixel"
+    ],
+    "categories": [
+      "Tech & Development",
+      "Visual & Typography"
+    ],
+    "shortDef": "How many physical pixels make up one logical design unit.",
+    "longDef": "Designs are specified in logical units — points on iOS, density-independent pixels on Android, CSS pixels on the web — and the device multiplies them by its ratio. A 44pt target is the same physical size on a 2x and a 3x screen. Raster assets need exporting at each multiple; vector assets avoid the problem.",
+    "example": "A 24pt icon exported at 48px and 72px for 2x and 3x displays, or shipped once as a vector.",
+    "misuse": "Designing in physical pixels leads to interfaces that shrink on higher-density screens.",
+    "relatedIds": [
+      "touch-target",
+      "responsive-design",
+      "icon",
+      "safe-area"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio"
+      }
+    ]
+  },
+  {
+    "id": "safe-area",
+    "term": "Safe area",
+    "aliases": [
+      "safe area insets",
+      "notch"
+    ],
+    "categories": [
+      "Tech & Development",
+      "Interaction & UI Patterns"
+    ],
+    "shortDef": "The screen region not covered by system UI or hardware cutouts.",
+    "longDef": "Notches, rounded corners, status bars and home indicators all take space that content must avoid, and the amounts differ per device and orientation. Backgrounds should extend beneath them while interactive content stays inside. Ignoring insets is what puts a button under the home indicator, where it cannot be tapped.",
+    "example": "A tab bar padded by the bottom inset so its labels sit above the home indicator on every phone.",
+    "relatedIds": [
+      "responsive-design",
+      "device-pixel-ratio",
+      "touch-target",
+      "platform-convention"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "Apple HIG",
+        "url": "https://developer.apple.com/design/human-interface-guidelines/layout"
+      }
+    ]
+  },
+  {
+    "id": "semantic-versioning",
+    "term": "Semantic versioning",
+    "aliases": [
+      "semver",
+      "breaking change"
+    ],
+    "categories": [
+      "Tech & Development",
+      "Deliverables & Artifacts"
+    ],
+    "shortDef": "Version numbers that communicate the size of a change.",
+    "longDef": "Major.minor.patch, where a major bump signals a breaking change, a minor adds capability compatibly, and a patch fixes something. Design systems use it to tell consuming teams whether an upgrade is safe. Renaming a token or changing a component's default is a breaking change even though nothing crashed.",
+    "example": "Removing a Button variant means 3.0.0, while adding a new size is 2.4.0.",
+    "relatedIds": [
+      "design-system",
+      "design-token",
+      "component",
+      "technical-debt"
+    ],
+    "difficulty": "intermediate",
+    "sources": [
+      {
+        "label": "MDN",
+        "url": "https://developer.mozilla.org/en-US/docs/Glossary"
+      }
+    ]
+  }
+]
