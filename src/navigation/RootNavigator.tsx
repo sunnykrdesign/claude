@@ -28,7 +28,7 @@ const Tab = createBottomTabNavigator<TabParamList>();
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function TabNavigator() {
-  const { color, scheme, space } = useTheme();
+  const { color, space } = useTheme();
 
   const screenOptions: BottomTabNavigationOptions = {
     headerShown: false,

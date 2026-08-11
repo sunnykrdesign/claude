@@ -36,7 +36,13 @@ import {
   dayKey,
   initialState,
 } from '../data/leitner';
-import { listRevisionStates, recordReviewDay, resetRevisionProgress, saveRevisionState } from '../data/revision';
+import {
+  listRevisionStates,
+  loadStreak,
+  recordReviewDay,
+  resetRevisionProgress,
+  saveRevisionState,
+} from '../data/revision';
 import { buildFuse } from '../data/search';
 import { parseCollection } from '../data/validate';
 import { TermSummary, toSummary } from '../types/term';
@@ -113,7 +119,6 @@ export const useLibrary = create<LibraryState>((set, get) => ({
           listRecentSearches(),
         ]);
 
-        const { loadStreak } = await import('../data/revision');
         set({
           bookmarks,
           revision: Object.fromEntries(revisionStates.map((state) => [state.termId, state])),

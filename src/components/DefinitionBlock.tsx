@@ -24,8 +24,6 @@ export function DefinitionBlock({ label, children, emphasis = 'plain' }: Props) 
 
   return (
     <View
-      accessible={false}
-      accessibilityRole="summary"
       style={{
         backgroundColor: color.surfaceInset,
         borderRadius: radius.md,

@@ -36,7 +36,7 @@ const CHIP_DELAY_MS = 180;
 
 export function TermScreen({ route, navigation }: Props) {
   const { termId } = route.params;
-  const { color, space, measure } = useTheme();
+  const { space, measure } = useTheme();
 
   const [term, setTerm] = useState<Term | null>(null);
   const [missing, setMissing] = useState(false);
