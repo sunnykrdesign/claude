@@ -64,6 +64,8 @@ export type TermSummary = {
   categories: Category[];
   shortDef: string;
   difficulty: Difficulty;
+  /** Kept in the summary so the connections view can be built without a query. */
+  relatedIds: string[];
 };
 
 export function toSummary(term: Term): TermSummary {
@@ -74,6 +76,7 @@ export function toSummary(term: Term): TermSummary {
     categories: term.categories,
     shortDef: term.shortDef,
     difficulty: term.difficulty,
+    relatedIds: term.relatedIds,
   };
 }
 

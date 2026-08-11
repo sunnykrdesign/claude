@@ -1,0 +1,4 @@
+{
+  "version": 1,
+  "note": "Bump `version` whenever content changes. The app only applies a remote payload whose version is higher than the one it already holds."
+}

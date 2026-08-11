@@ -2,652 +2,1461 @@
   {
     "id": "usability-testing",
     "term": "Usability testing",
-    "aliases": ["user testing", "usability test"],
-    "categories": ["Research"],
+    "aliases": [
+      "user testing",
+      "usability test"
+    ],
+    "categories": [
+      "Research"
+    ],
     "shortDef": "Watching real people attempt real tasks with your design.",
     "longDef": "You give a participant a task, then stay quiet and watch where they hesitate, backtrack or give up. The output is a list of observed problems, not opinions about whether people liked it. Five or six participants per audience usually surfaces most of the serious issues, which is why teams run small tests often rather than one big study a year.",
     "example": "Before shipping a new checkout, a team asks eight shoppers to buy a specific pair of shoes and counts how many reach confirmation without help.",
     "misuse": "Not the same as a focus group. Usability testing observes one person doing a task; a focus group collects group opinions, which are a poor predictor of behaviour.",
-    "relatedIds": ["moderated-test", "unmoderated-test", "think-aloud-protocol", "task-success-rate", "evaluative-research"],
+    "relatedIds": [
+      "moderated-test",
+      "unmoderated-test",
+      "think-aloud-protocol",
+      "task-success-rate",
+      "evaluative-research",
+      "guerrilla-testing"
+    ],
     "difficulty": "core",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/usability-101-introduction-to-usability/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/usability-101-introduction-to-usability/"
+      }
+    ]
   },
   {
     "id": "moderated-test",
     "term": "Moderated test",
-    "aliases": ["moderated usability test", "facilitated session"],
-    "categories": ["Research"],
+    "aliases": [
+      "moderated usability test",
+      "facilitated session"
+    ],
+    "categories": [
+      "Research"
+    ],
     "shortDef": "A researcher is present, guiding tasks and asking follow-up questions.",
     "longDef": "A facilitator runs the session live, in person or over a call, and can probe when something surprising happens. That flexibility is the whole value: you find out why someone hesitated, not just that they did. It costs more time per participant and introduces the risk that the facilitator nudges the outcome.",
     "example": "A researcher shares a prototype over video, watches a participant hunt for the export button, then asks what they expected to find there.",
     "misuse": "Being present is not the same as helping. A moderator who explains the interface has destroyed the finding they came for.",
-    "relatedIds": ["unmoderated-test", "usability-testing", "think-aloud-protocol", "leading-question"],
+    "relatedIds": [
+      "unmoderated-test",
+      "usability-testing",
+      "think-aloud-protocol",
+      "leading-question"
+    ],
     "difficulty": "core",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "unmoderated-test",
     "term": "Unmoderated test",
-    "aliases": ["unmoderated usability test", "async testing"],
-    "categories": ["Research"],
+    "aliases": [
+      "unmoderated usability test",
+      "async testing"
+    ],
+    "categories": [
+      "Research"
+    ],
     "shortDef": "Participants complete tasks alone while software records them.",
     "longDef": "A platform delivers the tasks, records screen and voice, and returns the sessions for review. It scales to dozens of participants across time zones for the cost of one moderated study. The trade is that you cannot ask a follow-up question, so the task wording has to be unambiguous before you launch.",
     "example": "A team posts a five-task study to a research panel overnight and reviews twenty recordings the next morning.",
-    "relatedIds": ["moderated-test", "usability-testing", "screener", "first-click-testing"],
+    "relatedIds": [
+      "moderated-test",
+      "usability-testing",
+      "screener",
+      "first-click-testing"
+    ],
     "difficulty": "core",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "think-aloud-protocol",
     "term": "Think-aloud protocol",
-    "aliases": ["thinking aloud", "concurrent think aloud"],
-    "categories": ["Research"],
+    "aliases": [
+      "thinking aloud",
+      "concurrent think aloud"
+    ],
+    "categories": [
+      "Research"
+    ],
     "shortDef": "Asking participants to narrate their thoughts while working.",
     "longDef": "Participants say what they are looking at, expecting and deciding as they go. It exposes the reasoning behind a click, which no analytics event can give you. Talking does slow people down and can make them more deliberate than usual, so timing data from a think-aloud session is not a clean benchmark.",
     "example": "\"I'm looking for the total… I assume this arrow opens the breakdown… no, that collapsed the whole thing.\"",
     "misuse": "Retrospective think-aloud, where people narrate after the fact, is a different method — it protects timing data but relies on memory.",
-    "relatedIds": ["usability-testing", "moderated-test", "qualitative-research", "observer-effect"],
+    "relatedIds": [
+      "usability-testing",
+      "moderated-test",
+      "qualitative-research",
+      "observer-effect"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/thinking-aloud-the-1-usability-tool/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/thinking-aloud-the-1-usability-tool/"
+      }
+    ]
   },
   {
     "id": "contextual-inquiry",
     "term": "Contextual inquiry",
-    "aliases": ["contextual interview"],
-    "categories": ["Research"],
+    "aliases": [
+      "contextual interview"
+    ],
+    "categories": [
+      "Research"
+    ],
     "shortDef": "Interviewing people while they work in their own environment.",
     "longDef": "The researcher visits the place the work actually happens and watches it unfold, asking questions in the moment. It surfaces the workarounds, sticky notes and second monitors that never come up in a conference-room interview. The classic framing is master and apprentice: the participant leads, you learn.",
     "example": "Sitting beside a pharmacy technician for a shift reveals they keep a handwritten list of drug codes because the system's search is too slow.",
     "misuse": "Often confused with an ethnographic study. Contextual inquiry is a focused few hours around specific work; ethnography is a broader, longer immersion.",
-    "relatedIds": ["field-study", "user-interview", "generative-research", "jobs-to-be-done"],
+    "relatedIds": [
+      "field-study",
+      "user-interview",
+      "generative-research",
+      "jobs-to-be-done",
+      "participatory-design"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "IxDF", "url": "https://www.interaction-design.org/literature/topics/contextual-inquiry" }]
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/contextual-inquiry"
+      }
+    ]
   },
   {
     "id": "field-study",
     "term": "Field study",
-    "aliases": ["ethnographic study", "site visit"],
-    "categories": ["Research"],
+    "aliases": [
+      "ethnographic study",
+      "site visit"
+    ],
+    "categories": [
+      "Research"
+    ],
     "shortDef": "Research conducted where people live or work, not in a lab.",
     "longDef": "Rather than bringing people to you, you go to them and observe behaviour in its real setting, with its real interruptions and constraints. It is the best way to discover problems nobody thought to report. It is also expensive and hard to schedule, so teams usually run a handful of visits and treat them as directional.",
     "example": "Visiting three warehouses shows that scanners are used one-handed while holding a box, which kills a two-thumb interface.",
-    "relatedIds": ["contextual-inquiry", "generative-research", "diary-study", "qualitative-research"],
+    "relatedIds": [
+      "contextual-inquiry",
+      "generative-research",
+      "diary-study",
+      "qualitative-research",
+      "participatory-design"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/field-studies/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/field-studies/"
+      }
+    ]
   },
   {
     "id": "diary-study",
     "term": "Diary study",
-    "aliases": ["longitudinal diary", "experience sampling"],
-    "categories": ["Research"],
+    "aliases": [
+      "longitudinal diary",
+      "experience sampling"
+    ],
+    "categories": [
+      "Research"
+    ],
     "shortDef": "Participants log their own experiences over days or weeks.",
     "longDef": "Participants record entries as things happen, usually prompted by a notification or a scheduled reminder. It captures behaviour that a single session cannot reach: how a habit forms, when frustration builds, what people do between sessions. Compliance is the hard part, so entries need to take under a minute.",
     "example": "Thirty commuters photograph their ticket screen every time they board for two weeks, revealing that glare is the real barrier, not the interface.",
-    "relatedIds": ["longitudinal-study", "field-study", "qualitative-research", "generative-research"],
+    "relatedIds": [
+      "longitudinal-study",
+      "field-study",
+      "qualitative-research",
+      "generative-research"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/diary-studies/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/diary-studies/"
+      }
+    ]
   },
   {
     "id": "user-interview",
     "term": "User interview",
-    "aliases": ["depth interview", "one-on-one interview"],
-    "categories": ["Research"],
+    "aliases": [
+      "depth interview",
+      "one-on-one interview"
+    ],
+    "categories": [
+      "Research"
+    ],
     "shortDef": "A structured conversation to understand someone's context and goals.",
     "longDef": "You ask about what someone did, when and why, and follow the answers rather than a script. Interviews are strong on motivation and history and weak on prediction — people are poor forecasters of their own future behaviour. Ask about the last time something happened rather than what they would usually do.",
     "example": "Instead of \"would you pay for this?\", ask \"walk me through the last time you paid for a tool like this.\"",
     "misuse": "An interview is not a usability test. Asking someone's opinion of a screen tells you far less than watching them use it.",
-    "relatedIds": ["leading-question", "generative-research", "qualitative-research", "contextual-inquiry", "jobs-to-be-done"],
+    "relatedIds": [
+      "leading-question",
+      "generative-research",
+      "qualitative-research",
+      "contextual-inquiry",
+      "jobs-to-be-done",
+      "focus-group"
+    ],
     "difficulty": "core",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "leading-question",
     "term": "Leading question",
-    "aliases": ["biased question"],
-    "categories": ["Research"],
+    "aliases": [
+      "biased question"
+    ],
+    "categories": [
+      "Research"
+    ],
     "shortDef": "A question whose wording suggests the answer you want.",
     "longDef": "Leading questions smuggle an assumption or a value judgement into the phrasing, and participants tend to cooperate with it. The damage is invisible: you get clean-looking data that only reflects your own hypothesis. The fix is neutral wording and open framing.",
     "example": "\"How easy was it to find the filter?\" presumes it was easy. \"Tell me about finding the filter\" does not.",
-    "relatedIds": ["user-interview", "confirmation-bias", "survey", "moderated-test"],
+    "relatedIds": [
+      "user-interview",
+      "confirmation-bias",
+      "survey",
+      "moderated-test"
+    ],
     "difficulty": "core",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "survey",
     "term": "Survey",
-    "aliases": ["questionnaire"],
-    "categories": ["Research", "Metrics & Analytics"],
+    "aliases": [
+      "questionnaire"
+    ],
+    "categories": [
+      "Research",
+      "Metrics & Analytics"
+    ],
     "shortDef": "A fixed set of questions asked of many people at once.",
     "longDef": "Surveys are good at measuring how widespread something already is and poor at discovering what it is. They need a defined population, a sample large enough to say anything, and question wording that has been tested on real humans first. Every extra question costs completion rate.",
     "example": "After a redesign, a two-question survey measures whether task confidence moved, with an optional free-text box for the reason.",
     "misuse": "A survey cannot tell you why. Pair it with interviews or session recordings before acting on a surprising number.",
-    "relatedIds": ["likert-scale", "sample-size", "quantitative-research", "sus", "leading-question"],
+    "relatedIds": [
+      "likert-scale",
+      "sample-size",
+      "quantitative-research",
+      "sus",
+      "leading-question"
+    ],
     "difficulty": "core",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "likert-scale",
     "term": "Likert scale",
-    "aliases": ["rating scale", "agreement scale"],
-    "categories": ["Research", "Metrics & Analytics"],
+    "aliases": [
+      "rating scale",
+      "agreement scale"
+    ],
+    "categories": [
+      "Research",
+      "Metrics & Analytics"
+    ],
     "shortDef": "A symmetric agreement scale, usually five or seven points.",
     "longDef": "Respondents rate agreement with a statement from strong disagreement to strong agreement, with a neutral midpoint. The scale must be balanced — equal positive and negative options — or the average is meaningless. Report the distribution alongside the mean, because a flat average can hide two opposed camps.",
     "example": "\"The pricing page told me what I would pay\" — strongly disagree, disagree, neutral, agree, strongly agree.",
     "misuse": "A single 1–5 star rating is not a Likert scale; a Likert item measures agreement with a statement, not overall preference.",
-    "relatedIds": ["survey", "sus", "quantitative-research", "nps"],
+    "relatedIds": [
+      "survey",
+      "sus",
+      "quantitative-research",
+      "nps"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "IxDF", "url": "https://www.interaction-design.org/literature/topics/likert-scale" }]
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/likert-scale"
+      }
+    ]
   },
   {
     "id": "sus",
     "term": "System Usability Scale",
-    "aliases": ["SUS"],
-    "categories": ["Research", "Metrics & Analytics"],
+    "aliases": [
+      "SUS"
+    ],
+    "categories": [
+      "Research",
+      "Metrics & Analytics"
+    ],
     "shortDef": "A ten-question survey producing one usability score out of 100.",
     "longDef": "The same ten statements are asked after every study, alternating positive and negative wording, and scored to a single number. Its value is comparability: the score means little alone but a lot against the same product last quarter or against the published average of around 68. It measures perceived usability, not task success.",
     "example": "A team reports SUS at 61 before redesigning navigation and 74 after, with the same tasks and recruiting criteria.",
     "misuse": "SUS is not a satisfaction score and not a percentage. Seventy-two out of 100 is not \"72% usable\".",
-    "relatedIds": ["survey", "likert-scale", "benchmark-study", "quantitative-research"],
+    "relatedIds": [
+      "survey",
+      "likert-scale",
+      "benchmark-study",
+      "quantitative-research"
+    ],
     "difficulty": "advanced",
-    "sources": [{ "label": "IxDF", "url": "https://www.interaction-design.org/literature/topics/system-usability-scale" }]
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/system-usability-scale"
+      }
+    ]
   },
   {
     "id": "focus-group",
     "term": "Focus group",
-    "aliases": ["group discussion"],
-    "categories": ["Research"],
+    "aliases": [
+      "group discussion"
+    ],
+    "categories": [
+      "Research"
+    ],
     "shortDef": "A moderated group discussion about attitudes and reactions.",
     "longDef": "Six to ten people discuss a topic while a moderator keeps the conversation moving. Groups are useful for hearing shared language, spotting disagreement and testing early concepts. They are unreliable for usability, because the loudest participant shapes the room and nobody is doing the task.",
     "example": "A bank runs two groups to hear how customers actually describe overdraft charges before naming the feature.",
     "misuse": "Frequently used as a substitute for usability testing. Group opinion predicts individual behaviour badly.",
-    "relatedIds": ["usability-testing", "qualitative-research", "concept-testing", "user-interview"],
+    "relatedIds": [
+      "usability-testing",
+      "qualitative-research",
+      "concept-testing",
+      "user-interview"
+    ],
     "difficulty": "core",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "card-sorting",
     "term": "Card sorting",
-    "aliases": ["open card sort", "closed card sort"],
-    "categories": ["Research", "Design Process"],
+    "aliases": [
+      "open card sort",
+      "closed card sort"
+    ],
+    "categories": [
+      "Research",
+      "Design Process"
+    ],
     "shortDef": "Participants group content labels to reveal their mental model.",
     "longDef": "Each item of content is a card; participants sort them into piles that make sense to them. In an open sort they name the piles themselves, which tells you their vocabulary; in a closed sort you supply the categories and learn whether your structure holds. It informs navigation but does not design it for you.",
     "example": "Sorting 60 help-article titles shows that customers group by \"my money\" and \"my account\", not by the company's internal departments.",
     "misuse": "Card sorting reveals grouping, tree testing checks findability. Running only a sort leaves you guessing whether the result works.",
-    "relatedIds": ["tree-testing", "information-architecture", "mental-model", "taxonomy"],
+    "relatedIds": [
+      "tree-testing",
+      "information-architecture",
+      "mental-model",
+      "taxonomy"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/card-sorting-definition/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/card-sorting-definition/"
+      }
+    ]
   },
   {
     "id": "tree-testing",
     "term": "Tree testing",
-    "aliases": ["reverse card sorting"],
-    "categories": ["Research", "Design Process"],
+    "aliases": [
+      "reverse card sorting"
+    ],
+    "categories": [
+      "Research",
+      "Design Process"
+    ],
     "shortDef": "Testing whether people can find things in a bare navigation structure.",
     "longDef": "Participants are shown the hierarchy as plain text — no visual design, no search — and asked where they would look for a given item. Stripping the interface isolates the labels and structure from everything else. The output is a success rate and a map of where people went wrong.",
     "example": "Asked to find the returns policy, 40% of participants open \"Orders\" and only 22% reach \"Help → Deliveries and returns\".",
-    "relatedIds": ["card-sorting", "information-architecture", "findability", "first-click-testing"],
+    "relatedIds": [
+      "card-sorting",
+      "information-architecture",
+      "findability",
+      "first-click-testing"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/tree-testing/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/tree-testing/"
+      }
+    ]
   },
   {
     "id": "first-click-testing",
     "term": "First-click testing",
-    "aliases": ["first click test"],
-    "categories": ["Research"],
+    "aliases": [
+      "first click test"
+    ],
+    "categories": [
+      "Research"
+    ],
     "shortDef": "Measuring where people click first when given a task.",
     "longDef": "Participants see a static screen and click once. The first click is strongly predictive: people who start down the right path usually finish, and people who start wrong usually stay wrong. It is cheap enough to run on a screenshot before anything is built.",
     "example": "Testing a homepage image shows most people click the hero banner rather than the \"Track order\" link they were asked to find.",
-    "relatedIds": ["tree-testing", "unmoderated-test", "five-second-test", "visual-hierarchy"],
+    "relatedIds": [
+      "tree-testing",
+      "unmoderated-test",
+      "five-second-test",
+      "visual-hierarchy",
+      "eye-tracking"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "five-second-test",
     "term": "Five-second test",
-    "aliases": ["5 second test"],
-    "categories": ["Research"],
+    "aliases": [
+      "5 second test"
+    ],
+    "categories": [
+      "Research"
+    ],
     "shortDef": "Showing a screen briefly, then asking what people remember.",
     "longDef": "A participant sees a design for about five seconds, then answers questions about what the page is for and what stood out. It measures first impressions and hierarchy, not usability. Useful for landing pages, where the whole job is communicating one thing quickly.",
     "example": "After five seconds on a pricing page, most participants recall the logo and the illustration but not the price.",
     "misuse": "It tests recall and clarity, not whether a flow works. A design can pass a five-second test and still fail every task.",
-    "relatedIds": ["first-click-testing", "visual-hierarchy", "desirability-testing", "above-the-fold"],
+    "relatedIds": [
+      "first-click-testing",
+      "visual-hierarchy",
+      "desirability-testing",
+      "above-the-fold",
+      "eye-tracking"
+    ],
     "difficulty": "core",
-    "sources": [{ "label": "IxDF", "url": "https://www.interaction-design.org/literature/topics/usability-testing" }]
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/usability-testing"
+      }
+    ]
   },
   {
     "id": "a-b-test",
     "term": "A/B test",
-    "aliases": ["split test", "AB testing", "online controlled experiment"],
-    "categories": ["Research", "Metrics & Analytics", "Product & Business"],
+    "aliases": [
+      "split test",
+      "AB testing",
+      "online controlled experiment"
+    ],
+    "categories": [
+      "Research",
+      "Metrics & Analytics",
+      "Product & Business"
+    ],
     "shortDef": "Randomly splitting live traffic between two versions to compare outcomes.",
     "longDef": "Users are assigned at random to variant A or B and a pre-declared metric decides the winner. Randomisation is what buys you causality: any difference that survives is attributable to the change. It needs enough traffic to reach significance, and it can only compare options you already thought of.",
     "example": "Half of visitors see a one-step checkout and half see three steps; conversion is compared over two weeks at a pre-agreed sample size.",
     "misuse": "Stopping the test the moment it looks significant inflates false positives. Set the duration and sample size before you start.",
-    "relatedIds": ["multivariate-test", "statistical-significance", "conversion-rate", "feature-flag", "quantitative-research"],
+    "relatedIds": [
+      "multivariate-test",
+      "statistical-significance",
+      "conversion-rate",
+      "feature-flag",
+      "quantitative-research"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/ab-testing/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/ab-testing/"
+      }
+    ]
   },
   {
     "id": "multivariate-test",
     "term": "Multivariate test",
-    "aliases": ["MVT"],
-    "categories": ["Research", "Metrics & Analytics"],
+    "aliases": [
+      "MVT"
+    ],
+    "categories": [
+      "Research",
+      "Metrics & Analytics"
+    ],
     "shortDef": "Testing several elements at once to find the best combination.",
     "longDef": "Rather than one change against a control, several variables are varied together and every combination gets traffic. It can reveal interactions an A/B test would miss — a headline that only works with a particular image. The cost is traffic: combinations multiply fast and each one needs its own sample.",
     "example": "Three headlines crossed with two hero images gives six variants, each needing enough visitors to be judged.",
-    "relatedIds": ["a-b-test", "statistical-significance", "sample-size", "quantitative-research"],
+    "relatedIds": [
+      "a-b-test",
+      "statistical-significance",
+      "sample-size",
+      "quantitative-research"
+    ],
     "difficulty": "advanced",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "statistical-significance",
     "term": "Statistical significance",
-    "aliases": ["p-value", "significance"],
-    "categories": ["Research", "Metrics & Analytics"],
+    "aliases": [
+      "p-value",
+      "significance"
+    ],
+    "categories": [
+      "Research",
+      "Metrics & Analytics"
+    ],
     "shortDef": "A result unlikely to be chance alone, given the sample.",
     "longDef": "Significance says how surprising your result would be if there were genuinely no difference. It says nothing about how big or valuable the difference is — with enough traffic a meaningless 0.05% lift becomes significant. Always read it alongside the effect size and confidence interval.",
     "example": "A 6% lift with a confidence interval spanning −1% to 13% is not yet a result you should ship on.",
     "misuse": "\"Not significant\" does not mean \"no difference\". It often means the sample was too small to tell.",
-    "relatedIds": ["a-b-test", "sample-size", "quantitative-research", "confidence-interval"],
+    "relatedIds": [
+      "a-b-test",
+      "sample-size",
+      "quantitative-research",
+      "confidence-interval"
+    ],
     "difficulty": "advanced",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "confidence-interval",
     "term": "Confidence interval",
-    "aliases": ["margin of error", "CI"],
-    "categories": ["Research", "Metrics & Analytics"],
+    "aliases": [
+      "margin of error",
+      "CI"
+    ],
+    "categories": [
+      "Research",
+      "Metrics & Analytics"
+    ],
     "shortDef": "The plausible range around a measured number.",
     "longDef": "A single measured figure is an estimate; the interval shows how much it could move if you measured again. Narrow intervals come from large samples and consistent behaviour. Reporting the interval alongside the number stops teams treating an estimate as a fact.",
     "example": "\"Task success was 72% (95% CI: 58–84%)\" is honest; \"task success was 72%\" from eight participants is not.",
-    "relatedIds": ["statistical-significance", "sample-size", "quantitative-research", "task-success-rate"],
+    "relatedIds": [
+      "statistical-significance",
+      "sample-size",
+      "quantitative-research",
+      "task-success-rate"
+    ],
     "difficulty": "advanced",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "sample-size",
     "term": "Sample size",
-    "aliases": ["n", "number of participants"],
-    "categories": ["Research", "Metrics & Analytics"],
+    "aliases": [
+      "n",
+      "number of participants"
+    ],
+    "categories": [
+      "Research",
+      "Metrics & Analytics"
+    ],
     "shortDef": "How many participants a study needs to answer its question.",
     "longDef": "Qualitative and quantitative studies need very different numbers. Five participants per audience will expose most severe usability problems because problems repeat; measuring a conversion difference of one percentage point may need tens of thousands of sessions. Decide the number from the question, not from the budget.",
     "example": "Five participants for a formative usability test; 20 or more per group for a benchmark you intend to report as a number.",
     "misuse": "\"Five users is enough\" is advice about finding problems, not about measuring anything.",
-    "relatedIds": ["saturation", "statistical-significance", "confidence-interval", "usability-testing", "benchmark-study"],
+    "relatedIds": [
+      "saturation",
+      "statistical-significance",
+      "confidence-interval",
+      "usability-testing",
+      "benchmark-study"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/how-many-test-users/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/how-many-test-users/"
+      }
+    ]
   },
   {
     "id": "saturation",
     "term": "Saturation",
-    "aliases": ["thematic saturation", "data saturation"],
-    "categories": ["Research"],
+    "aliases": [
+      "thematic saturation",
+      "data saturation"
+    ],
+    "categories": [
+      "Research"
+    ],
     "shortDef": "The point where new participants stop revealing anything new.",
     "longDef": "In qualitative work you keep recruiting until the last few sessions produce only repetition. That is the signal you have covered the range within this audience. Saturation is per audience: reaching it with existing customers says nothing about people who have never signed up.",
     "example": "By the seventh interview every pain point mentioned has already appeared twice, so the eighth is scheduled as a check rather than a discovery.",
-    "relatedIds": ["sample-size", "qualitative-research", "user-interview", "affinity-diagram"],
+    "relatedIds": [
+      "sample-size",
+      "qualitative-research",
+      "user-interview",
+      "affinity-diagram"
+    ],
     "difficulty": "advanced",
-    "sources": [{ "label": "IxDF", "url": "https://www.interaction-design.org/literature/topics/qualitative-research" }]
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/qualitative-research"
+      }
+    ]
   },
   {
     "id": "screener",
     "term": "Screener",
-    "aliases": ["screening questionnaire", "recruitment screener"],
-    "categories": ["Research"],
+    "aliases": [
+      "screening questionnaire",
+      "recruitment screener"
+    ],
+    "categories": [
+      "Research"
+    ],
     "shortDef": "A short questionnaire that decides who qualifies for a study.",
     "longDef": "The screener filters applicants down to the people whose experience matters for this question, and filters out professional participants who answer whatever gets them in. Good screeners ask about recent behaviour rather than identity, and hide which answer qualifies. A study is only as good as who is in the room.",
     "example": "\"Which of these have you done in the last 30 days?\" with the qualifying behaviour buried among plausible distractors.",
     "misuse": "Asking \"do you shop online often?\" invites people to say yes. Ask how many times they did it last month.",
-    "relatedIds": ["recruitment", "sample-size", "unmoderated-test", "leading-question"],
+    "relatedIds": [
+      "recruitment",
+      "sample-size",
+      "unmoderated-test",
+      "leading-question"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "recruitment",
     "term": "Recruitment",
-    "aliases": ["participant recruitment", "sourcing participants"],
-    "categories": ["Research", "Roles & Career"],
+    "aliases": [
+      "participant recruitment",
+      "sourcing participants"
+    ],
+    "categories": [
+      "Research",
+      "Roles & Career"
+    ],
     "shortDef": "Finding, screening and scheduling the right research participants.",
     "longDef": "Recruitment decides whose reality your findings describe, which makes it the highest-leverage and most commonly rushed part of a study. Sources include panels, customer lists, intercepts on your own site and community groups, each with its own bias. Budget incentives and no-shows into the plan.",
     "example": "Recruiting only from the in-app support queue produces a study about people who already had a problem.",
-    "relatedIds": ["screener", "incentive", "sample-size", "research-ops", "sampling-bias"],
+    "relatedIds": [
+      "screener",
+      "incentive",
+      "sample-size",
+      "research-ops",
+      "sampling-bias"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "incentive",
     "term": "Incentive",
-    "aliases": ["participant compensation", "honorarium"],
-    "categories": ["Research"],
+    "aliases": [
+      "participant compensation",
+      "honorarium"
+    ],
+    "categories": [
+      "Research"
+    ],
     "shortDef": "Payment offered for a participant's time in a study.",
     "longDef": "Incentives compensate people for time and travel, and they widen the pool beyond enthusiasts willing to help for free. Set them by session length and how hard the audience is to reach, not by what you can get away with. Under-paying quietly biases your sample toward people with time to spare.",
     "example": "A 60-minute remote session for a specialist audience pays considerably more than a 15-minute unmoderated task.",
-    "relatedIds": ["recruitment", "informed-consent", "research-ops", "sampling-bias"],
+    "relatedIds": [
+      "recruitment",
+      "informed-consent",
+      "research-ops",
+      "sampling-bias"
+    ],
     "difficulty": "core",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "informed-consent",
     "term": "Informed consent",
-    "aliases": ["consent form", "participant consent"],
-    "categories": ["Research", "Accessibility"],
+    "aliases": [
+      "consent form",
+      "participant consent"
+    ],
+    "categories": [
+      "Research",
+      "Accessibility"
+    ],
     "shortDef": "Participants agreeing to take part, knowing what will happen.",
     "longDef": "Before a session begins, participants need to know what will be recorded, who will see it, how long it is kept and that they can stop at any time without losing their incentive. Consent has to be given in plain language, not buried in a legal wall. It is an ethical baseline and, for personal data, usually a legal one.",
     "example": "\"We'll record your screen and voice. Only the four people on this project will watch it, and we delete it after 90 days.\"",
-    "relatedIds": ["incentive", "research-ops", "privacy-by-design", "recruitment"],
+    "relatedIds": [
+      "incentive",
+      "research-ops",
+      "privacy-by-design",
+      "recruitment"
+    ],
     "difficulty": "core",
-    "sources": [{ "label": "IxDF", "url": "https://www.interaction-design.org/literature/topics/design-ethics" }]
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/design-ethics"
+      }
+    ]
   },
   {
     "id": "qualitative-research",
     "term": "Qualitative research",
-    "aliases": ["qual"],
-    "categories": ["Research"],
+    "aliases": [
+      "qual"
+    ],
+    "categories": [
+      "Research"
+    ],
     "shortDef": "Research that explains why, through observation and conversation.",
     "longDef": "Qualitative work produces descriptions, quotes and observed behaviour rather than numbers. It is how you discover problems, understand motivation and learn the words people use. It cannot tell you how common something is, so it pairs naturally with a measurement afterwards.",
     "example": "Six interviews reveal that people abandon signup because they cannot tell whether the trial charges them; analytics then shows how many.",
     "misuse": "Counting qualitative findings — \"four out of six said\" — implies a precision the sample cannot support.",
-    "relatedIds": ["quantitative-research", "generative-research", "user-interview", "affinity-diagram", "saturation"],
+    "relatedIds": [
+      "quantitative-research",
+      "generative-research",
+      "user-interview",
+      "affinity-diagram",
+      "saturation"
+    ],
     "difficulty": "core",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/quant-vs-qual/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/quant-vs-qual/"
+      }
+    ]
   },
   {
     "id": "quantitative-research",
     "term": "Quantitative research",
-    "aliases": ["quant"],
-    "categories": ["Research", "Metrics & Analytics"],
+    "aliases": [
+      "quant"
+    ],
+    "categories": [
+      "Research",
+      "Metrics & Analytics"
+    ],
     "shortDef": "Research that measures how much or how many.",
     "longDef": "Quantitative work counts behaviour or responses across a sample big enough to generalise. It answers scale questions — how many people hit this, how much did it move — and supports comparison over time. It rarely explains a result, which is why a surprising number is a prompt for qualitative follow-up.",
     "example": "A benchmark study measures task success across 120 participants before and after a navigation change.",
-    "relatedIds": ["qualitative-research", "benchmark-study", "statistical-significance", "survey", "a-b-test"],
+    "relatedIds": [
+      "qualitative-research",
+      "benchmark-study",
+      "statistical-significance",
+      "survey",
+      "a-b-test"
+    ],
     "difficulty": "core",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/quant-vs-qual/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/quant-vs-qual/"
+      }
+    ]
   },
   {
     "id": "generative-research",
     "term": "Generative research",
-    "aliases": ["discovery research", "foundational research", "exploratory research"],
-    "categories": ["Research", "Design Process"],
+    "aliases": [
+      "discovery research",
+      "foundational research",
+      "exploratory research"
+    ],
+    "categories": [
+      "Research",
+      "Design Process"
+    ],
     "shortDef": "Research done before you know what to build.",
     "longDef": "Generative work explores a problem space: who these people are, what they are trying to achieve, where today's process breaks. It runs before solutions exist and its output is framing — opportunities, jobs, a map of the territory. Skipping it is how teams end up building a well-designed answer to the wrong question.",
     "example": "Before designing a scheduling tool, a team shadows six clinic receptionists to learn how appointments really get booked.",
     "misuse": "Not a synonym for \"early\". You can run evaluative research early and generative research late; the difference is whether you are exploring or judging.",
-    "relatedIds": ["evaluative-research", "contextual-inquiry", "jobs-to-be-done", "problem-framing", "double-diamond"],
+    "relatedIds": [
+      "evaluative-research",
+      "contextual-inquiry",
+      "jobs-to-be-done",
+      "problem-framing",
+      "double-diamond"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/which-ux-research-methods/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/which-ux-research-methods/"
+      }
+    ]
   },
   {
     "id": "evaluative-research",
     "term": "Evaluative research",
-    "aliases": ["summative research", "formative research"],
-    "categories": ["Research", "Design Process"],
+    "aliases": [
+      "summative research",
+      "formative research"
+    ],
+    "categories": [
+      "Research",
+      "Design Process"
+    ],
     "shortDef": "Research that judges a design you have already made.",
     "longDef": "Evaluative studies test something concrete — a prototype, a live flow, a competitor — against tasks or criteria. Formative evaluation runs during design to find problems while they are cheap to fix; summative evaluation measures the finished thing to establish a benchmark. Both need a design to react to.",
     "example": "Testing a checkout prototype with eight people mid-sprint is formative; measuring success rate on the shipped version is summative.",
-    "relatedIds": ["generative-research", "usability-testing", "benchmark-study", "heuristic-evaluation"],
+    "relatedIds": [
+      "generative-research",
+      "usability-testing",
+      "benchmark-study",
+      "heuristic-evaluation"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/which-ux-research-methods/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/which-ux-research-methods/"
+      }
+    ]
   },
   {
     "id": "benchmark-study",
     "term": "Benchmark study",
-    "aliases": ["usability benchmark", "baseline study"],
-    "categories": ["Research", "Metrics & Analytics"],
+    "aliases": [
+      "usability benchmark",
+      "baseline study"
+    ],
+    "categories": [
+      "Research",
+      "Metrics & Analytics"
+    ],
     "shortDef": "A repeatable measurement of usability, run to compare over time.",
     "longDef": "The same tasks, metrics and recruiting criteria are run at intervals so the numbers are comparable. Typical measures are task success, time on task and a standard satisfaction score. The discipline is in keeping the method identical — change the tasks and you have lost the comparison you were building.",
     "example": "Every six months the team runs the same five tasks with 30 participants and charts success rate against the previous round.",
-    "relatedIds": ["sus", "task-success-rate", "quantitative-research", "evaluative-research", "time-on-task"],
+    "relatedIds": [
+      "sus",
+      "task-success-rate",
+      "quantitative-research",
+      "evaluative-research",
+      "time-on-task"
+    ],
     "difficulty": "advanced",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "task-success-rate",
     "term": "Task success rate",
-    "aliases": ["completion rate", "success rate"],
-    "categories": ["Research", "Metrics & Analytics"],
+    "aliases": [
+      "completion rate",
+      "success rate"
+    ],
+    "categories": [
+      "Research",
+      "Metrics & Analytics"
+    ],
     "shortDef": "The share of participants who completed a task correctly.",
     "longDef": "The most basic usability metric: did they get there, unaided, with the right outcome. Success has to be defined before the study, including whether partial success counts. It is easy to measure and easy to inflate by writing tasks that hint at the answer.",
     "example": "Nine of twelve participants reached the confirmation screen without help, giving a 75% success rate.",
     "misuse": "A high success rate with long, painful sessions is not a good result. Read it next to time on task and error counts.",
-    "relatedIds": ["time-on-task", "benchmark-study", "usability-testing", "error-rate", "confidence-interval"],
+    "relatedIds": [
+      "time-on-task",
+      "benchmark-study",
+      "usability-testing",
+      "error-rate",
+      "confidence-interval"
+    ],
     "difficulty": "core",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "time-on-task",
     "term": "Time on task",
-    "aliases": ["task time"],
-    "categories": ["Research", "Metrics & Analytics"],
+    "aliases": [
+      "task time"
+    ],
+    "categories": [
+      "Research",
+      "Metrics & Analytics"
+    ],
     "shortDef": "How long participants take to complete a defined task.",
     "longDef": "Timing is meaningful for tasks people want over with — finding a phone number, paying a bill — and misleading for tasks people enjoy, where longer may be better. Only count successful attempts, or a fast failure will flatter the average. Report the median, since one lost participant can double a mean.",
     "example": "Median time to add a payment card fell from 96 to 54 seconds after the form was reordered.",
     "misuse": "Do not compare times from a think-aloud session with silent ones. Narrating slows people down by design.",
-    "relatedIds": ["task-success-rate", "benchmark-study", "think-aloud-protocol", "efficiency"],
+    "relatedIds": [
+      "task-success-rate",
+      "benchmark-study",
+      "think-aloud-protocol",
+      "efficiency"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "error-rate",
     "term": "Error rate",
-    "aliases": ["user error rate"],
-    "categories": ["Research", "Metrics & Analytics"],
+    "aliases": [
+      "user error rate"
+    ],
+    "categories": [
+      "Research",
+      "Metrics & Analytics"
+    ],
     "shortDef": "How often people take a wrong action during a task.",
     "longDef": "Errors are counted per task or per attempt, usually split into slips, where the intention was right, and mistakes, where the plan was wrong. High error rates on a recoverable step matter less than low rates on an irreversible one. Categorising errors points at the fix better than the total does.",
     "example": "Seven of twenty participants type the date in the wrong format, all of them in the field with no placeholder.",
-    "relatedIds": ["task-success-rate", "error-prevention", "usability-testing", "undo"],
+    "relatedIds": [
+      "task-success-rate",
+      "error-prevention",
+      "usability-testing",
+      "undo"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/ten-usability-heuristics/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/ten-usability-heuristics/"
+      }
+    ]
   },
   {
     "id": "affinity-diagram",
     "term": "Affinity diagram",
-    "aliases": ["affinity mapping", "affinity map"],
-    "categories": ["Research", "Design Process"],
+    "aliases": [
+      "affinity mapping",
+      "affinity map"
+    ],
+    "categories": [
+      "Research",
+      "Design Process"
+    ],
     "shortDef": "Grouping raw observations into themes to find patterns.",
     "longDef": "Every observation goes on its own note, then notes that belong together are clustered and the clusters are named. The naming is the analysis — it forces you to say what the group actually means. Done with the team, it also spreads the findings faster than any report.",
     "example": "Two hundred notes from eight interviews collapse into six themes, one of which is \"people do not trust the estimated delivery date\".",
     "misuse": "Clustering by feature area rather than by what participants were experiencing turns analysis into a backlog sort.",
-    "relatedIds": ["qualitative-research", "saturation", "research-repository", "synthesis"],
+    "relatedIds": [
+      "qualitative-research",
+      "saturation",
+      "research-repository",
+      "synthesis"
+    ],
     "difficulty": "core",
-    "sources": [{ "label": "IxDF", "url": "https://www.interaction-design.org/literature/topics/affinity-diagrams" }]
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/affinity-diagrams"
+      }
+    ]
   },
   {
     "id": "synthesis",
     "term": "Synthesis",
-    "aliases": ["analysis", "sensemaking"],
-    "categories": ["Research", "Design Process"],
+    "aliases": [
+      "analysis",
+      "sensemaking"
+    ],
+    "categories": [
+      "Research",
+      "Design Process"
+    ],
     "shortDef": "Turning raw research into findings a team can act on.",
     "longDef": "Synthesis is the work between the last session and the first insight: coding notes, clustering, weighing evidence and deciding what the study actually shows. It is where most of a study's value is created or lost. Budget roughly as much time for it as for the sessions themselves.",
     "example": "After six sessions the researcher spends two days tagging transcripts before writing three findings, each backed by named participants.",
-    "relatedIds": ["affinity-diagram", "research-repository", "qualitative-research", "insight"],
+    "relatedIds": [
+      "affinity-diagram",
+      "research-repository",
+      "qualitative-research",
+      "insight"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "IxDF", "url": "https://www.interaction-design.org/literature/topics/qualitative-research" }]
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/qualitative-research"
+      }
+    ]
   },
   {
     "id": "insight",
     "term": "Insight",
-    "aliases": ["research finding", "finding"],
-    "categories": ["Research", "Product & Business"],
+    "aliases": [
+      "research finding",
+      "finding"
+    ],
+    "categories": [
+      "Research",
+      "Product & Business"
+    ],
     "shortDef": "An observation that changes what the team will do.",
     "longDef": "An insight explains a behaviour and implies an action; a finding that changes nothing is just a fact. Good ones name the tension — people want X but the design forces Y — and are traceable back to evidence. Teams that log insights without decisions accumulate a library nobody reads.",
     "example": "\"People treat the saved-card screen as a receipt, so they never notice the edit option\" leads directly to a layout change.",
     "misuse": "\"Users want it to be simpler\" is not an insight. It has no evidence, no mechanism and no action.",
-    "relatedIds": ["synthesis", "research-repository", "qualitative-research", "problem-framing"],
+    "relatedIds": [
+      "synthesis",
+      "research-repository",
+      "qualitative-research",
+      "problem-framing"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "research-repository",
     "term": "Research repository",
-    "aliases": ["insight repository", "research library"],
-    "categories": ["Research", "Roles & Career"],
+    "aliases": [
+      "insight repository",
+      "research library"
+    ],
+    "categories": [
+      "Research",
+      "Roles & Career"
+    ],
     "shortDef": "A searchable store of past studies, clips and findings.",
     "longDef": "A repository keeps evidence findable after the project ends, so the next team does not re-run the same study. It works when entries are tagged consistently and each finding links to its source clip. It fails when it becomes a dumping ground for raw recordings nobody has time to watch.",
     "example": "Searching \"delivery estimate\" returns four findings across three years, each with a 40-second clip and the study it came from.",
-    "relatedIds": ["synthesis", "insight", "research-ops", "affinity-diagram"],
+    "relatedIds": [
+      "synthesis",
+      "insight",
+      "research-ops",
+      "affinity-diagram"
+    ],
     "difficulty": "advanced",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "research-ops",
     "term": "ResearchOps",
-    "aliases": ["research operations", "ReOps"],
-    "categories": ["Research", "Roles & Career"],
+    "aliases": [
+      "research operations",
+      "ReOps"
+    ],
+    "categories": [
+      "Research",
+      "Roles & Career"
+    ],
     "shortDef": "The systems that make research repeatable: recruiting, tools, consent, storage.",
     "longDef": "ResearchOps handles the logistics so researchers spend their time on questions rather than scheduling. Typical scope covers participant panels, incentives, consent and retention policy, tooling, templates and the repository. It becomes necessary at the point where more than a couple of people are running studies.",
     "example": "A standing panel of 400 opted-in customers with tracked incentive budgets cuts study lead time from three weeks to four days.",
-    "relatedIds": ["recruitment", "research-repository", "informed-consent", "incentive", "design-ops"],
+    "relatedIds": [
+      "recruitment",
+      "research-repository",
+      "informed-consent",
+      "incentive",
+      "design-ops"
+    ],
     "difficulty": "advanced",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "longitudinal-study",
     "term": "Longitudinal study",
-    "aliases": ["long-term study"],
-    "categories": ["Research"],
+    "aliases": [
+      "long-term study"
+    ],
+    "categories": [
+      "Research"
+    ],
     "shortDef": "Studying the same people repeatedly over an extended period.",
     "longDef": "Measuring the same participants at intervals shows how behaviour changes as novelty wears off and habits form. It is the only reliable way to separate a real improvement from a temporary reaction to something new. The cost is time and participant drop-out.",
     "example": "Tracking twelve new users weekly for two months shows the onboarding checklist is abandoned after day three.",
-    "relatedIds": ["diary-study", "novelty-effect", "cohort-analysis", "retention"],
+    "relatedIds": [
+      "diary-study",
+      "novelty-effect",
+      "cohort-analysis",
+      "retention"
+    ],
     "difficulty": "advanced",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "novelty-effect",
     "term": "Novelty effect",
-    "aliases": ["newness effect"],
-    "categories": ["Research", "Metrics & Analytics"],
+    "aliases": [
+      "newness effect"
+    ],
+    "categories": [
+      "Research",
+      "Metrics & Analytics"
+    ],
     "shortDef": "A temporary lift in engagement caused purely by something being new.",
     "longDef": "When an interface changes, people click around to see what happened, which inflates early metrics. The mirror image is the change-aversion dip, where familiar users perform worse for a while. Both fade, so experiments on visible changes need to run long enough for behaviour to settle.",
     "example": "A redesigned tab bar shows a 20% jump in taps in week one and returns to baseline by week three.",
     "misuse": "Reading week-one numbers as proof a redesign worked is one of the most common ways teams fool themselves.",
-    "relatedIds": ["a-b-test", "longitudinal-study", "change-aversion", "engagement"],
+    "relatedIds": [
+      "a-b-test",
+      "longitudinal-study",
+      "change-aversion",
+      "engagement"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "change-aversion",
     "term": "Change aversion",
-    "aliases": ["change resistance"],
-    "categories": ["Research", "Product & Business"],
+    "aliases": [
+      "change resistance"
+    ],
+    "categories": [
+      "Research",
+      "Product & Business"
+    ],
     "shortDef": "Short-term backlash to a change, regardless of its quality.",
     "longDef": "Existing users have built muscle memory, and any change taxes it. Complaints and dipped metrics in the first weeks after a release reflect the transition as much as the design. The mistake is either dismissing all feedback as change aversion or rolling back before the curve settles.",
     "example": "A navigation move produces a spike in support tickets that halves each week for a month.",
     "misuse": "Used as a shield against real criticism. If the metric never recovers, it was not change aversion.",
-    "relatedIds": ["novelty-effect", "jakobs-law", "longitudinal-study", "mental-model"],
+    "relatedIds": [
+      "novelty-effect",
+      "jakobs-law",
+      "longitudinal-study",
+      "mental-model"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "sampling-bias",
     "term": "Sampling bias",
-    "aliases": ["selection bias"],
-    "categories": ["Research", "Metrics & Analytics"],
+    "aliases": [
+      "selection bias"
+    ],
+    "categories": [
+      "Research",
+      "Metrics & Analytics"
+    ],
     "shortDef": "When the people studied do not represent the people affected.",
     "longDef": "Every recruiting channel skews: in-app surveys reach only active users, panels reach frequent participants, and support queues reach people already in trouble. The bias is invisible in the data itself, which is why the recruiting method belongs in every report. It matters most when you generalise a percentage.",
     "example": "A satisfaction survey shown only inside the app misses everyone who gave up before installing it.",
-    "relatedIds": ["recruitment", "screener", "survivorship-bias", "survey"],
+    "relatedIds": [
+      "recruitment",
+      "screener",
+      "survivorship-bias",
+      "survey"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "IxDF", "url": "https://www.interaction-design.org/literature/topics/user-research" }]
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/user-research"
+      }
+    ]
   },
   {
     "id": "survivorship-bias",
     "term": "Survivorship bias",
     "aliases": [],
-    "categories": ["Research", "Metrics & Analytics"],
+    "categories": [
+      "Research",
+      "Metrics & Analytics"
+    ],
     "shortDef": "Drawing conclusions only from those who made it through.",
     "longDef": "Studying the people who completed a flow tells you nothing about the ones who dropped out, and it is the drop-outs who hold the problem. The same trap catches teams who research only long-standing customers. Look for where people leave, then go and find them.",
     "example": "Interviewing subscribers about onboarding produces glowing feedback, because everyone who found it confusing never subscribed.",
-    "relatedIds": ["sampling-bias", "funnel", "churn", "recruitment"],
+    "relatedIds": [
+      "sampling-bias",
+      "funnel",
+      "churn",
+      "recruitment"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "IxDF", "url": "https://www.interaction-design.org/literature/topics/user-research" }]
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/user-research"
+      }
+    ]
   },
   {
     "id": "confirmation-bias",
     "term": "Confirmation bias",
     "aliases": [],
-    "categories": ["Research", "UX Laws & Principles"],
+    "categories": [
+      "Research",
+      "UX Laws & Principles"
+    ],
     "shortDef": "Noticing the evidence that fits what you already believe.",
     "longDef": "Teams unconsciously weight the sessions that supported the plan and explain away the ones that did not. It shows up in which clips get shown to stakeholders and which quotes make the deck. Pre-registering what you expect, and asking what would change your mind, is the practical defence.",
     "example": "Three participants struggle with the new flow and the readout leads with the two who liked it.",
-    "relatedIds": ["observer-effect", "leading-question", "synthesis", "hypothesis"],
+    "relatedIds": [
+      "observer-effect",
+      "leading-question",
+      "synthesis",
+      "hypothesis"
+    ],
     "difficulty": "core",
-    "sources": [{ "label": "IxDF", "url": "https://www.interaction-design.org/literature/topics/cognitive-bias" }]
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/cognitive-bias"
+      }
+    ]
   },
   {
     "id": "observer-effect",
     "term": "Observer effect",
-    "aliases": ["Hawthorne effect"],
-    "categories": ["Research"],
+    "aliases": [
+      "Hawthorne effect"
+    ],
+    "categories": [
+      "Research"
+    ],
     "shortDef": "People behave differently because they know they are watched.",
     "longDef": "Participants try harder, read more carefully and complain less when a researcher is present. It cannot be eliminated, only reduced: emphasise that the design is being tested rather than the person, stay quiet, and treat effortful behaviour in a session as a floor on the difficulty, not a ceiling.",
     "example": "A participant reads every word of an error message in a lab and admits they would normally close the tab.",
-    "relatedIds": ["moderated-test", "think-aloud-protocol", "field-study", "confirmation-bias"],
+    "relatedIds": [
+      "moderated-test",
+      "think-aloud-protocol",
+      "field-study",
+      "confirmation-bias"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "IxDF", "url": "https://www.interaction-design.org/literature/topics/usability-testing" }]
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/usability-testing"
+      }
+    ]
   },
   {
     "id": "concept-testing",
     "term": "Concept testing",
-    "aliases": ["concept validation"],
-    "categories": ["Research", "Design Process"],
+    "aliases": [
+      "concept validation"
+    ],
+    "categories": [
+      "Research",
+      "Design Process"
+    ],
     "shortDef": "Testing an idea's value before building the interface.",
     "longDef": "Participants react to a description, storyboard or rough sketch to establish whether the idea is understood and wanted. It answers \"should this exist\" rather than \"does this work\". Keep the stimulus deliberately rough, or feedback drifts to visual details.",
     "example": "Showing three one-page service concepts and asking which one participants would sign up for tomorrow, and why.",
     "misuse": "Stated interest is weak evidence. Ask what people have already done about the problem instead of whether they would use this.",
-    "relatedIds": ["desirability-testing", "generative-research", "storyboard", "prototype"],
+    "relatedIds": [
+      "desirability-testing",
+      "generative-research",
+      "storyboard",
+      "prototype",
+      "focus-group"
+    ],
     "difficulty": "intermediate",
-    "sources": [{ "label": "IxDF", "url": "https://www.interaction-design.org/literature/topics/concept-testing" }]
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/concept-testing"
+      }
+    ]
   },
   {
     "id": "desirability-testing",
     "term": "Desirability testing",
-    "aliases": ["reaction card study", "product reaction cards"],
-    "categories": ["Research", "Visual & Typography"],
+    "aliases": [
+      "reaction card study",
+      "product reaction cards"
+    ],
+    "categories": [
+      "Research",
+      "Visual & Typography"
+    ],
     "shortDef": "Measuring the impression a design's look and tone creates.",
     "longDef": "Participants pick words from a fixed list — trustworthy, cluttered, dated, playful — to describe a design, and then explain their choices. Using a supplied vocabulary avoids the vagueness of \"I like it\". It measures brand perception rather than usability.",
     "example": "A fintech redesign is described as \"serious\" and \"secure\" by most participants, and \"cold\" by half of them.",
-    "relatedIds": ["concept-testing", "five-second-test", "aesthetic-usability-effect", "brand"],
+    "relatedIds": [
+      "concept-testing",
+      "five-second-test",
+      "aesthetic-usability-effect",
+      "brand"
+    ],
     "difficulty": "advanced",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/"
+      }
+    ]
   },
   {
     "id": "guerrilla-testing",
     "term": "Guerrilla testing",
-    "aliases": ["hallway testing", "corridor testing"],
-    "categories": ["Research"],
+    "aliases": [
+      "hallway testing",
+      "corridor testing"
+    ],
+    "categories": [
+      "Research"
+    ],
     "shortDef": "Quick informal testing with whoever is nearby.",
     "longDef": "You approach people in a café, a lobby or the next desk and ask for five minutes with a prototype. It catches obvious problems fast and cheaply, which makes it valuable early. It cannot support claims about your actual audience, because you did not choose who took part.",
     "example": "Ten minutes in a coffee shop shows that nobody recognises the icon the team spent a week debating.",
     "misuse": "Convenient participants are not representative ones. Never report a guerrilla result as a rate.",
-    "relatedIds": ["usability-testing", "sampling-bias", "prototype", "recruitment"],
+    "relatedIds": [
+      "usability-testing",
+      "sampling-bias",
+      "prototype",
+      "recruitment"
+    ],
     "difficulty": "core",
-    "sources": [{ "label": "IxDF", "url": "https://www.interaction-design.org/literature/topics/guerrilla-usability-testing" }]
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/guerrilla-usability-testing"
+      }
+    ]
   },
   {
     "id": "eye-tracking",
     "term": "Eye tracking",
-    "aliases": ["gaze tracking"],
-    "categories": ["Research", "Metrics & Analytics"],
+    "aliases": [
+      "gaze tracking"
+    ],
+    "categories": [
+      "Research",
+      "Metrics & Analytics"
+    ],
     "shortDef": "Recording where and how long people look on screen.",
     "longDef": "Hardware or webcam software records gaze position, producing fixation maps and scan paths. It answers whether something was seen at all, which self-report cannot. It is expensive, needs careful calibration, and looking at something is not the same as understanding it.",
     "example": "Gaze maps show that a promotional banner in the top right is skipped entirely, consistent with banner blindness.",
     "misuse": "A heat map from clicks or scrolling is not eye tracking, though the visual output looks similar.",
-    "relatedIds": ["banner-blindness", "f-pattern", "visual-hierarchy", "quantitative-research"],
+    "relatedIds": [
+      "banner-blindness",
+      "f-pattern",
+      "visual-hierarchy",
+      "quantitative-research"
+    ],
     "difficulty": "advanced",
-    "sources": [{ "label": "NN/g", "url": "https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/" }]
+    "sources": [
+      {
+        "label": "NN/g",
+        "url": "https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/"
+      }
+    ]
   },
   {
     "id": "participatory-design",
     "term": "Participatory design",
-    "aliases": ["co-design", "cooperative design"],
-    "categories": ["Research", "Design Process"],
+    "aliases": [
+      "co-design",
+      "cooperative design"
+    ],
+    "categories": [
+      "Research",
+      "Design Process"
+    ],
     "shortDef": "Designing with the people affected, not just for them.",
     "longDef": "Users join the design work itself — sketching, arranging, deciding priorities — rather than only reacting to finished proposals. It surfaces constraints outsiders cannot see and builds ownership among the people who will live with the result. The designer's job shifts to facilitating and then editing.",
     "example": "Nurses rearrange printed cards of a handover screen until the order matches how they actually give a report.",
     "misuse": "Participants are experts on their own work, not on interface design. Their layout is input, not a specification.",
-    "relatedIds": ["contextual-inquiry", "inclusive-design", "workshop", "generative-research"],
+    "relatedIds": [
+      "contextual-inquiry",
+      "inclusive-design",
+      "workshop",
+      "generative-research"
+    ],
     "difficulty": "advanced",
-    "sources": [{ "label": "IxDF", "url": "https://www.interaction-design.org/literature/topics/participatory-design" }]
+    "sources": [
+      {
+        "label": "IxDF",
+        "url": "https://www.interaction-design.org/literature/topics/participatory-design"
+      }
+    ]
   }
 ]
