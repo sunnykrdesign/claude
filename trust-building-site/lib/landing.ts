@@ -41,11 +41,11 @@ const convPost = (photo: string, alt: string, p: Omit<Post, 'photo'>) => ({ ...p
 
 export const CONV_STRIP: ConvStripItem[] = [
   { kind: 'photo', slug: 'iit-bombay-2026', label: 'IIT Bombay', post: convPost('conv-l2.png', 'Graduate at IIT Bombay convocation', { name: 'Nisha Nair', role: 'Growth Manager, Zomato', av: 'a8', date: '15 Mar 2026', likes: '2,603', comments: '171 comments', text: 'My parents flew in for this. They watched me study on a laptop for two years. Today they watched me walk across the stage at IIT Bombay.' }) },
-  { kind: 'photo', slug: 'iit-bombay-stage', label: 'IIT Bombay' },
+  { kind: 'photo', slug: 'iit-bombay-stage', label: 'IIT Bombay', post: convPost('conv-l1.png', 'Graduate at IIT Bombay convocation', { name: 'Aditya Iyer', role: 'Supply Chain Manager, Reliance Retail', av: 'a0', date: '14 Mar 2026', likes: '1,092', comments: '58 comments', text: 'Received my degree at the convocation ceremony today. Quietly proud.' }) },
   { kind: 'photo', slug: 'annual-convocation', label: 'Annual convocation', post: convPost('conv-l3.png', 'Graduate at the annual convocation', { name: 'Lakshmi Reddy', role: 'Data Engineer, PhonePe', av: 'a4', date: '14 Mar 2026', likes: '2,184', comments: '146 comments', text: 'Walked the stage today. Two years of weekend classes, assignments submitted at midnight after putting the kids to bed, and one very patient family.' }) },
   { kind: 'quote' },
   { kind: 'photo', slug: 'iiit-bangalore', label: 'IIIT Bangalore', post: convPost('conv-l5.png', 'Three graduates at IIIT Bangalore', { name: 'Harish Bhat', role: 'Data Engineer, PhonePe', av: 'a5', date: '21 Mar 2026', likes: '1,947', comments: '112 comments', text: 'Met my study group in person for the first time at IIIT Bangalore. Eighteen months of late-night calls, and they are exactly who I thought they would be.' }) },
-  { kind: 'photo', slug: 'degree-in-hand', label: 'Degree in hand' },
+  { kind: 'photo', slug: 'degree-in-hand', label: 'Degree in hand', post: convPost('conv-p2.png', 'Graduate holding a degree folder', { name: 'Divya Krishnan', role: 'UX Designer, Zoho', av: 'a3', date: '16 Mar 2026', likes: '1,318', comments: '74 comments', text: 'Degree in hand. Framing this one.' }) },
   { kind: 'photo', slug: 'whole-cohort', label: 'The whole cohort', post: convPost('conv-l4.png', 'Annual convocation group photograph', { name: 'Rohan Menon', role: 'Marketing Lead, Nykaa', av: 'a6', date: '16 Mar 2026', likes: '1,362', comments: '88 comments', text: 'Class of 2026, in one frame. A year of breakout rooms and late-night group calls, and today we finally stood next to each other.' }) },
 ];
 
