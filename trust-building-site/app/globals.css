@@ -235,9 +235,6 @@ html.motion .detail [data-rv].is-in { opacity: 1; transform: none; filter: blur(
 .cvcard__btnarr { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; font-size: 17px; font-weight: 700; }
 .cvcard__cap { display: flex; justify-content: space-between; gap: 16px; font-size: 13px; font-weight: 500; color: var(--muted); transition: color .4s; }
 .cvcard__cap span:last-child { font-variant-numeric: tabular-nums; }
-.cvcard:hover .cvcard__media, .cvcard:focus-visible .cvcard__media { box-shadow: var(--shadow-card); }
-.cvcard:hover .cvcard__zoom, .cvcard:focus-visible .cvcard__zoom { transform: scale(1.06); }
-.cvcard:hover .cvcard__btn, .cvcard:focus-visible .cvcard__btn { background: var(--red); color: var(--white); }
 .cvcard:hover .cvcard__cap, .cvcard:focus-visible .cvcard__cap { color: var(--ink); }
 .cvquote { flex: none; margin: 0; display: flex; flex-direction: column; gap: 14px; }
 .cvquote blockquote { margin: 0; height: max(300px, min(39vh, 336px)); width: clamp(210px, 21vw, 315px); display: flex; flex-direction: column; justify-content: space-between; gap: 24px; padding: clamp(28px, 2.6vw, 42px); border-radius: 18px; background: var(--ink); color: var(--cream); }
@@ -273,10 +270,7 @@ html.motion .detail [data-rv].is-in { opacity: 1; transform: none; filter: blur(
 .vcard__play { position: absolute; left: 50%; top: 50%; margin: -30px 0 0 -30px; display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background: rgba(255, 255, 255, .2); border: 1px solid rgba(255, 255, 255, .4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: background .45s, transform .7s var(--ease); }
 .vcard__play svg { margin-left: 2px; }
 .vcard p { position: absolute; left: 20px; right: 20px; bottom: 20px; margin: 0; font-size: 15px; line-height: 1.45; color: var(--white); opacity: 0; transform: translateY(18px); transition: opacity .5s, transform .8s var(--ease); }
-.vcard:hover { transform: translateY(-12px); box-shadow: 0 36px 60px -24px rgba(14, 12, 11, .5); }
-.vcard:hover img { transform: scale(1.08); }
 .vcard:hover .vcard__shade { opacity: 1; }
-.vcard:hover .vcard__play { background: var(--red); transform: scale(1.14); }
 .vcard:hover p { opacity: 1; transform: translateY(0); }
 
 /* ───────────────────────── 04 Immersion ───────────────────────── */
@@ -300,7 +294,7 @@ html.motion .detail [data-rv].is-in { opacity: 1; transform: none; filter: blur(
 .imm-step__pill > span:last-child { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; font-size: 15px; font-weight: 700; }
 .imm-step.is-active .imm-step__pill { background: var(--white); color: var(--ink); border-color: var(--white); box-shadow: 0 8px 20px -6px rgba(0, 0, 0, .45); padding-left: 16px; }
 .imm-step.is-active .imm-step__pilltxt { max-width: 90px; opacity: 1; margin-right: 6px; }
-.imm-step__pill:hover, .imm-step.is-active .imm-step__pill:hover { background: var(--red); border-color: var(--red); color: var(--white); transform: translateX(4px); }
+.imm-step__pill:hover, .imm-step.is-active .imm-step__pill:hover { background: var(--red); border-color: var(--red); color: var(--white); }
 .imm__all { position: absolute; z-index: 3; top: clamp(92px, 13vh, 120px); right: clamp(18px, 5vw, 80px); }
 .imm__counter { display: flex; flex-direction: column; gap: 18px; }
 .imm__num { display: flex; align-items: baseline; gap: 10px; font-family: var(--serif); color: var(--white); }
@@ -375,9 +369,6 @@ html.motion .detail [data-rv].is-in { opacity: 1; transform: none; filter: blur(
 .ocard__meta { display: flex; justify-content: space-between; gap: 12px; font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(243, 238, 230, .66); }
 .ocard__meta span:last-child { display: inline-block; transition: transform .6s var(--ease); }
 .ocard__title { font-family: var(--serif); font-size: clamp(24px, 2vw, 30px); line-height: 1.08; letter-spacing: -.01em; }
-.ocard:hover .ocard__media { transform: translateY(-8px); box-shadow: var(--shadow-dark-hover); }
-.ocard:hover .ocard__media img { transform: scale(1.07); }
-.ocard:hover .ocard__meta span:last-child { transform: translateX(6px); }
 
 /* Immersion detail (dark hero) */
 .imd .d-hero .eyebrow { color: rgba(255, 255, 255, .86); }
@@ -446,7 +437,6 @@ html.motion [data-kb] { animation: kb 2.2s var(--ease) .1s both; }
 
 /* ───────────────────────── LinkedIn post: feed layout ───────────────────────── */
 .pc { display: flex; flex-direction: column; background: var(--white); border-radius: 18px; font-family: var(--li); color: #1F1F1F; box-shadow: 0 1px 2px rgba(14, 12, 11, .06), 0 10px 24px -12px rgba(14, 12, 11, .18); transition: transform .7s var(--ease), box-shadow .7s var(--ease); }
-.pc:hover { transform: translateY(-4px); box-shadow: 0 1px 3px rgba(14, 12, 11, .05), 0 12px 24px -12px rgba(14, 12, 11, .16), 0 28px 48px -28px rgba(14, 12, 11, .18); }
 .pc__head { display: flex; align-items: center; gap: 12px; padding: 18px 18px 0; }
 .pc .avatar { width: 44px; height: 44px; font-size: 13px; }
 .pc__who { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
@@ -501,11 +491,7 @@ html.motion [data-kb] { animation: kb 2.2s var(--ease) .1s both; }
 .pt--sm .pt__cta > span { width: 28px; height: 28px; font-size: 15px; }
 .pt--sm .pt__stats { font-size: 11px; }
 .pt--sm .dots3 i { width: 13px; height: 13px; }
-.tile:hover .pt--sm, .tile:focus-visible .pt--sm { transform: translateY(-6px); box-shadow: 0 2px 4px rgba(14, 12, 11, .06), 0 18px 32px -10px rgba(14, 12, 11, .22), 0 48px 80px -30px rgba(14, 12, 11, .4); }
-.tile:hover .pt__photo img, .tile:focus-visible .pt__photo img { transform: scale(1.06); }
-.tile:hover .pt__cta, .tile:focus-visible .pt__cta { background: var(--red); color: var(--white); }
 .tile--dark .pt--sm { box-shadow: 0 1px 2px rgba(0, 0, 0, .2), 0 10px 24px -12px rgba(0, 0, 0, .4); }
-.tile--dark:hover .pt--sm, .tile--dark:focus-visible .pt--sm { box-shadow: 0 2px 4px rgba(0, 0, 0, .2), 0 18px 32px -10px rgba(0, 0, 0, .45), 0 48px 80px -30px rgba(0, 0, 0, .7); }
 
 .pt--lg { width: min(400px, 80vw); height: clamp(460px, 36vw, 500px); gap: 12px; padding: 20px 20px 14px; border-radius: 20px; }
 .pt--lg .pt__head { gap: 12px; }
@@ -517,7 +503,6 @@ html.motion [data-kb] { animation: kb 2.2s var(--ease) .1s both; }
 .pt--lg .pt__photo { border-radius: 12px; }
 .pt--lg .pt__cta { right: 12px; bottom: 12px; height: 40px; padding: 0 4px 0 16px; font-size: 13px; }
 .pt--lg .pt__cta > span { width: 32px; height: 32px; font-size: 16px; }
-.pt--lg a.pt__cta:hover { background: var(--red); color: var(--white); }
 .pt--lg .pt__stats { font-size: 12px; }
 
 /* ───────────────────────── Index pages ───────────────────────── */
@@ -536,9 +521,6 @@ html.motion [data-kb] { animation: kb 2.2s var(--ease) .1s both; }
 .icard__meta span:last-child { font-variant-numeric: tabular-nums; }
 .icard__title { font-family: var(--serif); font-size: clamp(26px, 2.2vw, 32px); line-height: 1.06; letter-spacing: -.01em; }
 .icard__desc { font-size: 15px; line-height: 1.55; color: var(--body); text-wrap: pretty; }
-.icard:hover .icard__media { transform: translateY(-8px); box-shadow: var(--shadow-card); }
-.icard:hover .icard__media img { transform: scale(1.06); }
-.icard:hover .icard__cta { background: var(--red); color: var(--white); }
 
 .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: clamp(28px, 4vh, 44px); }
 .filter { display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid rgba(14, 12, 11, .24); background: transparent; color: var(--ink); font-size: 14px; font-weight: 600; cursor: pointer; transition: background .3s, color .3s, border-color .3s; }
@@ -551,9 +533,6 @@ html.motion [data-kb] { animation: kb 2.2s var(--ease) .1s both; }
 .vtile__tag { position: absolute; left: 12px; top: 12px; display: flex; align-items: center; height: 26px; padding: 0 10px; border-radius: 999px; background: rgba(14, 12, 11, .55); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: var(--white); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
 .vtile__play { position: absolute; left: 50%; top: 50%; width: 56px; height: 56px; margin: -28px 0 0 -28px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--white); color: var(--ink); font-size: 16px; padding-left: 3px; box-shadow: 0 8px 20px -6px rgba(0, 0, 0, .4); transition: background .4s, color .4s; }
 .vtile__desc { font-size: 15px; line-height: 1.5; color: #2C2824; text-wrap: pretty; }
-.vtile:hover .vtile__media { transform: translateY(-6px); box-shadow: 0 1px 3px rgba(14, 12, 11, .05), 0 12px 24px -12px rgba(14, 12, 11, .16), 0 28px 48px -28px rgba(14, 12, 11, .18); }
-.vtile:hover .vtile__media img { transform: scale(1.06); }
-.vtile:hover .vtile__play { background: var(--red); color: var(--white); }
 
 /* Convocation detail: photo mosaic + LinkedIn section */
 .cvd__photos { background: var(--cream); color: var(--ink); padding-bottom: calc(clamp(96px, 13vh, 150px) + 32px); z-index: 3; margin-top: -32px; }
@@ -561,11 +540,49 @@ html.motion [data-kb] { animation: kb 2.2s var(--ease) .1s both; }
 .mosaic { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); grid-auto-rows: clamp(180px, 18vw, 260px); grid-auto-flow: dense; gap: clamp(12px, 1.2vw, 18px); }
 .mosaic figure { position: relative; margin: 0; border-radius: 16px; overflow: hidden; background: var(--warm); transition: box-shadow .7s var(--ease); }
 .mosaic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 1.4s var(--ease); }
-.mosaic figure:hover { box-shadow: 0 1px 3px rgba(14, 12, 11, .05), 0 12px 24px -12px rgba(14, 12, 11, .16), 0 28px 48px -28px rgba(14, 12, 11, .18); }
-.mosaic figure:hover img { transform: scale(1.06); }
 .d-li { background: var(--white); color: var(--ink); padding-bottom: calc(clamp(96px, 13vh, 150px) + 32px); margin-top: -32px; }
 .d-li__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 48px; margin-bottom: clamp(36px, 4vw, 56px); }
 .d-li__head > div { display: flex; flex-direction: column; gap: 20px; }
 .d-li .viewall { flex: none; }
 .cols3 { columns: 3 300px; column-gap: 20px; }
 .grid3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 20px; align-items: start; }
+
+/* ───────────────────────── Hover system ─────────────────────────
+   Every card responds the same way: it lifts 6px and gains one soft shadow,
+   its image zooms slightly, and its pill or play badge turns red.
+   The lift uses `translate`, so it never fights a reveal's `transform`. */
+:root {
+  --hover-dur: .5s;
+  --hover-lift: 0 -6px;
+  --hover-zoom: 1.04;
+  --hover-shadow: 0 24px 40px -20px rgba(14, 12, 11, .35);
+  --hover-shadow-dark: 0 24px 40px -16px rgba(0, 0, 0, .7);
+}
+.cvcard__media, .pt--sm, .vcard, .ocard__media, .pc, .icard__media, .vtile__media, .mosaic figure {
+  transition: translate var(--hover-dur) var(--ease), box-shadow var(--hover-dur) var(--ease), clip-path 1.4s var(--ease);
+}
+.cvcard__zoom, .pt__photo img, .vcard img, .ocard__media img, .icard__media img, .vtile__media img, .mosaic img {
+  transition: transform var(--hover-dur) var(--ease);
+}
+.cvcard__btn, .pt__cta, .vcard__play, .icard__cta, .vtile__play, .imm-step__pill {
+  transition: background-color var(--hover-dur) var(--ease), color var(--hover-dur) var(--ease), border-color var(--hover-dur) var(--ease), box-shadow var(--hover-dur) var(--ease), padding var(--hover-dur) var(--ease);
+}
+
+:is(.cvcard, .ocard, .icard, .vtile):is(:hover, :focus-visible) :is(.cvcard__media, .ocard__media, .icard__media, .vtile__media),
+.tile:is(:hover, :focus-visible) .pt--sm, .vcard:hover, .pc:hover, .mosaic figure:hover {
+  translate: var(--hover-lift);
+  box-shadow: var(--hover-shadow);
+}
+.ocard:is(:hover, :focus-visible) .ocard__media, .tile--dark:is(:hover, :focus-visible) .pt--sm { box-shadow: var(--hover-shadow-dark); }
+
+.cvcard:is(:hover, :focus-visible) .cvcard__zoom,
+:is(.tile, .ocard, .icard, .vtile):is(:hover, :focus-visible) img:not(.avatar img),
+.vcard:hover img, .mosaic figure:hover img { transform: scale(var(--hover-zoom)); }
+
+:is(.cvcard, .tile, .icard):is(:hover, :focus-visible) :is(.cvcard__btn, .pt__cta, .icard__cta),
+:is(.vcard, .vtile):hover :is(.vcard__play, .vtile__play),
+.pt--lg a.pt__cta:hover { background: var(--red); color: var(--white); }
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --hover-lift: 0 0; --hover-zoom: 1; }
+}
