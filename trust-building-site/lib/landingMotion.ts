@@ -1,6 +1,6 @@
 // Imperative motion for the landing page: one rAF loop drives scroll-linked
 // effects, the hero post carousel, the sticky immersion stage, marquees, drag
-// rails, the follow cursor and magnetic buttons. It touches the DOM directly
+// rails. It touches the DOM directly
 // (by id / data attribute) so React only re-renders on coarse state changes.
 
 export type HeaderState = { solid: boolean; hide: boolean; sec: string };
@@ -32,12 +32,11 @@ const slotAt = (key: keyof typeof SLOT, a: number) => {
 type HeroCarousel = {
   st: HTMLElement; rig: HTMLElement; slots: HTMLElement[]; N: number; active: number;
   hovered: number | null; auto: boolean; hover: boolean; t: number; ready: boolean;
-  rx: number; ry: number; gx: number; gy: number; off: (i: number) => number;
+  off: (i: number) => number;
   /** Continuous position that eases toward `target`, so cards glide between slots. */
   pos: number; target: number; hv: number[]; readyAt: number; freed: boolean; veils: HTMLElement[];
 };
 
-const EASE = 'cubic-bezier(.16,1,.3,1)';
 const cl = (n: number) => (n < 0 ? 0 : n > 1 ? 1 : n);
 
 export class LandingMotion {
@@ -51,11 +50,8 @@ export class LandingMotion {
 
   private motion: boolean;
   private reduced: boolean;
-  private fine: boolean;
 
   private sy = 0; private ly = 0; private hy = 0; private vel = 0; private saT = 0;
-  private mx = -200; private my = -200; private cx = -200; private cy = -200; private cs = 0; private ct = 0;
-  private curLab = '';
   private header: HeaderState = { solid: false, hide: false, sec: '' };
   private m: Record<string, Box | null> = {};
   private secs: Box[] = [];
@@ -64,9 +60,6 @@ export class LandingMotion {
   private mqs = new Map<HTMLElement, Marquee>();
   private rails: Rail[] = [];
   private docH = 0;
-  private act = 0;
-  private tiltEl: HTMLElement | null = null;
-  private mag: (HTMLElement & { __mx?: number; __my?: number }) | null = null;
   private saPaused = false;
   private cache = new WeakMap<HTMLElement, Record<string, string>>();
 
@@ -75,7 +68,6 @@ export class LandingMotion {
   constructor(private hooks: MotionHooks) {
     this.motion = document.documentElement.classList.contains('motion');
     this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    this.fine = matchMedia('(pointer: fine)').matches;
   }
 
   private $ = (id: string) => document.getElementById(id);
@@ -111,21 +103,11 @@ export class LandingMotion {
       document.querySelectorAll('[data-lines]:not([data-lines="hero"]),[data-rv],[data-ir]').forEach(el => this.io!.observe(el));
     }
 
-    on(window, 'pointermove', (e: PointerEvent) => { this.mx = e.clientX; this.my = e.clientY; this.magnet(e); }, { passive: true });
-    on(document, 'pointerover', (e: PointerEvent) => {
-      const t = (e.target as Element | null)?.closest?.('[data-cur]');
-      const lab = t ? t.getAttribute('data-cur') || '' : '';
-      if (lab === this.curLab) return;
-      this.curLab = lab; this.ct = lab ? 1 : 0;
-      const l = this.$('cur-l'); if (l && lab) l.textContent = lab;
-    });
-    on(document.documentElement, 'mouseleave', () => { this.ct = 0; this.curLab = ''; });
     on(window, 'resize', () => this.measure());
     on(window, 'load', () => this.measure());
     if ('ResizeObserver' in window) { this.ro = new ResizeObserver(() => this.measure()); const r = this.$('root'); if (r) this.ro.observe(r); }
     document.fonts?.ready.then(() => this.measure());
 
-    this.bindTilt();
     this.bindRails();
     this.bindMarquees();
     this.bindSwipe();
@@ -209,7 +191,6 @@ export class LandingMotion {
     const active = Math.floor(N / 2);
     const sc: HeroCarousel = this.sc = {
       st, rig, slots, N, active, hovered: null as number | null, auto: !this.reduced, hover: false, t: 0, ready: false,
-      rx: 0, ry: 0, gx: innerWidth / 2, gy: innerHeight * 0.64,
       pos: active, target: active, hv: slots.map(() => 0), readyAt: 0, freed: false,
       veils: slots.map(el => el.querySelector<HTMLElement>('[data-veil]')!),
       off: (i: number): number => { let o = i - sc.active; if (o > N / 2) o -= N; if (o < -N / 2) o += N; return o; },
@@ -224,14 +205,6 @@ export class LandingMotion {
       this.on(el, 'pointerenter', () => { if (sc.off(i) !== 0) { sc.hovered = i; this.scRender(); } });
       this.on(el, 'pointerleave', () => { if (sc.hovered === i) { sc.hovered = null; this.scRender(); } });
       this.on(el, 'click', () => { if (sc.off(i) !== 0) this.scGo(i); });
-      const card = el.querySelector<HTMLElement>('[data-card]')!;
-      this.on(card, 'pointermove', (e: PointerEvent) => {
-        if (this.reduced || sc.off(i) !== 0) return;
-        const r = card.getBoundingClientRect(), nx = cl((e.clientX - r.left) / r.width), ny = cl((e.clientY - r.top) / r.height);
-        card.style.transition = 'transform .2s ease-out';
-        card.style.transform = 'rotateX(' + ((0.5 - ny) * 12).toFixed(2) + 'deg) rotateY(' + ((nx - 0.5) * 16).toFixed(2) + 'deg) translateZ(20px)';
-      });
-      this.on(card, 'pointerleave', () => { card.style.transition = 'transform .8s ' + EASE; card.style.transform = ''; });
       el.querySelectorAll('img').forEach(img => this.on(img, 'error', () => { img.style.display = 'none'; }));
     });
     const surf = this.$('hero-swipe');
@@ -300,7 +273,6 @@ export class LandingMotion {
   private scGo(i: number) {
     const sc = this.sc; if (!sc) return;
     sc.hovered = null; sc.t = 0;
-    sc.slots.forEach(el => { el.querySelector<HTMLElement>('[data-card]')!.style.transform = ''; });
     const N = sc.N, next = ((i % N) + N) % N;
     let dlt = next - sc.active;
     if (dlt > N / 2) dlt -= N;
@@ -311,18 +283,13 @@ export class LandingMotion {
 
   private heroFrame(dt: number, p: number, k: number) {
     const sc = this.sc; if (!sc) return;
-    const vw = innerWidth, vh = innerHeight, T = 5200;
+    const vw = innerWidth, T = 5200;
     if (sc.ready && sc.auto && !sc.hover && p < 0.6) { sc.t += dt; if (sc.t >= T) this.scGo(sc.active + 1); }
     this.scPaint(k);
-    const has = this.fine && this.mx >= 0 && !this.reduced;
-    const tx = has ? (this.mx / vw - 0.5) * 10 : 0, ty = has ? (this.my / vh - 0.5) * -6 : 0;
-    sc.ry += (tx - sc.ry) * 0.05 * k; sc.rx += (ty - sc.rx) * 0.05 * k;
     const s = Math.max(0.56, Math.min(1, vw / 1100));
-    this.set(sc.rig, 'transform', `scale(${s.toFixed(3)}) rotateX(${(sc.rx + p * 20).toFixed(2)}deg) rotateY(${sc.ry.toFixed(2)}deg)`);
+    this.set(sc.rig, 'transform', `scale(${s.toFixed(3)}) rotateX(${(p * 20).toFixed(2)}deg)`);
     this.set(sc.st, 'transform', `translate3d(0,${(-p * 90).toFixed(1)}px,0) scale(${(1 - p * 0.1).toFixed(4)})`);
     this.set(sc.st, 'opacity', Math.max(0, 1 - p * 1.2).toFixed(3));
-    if (has) { sc.gx += (this.mx - sc.gx) * 0.04 * k; sc.gy += (this.my + scrollY - sc.gy) * 0.04 * k; }
-    this.set(this.$('hero-glow'), 'transform', `translate3d(${sc.gx.toFixed(1)}px,${sc.gy.toFixed(1)}px,0)`);
   }
 
   /* ─────────── Measure + frame ─────────── */
@@ -407,14 +374,6 @@ export class LandingMotion {
     // Drag-rail inertia.
     this.rails.forEach(r => { if (!r.down && Math.abs(r.v) > 0.15) { r.el.scrollLeft -= r.v * k; r.v *= Math.pow(0.93, k); } });
 
-    const cur = $('cur');
-    if (cur && this.fine && !this.reduced) {
-      this.cx += (this.mx - this.cx) * Math.min(1, 0.2 * k); this.cy += (this.my - this.cy) * Math.min(1, 0.2 * k);
-      this.cs += (this.ct - this.cs) * Math.min(1, 0.16 * k);
-      if (this.cs < 0.005) this.cs = 0;
-      this.set(cur, 'transform', `translate3d(${(this.cx - 44).toFixed(1)}px,${(this.cy - 44).toFixed(1)}px,0) scale(${this.cs.toFixed(3)})`);
-    }
-
     // Study-abroad carousel autoplays while on screen.
     const st = $('ab-stage');
     if (st) {
@@ -435,7 +394,7 @@ export class LandingMotion {
     const k = Math.min(N - 2, Math.floor(raw)), f = raw - k;
     const e = (x: number) => { x = cl((x - 0.16) / 0.68); return x * x * (3 - 2 * x); };
     const seg = raw >= N - 1 ? N - 1 : k + e(f);
-    const act = (this.act = Math.round(seg));
+    const act = Math.round(seg);
     for (let i = 0; i < N; i++) {
       const d = seg - i, c = $('im-c' + i), tx = $('im-t' + i), s = $('im-s' + i);
       if (c) {
@@ -474,38 +433,6 @@ export class LandingMotion {
   }
 
   /* ─────────── Pointer niceties ─────────── */
-
-  private magnet(e: PointerEvent) {
-    if (this.reduced || e.pointerType !== 'mouse') return;
-    const mg = (e.target as Element | null)?.closest?.<HTMLElement>('[data-mag]') ?? null;
-    if (this.mag && this.mag !== mg) { this.mag.style.transform = 'translate3d(0,0,0)'; this.mag.__mx = 0; this.mag.__my = 0; }
-    this.mag = mg;
-    if (!mg) return;
-    const r = mg.getBoundingClientRect();
-    const cx = r.left + r.width / 2 - (this.mag!.__mx || 0), cy = r.top + r.height / 2 - (this.mag!.__my || 0);
-    const dx = (e.clientX - cx) * 0.3, dy = (e.clientY - cy) * 0.4;
-    this.mag!.__mx = dx; this.mag!.__my = dy;
-    mg.style.transform = `translate3d(${dx.toFixed(1)}px,${dy.toFixed(1)}px,0)`;
-  }
-
-  private bindTilt() {
-    const m = this.$('im-media');
-    if (!m || this.reduced) return;
-    this.on(m, 'pointermove', (e: PointerEvent) => {
-      if (e.pointerType !== 'mouse') return;
-      const img = this.$('im-i' + this.act); if (!img) return;
-      const r = m.getBoundingClientRect(), nx = (e.clientX - r.left) / r.width - 0.5, ny = (e.clientY - r.top) / r.height - 0.5;
-      if (this.tiltEl && this.tiltEl !== img) this.tiltEl.style.transform = '';
-      this.tiltEl = img;
-      img.style.transition = 'transform .35s ease-out';
-      img.style.transform = `perspective(1400px) rotateX(${(-ny * 6).toFixed(2)}deg) rotateY(${(nx * 8).toFixed(2)}deg) scale(1.02)`;
-    });
-    this.on(m, 'pointerleave', () => {
-      if (!this.tiltEl) return;
-      this.tiltEl.style.transition = 'transform 1s ' + EASE;
-      this.tiltEl.style.transform = '';
-    });
-  }
 
   /** Mouse drag-to-scroll with inertia. A drag never triggers the click underneath. */
   private bindRails() {

@@ -25,14 +25,14 @@ export function Convocation() {
                 const c = CONVOCATIONS.find(x => x.slug === item.slug)!;
                 if (item.post) {
                   return (
-                    <Link key={i} href={convocationHref(c.slug)} className="tile" data-cur="View" draggable={false} aria-label={`LinkedIn post by ${item.post.name}`}>
+                    <Link key={i} href={convocationHref(c.slug)} className="tile" draggable={false} aria-label={`LinkedIn post by ${item.post.name}`}>
                       <PostTile p={item.post} alt={item.post.alt} size="sm" />
                       <span className="tile__cap"><span>{item.post.name}, on LinkedIn</span><span>2026</span></span>
                     </Link>
                   );
                 }
                 return (
-                  <Link key={i} href={convocationHref(c.slug)} className="cvcard" data-cvcard="1" data-cur="View" draggable={false} aria-label={`View story: ${item.label}`}>
+                  <Link key={i} href={convocationHref(c.slug)} className="cvcard" data-cvcard="1" draggable={false} aria-label={`View story: ${item.label}`}>
                     <div className="cvcard__media" style={{ aspectRatio: c.ar }}>
                       <div className="cvcard__zoom">
                         <img data-cvimg="1" src={c.img} alt={c.alt} draggable={false} style={{ objectFit: 'cover' }} />

@@ -46,8 +46,8 @@ export function Close() {
         </h2>
         <p data-rv="1" className="close__p">Tell us where you’re starting from and we’ll show you the programmes the people in these posts took.</p>
         <div data-rv="1" className="close__ctas">
-          <a href="#" data-mag="1" className="pill close__primary">Explore programmes<span className="arr arr--x">→</span></a>
-          <Link href={POSTS_HREF} data-mag="1" className="pill close__ghost">Read all {count} posts</Link>
+          <a href="#" className="pill close__primary">Explore programmes<span className="arr arr--x">→</span></a>
+          <Link href={POSTS_HREF} className="pill close__ghost">Read all {count} posts</Link>
         </div>
       </div>
     </section>

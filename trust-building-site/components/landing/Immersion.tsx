@@ -58,7 +58,7 @@ export function Immersion({ goStep }: { goStep: (i: number) => void }) {
                 </div>
               </div>
             </div>
-            <div id="im-media" className="imm__media" data-cur="View">
+            <div id="im-media" className="imm__media">
               {IMM_STEPS.map((s, i) => (
                 <div key={s.label} id={'im-c' + i} className="imm__card" style={{ zIndex: i + 1, transform: i === 0 ? 'none' : 'translate3d(0,110%,0)' }}>
                   <img id={'im-i' + i} src={s.src} alt={s.alt} draggable={false} />
@@ -76,7 +76,7 @@ export function Immersion({ goStep }: { goStep: (i: number) => void }) {
         </h3>
         <p data-rv="1" className="subhead__p">Faculty, mentors and founders in the same room as the learners they teach.</p>
       </div>
-      <div data-drag="1" data-cur="Drag" className="irail">
+      <div data-drag="1" className="irail">
         {IMM_CARDS.map(c => (
           <Link key={c.name} href={immersionHref(c.city)} draggable={false} className="tile tile--dark" aria-label={`LinkedIn post by ${c.name}`}>
             <PostTile p={c} alt={c.alt} size="sm" />

@@ -89,7 +89,7 @@ export function StudyAbroad({ active, go, onPause }: Props) {
           </h3>
           <p data-rv="1" className="subhead__p">Real voices, real struggles, and triumphs. Hear the unscripted stories of learners who forged lifelong friendships through late-night study sessions.</p>
         </div>
-        <div data-drag="1" data-cur="Play" className="vrail">
+        <div data-drag="1" className="vrail">
           {ABROAD_VIDEOS.map(v => (
             <div key={v.src} data-ir="22" className="vcard">
               <img src={v.src} alt={v.alt} draggable={false} />

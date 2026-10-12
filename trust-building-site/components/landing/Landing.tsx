@@ -61,7 +61,6 @@ export function Landing() {
       </div>
 
       <div className="grain" aria-hidden="true" />
-      <div id="cur" className="cursor" aria-hidden="true"><span id="cur-l" /></div>
 
       <header className={`hdr${hdr.solid ? ' hdr--solid' : ''}${hdr.hide ? ' hdr--hidden' : ''}`}>
         <a href="#p5-hero" className="logo" onClick={e => { e.preventDefault(); scrollTo({ top: 0, behavior: 'smooth' }); }}>upGrad</a>
@@ -70,7 +69,7 @@ export function Landing() {
             <a key={id} href={'#' + id} className="hdr__link" aria-current={hdr.sec === id ? 'true' : undefined} onClick={goTo(id)}>{label}</a>
           ))}
         </nav>
-        <a href="#" data-mag="1" className="hdr__cta">Explore programmes</a>
+        <a href="#" className="hdr__cta">Explore programmes</a>
         <span id="hdr-prog" className="hdr__prog" />
       </header>
 
