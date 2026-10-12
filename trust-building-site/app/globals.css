@@ -620,7 +620,7 @@ html[data-ver='1'] .vtoggle [data-set-ver='1'], html[data-ver='2'] .vtoggle [dat
 html[data-ver='2'] :is(.viewall, .words__all) {
   display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 24px; border: 0; border-radius: 999px;
   background: var(--red); color: var(--white); font-size: 15px; font-weight: 600; text-shadow: none;
-  box-shadow: 0 12px 28px -12px rgba(228, 4, 28, .6);
-  transition: background-color .3s var(--ease), box-shadow .3s var(--ease);
+  box-shadow: none;
+  transition: background-color .3s var(--ease);
 }
-html[data-ver='2'] :is(.viewall, .words__all):hover { background: var(--red-deep); color: var(--white); box-shadow: 0 14px 32px -12px rgba(184, 3, 23, .7); }
+html[data-ver='2'] :is(.viewall, .words__all):hover { background: var(--red-deep); color: var(--white); }
