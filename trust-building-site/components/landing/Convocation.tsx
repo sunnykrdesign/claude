@@ -49,7 +49,6 @@ export function Convocation() {
           <div className="conv__meter" aria-hidden="true">
             <span>Convocation 2026</span>
             <div><div id="cv-bar" className="conv__bar" /></div>
-            <span>Drag to explore</span>
           </div>
         </div>
       </div>
