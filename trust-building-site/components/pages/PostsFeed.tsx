@@ -17,7 +17,7 @@ export function PostsFeed() {
         ))}
       </div>
       <div className="masonry" style={{ columns: '3 320px', columnGap: 20 }} aria-live="polite">
-        {posts.map(p => <FeedPost key={p.name + p.text.slice(0, 24)} p={p} variant="feed" />)}
+        {posts.map(p => <div key={p.name + p.text.slice(0, 24)} data-tag={p.tag}><FeedPost p={p} variant="feed" /></div>)}
       </div>
     </>
   );

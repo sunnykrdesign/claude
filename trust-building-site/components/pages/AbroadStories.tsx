@@ -30,11 +30,11 @@ export function AbroadStories() {
         {LISTS[f].map(it => {
           if (it.kind === 'post') {
             const p = ABROAD_STORY_POSTS[it.i];
-            return <FeedPost key={'p' + it.i} p={p} variant="card" reveal photoPos="center 30%" />;
+            return <div key={'p' + it.i} data-kind="post"><FeedPost p={p} variant="card" reveal photoPos="center 30%" /></div>;
           }
           const v = ABROAD_VIDEOS[it.i];
           return (
-            <div key={'v' + it.i} data-rv="1" className="vtile">
+            <div key={'v' + it.i} data-rv="1" data-kind="video" className="vtile">
               <div className="vtile__media">
                 <img src={v.src} alt={v.alt} loading="lazy" />
                 <span className="vtile__tag">Video</span>
