@@ -606,3 +606,12 @@ html.motion [data-kb] { animation: kb 2.2s var(--ease) .1s both; }
 .ecard--sm .ecard__rsvp { min-height: 0; padding: 1.4cqi 3.4cqi; font-size: 1.9cqi; }
 .ecard--sm .ecard__poster { border-radius: 1.8cqi; }
 :is(.ocard, .icard):is(:hover, :focus-visible) .ecard__rsvp { background: var(--red); color: var(--white); }
+.postlink { display: block; color: inherit; }
+.postlink:focus-visible .pc { outline: 2px solid var(--red); outline-offset: 3px; }
+
+/* ───────────────────────── Version toggle (V1 / V2) ───────────────────────── */
+html[data-ver='1'] .v2-only, html[data-ver='2'] .v1-only { display: none !important; }
+.vtoggle { position: fixed; left: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 280; display: flex; gap: 2px; padding: 3px; border-radius: 999px; border: 1px solid rgba(243, 238, 230, .18); background: rgba(14, 12, 11, .82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.vtoggle button { min-width: 44px; min-height: 32px; padding: 0 12px; border: 0; border-radius: 999px; background: transparent; color: rgba(243, 238, 230, .7); font-size: 12px; font-weight: 600; letter-spacing: .06em; cursor: pointer; transition: background-color .3s, color .3s; }
+.vtoggle button:hover { color: var(--cream); }
+html[data-ver='1'] .vtoggle [data-set-ver='1'], html[data-ver='2'] .vtoggle [data-set-ver='2'] { background: var(--cream); color: var(--ink); }

@@ -74,7 +74,7 @@ export function StudyAbroad({ active, go, onPause }: Props) {
                   alt={p.photoAlt}
                   size="lg"
                   photoPos="center 30%"
-                  cta={<Link href={ABROAD_HREF} className="pt__cta" tabIndex={a === 0 ? 0 : -1}>View story<span aria-hidden="true">→</span></Link>}
+                  cta={<Link href={ABROAD_HREF} className="pt__cta v1-only" tabIndex={a === 0 ? 0 : -1}>View story<span aria-hidden="true">→</span></Link>}
                 />
               </div>
             );

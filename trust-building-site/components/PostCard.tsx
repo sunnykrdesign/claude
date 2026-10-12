@@ -68,12 +68,12 @@ type TileProps = {
   alt: string;
   /** `sm`: rail tile (convocation strip, immersion rail). `lg`: study abroad carousel. */
   size: 'sm' | 'lg';
-  /** The pill in the photo corner: a link of its own, or decorative when the whole tile is a link. */
+  /** V1 only: the pill in the photo corner, a link of its own or decorative when the whole tile is a link. */
   cta?: React.ReactNode;
   photoPos?: string;
 };
 
-/** A compact LinkedIn post with a photo filling the lower half and a "View story" pill. */
+/** A compact LinkedIn post with a photo filling the lower half. */
 export function PostTile({ p, alt, size, cta, photoPos }: TileProps) {
   return (
     <article className={`pt pt--${size}`}>
@@ -88,7 +88,7 @@ export function PostTile({ p, alt, size, cta, photoPos }: TileProps) {
       <p className="pt__text">{p.text}</p>
       <div className="pt__photo">
         {p.photo && <img src={p.photo} alt={alt} draggable={false} style={photoPos ? { objectPosition: photoPos } : undefined} />}
-        {cta ?? <span className="pt__cta" aria-hidden="true">View story<span>→</span></span>}
+        {cta ?? <span className="pt__cta v1-only" aria-hidden="true">View story<span>→</span></span>}
       </div>
       <div className="pt__stats"><Reactions p={p} /><span>{p.comments}</span></div>
     </article>
