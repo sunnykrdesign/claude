@@ -33,18 +33,15 @@ export default async function ImmersionDetail({ params }: Params) {
 
       <main>
         <section className="d-hero">
-          <div className="d-hero__grid">
-            <div className="d-hero__copy">
-              <span data-rv="1" className="eyebrow eyebrow--wide eyebrow--pulse">{u.place}</span>
-              <h1 className="d-h1"><span className="ln"><span data-ln="1">{u.title}</span></span></h1>
-              <p data-rv="1" className="d-lede">{u.desc}</p>
-              <div data-rv="1" className="d-ctas">
-                <a href={u.url} target="_blank" rel="noopener" className="pill imd__join">Request to join<span className="arr arr--x">→</span><span className="sr-only"> (opens Luma in a new tab)</span></a>
-                <Link href={back} className="pill pill--ghost imd__ghost">Other cities</Link>
-              </div>
+          {/* Event card, styled after the Luma event card. */}
+          <div data-rv="1" className="ecard">
+            <div className="ecard__copy">
+              <span className="ecard__brand" aria-hidden="true">luma<span>✦</span></span>
+              <h1 className="ecard__title">{u.title}</h1>
+              <a href={u.url} target="_blank" rel="noopener" className="ecard__rsvp">RSVP<span className="sr-only"> on Luma (opens in a new tab)</span></a>
             </div>
-            <div data-rv="1" className="imd__cover">
-              <img src={u.img} alt={u.alt} data-kb="1" style={{ '--kb-from': 1.16 } as React.CSSProperties} />
+            <div className="ecard__poster">
+              <img src="/assets/ftgu-poster.webp" alt={`From the Ground Up poster: learn coffee from a master roaster, ${u.city}`} data-kb="1" />
             </div>
           </div>
           <div className="d-facts">

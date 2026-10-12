@@ -580,3 +580,19 @@ html.motion [data-kb] { animation: kb 2.2s var(--ease) .1s both; }
 @media (prefers-reduced-motion: reduce) {
   :root { --hover-lift: 0 0; --hover-zoom: 1; }
 }
+
+/* Immersion detail: event card in the style of the Luma event card. */
+.ecard { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .82fr); align-items: center; gap: clamp(24px, 4vw, 56px); padding: clamp(24px, 3.4vw, 48px) clamp(24px, 3.4vw, 48px) clamp(24px, 3.4vw, 48px) clamp(28px, 5vw, 72px); border-radius: clamp(20px, 2.6vw, 32px); overflow: hidden; background: radial-gradient(120% 90% at 30% 100%, #6A432A 0%, rgba(106, 67, 42, 0) 70%), linear-gradient(180deg, #1E160D 0%, #3F2A1A 48%, #563B22 100%); box-shadow: inset 0 0 0 1px rgba(255, 236, 210, .08), 0 40px 80px -40px rgba(0, 0, 0, .8); }
+.ecard__copy { align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; gap: clamp(28px, 5vw, 64px); padding-block: clamp(8px, 1.4vw, 20px); }
+.ecard__brand { font-size: clamp(22px, 2.4vw, 32px); font-weight: 500; letter-spacing: -.02em; color: rgba(255, 245, 230, .62); }
+.ecard__brand span { font-size: .5em; vertical-align: super; margin-left: 1px; }
+.ecard__title { margin: 0; font-family: var(--sans); font-weight: 500; font-size: clamp(30px, 4.3vw, 60px); line-height: 1.12; letter-spacing: -.02em; color: #FFF8EE; text-wrap: balance; }
+.ecard__rsvp { align-self: flex-start; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 30px; border-radius: 999px; background: #FFFBF3; color: var(--ink); font-size: 16px; font-weight: 600; transition: background-color var(--hover-dur, .5s) var(--ease), color var(--hover-dur, .5s) var(--ease); }
+.ecard__rsvp:hover { background: var(--red); color: var(--white); }
+.ecard__poster { position: relative; aspect-ratio: 1; border-radius: clamp(12px, 1.4vw, 18px); overflow: hidden; background: var(--warm); box-shadow: 0 24px 48px -20px rgba(0, 0, 0, .7), 0 0 0 1px rgba(255, 255, 255, .08); }
+.ecard__poster img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 720px) {
+  .ecard { grid-template-columns: 1fr; padding: 24px; }
+  .ecard__copy { gap: 20px; padding: 0; }
+  .ecard__poster { order: -1; }
+}
