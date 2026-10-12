@@ -592,7 +592,17 @@ html.motion [data-kb] { animation: kb 2.2s var(--ease) .1s both; }
 .ecard__poster { position: relative; aspect-ratio: 1; border-radius: clamp(12px, 1.4vw, 18px); overflow: hidden; background: var(--warm); box-shadow: 0 24px 48px -20px rgba(0, 0, 0, .7), 0 0 0 1px rgba(255, 255, 255, .08); }
 .ecard__poster img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 @media (max-width: 720px) {
-  .ecard { grid-template-columns: 1fr; padding: 24px; }
-  .ecard__copy { gap: 20px; padding: 0; }
-  .ecard__poster { order: -1; }
+  .ecard:not(.ecard--sm) { grid-template-columns: 1fr; padding: 24px; }
+  .ecard:not(.ecard--sm) .ecard__copy { gap: 20px; padding: 0; }
+  .ecard:not(.ecard--sm) .ecard__poster { order: -1; }
 }
+
+/* The same card shrunk to a thumbnail; everything scales with the card's width. */
+:is(.ocard, .icard):has(.ecard--sm) { container-type: inline-size; }
+.ecard.ecard--sm { aspect-ratio: 956/516; gap: 5cqi; padding: 4.6cqi 4.6cqi 4.6cqi 6.6cqi; border-radius: 3.2cqi; }
+.ecard--sm .ecard__copy { gap: 4cqi; padding-block: 1.6cqi; }
+.ecard--sm .ecard__brand { font-size: 3.2cqi; }
+.ecard--sm .ecard__title { font-size: 5.2cqi; }
+.ecard--sm .ecard__rsvp { min-height: 0; padding: 1.4cqi 3.4cqi; font-size: 1.9cqi; }
+.ecard--sm .ecard__poster { border-radius: 1.8cqi; }
+:is(.ocard, .icard):is(:hover, :focus-visible) .ecard__rsvp { background: var(--red); color: var(--white); }

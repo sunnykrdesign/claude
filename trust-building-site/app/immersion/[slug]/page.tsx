@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { DetailReveal } from '@/components/DetailReveal';
+import { EventCardThumb } from '@/components/EventCard';
 import { FeedPost } from '@/components/PostCard';
 import { SiteHeader } from '@/components/SiteHeader';
 import { IMMERSIONS, immersionHref } from '@/lib/immersions';
@@ -105,9 +106,8 @@ export default async function ImmersionDetail({ params }: Params) {
           <div className="d-grid">
             {others.map(o => (
               <Link key={o.slug} data-rv="1" href={immersionHref(o.slug)} className="ocard">
-                <div className="ocard__media"><img src={o.img} alt={o.alt} /></div>
+                <EventCardThumb u={o} className="ocard__media" />
                 <span className="ocard__meta"><span>{o.place}</span><span aria-hidden="true">→</span></span>
-                <span className="ocard__title">{o.title}</span>
               </Link>
             ))}
           </div>

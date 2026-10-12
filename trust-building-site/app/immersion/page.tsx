@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { DetailReveal } from '@/components/DetailReveal';
+import { EventCardThumb } from '@/components/EventCard';
 import { SiteHeader } from '@/components/SiteHeader';
 import { IMMERSIONS, immersionHref } from '@/lib/immersions';
 
@@ -21,12 +22,8 @@ export default function ImmersionEvents() {
         <div className="ix__grid">
           {IMMERSIONS.map((u, k) => (
             <Link key={u.slug} data-rv="1" href={immersionHref(u.slug)} className="icard">
-              <div className="icard__media" style={{ aspectRatio: '800/420' }}>
-                <img src={u.img} alt={u.alt} />
-                <span className="icard__cta" aria-hidden="true">View event<span>→</span></span>
-              </div>
+              <EventCardThumb u={u} className="icard__media" />
               <span className="icard__meta"><span>{u.place}</span><span>{String(k + 1).padStart(2, '0')}</span></span>
-              <span className="icard__title">{u.title}</span>
               <span className="icard__desc">{u.desc}</span>
             </Link>
           ))}
