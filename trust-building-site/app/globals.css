@@ -616,7 +616,7 @@ html:not([data-ver='4']) .v4-only, html[data-ver='4'] .pre-v4 { display: none !i
 .vtoggle { position: fixed; left: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 280; display: flex; gap: 2px; padding: 3px; border-radius: 999px; border: 1px solid rgba(243, 238, 230, .18); background: rgba(14, 12, 11, .82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .vtoggle button { min-width: 44px; min-height: 32px; padding: 0 12px; border: 0; border-radius: 999px; background: transparent; color: rgba(243, 238, 230, .7); font-size: 12px; font-weight: 600; letter-spacing: .06em; cursor: pointer; transition: background-color .3s, color .3s; }
 .vtoggle button:hover { color: var(--cream); }
-html[data-ver='1'] .vtoggle [data-set-ver='1'], html[data-ver='2'] .vtoggle [data-set-ver='2'], html:is([data-ver='3'], [data-ver='4']) .vtoggle [data-set-ver='3'], html[data-ver='4'] .vtoggle [data-set-ver='4'] { background: var(--cream); color: var(--ink); }
+html[data-ver='1'] .vtoggle [data-set-ver='1'], html[data-ver='2'] .vtoggle [data-set-ver='2'], html[data-ver='3'] .vtoggle [data-set-ver='3'], html[data-ver='4'] .vtoggle [data-set-ver='4'] { background: var(--cream); color: var(--ink); }
 
 /* V2: "View all" links become solid pill buttons so they stand out. */
 html:is([data-ver='2'], [data-ver='3'], [data-ver='4']) :is(.viewall, .words__all) {
@@ -677,16 +677,14 @@ html:is([data-ver='3'], [data-ver='4']) .hero__h1 .ln > span { text-wrap: balanc
 .li__act { display: flex; align-items: center; justify-content: center; gap: 4px; min-height: 44px; padding: 4px 8px; font-size: 14px; font-weight: 500; line-height: 18px; letter-spacing: -.14px; color: rgba(0, 0, 0, .6); }
 .li__act img { width: 20px; height: 20px; display: block; }
 .li__spacer { flex: 1; }
-.li__reacts { display: flex; align-items: flex-start; }
-.li__react { position: relative; width: 22.857px; height: 22.857px; border-radius: 999px; overflow: hidden; flex: none; }
-.li__react--2 { margin-left: -5.71px; }
-.li__layer { position: absolute; display: block; }
-.li__layer img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; display: block; }
+.li__reacts { flex: none; width: 40px; height: 22.857px; display: block; }
 
 /* Fixed-height cards in the rails, carousel and marquee so rows line up. */
-.li--tile, .li--marquee { height: 498px; }
+.li--tile { height: 498px; }
+/* Marquee posts have no photo, so those cards fit their text instead of a fixed height. */
+html[data-ver='4'] .mq { align-items: flex-start; }
 .li--marquee { margin-right: 20px; }
-.li:is(.li--tile, .li--marquee) .li__text { flex: 1 1 auto; }
+.li--tile .li__text { flex: 1 1 auto; }
 .tile:is(:hover, :focus-visible) .li, .li--marquee:hover, .li--card:hover, .li--feed:hover { translate: var(--hover-lift); box-shadow: var(--hover-shadow); }
 .tile--dark:is(:hover, :focus-visible) .li { box-shadow: var(--hover-shadow-dark); }
 .tile:is(:hover, :focus-visible) .li__photo img { transform: scale(var(--hover-zoom)); }
