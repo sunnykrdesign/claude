@@ -14,11 +14,20 @@ export type Convocation = {
   about: string[];
   /** Intrinsic aspect ratio of the image, `w/h`. */
   ar: string;
+  /** For the filters on the stories page: the campus (as captioned on the photo) and the programme. */
+  campus: ConvocationCampus;
+  programme: ConvocationProgramme;
 };
+
+export const CONVOCATION_CAMPUSES = ['IIT Bombay', 'IIIT Bangalore'] as const;
+export type ConvocationCampus = (typeof CONVOCATION_CAMPUSES)[number];
+/** Sample programme names: replace with the real programmes. */
+export const CONVOCATION_PROGRAMMES = ['PG in Data Science', 'MBA', 'PG in Software Development', 'PG in Product Management'] as const;
+export type ConvocationProgramme = (typeof CONVOCATION_PROGRAMMES)[number];
 
 export const CONVOCATIONS: Convocation[] = [
   {
-    slug: 'iit-bombay-stage', img: '/assets/conv-l1.png', alt: 'Graduate at IIT Bombay convocation', ar: '670/436',
+    slug: 'iit-bombay-stage', img: '/assets/conv-l1.png', alt: 'Graduate at IIT Bombay convocation', ar: '670/436', campus: 'IIT Bombay', programme: 'PG in Data Science',
     label: 'IIT Bombay', place: 'IIT Bombay · 2026', title: 'Walking the stage at IIT Bombay',
     desc: 'Online learners who completed their programme travel to the IIT Bombay campus to receive their degree in person.',
     facts: [['Campus', 'IIT Bombay'], ['City', 'Mumbai'], ['Year', '2026']],
@@ -28,7 +37,7 @@ export const CONVOCATIONS: Convocation[] = [
     ],
   },
   {
-    slug: 'annual-convocation', img: '/assets/conv-l3.png', alt: 'Graduate at the annual convocation', ar: '670/436',
+    slug: 'annual-convocation', img: '/assets/conv-l3.png', alt: 'Graduate at the annual convocation', ar: '670/436', campus: 'IIT Bombay', programme: 'PG in Data Science',
     label: 'Annual convocation', place: 'Annual convocation · 2026', title: 'The annual convocation',
     desc: 'Once a year, the cohort that studied on screen gathers in one hall with their families.',
     facts: [['Held', 'Once a year'], ['Where', 'On campus'], ['Year', '2026']],
@@ -38,7 +47,7 @@ export const CONVOCATIONS: Convocation[] = [
     ],
   },
   {
-    slug: 'degree-in-hand', img: '/assets/conv-p2.png', alt: 'Graduate holding a degree folder', ar: '596/658',
+    slug: 'degree-in-hand', img: '/assets/conv-p2.png', alt: 'Graduate holding a degree folder', ar: '596/658', campus: 'IIIT Bangalore', programme: 'PG in Product Management',
     label: 'Degree in hand', place: 'Degree in hand · 2026', title: 'Degree in hand',
     desc: 'The folder is physical proof of months of evenings and weekends spent studying alongside work.',
     facts: [['Awarded by', 'Partner university'], ['Received', 'In person'], ['Year', '2026']],
@@ -48,7 +57,7 @@ export const CONVOCATIONS: Convocation[] = [
     ],
   },
   {
-    slug: 'iiit-bangalore', img: '/assets/conv-l5.png', alt: 'Three graduates at IIIT Bangalore', ar: '670/436',
+    slug: 'iiit-bangalore', img: '/assets/conv-l5.png', alt: 'Three graduates at IIIT Bangalore', ar: '670/436', campus: 'IIIT Bangalore', programme: 'PG in Software Development',
     label: 'IIIT Bangalore', place: 'IIIT Bangalore · 2026', title: 'Together at IIIT Bangalore',
     desc: 'Classmates who had only met in breakout rooms finally stand side by side on campus.',
     facts: [['Campus', 'IIIT Bangalore'], ['City', 'Bengaluru'], ['Year', '2026']],
@@ -58,7 +67,7 @@ export const CONVOCATIONS: Convocation[] = [
     ],
   },
   {
-    slug: 'whole-cohort', img: '/assets/conv-l4.png', alt: 'Annual convocation group photograph', ar: '670/436',
+    slug: 'whole-cohort', img: '/assets/conv-l4.png', alt: 'Annual convocation group photograph', ar: '670/436', campus: 'IIIT Bangalore', programme: 'MBA',
     label: 'The whole cohort', place: 'The whole cohort · 2026', title: 'The whole cohort',
     desc: 'The group photograph: every graduate from the year in a single frame.',
     facts: [['Ceremony', 'Annual convocation'], ['Where', 'On campus'], ['Year', '2026']],
@@ -68,7 +77,7 @@ export const CONVOCATIONS: Convocation[] = [
     ],
   },
   {
-    slug: 'iit-bombay-2026', img: '/assets/conv-l2.png', alt: 'Graduate at IIT Bombay convocation', ar: '670/436',
+    slug: 'iit-bombay-2026', img: '/assets/conv-l2.png', alt: 'Graduate at IIT Bombay convocation', ar: '670/436', campus: 'IIT Bombay', programme: 'MBA',
     label: 'IIT Bombay', place: 'IIT Bombay · 2026', title: 'IIT Bombay, class of 2026',
     desc: 'A graduate on the IIT Bombay campus after the ceremony.',
     facts: [['Campus', 'IIT Bombay'], ['City', 'Mumbai'], ['Year', '2026']],

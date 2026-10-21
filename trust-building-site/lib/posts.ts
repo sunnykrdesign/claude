@@ -98,6 +98,22 @@ export const immersionPosts = (city: string) => rows([
 ]);
 
 /** Posts on the study abroad stories page. */
+/** Study abroad programmes, for the filter on the stories page. Sample names: replace with the real programmes. */
+export const ABROAD_PROGRAMMES = ['MS in Data Science', 'MBA', 'MS in Computer Science', 'MS in Business Analytics'] as const;
+export type AbroadProgramme = (typeof ABROAD_PROGRAMMES)[number];
+
+/** The programme behind each study abroad post, by poster. */
+const ABROAD_POST_PROGRAMME: Record<string, AbroadProgramme> = {
+  'Harish Bhat': 'MS in Data Science',
+  'Neha Joshi': 'MBA',
+  'Sneha Gupta': 'MBA',
+  'Nisha Nair': 'MS in Business Analytics',
+  'Lakshmi Reddy': 'MS in Data Science',
+  'Aman Kapoor': 'MS in Data Science',
+  'Riya Sethi': 'MBA',
+  'Kunal Shah': 'MS in Computer Science',
+};
+
 export const ABROAD_STORY_POSTS = rows([
   ['Harish Bhat', 'Data Engineer, PhonePe', 'a5', '12 Aug 2026', '1,528', '78 comments', "A thank-you I've been putting off. When I enrolled I was sceptical. I'd tried online courses before and finished none of them. The difference this time was the mentor calls. Having someone check in every fortnight, who actually read my submissions, changed everything. I finished. First time ever.", 'sa-v0.png'],
   ['Neha Joshi', 'HR Business Partner, Wipro', 'a3', '3 Aug 2026', '964', '41 comments', 'Just back from campus immersion week. Meeting 60 people from my cohort after a year of little squares on a screen. I did not expect it to matter this much. It did.', 'sa-v3.png'],
@@ -107,18 +123,18 @@ export const ABROAD_STORY_POSTS = rows([
   ['Aman Kapoor', 'MS Data Science, Germany', 'a6', '2 Jul 2026', '1,231', '67 comments', 'First week in Berlin. The year I spent studying online before flying out meant I walked into class already knowing half the material.', 'sa-plane.png'],
   ['Riya Sethi', 'MBA candidate, Dublin', null, '24 Jun 2026', '876', '39 comments', 'Visa approved. Twelve months of evenings, one very long document checklist, and a counsellor who answered every one of my 2am emails.', null],
   ['Kunal Shah', 'MS Computer Science, USA', 'a0', '15 Jun 2026', '1,644', '88 comments', 'Started the programme from Pune. Finishing it in Arizona. Same laptop, very different view.', 'sa-v1.png'],
-]);
+]).map(p => ({ ...p, programme: ABROAD_POST_PROGRAMME[p.name] }));
 
 /** The study abroad videos (thumbnails only for now). */
-export const ABROAD_VIDEOS: { src: string; alt: string; desc: string }[] = [
-  ['Learner speaking by a window', 'Why they chose to study abroad, and what finally made the move feel possible.'],
-  ['Learner on being ghosted by a freelancer', 'The setback that nearly stopped them, and how they got back on track.'],
-  ['Learner sharing a suggestion', 'The one piece of advice they would give anyone applying next year.'],
-  ['Learner seated in a studio', 'What their first semester overseas was really like.'],
-  ['Learner on handling visas and paperwork', 'How they handled visas, deadlines and the paperwork in between.'],
-  ['Learner in a blue blazer', 'From admit letter to first day on campus, in their own words.'],
-  ['Learner sharing advice', 'What they wish they had known before they left home.'],
-].map(([alt, desc], i) => ({ src: `/assets/sa-v${i}.png`, alt, desc }));
+export const ABROAD_VIDEOS: { src: string; alt: string; desc: string; programme: AbroadProgramme }[] = ([
+  ['Learner speaking by a window', 'Why they chose to study abroad, and what finally made the move feel possible.', 'MS in Computer Science'],
+  ['Learner on being ghosted by a freelancer', 'The setback that nearly stopped them, and how they got back on track.', 'MBA'],
+  ['Learner sharing a suggestion', 'The one piece of advice they would give anyone applying next year.', 'MS in Data Science'],
+  ['Learner seated in a studio', 'What their first semester overseas was really like.', 'MS in Business Analytics'],
+  ['Learner on handling visas and paperwork', 'How they handled visas, deadlines and the paperwork in between.', 'MS in Computer Science'],
+  ['Learner in a blue blazer', 'From admit letter to first day on campus, in their own words.', 'MBA'],
+  ['Learner sharing advice', 'What they wish they had known before they left home.', 'MS in Data Science'],
+] as [string, string, AbroadProgramme][]).map(([alt, desc, programme], i) => ({ src: `/assets/sa-v${i}.png`, alt, desc, programme }));
 
 export const POSTS_HREF = '/posts/';
 export const ABROAD_HREF = '/study-abroad/';

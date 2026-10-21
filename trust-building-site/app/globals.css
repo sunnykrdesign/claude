@@ -520,6 +520,21 @@ html.motion [data-kb] { animation: kb 2.2s var(--ease) .1s both; }
 .filter { display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 20px; border-radius: 999px; border: 1px solid rgba(14, 12, 11, .24); background: transparent; color: var(--ink); font-size: 14px; font-weight: 600; cursor: pointer; transition: background .3s, color .3s, border-color .3s; }
 .filter[aria-pressed='true'] { background: var(--ink); color: var(--white); border-color: var(--ink); }
 .filter small { font-size: 12px; font-weight: 500; opacity: .6; font-variant-numeric: tabular-nums; }
+.filter:not(:disabled, [aria-pressed='true']):hover { border-color: var(--ink); }
+.filter:disabled { opacity: .35; cursor: default; }
+/* Filter rows on the stories pages (type, programme, campus): a label, then the pills. */
+.filterbar { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; margin-bottom: clamp(28px, 4vh, 44px); }
+.filterbar .filters { flex-wrap: nowrap; align-items: center; margin: 0; }
+.filters__label { flex: none; width: 104px; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.filters__pills { display: flex; flex-wrap: wrap; gap: 8px; min-width: 0; }
+/* Phones: the label sits on top and each row of pills scrolls sideways, edge to edge. */
+@media (max-width: 720px) {
+  .filterbar .filters { display: block; }
+  .filters__label { display: block; width: auto; margin-bottom: 8px; }
+  .filters__pills { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 calc(-1 * var(--pad-x)); padding: 0 var(--pad-x); }
+  .filters__pills::-webkit-scrollbar { display: none; }
+  .filters__pills .filter { flex: none; }
+}
 
 .vtile { display: flex; flex-direction: column; gap: 12px; cursor: pointer; }
 .vtile__media { position: relative; aspect-ratio: 265/420; border-radius: 18px; overflow: hidden; background: var(--warm); transform: translateY(0); box-shadow: 0 0 0 rgba(0, 0, 0, 0); transition: transform .7s var(--ease), box-shadow .7s var(--ease); }
@@ -611,6 +626,7 @@ html.motion [data-kb] { animation: kb 2.2s var(--ease) .1s both; }
 
 /* ───────────────────────── Version toggle (V1 / V2) ───────────────────────── */
 /* Each version builds on the last: V2-only content shows in V3 and V4 too; V4 swaps the post cards. */
+[hidden] { display: none !important; }
 html[data-ver='1'] .v2-only, html:is([data-ver='2'], [data-ver='3'], [data-ver='4']) .v1-only,
 html:not([data-ver='4']) .v4-only, html[data-ver='4'] .pre-v4 { display: none !important; }
 .vtoggle { position: fixed; left: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 280; display: flex; gap: 2px; padding: 3px; border-radius: 999px; border: 1px solid rgba(243, 238, 230, .18); background: rgba(14, 12, 11, .82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
@@ -722,4 +738,7 @@ html[data-ver='3'] .pt--sm :is(.pt__text, .pt__photo) { margin: 8px 13px 0; }
 html[data-ver='3'] .pt--lg { height: calc(clamp(460px, 36vw, 500px) + 14px); }
 html[data-ver='3'] .pt--lg :is(.pt__text, .pt__photo) { margin: 12px 19px 0; }
 html[data-ver='3'] .pc .pc__text { padding-top: 8px; }
+/* The post photo sits inset with rounded corners, lined up with the text, as on the rail cards and hero posts. */
+html[data-ver='3'] .pc__photo { margin: 14px 18px 0; border-radius: 10px; }
+html[data-ver='3'] .pc--card .pc__photo { margin: 12px 16px 0; }
 html[data-ver='3'] .cvquote blockquote { height: calc((max(300px, min(39vh, 336px)) + 81px) * .8 * 1.2 + 16px); }
