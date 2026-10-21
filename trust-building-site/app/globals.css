@@ -626,10 +626,10 @@ html[data-ver='2'] :is(.viewall, .words__all) {
 html[data-ver='2'] :is(.viewall, .words__all):hover { background: var(--red-deep); color: var(--white); }
 
 /* V2: LinkedIn post cards in the rails: the tall V2 card (V1 height + 81px) at 80%,
-   then 20% taller again. Text and photo fill the card, so there is no empty band:
-   the text shows as many lines as fit and the photo takes the rest. */
+   then 20% taller again. The photo keeps its V1 size and the text gets the rest (up to 5 lines). */
 html[data-ver='2'] .pt--sm { --v2-h: calc((max(300px, min(39vh, 336px)) + 81px) * .8 * 1.2); height: var(--v2-h); }
-html[data-ver='2'] .pt--sm .pt__text { flex: none; font-size: 13px; line-height: 1.5; -webkit-line-clamp: 3; }
-html[data-ver='2'] .pt--sm .pt__photo { flex: 1 1 0; min-height: 0; }
+html[data-ver='2'] .pt--sm .pt__text { flex: 1 1 auto; min-height: 0; font-size: 13px; line-height: 1.5; -webkit-line-clamp: 5; }
+/* The photo stays at its V1 size: V1 card height minus the card's 132px of other content. */
+html[data-ver='2'] .pt--sm .pt__photo { flex: none; min-height: 0; height: calc(max(300px, min(39vh, 336px)) - 132px); }
 html[data-ver='2'] .cvquote blockquote { height: calc((max(300px, min(39vh, 336px)) + 81px) * .8 * 1.2); }
 html[data-ver='2'] .cvquote blockquote p { font-size: clamp(22px, 1.9vw, 30px); }
