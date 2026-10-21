@@ -625,8 +625,10 @@ html[data-ver='2'] :is(.viewall, .words__all) {
 }
 html[data-ver='2'] :is(.viewall, .words__all):hover { background: var(--red-deep); color: var(--white); }
 
-/* V2: taller LinkedIn post cards in the rails so more of each post is readable. */
-html[data-ver='2'] .pt--sm { height: max(440px, min(58vh, 500px)); width: min(42vh, 330px); min-width: 290px; }
-html[data-ver='2'] .pt--sm .pt__text { font-size: 13px; line-height: 1.5; -webkit-line-clamp: 6; }
-html[data-ver='2'] .pt--sm .pt__photo { min-height: 46%; }
-html[data-ver='2'] .cvquote blockquote { height: max(440px, min(58vh, 500px)); }
+/* V2: taller LinkedIn post cards in the rails so more of each post is readable.
+   The photo keeps its V1 size (V1 card height minus the card's 132px of other content)
+   and the card grows only by the extra text lines (6 instead of 2: about 81px). */
+html[data-ver='2'] .pt--sm { --v1-h: max(300px, min(39vh, 336px)); height: calc(var(--v1-h) + 81px); }
+html[data-ver='2'] .pt--sm .pt__text { flex: 1 1 auto; font-size: 13px; line-height: 1.5; -webkit-line-clamp: 6; }
+html[data-ver='2'] .pt--sm .pt__photo { flex: none; min-height: 0; height: calc(var(--v1-h) - 132px); }
+html[data-ver='2'] .cvquote blockquote { height: calc(max(300px, min(39vh, 336px)) + 81px); }
