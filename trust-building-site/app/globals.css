@@ -624,3 +624,9 @@ html[data-ver='2'] :is(.viewall, .words__all) {
   transition: background-color .3s var(--ease);
 }
 html[data-ver='2'] :is(.viewall, .words__all):hover { background: var(--red-deep); color: var(--white); }
+
+/* V2: taller LinkedIn post cards in the rails so more of each post is readable. */
+html[data-ver='2'] .pt--sm { height: max(440px, min(58vh, 500px)); width: min(42vh, 330px); min-width: 290px; }
+html[data-ver='2'] .pt--sm .pt__text { font-size: 13px; line-height: 1.5; -webkit-line-clamp: 6; }
+html[data-ver='2'] .pt--sm .pt__photo { min-height: 46%; }
+html[data-ver='2'] .cvquote blockquote { height: max(440px, min(58vh, 500px)); }
