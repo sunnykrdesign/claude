@@ -1,4 +1,4 @@
-import { LiCard } from '@/components/LiCard';
+import { LiActions, LiCard, LiHead } from '@/components/LiCard';
 import { avatarSrc, initials, type Post } from '@/lib/posts';
 
 function Avatar({ p, alt = '' }: { p: Post; alt?: string }) {
@@ -38,7 +38,7 @@ export function FeedPost({ p, variant, hidden, reveal, photoPos }: FeedProps) {
   const actions = variant !== 'card';
   const card = (
     <article className={`pc pc--${variant} pre-v4`} aria-hidden={hidden || undefined}>
-      <header className="pc__head">
+      <header className="pc__head not-v3">
         <Avatar p={p} alt={hidden ? '' : p.name} />
         <span className="pc__who">
           <span className="pc__name">{p.name}</span>
@@ -47,6 +47,7 @@ export function FeedPost({ p, variant, hidden, reveal, photoPos }: FeedProps) {
         </span>
         <span className="li-badge" aria-label="LinkedIn">in</span>
       </header>
+      <LiHead p={p} className="v3-only" />
       <p className="pc__text">{p.text}</p>
       {variant === 'marquee' && <span className="pc__more" aria-hidden="true">…see more</span>}
       {p.photo && (
@@ -54,10 +55,11 @@ export function FeedPost({ p, variant, hidden, reveal, photoPos }: FeedProps) {
           <img src={p.photo} alt={`Photo shared by ${p.name}`} loading="lazy" style={photoPos ? { objectPosition: photoPos } : undefined} />
         </div>
       )}
-      <div className="pc__stats"><Reactions p={p} /><span>{p.comments}</span></div>
+      <div className="pc__stats not-v3"><Reactions p={p} /><span>{p.comments}</span></div>
       {actions && (
-        <div className="pc__actions" aria-hidden="true"><span>Like</span><span>Comment</span><span>Repost</span><span>Send</span></div>
+        <div className="pc__actions not-v3" aria-hidden="true"><span>Like</span><span>Comment</span><span>Repost</span><span>Send</span></div>
       )}
+      <LiActions p={p} className="v3-only" />
     </article>
   );
   const both = <>{card}<LiCard p={p} hidden={hidden} photoPos={photoPos} className={`v4-only li--${variant}`} /></>;
@@ -81,7 +83,7 @@ export function PostTile({ p, alt, size, cta, photoPos }: TileProps) {
     <>
     <LiCard p={p} alt={alt} photoPos={photoPos} fixed className={`v4-only li--tile li--${size}`} />
     <article className={`pt pt--${size} pre-v4`}>
-      <header className="pt__head">
+      <header className="pt__head not-v3">
         <Avatar p={p} />
         <span className="pt__who">
           <span className="pt__name">{p.name}</span>
@@ -89,12 +91,14 @@ export function PostTile({ p, alt, size, cta, photoPos }: TileProps) {
         </span>
         <span className="li-badge" aria-label="LinkedIn">in</span>
       </header>
+      <LiHead p={p} className="v3-only" />
       <p className="pt__text">{p.text}</p>
       <div className="pt__photo">
         {p.photo && <img src={p.photo} alt={alt} draggable={false} style={photoPos ? { objectPosition: photoPos } : undefined} />}
         {cta ?? <span className="pt__cta v1-only" aria-hidden="true">View story<span>→</span></span>}
       </div>
-      <div className="pt__stats"><Reactions p={p} /><span>{p.comments}</span></div>
+      <div className="pt__stats not-v3"><Reactions p={p} /><span>{p.comments}</span></div>
+      <LiActions p={p} className="v3-only" />
     </article>
     </>
   );

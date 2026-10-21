@@ -21,7 +21,6 @@ const LINE = 22;
  * and the action row with likes, comments and reactions.
  */
 export function LiCard({ p, alt, photoPos, hidden, fixed, className = '' }: { p: Post; alt?: string; photoPos?: string; hidden?: boolean; fixed?: boolean; className?: string }) {
-  const av = avatarSrc(p.av);
   const more = moreFor(p.text);
   const target = p.photo ? PHOTO_HEIGHTS[hash(p.name + p.text) % PHOTO_HEIGHTS.length] : 0;
   // Fixed cards: fit whole lines of text, then give the leftover (< one line) to the photo,
@@ -30,31 +29,46 @@ export function LiCard({ p, alt, photoPos, hidden, fixed, className = '' }: { p:
   const photoH = fixed && p.photo ? TEXT_SPACE - lines * LINE : target;
   return (
     <article className={`li ${className}`} aria-hidden={hidden || undefined}>
-      <header className="li__head">
-        <span className="li__avatar">{av ? <img src={av} alt="" draggable={false} /> : initials(p.name)}</span>
-        <span className="li__who">
-          <span className="li__nameRow">
-            <span className="li__name">{p.name}</span>
-            <img className="li__premium" src={ICON + 'premium.png'} alt="" width={16} height={16} />
-            <span className="li__degree">{' • 2nd'}</span>
-          </span>
-          <span className="li__headline">{p.role}</span>
-          <span className="li__date">{p.date}</span>
-        </span>
-        <span className="li__logo"><img src={ICON + 'linkedin-logo.png'} alt="LinkedIn" /></span>
-      </header>
+      <LiHead p={p} />
       <p className="li__text" style={{ WebkitLineClamp: lines, maxHeight: lines * LINE + 4 }}>{more ? `${p.text}\n\n${more}` : p.text}</p>
       {p.photo && (
         <div className="li__photo" style={{ height: photoH }}>
           <img src={p.photo} alt={alt ?? `Photo shared by ${p.name}`} draggable={false} style={photoPos ? { objectPosition: photoPos } : undefined} />
         </div>
       )}
-      <div className="li__actions">
-        <span className="li__act"><img src={ICON + 'like.png'} alt="" width={20} height={20} /><span>{count(p.likes)}</span></span>
-        <span className="li__act"><img src={ICON + 'comment.png'} alt="" width={20} height={20} /><span>{count(p.comments)}</span></span>
-        <span className="li__spacer" />
-        <img className="li__reacts" src={ICON + 'reactions.png'} alt="" width={40} height={23} />
-      </div>
+      <LiActions p={p} />
     </article>
+  );
+}
+
+/** The post header: avatar, name with the Premium badge and degree, headline and date, LinkedIn logo. */
+export function LiHead({ p, className = '' }: { p: Post; className?: string }) {
+  const av = avatarSrc(p.av);
+  return (
+    <header className={`li__head ${className}`}>
+      <span className="li__avatar">{av ? <img src={av} alt="" draggable={false} /> : initials(p.name)}</span>
+      <span className="li__who">
+        <span className="li__nameRow">
+          <span className="li__name">{p.name}</span>
+          <img className="li__premium" src={ICON + 'premium.png'} alt="" width={16} height={16} />
+          <span className="li__degree">{' • 2nd'}</span>
+        </span>
+        <span className="li__headline">{p.role}</span>
+        <span className="li__date">{p.date}</span>
+      </span>
+      <span className="li__logo"><img src={ICON + 'linkedin-logo.png'} alt="LinkedIn" /></span>
+    </header>
+  );
+}
+
+/** The footer row: likes, comments and the reaction icons. */
+export function LiActions({ p, className = '' }: { p: Post; className?: string }) {
+  return (
+    <div className={`li__actions ${className}`}>
+      <span className="li__act"><img src={ICON + 'like.png'} alt="" width={20} height={20} /><span>{count(p.likes)}</span></span>
+      <span className="li__act"><img src={ICON + 'comment.png'} alt="" width={20} height={20} /><span>{count(p.comments)}</span></span>
+      <span className="li__spacer" />
+      <img className="li__reacts" src={ICON + 'reactions.png'} alt="" width={40} height={23} />
+    </div>
   );
 }
