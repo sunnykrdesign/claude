@@ -610,26 +610,48 @@ html.motion [data-kb] { animation: kb 2.2s var(--ease) .1s both; }
 .postlink:focus-visible .pc { outline: 2px solid var(--red); outline-offset: 3px; }
 
 /* ───────────────────────── Version toggle (V1 / V2) ───────────────────────── */
-html[data-ver='1'] .v2-only, html[data-ver='2'] .v1-only { display: none !important; }
+/* V3 builds on V2, so V2-only content shows in V3 too. */
+html[data-ver='1'] .v2-only, html:is([data-ver='2'], [data-ver='3']) .v1-only { display: none !important; }
 .vtoggle { position: fixed; left: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 280; display: flex; gap: 2px; padding: 3px; border-radius: 999px; border: 1px solid rgba(243, 238, 230, .18); background: rgba(14, 12, 11, .82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .vtoggle button { min-width: 44px; min-height: 32px; padding: 0 12px; border: 0; border-radius: 999px; background: transparent; color: rgba(243, 238, 230, .7); font-size: 12px; font-weight: 600; letter-spacing: .06em; cursor: pointer; transition: background-color .3s, color .3s; }
 .vtoggle button:hover { color: var(--cream); }
-html[data-ver='1'] .vtoggle [data-set-ver='1'], html[data-ver='2'] .vtoggle [data-set-ver='2'] { background: var(--cream); color: var(--ink); }
+html[data-ver='1'] .vtoggle [data-set-ver='1'], html[data-ver='2'] .vtoggle [data-set-ver='2'], html[data-ver='3'] .vtoggle [data-set-ver='3'] { background: var(--cream); color: var(--ink); }
 
 /* V2: "View all" links become solid pill buttons so they stand out. */
-html[data-ver='2'] :is(.viewall, .words__all) {
+html:is([data-ver='2'], [data-ver='3']) :is(.viewall, .words__all) {
   display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 24px; border: 0; border-radius: 999px;
   background: var(--red); color: var(--white); font-size: 15px; font-weight: 600; text-shadow: none;
   box-shadow: none;
   transition: background-color .3s var(--ease);
 }
-html[data-ver='2'] :is(.viewall, .words__all):hover { background: var(--red-deep); color: var(--white); }
+html:is([data-ver='2'], [data-ver='3']) :is(.viewall, .words__all):hover { background: var(--red-deep); color: var(--white); }
 
 /* V2: LinkedIn post cards in the rails: the tall V2 card (V1 height + 81px) at 80%,
    then 20% taller again. The photo keeps its V1 size and the text gets the rest (up to 5 lines). */
-html[data-ver='2'] .pt--sm { --v2-h: calc((max(300px, min(39vh, 336px)) + 81px) * .8 * 1.2); height: var(--v2-h); }
-html[data-ver='2'] .pt--sm .pt__text { flex: 1 1 auto; min-height: 0; font-size: 13px; line-height: 1.5; -webkit-line-clamp: 5; }
+html:is([data-ver='2'], [data-ver='3']) .pt--sm { --v2-h: calc((max(300px, min(39vh, 336px)) + 81px) * .8 * 1.2); height: var(--v2-h); }
+html:is([data-ver='2'], [data-ver='3']) .pt--sm .pt__text { flex: 1 1 auto; min-height: 0; font-size: 13px; line-height: 1.5; -webkit-line-clamp: 5; }
 /* The photo stays at its V1 size: V1 card height minus the card's 132px of other content. */
-html[data-ver='2'] .pt--sm .pt__photo { flex: none; min-height: 0; height: calc(max(300px, min(39vh, 336px)) - 132px); }
-html[data-ver='2'] .cvquote blockquote { height: calc((max(300px, min(39vh, 336px)) + 81px) * .8 * 1.2); }
-html[data-ver='2'] .cvquote blockquote p { font-size: clamp(22px, 1.9vw, 30px); }
+html:is([data-ver='2'], [data-ver='3']) .pt--sm .pt__photo { flex: none; min-height: 0; height: calc(max(300px, min(39vh, 336px)) - 132px); }
+html:is([data-ver='2'], [data-ver='3']) .cvquote blockquote { height: calc((max(300px, min(39vh, 336px)) + 81px) * .8 * 1.2); }
+html:is([data-ver='2'], [data-ver='3']) .cvquote blockquote p { font-size: clamp(22px, 1.9vw, 30px); }
+
+/* V3: Fraunces for display type (DM Sans stays for body). Fraunces is much wider than
+   Instrument Serif, so the big headline sizes come down and tracking loosens a little. */
+html[data-ver='3'] { --serif: var(--font-fraunces), 'Fraunces', Georgia, serif; }
+html[data-ver='3'] :is(.hero__h1, .shead__h2, .words__h2, .close__h2, .d-h1, .d-h2, .man__text, .subhead__h3, .panel__h3, .shead__sub) { font-variation-settings: 'opsz' 144, 'SOFT' 50; font-weight: 400; }
+html[data-ver='3'] .hero__h1 { font-size: clamp(40px, 5vw, 84px); letter-spacing: -.03em; line-height: 1; }
+html[data-ver='3'] .shead__h2 { font-size: clamp(46px, 5.2vw, 84px); letter-spacing: -.035em; line-height: .95; }
+html[data-ver='3'] .shead__sub { font-size: clamp(20px, 1.9vw, 28px); letter-spacing: -.01em; line-height: 1.2; }
+html[data-ver='3'] .man__text { font-size: clamp(30px, 3.9vw, 64px); letter-spacing: -.02em; line-height: 1.12; }
+html[data-ver='3'] .subhead__h3 { font-size: clamp(32px, 3.4vw, 52px); letter-spacing: -.025em; line-height: 1.05; }
+html[data-ver='3'] .panel-foot .subhead__h3 > .ln > span { font-size: 32px; }
+html[data-ver='3'] .panel__h3 { font-size: clamp(28px, 2.8vw, 44px); line-height: 1.12; letter-spacing: -.01em; }
+html[data-ver='3'] .words__h2 { font-size: clamp(38px, 4.8vw, 76px); letter-spacing: -.03em; line-height: 1; }
+html[data-ver='3'] .close__h2 { font-size: clamp(50px, 8vw, 140px); letter-spacing: -.035em; line-height: .95; }
+html[data-ver='3'] .d-h1 { font-size: clamp(40px, 5vw, 84px); letter-spacing: -.03em; line-height: 1; }
+html[data-ver='3'] .d-h2 { font-size: clamp(34px, 3.8vw, 60px); letter-spacing: -.03em; line-height: 1; }
+html[data-ver='3'] .cvquote blockquote p { font-size: clamp(20px, 1.6vw, 26px); line-height: 1.2; }
+html[data-ver='3'] :is(.pre__pct, .hero__num, .imm__numwin, .imm__text p, .d-fact span:last-child, .ocard__title, .icard__title, .imd__brew span, .imd__about p, .cvd__about p) { letter-spacing: -.02em; }
+/* Keep the hero's bottom row clear of the version toggle in the bottom-left corner. */
+.hero__foot { bottom: max(clamp(24px, 4vh, 40px), 64px); }
+html[data-ver='3'] .hero__h1 .ln > span { text-wrap: balance; }
