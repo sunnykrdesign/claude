@@ -1,3 +1,4 @@
+import { LiCard } from '@/components/LiCard';
 import { avatarSrc, initials, type Post } from '@/lib/posts';
 
 function Avatar({ p, alt = '' }: { p: Post; alt?: string }) {
@@ -36,7 +37,7 @@ type FeedProps = {
 export function FeedPost({ p, variant, hidden, reveal, photoPos }: FeedProps) {
   const actions = variant !== 'card';
   const card = (
-    <article className={`pc pc--${variant}`} aria-hidden={hidden || undefined}>
+    <article className={`pc pc--${variant} pre-v4`} aria-hidden={hidden || undefined}>
       <header className="pc__head">
         <Avatar p={p} alt={hidden ? '' : p.name} />
         <span className="pc__who">
@@ -59,8 +60,9 @@ export function FeedPost({ p, variant, hidden, reveal, photoPos }: FeedProps) {
       )}
     </article>
   );
+  const both = <>{card}<LiCard p={p} hidden={hidden} photoPos={photoPos} className={`v4-only li--${variant}`} /></>;
   // The reveal sits on a wrapper so its settled `transform: none` can't override the hover lift.
-  return reveal ? <div data-rv="1">{card}</div> : card;
+  return reveal ? <div data-rv="1">{both}</div> : both;
 }
 
 type TileProps = {
@@ -76,7 +78,9 @@ type TileProps = {
 /** A compact LinkedIn post with a photo filling the lower half. */
 export function PostTile({ p, alt, size, cta, photoPos }: TileProps) {
   return (
-    <article className={`pt pt--${size}`}>
+    <>
+    <LiCard p={p} alt={alt} photoPos={photoPos} className={`v4-only li--tile li--${size}`} />
+    <article className={`pt pt--${size} pre-v4`}>
       <header className="pt__head">
         <Avatar p={p} />
         <span className="pt__who">
@@ -92,5 +96,6 @@ export function PostTile({ p, alt, size, cta, photoPos }: TileProps) {
       </div>
       <div className="pt__stats"><Reactions p={p} /><span>{p.comments}</span></div>
     </article>
+    </>
   );
 }
