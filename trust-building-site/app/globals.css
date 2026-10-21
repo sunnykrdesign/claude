@@ -610,26 +610,106 @@ html.motion [data-kb] { animation: kb 2.2s var(--ease) .1s both; }
 .postlink:focus-visible .pc { outline: 2px solid var(--red); outline-offset: 3px; }
 
 /* ───────────────────────── Version toggle (V1 / V2) ───────────────────────── */
-html[data-ver='1'] .v2-only, html[data-ver='2'] .v1-only { display: none !important; }
+/* Each version builds on the last: V2-only content shows in V3 and V4 too; V4 swaps the post cards. */
+html[data-ver='1'] .v2-only, html:is([data-ver='2'], [data-ver='3'], [data-ver='4']) .v1-only,
+html:not([data-ver='4']) .v4-only, html[data-ver='4'] .pre-v4 { display: none !important; }
 .vtoggle { position: fixed; left: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 280; display: flex; gap: 2px; padding: 3px; border-radius: 999px; border: 1px solid rgba(243, 238, 230, .18); background: rgba(14, 12, 11, .82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .vtoggle button { min-width: 44px; min-height: 32px; padding: 0 12px; border: 0; border-radius: 999px; background: transparent; color: rgba(243, 238, 230, .7); font-size: 12px; font-weight: 600; letter-spacing: .06em; cursor: pointer; transition: background-color .3s, color .3s; }
 .vtoggle button:hover { color: var(--cream); }
-html[data-ver='1'] .vtoggle [data-set-ver='1'], html[data-ver='2'] .vtoggle [data-set-ver='2'] { background: var(--cream); color: var(--ink); }
+html[data-ver='1'] .vtoggle [data-set-ver='1'], html[data-ver='2'] .vtoggle [data-set-ver='2'], html[data-ver='3'] .vtoggle [data-set-ver='3'], html[data-ver='4'] .vtoggle [data-set-ver='4'] { background: var(--cream); color: var(--ink); }
 
 /* V2: "View all" links become solid pill buttons so they stand out. */
-html[data-ver='2'] :is(.viewall, .words__all) {
+html:is([data-ver='2'], [data-ver='3'], [data-ver='4']) :is(.viewall, .words__all) {
   display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 24px; border: 0; border-radius: 999px;
   background: var(--red); color: var(--white); font-size: 15px; font-weight: 600; text-shadow: none;
   box-shadow: none;
   transition: background-color .3s var(--ease);
 }
-html[data-ver='2'] :is(.viewall, .words__all):hover { background: var(--red-deep); color: var(--white); }
+html:is([data-ver='2'], [data-ver='3'], [data-ver='4']) :is(.viewall, .words__all):hover { background: var(--red-deep); color: var(--white); }
 
 /* V2: LinkedIn post cards in the rails: the tall V2 card (V1 height + 81px) at 80%,
    then 20% taller again. The photo keeps its V1 size and the text gets the rest (up to 5 lines). */
-html[data-ver='2'] .pt--sm { --v2-h: calc((max(300px, min(39vh, 336px)) + 81px) * .8 * 1.2); height: var(--v2-h); }
-html[data-ver='2'] .pt--sm .pt__text { flex: 1 1 auto; min-height: 0; font-size: 13px; line-height: 1.5; -webkit-line-clamp: 5; }
+html:is([data-ver='2'], [data-ver='3'], [data-ver='4']) .pt--sm { --v2-h: calc((max(300px, min(39vh, 336px)) + 81px) * .8 * 1.2); height: var(--v2-h); }
+html:is([data-ver='2'], [data-ver='3'], [data-ver='4']) .pt--sm .pt__text { flex: 1 1 auto; min-height: 0; font-size: 13px; line-height: 1.5; -webkit-line-clamp: 5; }
 /* The photo stays at its V1 size: V1 card height minus the card's 132px of other content. */
-html[data-ver='2'] .pt--sm .pt__photo { flex: none; min-height: 0; height: calc(max(300px, min(39vh, 336px)) - 132px); }
-html[data-ver='2'] .cvquote blockquote { height: calc((max(300px, min(39vh, 336px)) + 81px) * .8 * 1.2); }
-html[data-ver='2'] .cvquote blockquote p { font-size: clamp(22px, 1.9vw, 30px); }
+html:is([data-ver='2'], [data-ver='3'], [data-ver='4']) .pt--sm .pt__photo { flex: none; min-height: 0; height: calc(max(300px, min(39vh, 336px)) - 132px); }
+html:is([data-ver='2'], [data-ver='3'], [data-ver='4']) .cvquote blockquote { height: calc((max(300px, min(39vh, 336px)) + 81px) * .8 * 1.2); }
+html:is([data-ver='2'], [data-ver='3'], [data-ver='4']) .cvquote blockquote p { font-size: clamp(22px, 1.9vw, 30px); }
+
+/* V3: Fraunces for display type (DM Sans stays for body). Fraunces is much wider than
+   Instrument Serif, so the big headline sizes come down and tracking loosens a little. */
+html:is([data-ver='3'], [data-ver='4']) { --serif: var(--font-fraunces), 'Fraunces', Georgia, serif; }
+html:is([data-ver='3'], [data-ver='4']) :is(.hero__h1, .shead__h2, .words__h2, .close__h2, .d-h1, .d-h2, .man__text, .subhead__h3, .panel__h3, .shead__sub) { font-variation-settings: 'opsz' 144, 'SOFT' 50; font-weight: 400; }
+html:is([data-ver='3'], [data-ver='4']) .hero__h1 { font-size: clamp(40px, 5vw, 84px); letter-spacing: -.03em; line-height: 1; }
+html:is([data-ver='3'], [data-ver='4']) .shead__h2 { font-size: clamp(46px, 5.2vw, 84px); letter-spacing: -.035em; line-height: .95; }
+html:is([data-ver='3'], [data-ver='4']) .shead__sub { font-size: clamp(20px, 1.9vw, 28px); letter-spacing: -.01em; line-height: 1.2; }
+html:is([data-ver='3'], [data-ver='4']) .man__text { font-size: clamp(30px, 3.9vw, 64px); letter-spacing: -.02em; line-height: 1.12; }
+html:is([data-ver='3'], [data-ver='4']) .subhead__h3 { font-size: clamp(32px, 3.4vw, 52px); letter-spacing: -.025em; line-height: 1.05; }
+html:is([data-ver='3'], [data-ver='4']) .panel-foot .subhead__h3 > .ln > span { font-size: 32px; }
+html:is([data-ver='3'], [data-ver='4']) .panel__h3 { font-size: clamp(28px, 2.8vw, 44px); line-height: 1.12; letter-spacing: -.01em; }
+html:is([data-ver='3'], [data-ver='4']) .words__h2 { font-size: clamp(38px, 4.8vw, 76px); letter-spacing: -.03em; line-height: 1; }
+html:is([data-ver='3'], [data-ver='4']) .close__h2 { font-size: clamp(50px, 8vw, 140px); letter-spacing: -.035em; line-height: .95; }
+html:is([data-ver='3'], [data-ver='4']) .d-h1 { font-size: clamp(40px, 5vw, 84px); letter-spacing: -.03em; line-height: 1; }
+html:is([data-ver='3'], [data-ver='4']) .d-h2 { font-size: clamp(34px, 3.8vw, 60px); letter-spacing: -.03em; line-height: 1; }
+html:is([data-ver='3'], [data-ver='4']) .cvquote blockquote p { font-size: clamp(20px, 1.6vw, 26px); line-height: 1.2; }
+html:is([data-ver='3'], [data-ver='4']) :is(.pre__pct, .hero__num, .imm__numwin, .imm__text p, .d-fact span:last-child, .ocard__title, .icard__title, .imd__brew span, .imd__about p, .cvd__about p) { letter-spacing: -.02em; }
+/* Keep the hero's bottom row clear of the version toggle in the bottom-left corner. */
+.hero__foot { bottom: max(clamp(24px, 4vh, 40px), 64px); }
+html:is([data-ver='3'], [data-ver='4']) .hero__h1 .ln > span { text-wrap: balance; }
+
+/* ───────────────────────── V4: LinkedIn post card ("Wall of Voices" Figma, 1386:3603) ─────────────────────────
+   Measured from the 2x export: 383 × 507 card, 42px avatar, 18px text gutter, 340 × 198 photo. */
+.li { position: relative; flex: none; display: flex; flex-direction: column; width: 383px; max-width: 100%; background: #FFFFFF; border: 1px solid rgba(140, 140, 140, .2); border-radius: 12px; overflow: hidden; font-family: var(--sans); color: rgba(0, 0, 0, .9); text-align: left; transition: translate var(--hover-dur, .5s) var(--ease), box-shadow var(--hover-dur, .5s) var(--ease); }
+/* Header and footer sizes are in --u, one design pixel: 1px in V4, scaled to the card in V3. */
+.li__head { display: flex; align-items: flex-start; padding-left: calc(20.5 * var(--u, 1px)); }
+.li__avatar { flex: none; width: calc(42 * var(--u, 1px)); height: calc(42 * var(--u, 1px)); margin: calc(24 * var(--u, 1px)) 0 0; border-radius: 999px; overflow: hidden; background: #EFE9E1; display: flex; align-items: center; justify-content: center; font-size: calc(14 * var(--u, 1px)); font-weight: 600; color: #46403A; }
+.li__avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.li__who { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: calc(20 * var(--u, 1px)) calc(4 * var(--u, 1px)) calc(5 * var(--u, 1px)) calc(12 * var(--u, 1px)); }
+.li__nameRow { display: flex; align-items: center; min-width: 0; height: calc(20 * var(--u, 1px)); }
+.li__name { font-size: calc(16 * var(--u, 1px)); font-weight: 600; line-height: calc(20 * var(--u, 1px)); letter-spacing: calc(-0.3125 * var(--u, 1px)); color: rgba(0, 0, 0, .9); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.li__premium { flex: none; width: calc(16 * var(--u, 1px)); height: calc(16 * var(--u, 1px)); margin-left: calc(6 * var(--u, 1px)); }
+.li__degree { flex: none; font-size: calc(12 * var(--u, 1px)); line-height: calc(15 * var(--u, 1px)); color: rgba(0, 0, 0, .6); white-space: pre; }
+.li__headline, .li__date { font-size: calc(12 * var(--u, 1px)); line-height: calc(15 * var(--u, 1px)); color: rgba(0, 0, 0, .6); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.li__logo { flex: none; width: calc(32 * var(--u, 1px)); height: calc(32 * var(--u, 1px)); margin: calc(17 * var(--u, 1px)) calc(17 * var(--u, 1px)) 0 0; }
+.li__logo img { width: 100%; height: 100%; border-radius: calc(6.524 * var(--u, 1px)); object-fit: cover; display: block; }
+.li__text { margin: 0 0 8px; padding: 4px 18px 0 17px; font-size: 16px; line-height: 22px; letter-spacing: -.16px; color: rgba(0, 0, 0, .9); white-space: pre-line; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 7; overflow: hidden; }
+.li__photo { position: relative; height: 198px; margin: 0 21px 6px 19.5px; border-radius: 12px; overflow: hidden; background: var(--warm); }
+.li__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--hover-dur, .5s) var(--ease); }
+.li__actions { display: flex; align-items: center; gap: calc(2 * var(--u, 1px)); min-height: calc(44 * var(--u, 1px)); padding: 0 calc(18 * var(--u, 1px)) 0 calc(17 * var(--u, 1px)); margin: auto 0 calc(6 * var(--u, 1px)); }
+.li__act { display: flex; align-items: center; justify-content: center; gap: calc(4 * var(--u, 1px)); min-height: calc(44 * var(--u, 1px)); padding: calc(4 * var(--u, 1px)) calc(8 * var(--u, 1px)); font-size: calc(14 * var(--u, 1px)); font-weight: 500; line-height: calc(18 * var(--u, 1px)); letter-spacing: calc(-0.14 * var(--u, 1px)); color: rgba(0, 0, 0, .6); }
+.li__act img { width: calc(20 * var(--u, 1px)); height: calc(20 * var(--u, 1px)); display: block; }
+.li__spacer { flex: 1; }
+.li__reacts { flex: none; width: calc(40 * var(--u, 1px)); height: calc(22.857 * var(--u, 1px)); display: block; }
+
+/* Fixed-height cards in the rails, carousel and marquee so rows line up. */
+.li--tile { height: 507px; }
+/* Marquee posts have no photo, so those cards fit their text instead of a fixed height. */
+html[data-ver='4'] .mq { align-items: flex-start; }
+.li--marquee { margin-right: 20px; }
+/* The text box is exactly the lines that fit (set inline), so no partial line shows. The 8px under it
+   is a margin, not padding: overflow clips at the padding edge, so padding would show the next line's top. */
+.li__text { flex: none; }
+.tile:is(:hover, :focus-visible) .li, .li--marquee:hover, .li--card:hover, .li--feed:hover { translate: var(--hover-lift); box-shadow: var(--hover-shadow); }
+.tile--dark:is(:hover, :focus-visible) .li { box-shadow: var(--hover-shadow-dark); }
+.tile:is(:hover, :focus-visible) .li__photo img { transform: scale(var(--hover-zoom)); }
+html:is([data-ver='3'], [data-ver='4']) .sa-slot { border-radius: 12px; }
+html[data-ver='4'] .cvquote blockquote { height: 507px; }
+html[data-ver='4'] .sa-stage { height: clamp(540px, 42vw, 580px); }
+
+/* ───────────────────────── V3: LinkedIn header and footer on the V2 post cards ─────────────────────────
+   The text and photo stay as they are; the header, footer and frame are the V4 card's, scaled to the card:
+   --u is one design pixel at the V4 card's 381px inner width (0.78px on a 300px rail tile), never more than 1px.
+   The rail tiles grow by the header's extra height so their photos keep the same size. */
+html:not([data-ver='3']) .v3-only, html[data-ver='3'] .not-v3 { display: none !important; }
+html[data-ver='3'] :is(.pt, .pc) { container-type: inline-size; --u: min(1px, 100cqi / 381); border: 1px solid rgba(140, 140, 140, .2); border-radius: 12px; }
+html[data-ver='3'] :is(.pt, .pc) :is(.li__head, .li__actions) { font-family: var(--sans); }
+/* The footer sits right under the photo (or text), 1 design pixel off the bottom edge. */
+html[data-ver='3'] :is(.pt, .pc) .li__actions { margin: auto 0 var(--u); }
+html[data-ver='3'] .pt { padding: 0; gap: 0; }
+html[data-ver='3'] .pt--sm { height: calc(var(--v2-h) + 16px); border-radius: calc(12px * 298 / 381); }
+/* 14px from the card edge, as before, now inside the 1px border. */
+html[data-ver='3'] .pt--sm :is(.pt__text, .pt__photo) { margin: 8px 13px 0; }
+html[data-ver='3'] .pt--lg { height: calc(clamp(460px, 36vw, 500px) + 14px); }
+html[data-ver='3'] .pt--lg :is(.pt__text, .pt__photo) { margin: 12px 19px 0; }
+html[data-ver='3'] .pc .pc__text { padding-top: 8px; }
+html[data-ver='3'] .cvquote blockquote { height: calc((max(300px, min(39vh, 336px)) + 81px) * .8 * 1.2 + 16px); }
