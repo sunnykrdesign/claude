@@ -701,6 +701,8 @@ html:is([data-ver='3'], [data-ver='4']) .lpost { --u: calc(298px / 381); border:
 html:is([data-ver='3'], [data-ver='4']) .lpost :is(.li__head, .li__actions) { font-family: var(--sans); }
 html:is([data-ver='3'], [data-ver='4']) .lpost .li__actions { margin: 0; }
 html:is([data-ver='3'], [data-ver='4']) .lpost__body { padding-top: 8px; }
+/* The photo (or the PMP badge) sits inset with rounded corners, like the photos on the cards below, lined up with the text. */
+html:is([data-ver='3'], [data-ver='4']) :is(.lpost__photo, .lpost__badge) { width: calc(100% - 32px); margin: 0 16px; border-radius: 10px; overflow: hidden; }
 html:is([data-ver='3'], [data-ver='4']) .hero__veil { border-radius: calc(12px * 298 / 381); }
 html[data-ver='4'] .sa-stage { height: clamp(540px, 42vw, 580px); }
 
