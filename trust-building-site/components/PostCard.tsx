@@ -79,7 +79,7 @@ type TileProps = {
 export function PostTile({ p, alt, size, cta, photoPos }: TileProps) {
   return (
     <>
-    <LiCard p={p} alt={alt} photoPos={photoPos} className={`v4-only li--tile li--${size}`} />
+    <LiCard p={p} alt={alt} photoPos={photoPos} fixed className={`v4-only li--tile li--${size}`} />
     <article className={`pt pt--${size} pre-v4`}>
       <header className="pt__head">
         <Avatar p={p} />
