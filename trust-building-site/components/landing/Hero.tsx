@@ -1,3 +1,4 @@
+import { LiActions, LiHead } from '@/components/LiCard';
 import { HERO_POSTS, MANIFESTO, POST_COUNT, type HeroPost } from '@/lib/landing';
 
 export function Hero({ onRead }: { onRead: (e: React.MouseEvent) => void }) {
@@ -50,7 +51,7 @@ export function Hero({ onRead }: { onRead: (e: React.MouseEvent) => void }) {
 function PostCard({ p }: { p: HeroPost }) {
   return (
     <article data-card="1" className="lpost">
-      <header className="lpost__head">
+      <header className="lpost__head pre-v3">
         <span className="lpost__av" style={{ background: p.avBg }}>
           <span>{p.ini}</span>
           <img src={p.av} alt="" draggable={false} />
@@ -61,6 +62,7 @@ function PostCard({ p }: { p: HeroPost }) {
         </span>
         <span className="lpost__date">{p.date}</span>
       </header>
+      <LiHead p={p} avatar={p.av} className="from-v3" />
       <div className="lpost__body">
         <p>{p.t1}</p>
         <p>{p.t2}</p>
@@ -72,7 +74,7 @@ function PostCard({ p }: { p: HeroPost }) {
         </div>
       )}
       {p.photo && <img className="lpost__photo" src={p.photo} alt={p.photoAlt} draggable={false} />}
-      <div className="lpost__stats">
+      <div className="lpost__stats pre-v3">
         <span className="lpost__likes">
           <span className="reacts" aria-hidden="true">
             <span style={{ zIndex: 3, background: '#378fe9' }}>👍</span>
@@ -83,6 +85,7 @@ function PostCard({ p }: { p: HeroPost }) {
         </span>
         <span>{p.stats}</span>
       </div>
+      <LiActions p={{ likes: p.likes, comments: p.stats }} className="from-v3" />
       <footer className="lpost__foot">Read on LinkedIn <span aria-hidden="true">↗</span></footer>
     </article>
   );

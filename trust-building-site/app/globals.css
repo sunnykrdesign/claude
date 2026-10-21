@@ -694,6 +694,14 @@ html[data-ver='4'] .mq { align-items: flex-start; }
 .tile:is(:hover, :focus-visible) .li__photo img { transform: scale(var(--hover-zoom)); }
 html:is([data-ver='3'], [data-ver='4']) .sa-slot { border-radius: 12px; }
 html[data-ver='4'] .cvquote blockquote { height: 507px; }
+/* V3 and V4: the hero posts take the same LinkedIn header and footer, scaled to the 300px card
+   (298px inside the border); the "Read on LinkedIn" strip stays at the bottom. */
+html:is([data-ver='1'], [data-ver='2']) .from-v3, html:is([data-ver='3'], [data-ver='4']) .pre-v3 { display: none !important; }
+html:is([data-ver='3'], [data-ver='4']) .lpost { --u: calc(298px / 381); border: 1px solid rgba(140, 140, 140, .2); border-radius: calc(12 * var(--u)); }
+html:is([data-ver='3'], [data-ver='4']) .lpost :is(.li__head, .li__actions) { font-family: var(--sans); }
+html:is([data-ver='3'], [data-ver='4']) .lpost .li__actions { margin: 0; }
+html:is([data-ver='3'], [data-ver='4']) .lpost__body { padding-top: 8px; }
+html:is([data-ver='3'], [data-ver='4']) .hero__veil { border-radius: calc(12px * 298 / 381); }
 html[data-ver='4'] .sa-stage { height: clamp(540px, 42vw, 580px); }
 
 /* ───────────────────────── V3: LinkedIn header and footer on the V2 post cards ─────────────────────────

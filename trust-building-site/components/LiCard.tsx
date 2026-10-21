@@ -3,7 +3,8 @@ import { avatarSrc, initials, type Post } from '@/lib/posts';
 
 // Icons cut at 2× from the "Wall of Voices" Figma design (nodes 1377:3460, 1386:3603).
 const ICON = '/assets/li/';
-const count = (s: string) => s.replace(/\D+$/, '').replace(/[^\d,]/g, '');
+// The first number in a count like "2,603", "171 comments" or "34 comments · 12 shares".
+const count = (s: string) => s.match(/\d[\d,]*/)?.[0] ?? '';
 
 // Photo heights vary from card to card, picked from the post itself so each post
 // always gets the same height (and server and browser render agree).
@@ -29,7 +30,7 @@ export function LiCard({ p, alt, photoPos, hidden, fixed, className = '' }: { p:
   const photoH = fixed && p.photo ? TEXT_SPACE - lines * LINE : target;
   return (
     <article className={`li ${className}`} aria-hidden={hidden || undefined}>
-      <LiHead p={p} />
+      <LiHead p={p} avatar={avatarSrc(p.av)} />
       <p className="li__text" style={{ WebkitLineClamp: lines, maxHeight: lines * LINE + 4 }}>{more ? `${p.text}\n\n${more}` : p.text}</p>
       {p.photo && (
         <div className="li__photo" style={{ height: photoH }}>
@@ -42,13 +43,12 @@ export function LiCard({ p, alt, photoPos, hidden, fixed, className = '' }: { p:
 }
 
 /** The post header: avatar, name with the Premium badge and degree, headline and date, LinkedIn logo. */
-export function LiHead({ p, className = '' }: { p: Post; className?: string }) {
-  const av = avatarSrc(p.av);
+export function LiHead({ p, avatar, className = '' }: { p: Pick<Post, 'name' | 'role' | 'date'>; avatar: string | null; className?: string }) {
   // Only some posters have Premium (about one card per rail), picked from the name so a person looks the same everywhere.
-  const premium = hash(p.name) % 3 === 2;
+  const premium = hash(p.name) % 5 === 0;
   return (
     <header className={`li__head ${className}`}>
-      <span className="li__avatar">{av ? <img src={av} alt="" draggable={false} /> : initials(p.name)}</span>
+      <span className="li__avatar">{avatar ? <img src={avatar} alt="" draggable={false} /> : initials(p.name)}</span>
       <span className="li__who">
         <span className="li__nameRow">
           <span className="li__name">{p.name}</span>
@@ -64,7 +64,7 @@ export function LiHead({ p, className = '' }: { p: Post; className?: string }) {
 }
 
 /** The footer row: likes, comments and the reaction icons. */
-export function LiActions({ p, className = '' }: { p: Post; className?: string }) {
+export function LiActions({ p, className = '' }: { p: Pick<Post, 'likes' | 'comments'>; className?: string }) {
   return (
     <div className={`li__actions ${className}`}>
       <span className="li__act"><img src={ICON + 'like.png'} alt="" width={20} height={20} /><span>{count(p.likes)}</span></span>

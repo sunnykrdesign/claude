@@ -47,7 +47,7 @@ export function FeedPost({ p, variant, hidden, reveal, photoPos }: FeedProps) {
         </span>
         <span className="li-badge" aria-label="LinkedIn">in</span>
       </header>
-      <LiHead p={p} className="v3-only" />
+      <LiHead p={p} avatar={avatarSrc(p.av)} className="v3-only" />
       <p className="pc__text">{p.text}</p>
       {variant === 'marquee' && <span className="pc__more" aria-hidden="true">…see more</span>}
       {p.photo && (
@@ -91,7 +91,7 @@ export function PostTile({ p, alt, size, cta, photoPos }: TileProps) {
         </span>
         <span className="li-badge" aria-label="LinkedIn">in</span>
       </header>
-      <LiHead p={p} className="v3-only" />
+      <LiHead p={p} avatar={avatarSrc(p.av)} className="v3-only" />
       <p className="pt__text">{p.text}</p>
       <div className="pt__photo">
         {p.photo && <img src={p.photo} alt={alt} draggable={false} style={photoPos ? { objectPosition: photoPos } : undefined} />}
