@@ -657,30 +657,31 @@ html:is([data-ver='3'], [data-ver='4']) :is(.pre__pct, .hero__num, .imm__numwin,
 .hero__foot { bottom: max(clamp(24px, 4vh, 40px), 64px); }
 html:is([data-ver='3'], [data-ver='4']) .hero__h1 .ln > span { text-wrap: balance; }
 
-/* ───────────────────────── V4: LinkedIn post card ("Wall of Voices" Figma, 1377:3460) ───────────────────────── */
-.li { position: relative; flex: none; display: flex; flex-direction: column; width: 372px; max-width: 100%; background: #FFFFFF; border: 1px solid rgba(140, 140, 140, .2); border-radius: 12px; overflow: hidden; font-family: var(--sans); color: rgba(0, 0, 0, .9); text-align: left; transition: translate var(--hover-dur, .5s) var(--ease), box-shadow var(--hover-dur, .5s) var(--ease); }
-.li__head { display: flex; align-items: flex-start; padding-left: 12px; }
-.li__avatar { flex: none; width: 48px; height: 48px; margin: 12px 0 4px; border-radius: 999px; overflow: hidden; background: #EFE9E1; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: #46403A; }
+/* ───────────────────────── V4: LinkedIn post card ("Wall of Voices" Figma, 1386:3603) ─────────────────────────
+   Measured from the 2x export: 383 × 507 card, 42px avatar, 18px text gutter, 340 × 198 photo. */
+.li { position: relative; flex: none; display: flex; flex-direction: column; width: 383px; max-width: 100%; background: #FFFFFF; border: 1px solid rgba(140, 140, 140, .2); border-radius: 12px; overflow: hidden; font-family: var(--sans); color: rgba(0, 0, 0, .9); text-align: left; transition: translate var(--hover-dur, .5s) var(--ease), box-shadow var(--hover-dur, .5s) var(--ease); }
+.li__head { display: flex; align-items: flex-start; padding-left: 20.5px; }
+.li__avatar { flex: none; width: 42px; height: 42px; margin: 24px 0 0; border-radius: 999px; overflow: hidden; background: #EFE9E1; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: #46403A; }
 .li__avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.li__who { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 12px 4px 4px 8px; }
+.li__who { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 20px 4px 5px 12px; }
 .li__nameRow { display: flex; align-items: center; min-width: 0; height: 20px; }
 .li__name { font-size: 16px; font-weight: 600; line-height: 20px; letter-spacing: -.3125px; color: rgba(0, 0, 0, .9); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.li__premium { flex: none; width: 16px; height: 16px; margin-left: 3.38px; }
+.li__premium { flex: none; width: 16px; height: 16px; margin-left: 6px; }
 .li__degree { flex: none; font-size: 12px; line-height: 15px; color: rgba(0, 0, 0, .6); white-space: pre; }
 .li__headline, .li__date { font-size: 12px; line-height: 15px; color: rgba(0, 0, 0, .6); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.li__logo { flex: none; width: 40px; height: 40px; display: flex; align-items: center; padding: 8px 4px 0; }
-.li__logo img { width: 31.689px; height: 32px; border-radius: 6.524px; object-fit: cover; display: block; }
-.li__text { margin: 0; padding: 4px 12px 8px; font-size: 16px; line-height: 22px; letter-spacing: -.16px; color: rgba(0, 0, 0, .9); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 7; overflow: hidden; }
-.li__photo { position: relative; height: 198px; margin: 0 14.4px 6px; border-radius: 12px; overflow: hidden; background: var(--warm); }
+.li__logo { flex: none; width: 32px; height: 32px; margin: 17px 17px 0 0; }
+.li__logo img { width: 32px; height: 32px; border-radius: 6.524px; object-fit: cover; display: block; }
+.li__text { margin: 0; padding: 4px 18px 8px 17px; font-size: 16px; line-height: 22px; letter-spacing: -.16px; color: rgba(0, 0, 0, .9); display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 7; overflow: hidden; }
+.li__photo { position: relative; height: 198px; margin: 0 21px 6px 19.5px; border-radius: 12px; overflow: hidden; background: var(--warm); }
 .li__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--hover-dur, .5s) var(--ease); }
-.li__actions { display: flex; align-items: center; gap: 2px; min-height: 44px; padding: 0 12px; margin-top: auto; }
+.li__actions { display: flex; align-items: center; gap: 2px; min-height: 44px; padding: 0 18px 0 17px; margin: auto 0 6px; }
 .li__act { display: flex; align-items: center; justify-content: center; gap: 4px; min-height: 44px; padding: 4px 8px; font-size: 14px; font-weight: 500; line-height: 18px; letter-spacing: -.14px; color: rgba(0, 0, 0, .6); }
 .li__act img { width: 20px; height: 20px; display: block; }
 .li__spacer { flex: 1; }
 .li__reacts { flex: none; width: 40px; height: 22.857px; display: block; }
 
 /* Fixed-height cards in the rails, carousel and marquee so rows line up. */
-.li--tile { height: 498px; }
+.li--tile { height: 507px; }
 /* Marquee posts have no photo, so those cards fit their text instead of a fixed height. */
 html[data-ver='4'] .mq { align-items: flex-start; }
 .li--marquee { margin-right: 20px; }
@@ -689,5 +690,5 @@ html[data-ver='4'] .mq { align-items: flex-start; }
 .tile--dark:is(:hover, :focus-visible) .li { box-shadow: var(--hover-shadow-dark); }
 .tile:is(:hover, :focus-visible) .li__photo img { transform: scale(var(--hover-zoom)); }
 .sa-slot:has(.li) { border-radius: 12px; }
-html[data-ver='4'] .cvquote blockquote { height: 498px; }
+html[data-ver='4'] .cvquote blockquote { height: 507px; }
 html[data-ver='4'] .sa-stage { height: clamp(540px, 42vw, 580px); }

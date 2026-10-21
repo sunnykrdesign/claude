@@ -1,13 +1,13 @@
 import { avatarSrc, initials, type Post } from '@/lib/posts';
 
-// Icons cut at 2× from the "Wall of Voices" Figma design (node 1377:3460).
+// Icons cut at 2× from the "Wall of Voices" Figma design (nodes 1377:3460, 1386:3603).
 const ICON = '/assets/li/';
 const count = (s: string) => s.replace(/\D+$/, '').replace(/[^\d,]/g, '');
 
 /**
  * LinkedIn post card from the "Wall of Voices" design (V4). Header with avatar,
  * name, Premium badge and degree, headline and date; the post text; the photo;
- * and the action row with like, comment, repost, send and reactions.
+ * and the action row with likes, comments and reactions.
  */
 export function LiCard({ p, alt, photoPos, hidden, className = '' }: { p: Post; alt?: string; photoPos?: string; hidden?: boolean; className?: string }) {
   const av = avatarSrc(p.av);
@@ -35,8 +35,6 @@ export function LiCard({ p, alt, photoPos, hidden, className = '' }: { p: Post; 
       <div className="li__actions">
         <span className="li__act"><img src={ICON + 'like.png'} alt="" width={20} height={20} /><span>{count(p.likes)}</span></span>
         <span className="li__act"><img src={ICON + 'comment.png'} alt="" width={20} height={20} /><span>{count(p.comments)}</span></span>
-        <span className="li__act"><img src={ICON + 'repost.png'} alt="" width={20} height={20} /></span>
-        <span className="li__act"><img src={ICON + 'send.png'} alt="" width={20} height={20} /></span>
         <span className="li__spacer" />
         <img className="li__reacts" src={ICON + 'reactions.png'} alt="" width={40} height={23} />
       </div>
