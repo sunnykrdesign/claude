@@ -15,8 +15,8 @@ export const viewport: Viewport = { themeColor: '#0E0C0B' };
 
 // Runs before first paint: opt in to the reveal motion only when it is allowed,
 // so content is never hidden for no-JS or reduced-motion visitors.
-// Design version (V1–V4): set before paint from the visitor's last choice, default V4.
-const versionBoot = `try{var v=localStorage.getItem('tb-ver')}catch(e){}document.documentElement.dataset.ver=v==='1'||v==='2'||v==='3'?v:'4'`;
+// Design version (V1–V3): set before paint from the visitor's last choice, default V3.
+const versionBoot = `try{var v=localStorage.getItem('tb-ver')}catch(e){}document.documentElement.dataset.ver=v==='1'||v==='2'?v:'3'`;
 
 // The toggle is plain markup plus this delegated handler, so it also works without React.
 const versionToggle = `document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-set-ver]');if(!b)return;var v=b.getAttribute('data-set-ver');document.documentElement.dataset.ver=v;try{localStorage.setItem('tb-ver',v)}catch(e){}document.querySelectorAll('[data-rv],[data-ln]').forEach(function(el){el.classList.add('is-in')});window.dispatchEvent(new Event('resize'))});`;
@@ -36,7 +36,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <button type="button" data-set-ver="1">V1</button>
           <button type="button" data-set-ver="2">V2</button>
           <button type="button" data-set-ver="3">V3</button>
-          <button type="button" data-set-ver="4">V4</button>
         </div>
         <script dangerouslySetInnerHTML={{ __html: versionToggle }} />
       </body>
