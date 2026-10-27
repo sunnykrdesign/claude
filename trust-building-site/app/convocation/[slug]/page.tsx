@@ -20,12 +20,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 /** "The day in photos" mosaic: [image, alt, rows, cols, object-position]. */
 const PHOTOS: [string, string, number, number, string][] = [
-  ['conv-l1.png', 'Graduate at IIT Bombay convocation', 2, 2, 'center'],
-  ['conv-p2.png', 'Graduate holding a degree folder', 2, 1, 'center 30%'],
-  ['conv-l3.png', 'Graduate at the annual convocation', 1, 1, 'center'],
-  ['conv-l5.png', 'Three graduates at IIIT Bangalore', 1, 1, 'center'],
-  ['conv-l4.png', 'Annual convocation group photograph', 1, 1, 'center'],
-  ['conv-l2.png', 'Graduate at IIT Bombay convocation', 1, 1, 'center'],
+  ['conv-l1.webp', 'Graduate at IIT Bombay convocation', 2, 2, 'center'],
+  ['conv-p2.webp', 'Graduate holding a degree folder', 2, 1, 'center 30%'],
+  ['conv-l3.webp', 'Graduate at the annual convocation', 1, 1, 'center'],
+  ['conv-l5.webp', 'Three graduates at IIIT Bangalore', 1, 1, 'center'],
+  ['conv-l4.webp', 'Annual convocation group photograph', 1, 1, 'center'],
+  ['conv-l2.webp', 'Graduate at IIT Bombay convocation', 1, 1, 'center'],
 ];
 
 export default async function ConvocationDetail({ params }: Params) {

@@ -11,7 +11,7 @@ export function Immersion({ goStep }: { goStep: (i: number) => void }) {
     <section id="p5-imm" className="imm" aria-labelledby="imm-h">
       <div id="im-stage" className="imm__stage" data-n={n}>
         <div className="imm__sticky">
-          <img id="im-bg" className="imm__bg" src="/assets/cafe.png" alt="" />
+          <img id="im-bg" className="imm__bg" src="/assets/cafe.webp" alt="" />
           <div className="imm__shade" />
           <Link href="/immersion/" className="viewall viewall--dark imm__all">View all →</Link>
           <div className="imm__grid">

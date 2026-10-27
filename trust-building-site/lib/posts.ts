@@ -49,16 +49,16 @@ const RAW: Raw[] = [
   ['Karan Malhotra', 'Consultant, Deloitte', 'a1', 'The mentor who marked every one of my assignments, answering my questions face to face. Strange and brilliant in equal measure.', 'im-3.png'],
   ['Meera Pillai', 'Founder, Studio Kaapi', 'a7', 'Did not expect the founders to show up and spend an hour listening to what our cohort is building. They took notes.', 'im-4.png'],
   ['Vikram Desai', 'Engineering Manager, Razorpay', 'a2', 'One week, one campus, and a group photo that finally has everyone in it. See you all at convocation.', 'im-5.png'],
-  ['Harish Bhat', 'Data Engineer, PhonePe', 'a5', 'Met my study group in person for the first time at IIIT Bangalore. Eighteen months of late-night calls, and they are exactly who I thought they would be.', 'conv-l5.png'],
-  ['Nisha Nair', 'Growth Manager, Zomato', 'a8', 'My parents flew in for this. They watched me study on a laptop for two years. Today they watched me walk across the stage at IIT Bombay.', 'conv-l2.png'],
+  ['Harish Bhat', 'Data Engineer, PhonePe', 'a5', 'Met my study group in person for the first time at IIIT Bangalore. Eighteen months of late-night calls, and they are exactly who I thought they would be.', 'conv-l5.webp'],
+  ['Nisha Nair', 'Growth Manager, Zomato', 'a8', 'My parents flew in for this. They watched me study on a laptop for two years. Today they watched me walk across the stage at IIT Bombay.', 'conv-l2.webp'],
   ['Rahul Verma', 'Business Analyst, Flipkart', null, 'Switched from operations to analytics at 34. The capstone project is what got me the interview. The interview is what got me the job.'],
-  ['Divya Krishnan', 'UX Designer, Zoho', 'a4', 'Degree in hand. Framing this one.', 'conv-p2.png'],
-  ['Sameer Khan', 'Finance Manager, HDFC Bank', 'a0', 'Career Crossroads meetup in Mumbai last night. Forty alumni, one room, and more honest career advice than I have had in ten years.', 'al3-crossroads.png'],
+  ['Divya Krishnan', 'UX Designer, Zoho', 'a4', 'Degree in hand. Framing this one.', 'conv-p2.webp'],
+  ['Sameer Khan', 'Finance Manager, HDFC Bank', 'a0', 'Career Crossroads meetup in Mumbai last night. Forty alumni, one room, and more honest career advice than I have had in ten years.', 'al3-crossroads.webp'],
   ['Pooja Bansal', 'Marketing Manager, Tata Consumer', null, 'Studying at 11pm after the kids sleep is not glamorous. But it is possible, and that is what I want other parents to hear.'],
-  ['Arvind Rao', 'Cloud Architect, Infosys', 'a6', 'Alumni mixer in Bengaluru. Ran into three people from my old cohort and two who are now hiring.', 'al3-mixers.png'],
-  ['Kavya Menon', 'Data Scientist, Myntra', 'a3', 'The whole cohort, in one frame. Proud to be somewhere in the third row.', 'conv-l4.png'],
+  ['Arvind Rao', 'Cloud Architect, Infosys', 'a6', 'Alumni mixer in Bengaluru. Ran into three people from my old cohort and two who are now hiring.', 'al3-mixers.webp'],
+  ['Kavya Menon', 'Data Scientist, Myntra', 'a3', 'The whole cohort, in one frame. Proud to be somewhere in the third row.', 'conv-l4.webp'],
   ['Tarun Gill', 'Product Lead, CRED', null, 'My advice to anyone starting: book the mentor calls even when you think you do not need them. Especially then.'],
-  ['Shreya Patel', 'Analytics Manager, Paytm', 'a8', 'Coffee, a counter, and twenty people who all signed up for the same reason. From the Ground Up was the best Saturday I have had this year.', 'cafe.png'],
+  ['Shreya Patel', 'Analytics Manager, Paytm', 'a8', 'Coffee, a counter, and twenty people who all signed up for the same reason. From the Ground Up was the best Saturday I have had this year.', 'cafe.webp'],
 ];
 
 export type PostTag = 'Convocation' | 'Immersion' | 'Career' | 'Learning';
@@ -82,19 +82,19 @@ export const MARQUEE_B: Post[] = RAW.slice(6, 12).map(([name, role, av, text], k
 
 /** Posts on each convocation detail page. */
 export const CONVOCATION_POSTS = rows([
-  ['Nisha Nair', 'Growth Manager, Zomato', 'a8', '15 Mar 2026', '2,603', '171 comments', 'My parents flew in for this. They watched me study on a laptop for two years. Today they watched me walk across the stage at IIT Bombay.', 'conv-l2.png'],
-  ['Lakshmi Reddy', 'Data Engineer, PhonePe', 'a4', '14 Mar 2026', '2,184', '146 comments', 'Walked the stage today. Two years of weekend classes, assignments submitted at midnight after putting the kids to bed, and one very patient family.', 'conv-l3.png'],
+  ['Nisha Nair', 'Growth Manager, Zomato', 'a8', '15 Mar 2026', '2,603', '171 comments', 'My parents flew in for this. They watched me study on a laptop for two years. Today they watched me walk across the stage at IIT Bombay.', 'conv-l2.webp'],
+  ['Lakshmi Reddy', 'Data Engineer, PhonePe', 'a4', '14 Mar 2026', '2,184', '146 comments', 'Walked the stage today. Two years of weekend classes, assignments submitted at midnight after putting the kids to bed, and one very patient family.', 'conv-l3.webp'],
   ['Aditya Iyer', 'Supply Chain Manager, Reliance Retail', 'a0', '14 Mar 2026', '1,092', '58 comments', 'Received my degree at the convocation ceremony today. Quietly proud.', null],
-  ['Harish Bhat', 'Data Engineer, PhonePe', 'a5', '21 Mar 2026', '1,947', '112 comments', 'Met my study group in person for the first time at IIIT Bangalore. Eighteen months of late-night calls, and they are exactly who I thought they would be.', 'conv-l5.png'],
-  ['Divya Krishnan', 'UX Designer, Zoho', 'a3', '16 Mar 2026', '1,318', '74 comments', 'Degree in hand. Framing this one.', 'conv-p2.png'],
-  ['Rohan Menon', 'Marketing Lead, Nykaa', 'a6', '16 Mar 2026', '1,362', '88 comments', 'Class of 2026, in one frame. A year of breakout rooms and late-night group calls, and today we finally stood next to each other.', 'conv-l4.png'],
+  ['Harish Bhat', 'Data Engineer, PhonePe', 'a5', '21 Mar 2026', '1,947', '112 comments', 'Met my study group in person for the first time at IIIT Bangalore. Eighteen months of late-night calls, and they are exactly who I thought they would be.', 'conv-l5.webp'],
+  ['Divya Krishnan', 'UX Designer, Zoho', 'a3', '16 Mar 2026', '1,318', '74 comments', 'Degree in hand. Framing this one.', 'conv-p2.webp'],
+  ['Rohan Menon', 'Marketing Lead, Nykaa', 'a6', '16 Mar 2026', '1,362', '88 comments', 'Class of 2026, in one frame. A year of breakout rooms and late-night group calls, and today we finally stood next to each other.', 'conv-l4.webp'],
 ]);
 
 /** Posts on each immersion detail page, mentioning that city. */
 export const immersionPosts = (city: string) => rows([
-  ['Shreya Patel', 'Analytics Manager, Paytm', 'a8', '2w', '1,412', '72 comments', `Coffee, a counter, and twenty people who all signed up for the same reason. From the Ground Up in ${city} was the best Saturday I have had this year.`, 'cafe.png'],
-  ['Ankur Nagar', 'Product Manager, Swiggy', 'a2', '3w', '986', '48 comments', `It was a superb event! Learned more about where my morning coffee comes from in two hours than in ten years of drinking it. Thank you upGrad for bringing this to ${city}.`, 'im3-voices.png'],
-  ['Meera Pillai', 'Founder, Studio Kaapi', 'a7', '1mo', '2,031', '118 comments', 'Watching the founder brew live, right at the counter, and then tasting the same beans three different ways. Already asking when the next one is.', 'im3-first.png'],
+  ['Shreya Patel', 'Analytics Manager, Paytm', 'a8', '2w', '1,412', '72 comments', `Coffee, a counter, and twenty people who all signed up for the same reason. From the Ground Up in ${city} was the best Saturday I have had this year.`, 'cafe.webp'],
+  ['Ankur Nagar', 'Product Manager, Swiggy', 'a2', '3w', '986', '48 comments', `It was a superb event! Learned more about where my morning coffee comes from in two hours than in ten years of drinking it. Thank you upGrad for bringing this to ${city}.`, 'im3-voices.webp'],
+  ['Meera Pillai', 'Founder, Studio Kaapi', 'a7', '1mo', '2,031', '118 comments', 'Watching the founder brew live, right at the counter, and then tasting the same beans three different ways. Already asking when the next one is.', 'im3-first.webp'],
 ]);
 
 /** Posts on the study abroad stories page. */
@@ -120,7 +120,7 @@ export const ABROAD_STORY_POSTS = rows([
   ['Sneha Gupta', 'Operations Manager, Delhivery', 'a1', '28 Jul 2026', '1,102', '56 comments', "If you're a working professional scared of quitting your job for a master's: this format works. I kept my salary, my role, and still finished.", null],
   ['Nisha Nair', 'Growth Manager, Zomato', 'a8', '19 Jul 2026', '2,310', '134 comments', 'People keep asking if the programme is worth it, so, publicly: yes, if you do the work. No, if you want a certificate to happen to you.', 'sa-v5.png'],
   ['Lakshmi Reddy', 'Data Engineer, PhonePe', 'a4', '8 Jul 2026', '1,847', '92 comments', 'Walked the stage today. Two years of weekend classes, assignments submitted at midnight after putting the kids to bed, and one very patient family.', 'sa-v6.png'],
-  ['Aman Kapoor', 'MS Data Science, Germany', 'a6', '2 Jul 2026', '1,231', '67 comments', 'First week in Berlin. The year I spent studying online before flying out meant I walked into class already knowing half the material.', 'sa-plane.png'],
+  ['Aman Kapoor', 'MS Data Science, Germany', 'a6', '2 Jul 2026', '1,231', '67 comments', 'First week in Berlin. The year I spent studying online before flying out meant I walked into class already knowing half the material.', 'sa-plane.webp'],
   ['Riya Sethi', 'MBA candidate, Dublin', null, '24 Jun 2026', '876', '39 comments', 'Visa approved. Twelve months of evenings, one very long document checklist, and a counsellor who answered every one of my 2am emails.', null],
   ['Kunal Shah', 'MS Computer Science, USA', 'a0', '15 Jun 2026', '1,644', '88 comments', 'Started the programme from Pune. Finishing it in Arizona. Same laptop, very different view.', 'sa-v1.png'],
 ]).map(p => ({ ...p, programme: ABROAD_POST_PROGRAMME[p.name] }));

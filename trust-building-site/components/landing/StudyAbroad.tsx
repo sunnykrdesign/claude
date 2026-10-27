@@ -28,7 +28,7 @@ export function StudyAbroad({ active, go, onPause }: Props) {
 
       <div id="ab-panel" data-rv="1" className="panel">
         <div className="panel__backdrop" aria-hidden="true">
-          <img id="ab-bg" className="panel__bg" src="/assets/sa-plane.png" alt="" />
+          <img id="ab-bg" className="panel__bg" src="/assets/sa-plane.webp" alt="" />
           <div className="panel__shade" />
         </div>
         <Link href={ABROAD_HREF} className="viewall viewall--white panel__all">View all →</Link>
