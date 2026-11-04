@@ -405,7 +405,7 @@ code{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:.92em}
 .reach li.ok{background:#E3F6E8;color:#1D7A34}
 .reach li.no{background:var(--track);color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(110,110,115,.5)}
 .moments{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px}
-.moment{display:flex;gap:12px;align-items:flex-start;background:var(--card);border-radius:16px;padding:16px 18px;box-shadow:inset 3px 0 0 var(--red)}
+.moment{display:flex;gap:12px;align-items:flex-start;background:var(--card);border-radius:16px;padding:16px 18px}
 .moment .dot{flex:0 0 8px;height:8px;border-radius:50%;background:var(--red);margin-top:6px}
 .moment b{display:block;font-size:15px;font-weight:600;margin-bottom:2px}
 .moment span{font-size:14px;color:var(--muted);line-height:1.45}
@@ -615,7 +615,8 @@ html[data-v="2"] .search{border-radius:14px;height:52px}
 html[data-v="2"] .hero{background:#fff;color:var(--text);box-shadow:0 0 0 1px var(--line)}
 html[data-v="2"] .hero .kicker,html[data-v="2"] .hero p span,html[data-v="2"] .ring .cap{color:var(--muted)}
 html[data-v="2"] .hero .ring circle:first-child{stroke:var(--track)}
-html[data-v="2"] .kpi.dark{background:#fff;color:var(--text);box-shadow:0 0 0 1px var(--line),inset 3px 0 0 var(--red)}
+html[data-v="2"] .kpi.dark{background:#fff;color:var(--text);box-shadow:0 0 0 1px var(--line),0 1px 2px rgba(20,20,40,.04)}
+html[data-v="2"] .kpi.dark .v{color:var(--red-text)}
 html[data-v="2"] .kpi.dark .k,html[data-v="2"] .kpi.dark .d{color:var(--muted)}
 html[data-v="2"] .avc0{background:#FDE7E3;color:#A33A2A}html[data-v="2"] .avc1{background:#E3EEFD;color:#1F4E9A}html[data-v="2"] .avc2{background:#E2F5EA;color:#1D6B3A}html[data-v="2"] .avc3{background:#ECE8FB;color:#4B3AA0}html[data-v="2"] .avc4{background:#FDEEE0;color:#8A4B12}html[data-v="2"] .avc5{background:#E6F4F7;color:#1F6672}
 html[data-v="2"] .tabs,html[data-v="3"] .tabs{border:none;background:var(--fill);border-radius:12px;padding:4px;gap:2px;align-self:flex-start;max-width:100%}
@@ -730,8 +731,8 @@ html[data-v="3"] .phead,html[data-v="3"] .lt-head{font-family:var(--mono);font-s
 html[data-v="3"] .phead .pc{font-weight:500}
 html[data-v="3"] .prow:not(.phead){transition:background .2s}
 html[data-v="3"] #pRows .prow:not(.open):hover{background:#F8F8FA;border-radius:12px;box-shadow:none}
-html[data-v="3"] #pRows .prow.open{background:#fff;border-radius:16px;margin:10px -8px;padding:14px 12px;box-shadow:inset 0 2px 0 var(--red),0 18px 44px rgba(16,16,24,.12),0 0 0 1px rgba(0,0,0,.03);animation:lift .5s var(--ease)}
-@keyframes lift{from{box-shadow:inset 0 0 0 var(--red),0 0 0 rgba(16,16,24,0),0 0 0 1px rgba(0,0,0,0);margin:0;padding:12px 0}}
+html[data-v="3"] #pRows .prow.open{background:#fff;border-radius:16px;margin:10px -8px;padding:14px 12px;box-shadow:0 0 0 1px rgba(16,16,24,.07),0 16px 40px rgba(16,16,24,.09);animation:lift .5s var(--ease)}
+@keyframes lift{from{box-shadow:0 0 0 1px rgba(16,16,24,0),0 0 0 rgba(16,16,24,0);margin:0;padding:12px 0}}
 html[data-v="3"] .snap{gap:0;background:#fff}
 html[data-v="3"] .tile{box-shadow:inset -1px 0 0 var(--line),inset 0 -1px 0 var(--line)}
 html[data-v="3"] .steps li.now{background:var(--red)}
@@ -822,8 +823,8 @@ html[data-v="3"] .v3ov{display:grid;grid-template-columns:minmax(0,1fr) 300px;ga
 .lt-item.open::before,.lt-item.open + .lt-item::before{display:none}
 .lt-item.sep{margin-bottom:12px}
 .lt-item.sep::after{content:"";position:absolute;left:12px;right:12px;bottom:-6px;border-top:1px solid var(--border)}
-.lt-item.open{background:#fff;margin:10px -6px;box-shadow:inset 0 2px 0 var(--red),0 18px 44px rgba(16,16,24,.12),0 0 0 1px rgba(0,0,0,.03);animation:lift2 .5s var(--ease)}
-@keyframes lift2{from{box-shadow:inset 0 0 0 var(--red),0 0 0 rgba(16,16,24,0),0 0 0 1px rgba(0,0,0,0);margin:0}}
+.lt-item.open{background:#fff;margin:10px -6px;box-shadow:0 0 0 1px rgba(16,16,24,.07),0 16px 40px rgba(16,16,24,.09);animation:lift2 .5s var(--ease)}
+@keyframes lift2{from{box-shadow:0 0 0 1px rgba(16,16,24,0),0 0 0 rgba(16,16,24,0);margin:0}}
 .lt-item.open .lt-row:hover{background:transparent}
 .lt-exp{padding:2px 18px 18px 136px;animation:reveal .55s var(--ease) backwards .05s}
 .bcard{background:#F6F6F8;border-radius:22px;padding:12px;display:flex;flex-direction:column;gap:8px;box-shadow:0 0 0 1px rgba(255,255,255,.8) inset,0 10px 30px rgba(16,16,24,.04)}
