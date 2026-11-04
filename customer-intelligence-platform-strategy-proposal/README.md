@@ -44,20 +44,32 @@ The **Look up a person** screen searches sample data by exact phone or email (na
 
 | Search | What it shows |
 | --- | --- |
-| `arjun.kumar88@gmail.com` | Full profile with a photo, all detail sections and LinkedIn connected |
-| `+91 98234 41127` | One person: Ananya, known to Unacademy and Internshala, with a paged activity timeline |
-| `+91 99001 22334` | A shared family phone: two linked people to choose from, one of them under 18 (restricted) |
+| `arjun.kumar88@gmail.com` | Arjun: learning with WP, alumnus of Internshala, re-acquired through a paid ad. Full profile with photo |
+| `+91 98234 41127` | Ananya: known to 3 businesses, no consent for cross-business offers, a "worth acting on" moment |
+| `rohan.mehta07@gmail.com` | Rohan: a Study Abroad lead with Sales Insights scores and an "intake passed" moment |
+| `+91 99001 22334` | A shared family phone: two linked people to choose from, one of them a minor (restricted) |
 | Any other valid number or email | New to upGrad |
 
-Phone numbers work with or without `+91`, spaces or a leading `0`. Counselors from a business the person hasn't consented to see a "don't contact" banner and no contact details.
+Phone numbers work with or without `+91`, spaces or a leading `0`. Only verified phones and emails are used to match.
 
 ## Profile and data model
 
-Each profile opens with a card holding the photo and basic details (age, city, owning business, businesses, profile completeness), then the journey, then one card each for **Before you reach out**, **Personal**, **Education**, **Professional**, **Financial** and **LinkedIn**, then the activity timeline. Every value shows where it came from (business, and whether it was declared, observed, inferred or synced).
+The profile and data model follow the four data sheets (Learner Profile, Academic & Skill Profile, Activity Data, Insights).
 
-- **Contact and financial details** are hidden until the viewer gives a reason; reveals are logged. Other businesses never see financial details.
-- **LinkedIn** is shown only when the learner connected it themselves. Otherwise a counselor can send a connect request.
-- **Data model** (central data team only, `#/data`) shows the tables behind the profile — `person`, `identifier`, `consent`, `personal_detail`, `education`, `employment`, `finance`, `linked_account`, `event`, `merge_log`, `access_log` — and who can see each section.
+- **Header card:** photo, life stage, age band (the date of birth isn't stored), city, owning business, profile completeness, global person ID and **Reachable now** per channel (call, email, SMS, WhatsApp, ads).
+- **Worth acting on:** moments such as an intake that has passed, a new enquiry in another business or a certificate issued.
+- **At a glance:** relationship state, lifetime revenue, intent, learning health, contact fatigue and the re-acquisition flag.
+- **Where they are with each business:** lifecycle per business, Prospect → Lead → Counselled → Paid → Learning → Completed → Alumni.
+- **Four tabs:**
+  - **Learner profile:** identity & contact, consent & preferences, personal details, education, career (with LinkedIn), aspiration and financial profile.
+  - **Learning & skills:** courses with progress, results and certificates, plus graded and declared skills.
+  - **Activity:** events filtered by type and business, each with its source system.
+  - **Insights:** all derived insights, plus Sales Insights scores labelled with their model.
+- Every value shows its source system (Prism, LSQ, HubSpot, OMS, SA/WP Sales Insights, CMS or a rule). Where sources conflicted, the merge rule that picked the value is shown.
+- **Sensitivity:** T1 contact details are hidden until the viewer gives a reason. T2 values are bands only: the financial profile needs a reason before it's shown. Other businesses never see T2 values, payments or revenue. Every reveal is logged.
+- **Data model** (central data team only, `#/data`) is a searchable data dictionary of all 117 items:
+  - each item lists its LSQ, HubSpot, Prism, OMS and Sales Insights source fields, merge rule, storage and sensitivity tier, plus a P0/P1/P2 priority;
+  - the page also shows the source systems, the shared event envelope, the tables (`person`, `identifier`, `attribute_value`, `enrolment`, `event`, `business_status`, `consent`, `merge_log`, `access_log`) and who can see what.
 
 Sample photo: `assets/profile-arjun.jpg`.
 
