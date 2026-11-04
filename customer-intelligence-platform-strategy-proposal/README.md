@@ -38,6 +38,19 @@ Preview links look like this:
 
 `team` can be `central`, `internshala`, `wp` or `unacademy`.
 
+## Sample lookups
+
+The **Look up a person** screen searches sample data by exact phone or email (names are never used). Try:
+
+| Search | What it shows |
+| --- | --- |
+| `+91 98234 41127` | One person: Ananya, known to Unacademy and Internshala, with a paged activity timeline |
+| `+91 99001 22334` | A shared family phone: two linked people to choose from, one of them under 18 (restricted) |
+| `arjun.kumar88@gmail.com` | Someone who moved from Internshala to Working Professionals |
+| Any other valid number or email | New to upGrad |
+
+Phone numbers work with or without `+91`, spaces or a leading `0`. Counselors from a business the person hasn't consented to see a "don't contact" banner and no contact details.
+
 ## Screens
 
 | File | Screen | What it answers |

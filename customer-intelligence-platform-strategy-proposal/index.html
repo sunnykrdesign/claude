@@ -242,6 +242,29 @@ button{font-family:inherit;cursor:pointer}
 .right-col{flex:3 1 420px !important}
 .revealbtn{align-self:flex-start;border:none;background:transparent;padding:0 4px;min-height:36px;font-size:14px;font-weight:500;color:var(--text);text-decoration:underline;text-underline-offset:3px}
 
+/* Lookup states */
+.search button{flex:0 0 auto}
+.field-err{margin:0;font-size:13px;color:var(--red-text);padding:0 4px}
+.samples{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.samples .eyebrow{margin-right:4px}
+.chip{border:1px solid var(--border);background:var(--card);border-radius:999px;min-height:36px;padding:0 14px;font-size:13px;color:var(--text)}
+.chip span{color:var(--muted)}
+.chip:hover{border-color:var(--text);color:var(--text)}
+.result{display:flex;flex-direction:column;gap:56px}
+.loading{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--muted);padding:8px 4px}
+.empty{background:var(--card);border-radius:var(--radius);padding:clamp(24px,3.5vw,40px);display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.empty h2{margin:0}
+.empty p{margin:0;font-size:15px;color:var(--muted);line-height:1.5;max-width:560px}
+.empty .actions{margin-top:8px}
+.list button.row{width:100%;border:none;background:transparent;text-align:left;font:inherit;color:inherit;padding:0;flex-wrap:nowrap}
+.list button.row:hover .title{color:var(--red-text)}
+.mini-av{flex:0 0 44px;height:44px;border-radius:50%;background:var(--fill);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600}
+.tag{display:inline-block;font-size:12px;font-weight:500;padding:2px 8px;border-radius:999px;background:var(--fill);color:var(--muted);vertical-align:2px;margin-left:6px}
+.tag.red{background:var(--red-soft);color:var(--red-text)}
+.person .who .matched{font-size:14px;color:var(--muted)}
+.backbtn{align-self:flex-start;margin:-32px 0 -24px}
+.more-row{display:flex;justify-content:center;padding:8px 0 10px}
+
 /* Audit */
 .audit{display:flex;flex-direction:column;gap:28px}
 .audit .summary{margin:0;font-size:19px;line-height:1.4;font-weight:500;letter-spacing:-0.015em}
@@ -542,88 +565,21 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
     </div>
 
     <!-- ============ LOOKUP ============ -->
-    <div class="wrap view" data-view="lookup" hidden style="gap:56px">
-      <div class="section" style="gap:12px">
+    <div class="wrap view" data-view="lookup" hidden style="gap:48px">
+      <form class="section" style="gap:12px" id="lookupForm" role="search" novalidate>
         <label for="lookup" class="eyebrow">Who's on the line?</label>
         <div class="search">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6E6E73" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-          <input id="lookup" type="search" value="+91 98•• ••41 27" placeholder="Phone number or email" autocomplete="off">
+          <input id="lookup" type="search" placeholder="Phone number or email" autocomplete="off" aria-describedby="lookupErr">
+          <button type="submit" class="btn dark sm">Look up</button>
         </div>
-      </div>
+        <p class="field-err" id="lookupErr" hidden></p>
+        <div class="samples" id="samples" aria-label="Sample lookups"></div>
+      </form>
 
-      <header class="person">
-        <div class="avatar" aria-hidden="true">AI</div>
-        <div class="who">
-          <h1>Ananya Iyer</h1>
-          <p>Known to upGrad since June 2021 <span class="muted">· 2 businesses · not a new lead</span></p>
-        </div>
-        <a class="btn dark sm" href="#/lookup" id="crmBtn">Open in Internshala CRM</a>
-      </header>
+      <div class="result" id="lookupResult" aria-live="polite"></div>
 
-      <div class="banner" id="crossBanner" role="note" hidden>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D7192A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:0 0 auto;margin-top:1px"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.5"/></svg>
-        <div><b>Don't contact Ananya about <span id="crossBu"></span></b>She hasn't agreed to offers from other upGrad businesses. You can view her profile for context only.</div>
-      </div>
-
-      <section class="section" aria-labelledby="jr">
-        <h2 id="jr">Journey with upGrad</h2>
-        <div class="card pad journey">
-          <div class="step"><div class="line"><i></i><span></span></div><div class="when">2021 – 2022</div><div class="name">Unacademy</div><div class="what">Alumna · JEE Main prep</div></div>
-          <div class="step"><div class="line"><i class="now"></i><span></span></div><div class="when now">Now</div><div class="name">Internshala</div><div class="what">Active · owned by Internshala sales</div></div>
-          <div class="step"><div class="line"><i class="future"></i></div><div class="when">Graduates June 2026</div><div class="name future">Working Professionals</div><div class="what">Not a customer yet</div></div>
-        </div>
-      </section>
-
-      <div class="cols">
-        <div class="left-col">
-          <section class="section" aria-labelledby="cs">
-            <h2 id="cs">Before you reach out</h2>
-            <div class="list">
-              <div class="row tight"><span class="txt"><span class="title plain">Counseling calls</span></span><span class="side-val">Allowed</span></div>
-              <div class="row tight"><span class="txt"><span class="title plain">Marketing messages</span></span><span class="side-val">Allowed</span></div>
-              <div class="row tight"><span class="txt"><span class="title plain">Offers from other businesses</span></span><span class="side-val red" style="font-weight:500">Not given</span></div>
-            </div>
-            <p class="note">Consent is recorded per purpose and checked before any outreach.</p>
-          </section>
-
-          <section class="section" aria-labelledby="ct">
-            <h2 id="ct">Contact details</h2>
-            <div class="list">
-              <div class="row tight"><span class="txt"><span class="title plain" id="phone">+91 98•• ••41 27</span></span><span class="desc">Verified</span></div>
-              <div class="row tight"><span class="txt"><span class="title plain" id="emailVal">an•••@gmail.com</span></span><span class="desc">Verified</span></div>
-              <div class="row tight"><span class="txt"><span class="title plain">Parent's phone</span></span><span class="desc">Linked, never merged</span></div>
-            </div>
-            <button type="button" class="revealbtn" id="reveal">Show for this counseling call</button>
-            <p class="note" id="revealNote" role="status" hidden></p>
-          </section>
-
-          <section class="section" aria-labelledby="ab">
-            <h2 id="ab">About</h2>
-            <div class="list" style="padding:0 22px">
-              <div class="attr"><div class="top"><span>Graduation</span><span>Declared on Internshala</span></div><div class="value">June 2026</div></div>
-              <div class="attr"><div class="top"><span>Degree</span><span>Declared on Internshala</span></div><div class="value">B.Tech, Computer Science</div></div>
-              <div class="attr"><div class="top"><span>Career interest</span><span>Observed from browsing</span></div><div class="value">Data analytics</div></div>
-              <div class="attr"><div class="top"><span>Life stage</span><span>Inferred by rule</span></div><div class="value">Final-year student</div></div>
-            </div>
-          </section>
-        </div>
-
-        <section class="section right-col" aria-labelledby="act">
-          <div class="section-head row">
-            <h2 id="act">Activity</h2>
-            <div class="seg sm" role="group" aria-label="Filter by business" id="buFilter">
-              <button type="button" data-bu="all" aria-pressed="true">All</button>
-              <button type="button" data-bu="U" aria-pressed="false">Unacademy</button>
-              <button type="button" data-bu="I" aria-pressed="false">Internshala</button>
-              <button type="button" data-bu="W" aria-pressed="false">WP</button>
-            </div>
-          </div>
-          <div class="timeline" id="timeline"></div>
-          <p class="note">Read-only. Notes and calls are logged in each business's own CRM and flow back here.</p>
-        </section>
-      </div>
-
-      <p class="footnote">Sample profile for design review</p>
+      <p class="footnote">Sample profiles for design review</p>
     </div>
 
     <!-- ============ IDENTITY ============ -->
@@ -904,11 +860,7 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
     });
     document.title = titles[name] + " · upGrad Customer Intelligence";
 
-    // Role-aware lookup: other businesses can view but not contact
-    var cross = team.bu && team.bu !== "Internshala";
-    $("#crossBanner").hidden = !cross;
-    $("#crossBu").textContent = team.bu || "";
-    $("#crmBtn").hidden = !!cross;
+    renderLookup();
   }
   window.addEventListener("hashchange", function () { if (S.step === "app") { renderApp(); window.scrollTo(0, 0); } });
 
@@ -926,33 +878,287 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
   });
 
   /* ---------- Lookup ---------- */
-  var names = { U: "Unacademy", I: "Internshala", W: "Working Professionals" };
-  var events = [
-    { b: "W", when: "Today", title: "Read the Data Science programme page", detail: "3 visits this week" },
-    { b: "I", when: "Yesterday", title: "Accepted internship offer", detail: "Data analyst, Bengaluru" },
-    { b: "I", when: "28 Oct", title: "Counseling call", detail: "Asked about part-time courses after graduation" },
-    { b: "I", when: "21 Oct", title: "Applied to 4 internships", detail: "Analyst roles" },
-    { b: "I", when: "2 Sep", title: "Completed Excel & SQL training", detail: "Certificate issued" },
-    { b: "U", when: "Apr 2022", title: "Completed JEE Main course", detail: "214 classes attended" }
+  // Sample people. Phones are stored as 10 digits, emails in lowercase.
+  var BU = { U: "Unacademy", I: "Internshala", W: "Working Professionals" };
+  var PEOPLE = {
+    ananya: {
+      name: "Ananya Iyer", since: "June 2021", owner: "Internshala",
+      phones: ["9823441127"], emails: ["ananya.iyer21@gmail.com"],
+      linked: [{ label: "Parent's phone", phone: "9845012390" }],
+      consent: { calls: true, marketing: true, cross: false },
+      journey: [
+        { bu: "Unacademy", when: "2021 – 2022", what: "Alumna · JEE Main prep", state: "past" },
+        { bu: "Internshala", when: "Now", what: "Active · owned by Internshala sales", state: "now" },
+        { bu: "Working Professionals", when: "Graduates June 2026", what: "Not a customer yet", state: "future" }
+      ],
+      about: [["Graduation", "Declared on Internshala", "June 2026"], ["Degree", "Declared on Internshala", "B.Tech, Computer Science"], ["Career interest", "Observed from browsing", "Data analytics"], ["Life stage", "Inferred by rule", "Final-year student"]],
+      events: [
+        ["W", "Today", "Read the Data Science programme page", "3 visits this week"],
+        ["I", "Yesterday", "Accepted internship offer", "Data analyst, Bengaluru"],
+        ["I", "28 Oct", "Counseling call", "Asked about part-time courses after graduation"],
+        ["I", "21 Oct", "Applied to 4 internships", "Analyst roles"],
+        ["I", "14 Oct", "Updated résumé", "Added a SQL project"],
+        ["W", "9 Oct", "Downloaded a brochure", "Data Science programme"],
+        ["I", "30 Sep", "Shortlisted for interview", "Data analyst, Bengaluru"],
+        ["I", "2 Sep", "Completed Excel & SQL training", "Certificate issued"],
+        ["I", "18 Aug", "Started Excel & SQL training", "Paid course"],
+        ["I", "3 Aug", "Applied to 6 internships", "Marketing and analyst roles"],
+        ["I", "12 Jul", "Completed profile", "92% complete"],
+        ["I", "1 Jul", "Signed up on Internshala", "Google sign-in"],
+        ["U", "Mar 2023", "Opened the Unacademy app", "Browsed GATE courses"],
+        ["U", "Apr 2022", "Completed JEE Main course", "214 classes attended"],
+        ["U", "Jan 2022", "Took a mock test series", "12 tests · top 15%"],
+        ["U", "Oct 2021", "Renewed Plus subscription", "6 months"],
+        ["U", "Jun 2021", "Bought Plus subscription", "JEE Main"],
+        ["U", "Jun 2021", "Signed up on Unacademy", "Phone sign-in"]
+      ]
+    },
+    arjun: {
+      name: "Arjun Kumar", since: "August 2022", owner: "Working Professionals",
+      phones: ["9012358844"], emails: ["arjun.kumar88@gmail.com"], linked: [],
+      consent: { calls: true, marketing: true, cross: true },
+      journey: [
+        { bu: "Internshala", when: "2022 – 2024", what: "Interned · Data analyst, Hyderabad", state: "past" },
+        { bu: "Working Professionals", when: "Now", what: "Enrolled · PG Diploma in Data Science", state: "now" }
+      ],
+      about: [["Graduation", "Declared on Internshala", "May 2023"], ["Job", "Declared on Working Professionals", "Data analyst, 2 years"], ["Career interest", "Observed from browsing", "Machine learning"], ["Life stage", "Inferred by rule", "Early career"]],
+      events: [
+        ["W", "Today", "Attended live class", "Regression models"],
+        ["W", "3 Nov", "Submitted assignment", "Module 4 · scored 86%"],
+        ["W", "12 Oct", "Paid second instalment", "On time"],
+        ["W", "2 Sep", "Enrolled", "PG Diploma in Data Science"],
+        ["W", "20 Aug", "Counseling call", "Compared weekend and evening batches"],
+        ["W", "11 Aug", "Requested a callback", "Data Science programme"],
+        ["I", "Mar 2024", "Completed internship", "Data analyst, Hyderabad"],
+        ["I", "Sep 2023", "Accepted internship offer", "Data analyst, Hyderabad"],
+        ["I", "Aug 2022", "Signed up on Internshala", "Email sign-in"]
+      ]
+    },
+    rohan: {
+      name: "Rohan Mehta", since: "January 2020", owner: "Internshala",
+      phones: ["9765013061"], emails: ["rohan.mehta07@gmail.com"], linked: [],
+      consent: { calls: true, marketing: false, cross: true },
+      journey: [
+        { bu: "Unacademy", when: "2020 – 2021", what: "Alumnus · NEET prep", state: "past" },
+        { bu: "Internshala", when: "Now", what: "Active · applying to internships", state: "now" },
+        { bu: "Working Professionals", when: "Graduates May 2027", what: "Not a customer yet", state: "future" }
+      ],
+      about: [["Degree", "Declared on Internshala", "B.Sc, Biotechnology"], ["City", "Declared on Internshala", "Pune"], ["Career interest", "Observed from browsing", "Clinical research"], ["Life stage", "Inferred by rule", "Third-year student"]],
+      events: [
+        ["I", "2 Nov", "Applied to 3 internships", "Clinical research roles"],
+        ["I", "19 Oct", "Saved 8 internships", "Pune and remote"],
+        ["I", "6 Oct", "Signed up on Internshala", "Merged on verified phone"],
+        ["U", "Feb 2021", "Completed NEET course", "168 classes attended"],
+        ["U", "Jan 2020", "Signed up on Unacademy", "Phone sign-in"]
+      ]
+    },
+    meera: {
+      name: "Meera Rao", since: "March 2024", owner: "Internshala", age: 19,
+      phones: ["8123456790"], emails: ["meera.rao.blr@gmail.com"],
+      linked: [{ label: "Family phone", phone: "9900122334" }],
+      consent: { calls: true, marketing: true, cross: true },
+      journey: [
+        { bu: "Internshala", when: "Now", what: "Active · second-year B.Com", state: "now" },
+        { bu: "Working Professionals", when: "Graduates April 2027", what: "Not a customer yet", state: "future" }
+      ],
+      about: [["Degree", "Declared on Internshala", "B.Com"], ["City", "Declared on Internshala", "Bengaluru"], ["Career interest", "Observed from browsing", "Digital marketing"], ["Life stage", "Inferred by rule", "Second-year student"]],
+      events: [
+        ["I", "1 Nov", "Applied to 2 internships", "Digital marketing"],
+        ["I", "15 Oct", "Started Digital Marketing training", "Free course"],
+        ["I", "Mar 2024", "Signed up on Internshala", "Email sign-in"]
+      ]
+    },
+    kabir: {
+      name: "Kabir Rao", since: "June 2025", owner: "Unacademy", age: 16, restricted: true,
+      phones: [], emails: [], linked: [{ label: "Family phone", phone: "9900122334" }],
+      consent: { calls: false, marketing: false, cross: false },
+      journey: [{ bu: "Unacademy", when: "Now", what: "Active · Class 11", state: "now" }],
+      about: [], events: []
+    }
+  };
+
+  // Index: identifier -> people. A shared phone points to everyone linked to it.
+  var INDEX = {};
+  function addKey(k, id, how) { (INDEX[k] = INDEX[k] || []).push({ id: id, how: how }); }
+  Object.keys(PEOPLE).forEach(function (id) {
+    var p = PEOPLE[id];
+    p.phones.forEach(function (d) { addKey("p:" + d, id, "verified phone"); });
+    p.emails.forEach(function (e) { addKey("e:" + e, id, "verified email"); });
+    p.linked.forEach(function (l) { addKey("p:" + l.phone, id, "linked " + l.label.toLowerCase()); });
+  });
+
+  var SAMPLES = [
+    { q: "+91 98234 41127", t: "One person" },
+    { q: "+91 99001 22334", t: "Shared family phone" },
+    { q: "arjun.kumar88@gmail.com", t: "Moved business" },
+    { q: "+91 91234 56789", t: "New to upGrad" }
   ];
-  function renderTimeline(bu) {
-    $("#timeline").innerHTML = events.filter(function (e) { return bu === "all" || e.b === bu; }).map(function (e) {
-      return '<div class="event"><div class="when">' + esc(e.when) + '</div><div class="body"><div class="title">' + esc(e.title) +
-        '</div><div class="desc">' + esc(names[e.b]) + " · " + esc(e.detail) + "</div></div></div>";
-    }).join("");
+
+  function fmtPhone(d) { return "+91 " + d.slice(0, 5) + " " + d.slice(5); }
+  function maskPhone(d) { return "+91 " + d.slice(0, 2) + "•• ••" + d.slice(6, 8) + " " + d.slice(8); }
+  function maskEmail(e) { var i = e.indexOf("@"); return e.slice(0, 2) + "•••" + e.slice(i); }
+  function first(p) { return p.name.split(" ")[0]; }
+  function initialsOf(p) { return initials(p.name); }
+
+  // Turn what the counselor typed into one standard key, or explain what's wrong.
+  function normalize(raw) {
+    var s = raw.trim();
+    if (!s) return { err: "Enter the caller's phone number or email." };
+    if (s.indexOf("@") >= 0) {
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(s)) return { err: "That doesn't look like an email address." };
+      return { key: "e:" + s.toLowerCase(), label: s.toLowerCase() };
+    }
+    if (/[a-z]/i.test(s)) return { err: "Search by phone or email. Names aren't used, because many people share the same name." };
+    var d = s.replace(/\D/g, "");
+    if (d.length === 12 && d.indexOf("91") === 0) d = d.slice(2);
+    else if (d.length === 11 && d.charAt(0) === "0") d = d.slice(1);
+    if (!/^[6-9]\d{9}$/.test(d)) return { err: "Enter a 10-digit Indian mobile number, with or without +91." };
+    return { key: "p:" + d, label: fmtPhone(d) };
   }
-  $("#buFilter").addEventListener("click", function (e) {
-    var b = e.target.closest("button[data-bu]"); if (!b) return;
-    $$("#buFilter button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
-    renderTimeline(b.getAttribute("data-bu"));
+
+  var PAGE = 6;
+  var L = { status: "idle", label: "", matches: [], person: null, how: "", bu: "all", shown: PAGE, revealed: false };
+  var lookupTimer = null;
+
+  function runLookup(raw, instant) {
+    var n = normalize(raw), err = $("#lookupErr"), input = $("#lookup");
+    if (n.err) { err.textContent = n.err; err.hidden = false; input.setAttribute("aria-invalid", "true"); return; }
+    err.hidden = true; input.removeAttribute("aria-invalid");
+    input.value = n.label;
+    var hits = INDEX[n.key] || [];
+    var done = function () {
+      L = { status: hits.length ? (hits.length > 1 ? "many" : "one") : "none", label: n.label, matches: hits, person: null, how: "", bu: "all", shown: PAGE, revealed: false };
+      if (hits.length === 1) { L.person = hits[0].id; L.how = hits[0].how; }
+      renderLookup();
+    };
+    clearTimeout(lookupTimer);
+    if (instant) return done();
+    L.status = "loading"; renderLookup();
+    lookupTimer = setTimeout(done, 450);
+  }
+
+  function chev() { return '<svg class="chev" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg>'; }
+  function warn() { return '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D7192A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:0 0 auto;margin-top:1px"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.5"/></svg>'; }
+
+  function renderLookup() {
+    var box = $("#lookupResult"); if (!box) return;
+    var team = TEAMS[S.team] || TEAMS.central;
+    if (L.status === "loading") {
+      box.innerHTML = '<div class="loading"><span class="spinner" aria-hidden="true"></span>Looking up ' + esc(L.label) + "…</div>";
+      return;
+    }
+    if (L.status === "idle") {
+      box.innerHTML = '<div class="empty"><h2>Look up a caller</h2><p>Type the phone number or email they called from. You\'ll see straight away whether upGrad already knows them, and whether you may contact them.</p></div>';
+      return;
+    }
+    if (L.status === "none") {
+      box.innerHTML = '<div class="empty"><div class="eyebrow">No match for ' + esc(L.label) + '</div><h2>New to upGrad</h2>' +
+        "<p>No upGrad business has seen this " + (L.label.indexOf("@") >= 0 ? "email" : "number") + " before." + (team.bu ? " Treat the caller as a new lead." : "") + "</p>" +
+        '<div class="actions">' + (team.bu ? '<button type="button" class="btn dark sm" data-crm="' + esc(team.bu) + '">Create lead in ' + esc(team.bu) + " CRM</button>" : "") +
+        '<button type="button" class="textbtn" data-clear>Search again</button></div></div>';
+      return;
+    }
+    if (L.status === "many" && !L.person) { box.innerHTML = manyHTML(); return; }
+    box.innerHTML = profileHTML(PEOPLE[L.person], team);
+  }
+
+  function manyHTML() {
+    var rows = L.matches.map(function (m) {
+      var p = PEOPLE[m.id], cur = p.journey.filter(function (j) { return j.state === "now"; })[0];
+      var desc = esc(p.owner) + " · since " + esc(p.since.split(" ")[1]) + (p.age ? " · age " + p.age : "");
+      return '<button type="button" class="row" data-open="' + m.id + '"><span class="mini-av" aria-hidden="true">' + esc(initialsOf(p)) + '</span>' +
+        '<span class="txt"><span class="title">' + esc(p.name) + (p.restricted ? '<span class="tag red">Under 18</span>' : "") + '</span><span class="desc">' + desc + (cur ? " · " + esc(cur.what) : "") + "</span></span>" + chev() + "</button>";
+    }).join("");
+    return '<section class="section" aria-labelledby="mh"><div class="section-head"><div class="eyebrow">' + esc(L.label) + '</div>' +
+      '<h2 class="lg" id="mh">' + L.matches.length + " people use this number</h2></div>" +
+      '<div class="list">' + rows + "</div>" +
+      '<p class="note">It\'s a shared family phone, so these people are linked but never merged. Ask the caller who they are, then pick them.</p></section>';
+  }
+
+  function profileHTML(p, team) {
+    var otherBu = team.bu && team.bu !== p.owner;
+    var noContact = otherBu && !p.consent.cross;
+    var nb = p.journey.filter(function (j) { return j.state !== "future"; }).length;
+    var h = "";
+    if (L.matches.length > 1) h += '<button type="button" class="textbtn backbtn" data-back>‹ Back to ' + L.matches.length + " people on this number</button>";
+    h += '<header class="person"><div class="avatar" aria-hidden="true">' + esc(initialsOf(p)) + '</div><div class="who"><h1>' + esc(p.name) + "</h1>" +
+      "<p>Known to upGrad since " + esc(p.since) + ' <span class="muted">· ' + nb + (nb > 1 ? " businesses" : " business") + " · not a new lead</span></p>" +
+      '<span class="matched">Matched on ' + esc(L.how) + "</span></div>" +
+      (otherBu || p.restricted ? "" : '<button type="button" class="btn dark sm" data-crm="' + esc(p.owner) + '">Open in ' + esc(p.owner) + " CRM</button>") + "</header>";
+
+    if (p.restricted) {
+      h += '<div class="banner" role="note">' + warn() + "<div><b>Restricted: " + esc(first(p)) + " is under 18</b>Details stay hidden until a guardian consents. Don't market to this learner. If the guardian is on the line, " + esc(p.owner) + " can send them the consent request.</div></div>";
+      h += journeyHTML(p);
+      return h;
+    }
+    if (noContact) h += '<div class="banner" role="note">' + warn() + "<div><b>Don't contact " + esc(first(p)) + " about " + esc(team.bu) + "</b>" + esc(first(p)) + " hasn't agreed to offers from other upGrad businesses. You can view this profile for context only.</div></div>";
+    h += journeyHTML(p);
+
+    var yes = function (v) { return v ? '<span class="side-val">Allowed</span>' : '<span class="side-val red" style="font-weight:500">Not given</span>'; };
+    h += '<div class="cols"><div class="left-col">';
+    h += '<section class="section" aria-labelledby="cs"><h2 id="cs">Before you reach out</h2><div class="list">' +
+      '<div class="row tight"><span class="txt"><span class="title plain">Counseling calls</span></span>' + yes(p.consent.calls) + "</div>" +
+      '<div class="row tight"><span class="txt"><span class="title plain">Marketing messages</span></span>' + yes(p.consent.marketing) + "</div>" +
+      '<div class="row tight"><span class="txt"><span class="title plain">Offers from other businesses</span></span>' + yes(p.consent.cross) + "</div>" +
+      '</div><p class="note">Consent is recorded per purpose and checked before any outreach.</p></section>';
+
+    var rows = p.phones.map(function (d) { return '<div class="row tight"><span class="txt"><span class="title plain">' + esc(L.revealed ? fmtPhone(d) : maskPhone(d)) + '</span></span><span class="desc">Verified</span></div>'; }).join("") +
+      p.emails.map(function (e) { return '<div class="row tight"><span class="txt"><span class="title plain">' + esc(L.revealed ? e : maskEmail(e)) + '</span></span><span class="desc">Verified</span></div>'; }).join("") +
+      p.linked.map(function (l) { return '<div class="row tight"><span class="txt"><span class="title plain">' + esc(l.label) + '</span></span><span class="desc">Linked, never merged</span></div>'; }).join("");
+    h += '<section class="section" aria-labelledby="ct"><h2 id="ct">Contact details</h2><div class="list">' + rows + "</div>";
+    if (noContact) h += '<p class="note">Hidden: no consent for contact from ' + esc(team.bu) + ".</p>";
+    else if (L.revealed) h += '<p class="note" role="status">Shown to ' + esc(S.name || "you") + " for counseling. This access is logged.</p>";
+    else h += '<button type="button" class="revealbtn" data-reveal>Show for this counseling call</button>';
+    h += "</section>";
+
+    h += '<section class="section" aria-labelledby="ab"><h2 id="ab">About</h2><div class="list" style="padding:0 22px">' + p.about.map(function (a) {
+      return '<div class="attr"><div class="top"><span>' + esc(a[0]) + "</span><span>" + esc(a[1]) + '</span></div><div class="value">' + esc(a[2]) + "</div></div>";
+    }).join("") + "</div></section></div>";
+
+    var bus = ["all"].concat(["U", "I", "W"].filter(function (b) { return p.events.some(function (e) { return e[0] === b; }); }));
+    var list = p.events.filter(function (e) { return L.bu === "all" || e[0] === L.bu; });
+    var shown = list.slice(0, L.shown), left = list.length - shown.length;
+    h += '<section class="section right-col" aria-labelledby="act"><div class="section-head row"><h2 id="act">Activity <span class="muted" style="font-weight:500;font-size:15px">' + list.length + "</span></h2>";
+    if (bus.length > 2) h += '<div class="seg sm" role="group" aria-label="Filter by business">' + bus.map(function (b) {
+      return '<button type="button" data-bu="' + b + '" aria-pressed="' + (L.bu === b) + '">' + (b === "all" ? "All" : b === "W" ? "WP" : BU[b]) + "</button>";
+    }).join("") + "</div>";
+    h += '</div><div class="timeline">' + shown.map(function (e) {
+      return '<div class="event"><div class="when">' + esc(e[1]) + '</div><div class="body"><div class="title">' + esc(e[2]) + '</div><div class="desc">' + esc(BU[e[0]]) + " · " + esc(e[3]) + "</div></div></div>";
+    }).join("") + (left > 0 ? '<div class="more-row"><button type="button" class="textbtn" data-more>Show ' + Math.min(PAGE, left) + " more · " + left + " older</button></div>" : "") +
+      '</div><p class="note">Read-only. Notes and calls are logged in each business\'s own CRM and flow back here.</p></section></div>';
+    return h;
+  }
+
+  function journeyHTML(p) {
+    return '<section class="section" aria-labelledby="jr"><h2 id="jr">Journey with upGrad</h2><div class="card pad journey">' + p.journey.map(function (j, i) {
+      var last = i === p.journey.length - 1;
+      var dot = j.state === "now" ? ' class="now"' : j.state === "future" ? ' class="future"' : "";
+      return '<div class="step"><div class="line"><i' + dot + "></i>" + (last ? "" : "<span></span>") + '</div><div class="when' + (j.state === "now" ? " now" : "") + '">' + esc(j.when) +
+        '</div><div class="name' + (j.state === "future" ? " future" : "") + '">' + esc(j.bu) + '</div><div class="what">' + esc(j.what) + "</div></div>";
+    }).join("") + "</div></section>";
+  }
+
+  $("#samples").innerHTML = '<span class="eyebrow">Sample lookups</span>' + SAMPLES.map(function (s) {
+    return '<button type="button" class="chip" data-q="' + esc(s.q) + '">' + esc(s.q) + " <span>· " + esc(s.t) + "</span></button>";
+  }).join("");
+  $("#samples").addEventListener("click", function (e) { var b = e.target.closest("[data-q]"); if (b) runLookup(b.getAttribute("data-q")); });
+  $("#lookupForm").addEventListener("submit", function (e) { e.preventDefault(); runLookup($("#lookup").value); });
+  $("#lookup").addEventListener("input", function () { $("#lookupErr").hidden = true; this.removeAttribute("aria-invalid"); });
+  $("#lookupResult").addEventListener("click", function (e) {
+    var t = e.target.closest("button"); if (!t) return;
+    if (t.hasAttribute("data-open")) {
+      var id = t.getAttribute("data-open");
+      L.person = id; L.how = L.matches.filter(function (m) { return m.id === id; })[0].how; L.bu = "all"; L.shown = PAGE; L.revealed = false;
+      renderLookup(); window.scrollTo(0, 0);
+    } else if (t.hasAttribute("data-back")) { L.person = null; renderLookup(); }
+    else if (t.hasAttribute("data-reveal")) { L.revealed = true; renderLookup(); }
+    else if (t.hasAttribute("data-more")) { L.shown += PAGE; renderLookup(); }
+    else if (t.hasAttribute("data-bu")) { L.bu = t.getAttribute("data-bu"); L.shown = PAGE; renderLookup(); }
+    else if (t.hasAttribute("data-crm")) { toast("Prototype: this would open the " + t.getAttribute("data-crm") + " CRM"); }
+    else if (t.hasAttribute("data-clear")) { L.status = "idle"; $("#lookup").value = ""; renderLookup(); $("#lookup").focus(); }
   });
-  $("#reveal").addEventListener("click", function () {
-    $("#phone").textContent = "+91 98234 41127";
-    $("#emailVal").textContent = "ananya.iyer21@gmail.com";
-    $("#reveal").hidden = true;
-    var n = $("#revealNote"); n.hidden = false;
-    n.textContent = "Shown to " + (S.name || "you") + " for counseling. This access is logged.";
-  });
+  // Start on a known caller so the screen isn't empty.
+  runLookup("+91 98234 41127", true);
 
   /* ---------- Identity: audit ---------- */
   var cases = [
@@ -1059,7 +1265,6 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
   $("#shareClose").addEventListener("click", function () { dlg.close ? dlg.close() : dlg.removeAttribute("open"); });
   dlg.addEventListener("click", function (e) { if (e.target === dlg && dlg.close) dlg.close(); });
 
-  renderTimeline("all");
   renderAudit();
   render();
 })();
