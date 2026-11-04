@@ -38,6 +38,22 @@ Preview links look like this:
 
 `team` can be `central`, `internshala`, `wp` or `unacademy`.
 
+## Design versions
+
+A switch in the bottom-right corner (or `?v=1`, `?v=2`, `?v=3` in the URL) changes the look of the whole prototype. The choice is remembered on that browser.
+
+- **V1 Classic:** the original layout, with generous spacing.
+- **V2 Studio:** a framed, light workspace. It is denser, with a bento-style Overview, a sticky profile rail beside the profile details, outlined cards and pastel avatars.
+- **V3 Midnight:** a dark navy sidebar and feature cards, with pastel data colours (lavender, peach, mint, lime) and the same dense layout.
+
+## People directory
+
+**People** (`#/people`, central data team only) lists everyone upGrad knows: one row per person.
+
+- Each row shows life stage, the businesses that know them, lifecycle state, revenue, how many channels can reach them, and when they were last active.
+- Above the list: key numbers, segments (leads, learning, alumni, minors) and a filter.
+- **Open** takes you to the full 360 profile. The Overview also lists people recently looked up across teams.
+
 ## Sample lookups
 
 The **Look up a person** screen searches sample data by exact phone or email (names are never used). Try:
