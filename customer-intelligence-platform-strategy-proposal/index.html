@@ -153,16 +153,17 @@ button{font-family:inherit;cursor:pointer}
 /* Cards */
 .card{background:var(--card);border-radius:var(--radius)}
 .card.pad{padding:clamp(24px,3vw,36px)}
-.hero{position:relative;overflow:hidden;border-radius:28px;background:#111113;color:#F5F5F7;padding:clamp(32px,5vw,56px);display:flex;flex-wrap:wrap;gap:40px;align-items:center;justify-content:space-between}
+.hero{position:relative;overflow:hidden;border-radius:var(--radius);background:#111113;color:#F5F5F7;padding:clamp(24px,3.5vw,36px);display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between}
 .hero > *{position:relative;z-index:1}
-.hero .copy{flex:1 1 380px;display:flex;flex-direction:column;gap:20px}
+.hero .copy{flex:1 1 380px;display:flex;flex-direction:column;gap:12px}
 .hero .kicker{font-size:15px;font-weight:500;color:#A1A1A6}
-.hero .big{font-size:clamp(56px,8vw,96px);line-height:.95;font-weight:700;letter-spacing:-0.05em}
-.hero p{margin:0;font-size:19px;line-height:1.4;max-width:460px;font-weight:500;letter-spacing:-0.015em}
+.hero .big{font-size:clamp(44px,6vw,64px);line-height:.95;font-weight:700;letter-spacing:-0.05em}
+.hero p{margin:0;font-size:17px;line-height:1.4;max-width:460px;font-weight:500;letter-spacing:-0.015em}
 .hero p span{color:#A1A1A6}
 .ring{display:flex;flex-direction:column;align-items:center;gap:12px}
-.ring .dial{position:relative;width:168px;height:168px}
-.ring .dial div{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:700;letter-spacing:-0.04em}
+.ring .dial{position:relative;width:120px;height:120px}
+.ring .dial svg{width:100%;height:100%}
+.ring .dial div{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;letter-spacing:-0.04em}
 .ring .cap{font-size:13px;color:#A1A1A6;text-align:center}
 .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));padding:8px 0}
 .metric{padding:24px 28px;display:flex;flex-direction:column;gap:8px;box-shadow:1px 0 0 var(--line)}
