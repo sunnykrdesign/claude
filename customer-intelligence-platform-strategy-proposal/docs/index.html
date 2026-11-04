@@ -1501,7 +1501,7 @@ html[data-v="3"] .phead{color:#8E90AD;text-transform:uppercase;letter-spacing:.0
       ]
     },
     ananya: {
-      name: "Ananya Iyer", gid: "upg_2H8R5T1C",
+      name: "Ananya Iyer", gid: "upg_2H8R5T1C", photo: "assets/profile-ananya.jpg",
       headline: "Final-year B.Tech student · data analyst intern",
       stage: "Final-year undergraduate", ageBand: "18–24", city: "Chennai", owner: "Internshala", since: "Jun 2021", complete: 78,
       phones: [{ d: "9823441127", v: true, src: "CMS", tag: "Primary" }],
@@ -1543,7 +1543,7 @@ html[data-v="3"] .phead{color:#8E90AD;text-transform:uppercase;letter-spacing:.0
       ]
     },
     rohan: {
-      name: "Rohan Mehta", gid: "upg_9B3N6W4E",
+      name: "Rohan Mehta", gid: "upg_9B3N6W4E", photo: "assets/profile-rohan.jpg",
       headline: "Third-year B.Sc Biotechnology student · exploring a master's abroad",
       stage: "Undergraduate", ageBand: "18–24", city: "Pune", owner: "Internshala", since: "Jan 2020", complete: 71,
       phones: [{ d: "9765013061", v: true, src: "CMS", tag: "Primary" }],
@@ -2069,11 +2069,11 @@ html[data-v="3"] .phead{color:#8E90AD;text-transform:uppercase;letter-spacing:.0
     ["Priya Nair", "upg_4T6Y1Q8R", "Working professional", "Kochi", ["I", "W"], "Paid", "Working Professionals", "₹1,40,000", "Yesterday", [1, 1, 1, 1, 0]],
     ["Vikram Singh", "upg_8J2W5N7C", "Working professional", "Gurugram", ["W"], "Alumni", "Working Professionals", "₹3,10,000", "3 Nov", [1, 1, 0, 1, 1]],
     ["Sneha Kulkarni", "upg_1R9E4V6B", "Recent graduate", "Pune", ["U", "I", "W"], "Lead", "Working Professionals", "₹12,600", "Today", [1, 1, 1, 0, 1]],
-    ["Aditya Rao", "upg_6P3L8K2D", "Final-year undergraduate", "Bengaluru", ["I", "S"], "Counselled", "Study Abroad", "₹2,999", "2 Nov", [1, 1, 1, 1, 0]],
+    ["Aditya Rao", "upg_6P3L8K2D", "Final-year undergraduate", "Bengaluru", ["I", "S"], "Counselled", "Study Abroad", "₹2,999", "2 Nov", [1, 1, 1, 1, 0], "assets/profile-aditya.jpg"],
     ["Fatima Sheikh", "upg_9C5H2X7M", "Undergraduate", "Lucknow", ["U", "I"], "Learning", "Internshala", "₹5,499", "Today", [1, 0, 1, 0, 0]],
-    ["Rahul Verma", "upg_3N8F6T1Q", "Working professional", "Noida", ["W"], "Refunded", "Working Professionals", "₹0", "18 Oct", [0, 1, 0, 0, 0]],
+    ["Rahul Verma", "upg_3N8F6T1Q", "Working professional", "Noida", ["W"], "Refunded", "Working Professionals", "₹0", "18 Oct", [0, 1, 0, 0, 0], "assets/profile-rahul.jpg"],
     ["Kavya Menon", "upg_7B1M9S4E", "School", "Thrissur", ["U"], "Learning", "Unacademy", "₹9,800", "Today", [1, 1, 1, 1, 1]],
-    ["Harsh Patel", "upg_2W7Q3J8A", "Gap year", "Ahmedabad", ["U", "S"], "Lead", "Study Abroad", "₹6,200", "30 Oct", [1, 1, 0, 1, 0]],
+    ["Harsh Patel", "upg_2W7Q3J8A", "Gap year", "Ahmedabad", ["U", "S"], "Lead", "Study Abroad", "₹6,200", "30 Oct", [1, 1, 0, 1, 0], "assets/profile-harsh.jpg"],
     ["Ishita Das", "upg_5K4R7Y2P", "Recent graduate", "Kolkata", ["I"], "Alumni", "Internshala", "₹3,998", "21 Oct", [1, 1, 1, 0, 1]]
   ];
   function dirRows() {
@@ -2084,7 +2084,7 @@ html[data-v="3"] .phead{color:#8E90AD;text-transform:uppercase;letter-spacing:.0
         reach: reach(p, TEAMS.central).map(function (x) { return x[1] ? 1 : 0; }), minor: !!p.restricted };
     });
     return full.concat(EXTRA.map(function (r) {
-      return { id: null, p: { name: r[0] }, name: r[0], gid: r[1], stage: r[2], city: r[3], bus: r[4], state: r[5], owner: r[6], rev: r[7], last: r[8], reach: r[9], minor: r[2] === "School" };
+      return { id: null, p: { name: r[0], photo: r[10] }, name: r[0], gid: r[1], stage: r[2], city: r[3], bus: r[4], state: r[5], owner: r[6], rev: r[7], last: r[8], reach: r[9], minor: r[2] === "School" };
     }));
   }
   var SEGS = [["all", "Everyone"], ["lead", "Leads"], ["learning", "Learning"], ["alumni", "Alumni"], ["restricted", "Minors"]];
