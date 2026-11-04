@@ -870,6 +870,24 @@ html[data-v="3"] .v3ov{display:grid;grid-template-columns:minmax(0,1fr) 300px;ga
   html[data-v="3"] *,html[data-v="3"] *::before{animation:none !important;transition:none !important}
   .pexp,.lt-exp{animation:none}
 }
+/* Profile cards stack in balanced columns, so short cards leave no holes */
+.sgrid{display:block;columns:2 320px;column-gap:20px}
+.sgrid > .scard{display:block;break-inside:avoid;margin:0 0 20px;width:100%}
+.scard{scroll-margin-top:88px}
+.scard.flash{animation:flash 1.3s var(--ease)}
+@keyframes flash{0%{box-shadow:0 0 0 5px rgba(29,29,31,.10)}100%{box-shadow:0 0 0 0 rgba(29,29,31,0)}}
+/* Section bar */
+.jump{position:sticky;top:12px;z-index:6;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding:5px;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%);border-radius:14px;box-shadow:0 0 0 1px var(--line),0 8px 24px rgba(16,16,24,.06)}
+.jump::-webkit-scrollbar{display:none}
+.jump button{flex:0 0 auto;border:none;background:transparent;height:34px;padding:0 14px;border-radius:10px;font-size:13px;font-weight:500;color:var(--muted);transition:color .25s,background .25s}
+.jump button:hover{color:var(--text)}
+.jump button[aria-current="location"]{background:var(--text);color:#fff}
+html[data-v="3"] .jump{background:rgba(228,228,232,.9);box-shadow:inset 0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(16,16,24,.06)}
+html[data-v="3"] [data-slide] > button[aria-current="location"]{color:var(--text) !important}
+@media (min-width:1181px){html[data-v="3"] .v3rail{position:sticky;top:20px}}
+html .sgrid.bal{columns:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px;row-gap:0;align-items:start}
+.scol{display:flex;flex-direction:column;gap:20px;min-width:0}
+.scol > .scard{margin:0}
 </style>
 </head>
 <body>
@@ -1867,6 +1885,7 @@ html[data-v="3"] .v3ov{display:grid;grid-template-columns:minmax(0,1fr) 300px;ga
     }
     if (L.status === "many" && !L.person) { box.innerHTML = manyHTML(); return; }
     box.innerHTML = profileHTML(PEOPLE[L.person], team);
+    balanceCards();
   }
 
   function manyHTML() {
@@ -1895,7 +1914,7 @@ html[data-v="3"] .v3ov{display:grid;grid-template-columns:minmax(0,1fr) 300px;ga
     }).join("");
   }
   function cardHTML(id, title, aside, body, foot) {
-    return '<section class="scard" aria-labelledby="' + id + '"><div class="scard-head"><h3 id="' + id + '">' + title + "</h3>" + (aside || "") + "</div>" + body + (foot ? '<div class="scard-foot">' + foot + "</div>" : "") + "</section>";
+    return '<section class="scard" id="s-' + id + '" aria-labelledby="' + id + '"><div class="scard-head"><h3 id="' + id + '">' + title + "</h3>" + (aside || "") + "</div>" + body + (foot ? '<div class="scard-foot">' + foot + "</div>" : "") + "</section>";
   }
 
   // Insight 8: reachable now, per channel = consent + verified contact + not a minor.
@@ -2004,7 +2023,7 @@ html[data-v="3"] .v3ov{display:grid;grid-template-columns:minmax(0,1fr) 300px;ga
     var consent = '<div class="attr-list">' + yes("call", "Calls") + yes("email", "Email") + yes("sms", "SMS") + yes("whatsapp", "WhatsApp") + yes("ads", "Marketing and ads") + yes("callback", "Callback") + yes("cross", "Offers from other businesses") + "</div>";
     var consentFoot = '<p class="note">' + esc(c.basis) + (c.since ? " · recorded " + esc(c.since) : "") + ". Checked before any outreach; every change is logged in Activity.</p>";
 
-    return '<div class="sgrid">' +
+    return jumpHTML([["c-id", "Contact"], ["c-consent", "Consent"], ["c-personal", "Personal"], ["c-edu", "Education"], ["c-career", "Career"], ["c-asp", "Aspiration"], ["c-fin", "Financial"]]) + '<div class="sgrid">' +
       cardHTML("c-id", "Identity & contact", '<span class="tag">T1 · vault</span>', contact, contactFoot) +
       cardHTML("c-consent", "Consent & preferences", "", consent, consentFoot) +
       cardHTML("c-personal", "Personal details", "", rowsHTML(p.personal, { otherBu: otherBu })) +
@@ -2104,6 +2123,66 @@ html[data-v="3"] .v3ov{display:grid;grid-template-columns:minmax(0,1fr) 300px;ga
     var all = $$('[role="tab"]', $("#lookupResult")), i = all.indexOf(t) + (e.key === "ArrowRight" ? 1 : -1);
     all[(i + all.length) % all.length].click(); e.preventDefault();
   });
+
+  // Two balanced columns of profile cards, each kept in reading order.
+  function balanceCards() {
+    $$("#panel .sgrid").forEach(function (g) {
+      var cards = $$(".scard", g);
+      if (cards.length < 3) return;
+      g.classList.toggle("bal", false);
+      cards.forEach(function (c) { g.appendChild(c); });
+      $$(".scol", g).forEach(function (c) { g.removeChild(c); });
+      if (g.clientWidth < 680) return;
+      var hs = cards.map(function (c) { return c.getBoundingClientRect().height; });
+      var cols = [document.createElement("div"), document.createElement("div")];
+      cols.forEach(function (c) { c.className = "scol"; });
+      // Try every split (7 cards = 64 options with the first card fixed left) and keep the most even one.
+      var best = 0, bestDiff = Infinity;
+      for (var m = 0; m < (1 << (cards.length - 1)); m++) {
+        var t = [hs[0], 0];
+        for (var j = 1; j < cards.length; j++) t[(m >> (j - 1)) & 1] += hs[j] + 20;
+        var d = Math.abs(t[0] - t[1]); if (d < bestDiff - 1) { bestDiff = d; best = m; }
+      }
+      cards.forEach(function (c, i) { cols[i === 0 ? 0 : (best >> (i - 1)) & 1].appendChild(c); });
+      g.classList.toggle("bal", true); g.appendChild(cols[0]); g.appendChild(cols[1]);
+    });
+  }
+  var balTimer = null;
+  window.addEventListener("resize", function () { clearTimeout(balTimer); balTimer = setTimeout(balanceCards, 150); });
+
+  // Section bar on the Learner profile: jump to a card; the current one follows your scroll.
+  function jumpHTML(items) {
+    return '<nav class="jump" id="jump" data-slide aria-label="Jump to a section">' + items.map(function (it, i) {
+      return '<button type="button" data-jump="s-' + it[0] + '"' + (i === 0 ? ' aria-current="location"' : "") + ">" + esc(it[1]) + "</button>";
+    }).join("") + "</nav>";
+  }
+  var JUMPING = 0;
+  function setJump(id) {
+    var nav = $("#jump"); if (!nav) return;
+    $$("[data-jump]", nav).forEach(function (x) { if (x.getAttribute("data-jump") === id) x.setAttribute("aria-current", "location"); else x.removeAttribute("aria-current"); });
+    var a = nav.querySelector('[aria-current="location"]');
+    if (a && nav.scrollWidth > nav.clientWidth) nav.scrollTo({ left: Math.max(0, a.offsetLeft - 24), behavior: REDUCED ? "auto" : "smooth" });
+    slideAll();
+  }
+  $("#lookupResult").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-jump]"); if (!b) return;
+    var id = b.getAttribute("data-jump"), el = document.getElementById(id); if (!el) return;
+    JUMPING = Date.now(); setJump(id);
+    el.scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "start" });
+    el.classList.toggle("flash", false); void el.offsetWidth; el.classList.toggle("flash", true);
+  });
+  window.addEventListener("scroll", function () {
+    var nav = $("#jump"); if (!nav || !nav.offsetParent || Date.now() - JUMPING < 900) return;
+    var line = nav.getBoundingClientRect().bottom + 32, best = null, bestTop = -Infinity;
+    $$("[data-jump]", nav).forEach(function (b) {
+      var el = document.getElementById(b.getAttribute("data-jump")); if (!el) return;
+      var t = el.getBoundingClientRect().top;
+      if (t <= line && t > bestTop) { bestTop = t; best = b.getAttribute("data-jump"); }
+    });
+    best = best || nav.querySelector("[data-jump]").getAttribute("data-jump");
+    var cur = nav.querySelector('[aria-current="location"]');
+    if (!cur || cur.getAttribute("data-jump") !== best) setJump(best);
+  }, { passive: true });
 
   /* ---------- Data model ---------- */
   var CAT = JSON.parse($("#catalog").textContent);
@@ -2369,7 +2448,7 @@ html[data-v="3"] .v3ov{display:grid;grid-template-columns:minmax(0,1fr) 300px;ga
     if (!isV3()) return;
     $$("[data-slide]").forEach(function (c) {
       if (!c.offsetParent || !c.id) return;
-      var act = c.querySelector(':scope > [aria-pressed="true"], :scope > [aria-selected="true"]'); if (!act) return;
+      var act = c.querySelector(':scope > [aria-pressed="true"], :scope > [aria-selected="true"], :scope > [aria-current="location"]'); if (!act) return;
       var s = c.querySelector(":scope > .slider"), fresh = !s;
       if (fresh) { s = document.createElement("span"); s.className = "slider"; s.setAttribute("aria-hidden", "true"); c.insertBefore(s, c.firstChild); }
       var r = { x: act.offsetLeft, y: act.offsetTop, w: act.offsetWidth, h: act.offsetHeight };

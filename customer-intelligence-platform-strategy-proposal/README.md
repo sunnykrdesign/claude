@@ -87,6 +87,8 @@ The profile and data model follow the four data sheets (Learner Profile, Academi
   - **Learning & skills:** courses with progress, results and certificates, plus graded and declared skills.
   - **Activity:** events filtered by type and business, each with its source system.
   - **Insights:** all derived insights, plus Sales Insights scores labelled with their model.
+- **Section bar:** a sticky bar at the top of the Learner profile (Contact · Consent · Personal · Education · Career · Aspiration · Financial). Clicking a section scrolls straight to that card, and the highlight follows you as you scroll.
+- **Card layout:** the detail cards sit in two columns with no gaps between them. The page tries every way of splitting the cards and keeps the one where both columns end level, with each column still in reading order.
 - Every value shows its source system (Prism, LSQ, HubSpot, OMS, SA/WP Sales Insights, CMS or a rule). Where sources conflicted, the merge rule that picked the value is shown.
 - **Sensitivity:** T1 contact details are hidden until the viewer gives a reason. T2 values are bands only: the financial profile needs a reason before it's shown. Other businesses never see T2 values, payments or revenue. Every reveal is logged.
 - **Data model** (central data team only, `#/data`) is a searchable data dictionary of all 117 items:
