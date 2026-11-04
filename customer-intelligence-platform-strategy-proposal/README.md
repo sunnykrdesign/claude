@@ -42,9 +42,15 @@ Preview links look like this:
 
 A switch in the bottom-right corner (or `?v=1`, `?v=2`, `?v=3` in the URL) changes the look of the whole prototype. The choice is remembered on that browser.
 
-- **V1 Classic:** the original layout, with generous spacing.
-- **V2 Studio:** a framed, light workspace. It is denser, with a bento-style Overview, a sticky profile rail beside the profile details, outlined cards and pastel avatars.
-- **V3 Midnight:** a dark navy sidebar and feature cards, with pastel data colours (lavender, peach, mint, lime) and the same dense layout.
+- **V1:** the original layout, with generous spacing.
+- **V2:** a framed, light workspace. It is denser, with a bento-style Overview, a sticky profile rail, outlined cards and pastel avatars.
+- **V3:** a soft grey canvas with white cards, monospace table headers and status chips, and upGrad red as the accent colour. Its Overview is built for live monitoring:
+  - **Top numbers:** a row of six key figures. The numbers roll in digit by digit when the page opens, and the live counters keep ticking.
+  - **Trends:** a chart with a crosshair that follows the cursor (or the arrow keys). It shows a tooltip with every series for that day and a red date pill on the axis. Each series can be switched on or off from the legend.
+  - **Paid leads, checked against the profile:** a table of recent paid leads, filtered by business tabs with a sliding indicator. Clicking a row lifts it into a card with a red top edge, AI fields (next-best programme, intent) and actions.
+  - **Business cards:** one per business, with a live profile count and an animated consent ring, plus a bar chart of lookups this week.
+  - **Motion everywhere in V3:** tabs and segments use the same sliding indicator. Cards rise in with a stagger. People directory rows open into the same detail card.
+  - **Reduced motion:** all of this switches off when the system asks for reduced motion.
 
 ## People directory
 
