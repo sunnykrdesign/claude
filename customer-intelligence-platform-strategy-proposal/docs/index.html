@@ -821,8 +821,6 @@ html[data-v="3"] .v3ov{display:grid;grid-template-columns:minmax(0,1fr) 300px;ga
 .lt-item{border-radius:16px;position:relative}
 .lt-item + .lt-item::before{content:"";position:absolute;left:16px;right:16px;top:0;border-top:1px solid var(--line)}
 .lt-item.open::before,.lt-item.open + .lt-item::before{display:none}
-.lt-item.sep{margin-bottom:18px}
-.lt-item.sep::after{content:"";position:absolute;left:16px;right:16px;bottom:-9px;border-top:1px solid var(--border)}
 .lt-item.open{background:#fff;margin:14px -8px;box-shadow:0 0 0 1px rgba(16,16,24,.07),0 16px 40px rgba(16,16,24,.09);animation:lift2 .5s var(--ease)}
 @keyframes lift2{from{box-shadow:0 0 0 1px rgba(16,16,24,0),0 0 0 rgba(16,16,24,0);margin:0}}
 .lt-item.open .lt-row:hover{background:transparent}
@@ -2473,12 +2471,11 @@ html[data-v="3"] .v3ov{display:grid;grid-template-columns:minmax(0,1fr) 300px;ga
   }).join("");
   function renderLeads(stagger) {
     $$("#ltTabs button").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-lt") === LT.bu); });
-    var rows = LEADS.filter(function (l) { return LT.bu === "all" || l[4] === LT.bu; }), lastToday = -1;
-    rows.forEach(function (l, i) { if (l[1]) lastToday = i; });
+    var rows = LEADS.filter(function (l) { return LT.bu === "all" || l[4] === LT.bu; });
     var box = $("#ltRows"); box.classList.toggle("stagger", !!stagger);
     box.innerHTML = rows.map(function (l, i) {
       var open = LT.open === l[2];
-      return '<div class="lt-item' + (open ? " open" : "") + (i === lastToday && i < rows.length - 1 ? " sep" : "") + '" style="--i:' + Math.min(i, 10) + '">' +
+      return '<div class="lt-item' + (open ? " open" : "") + '" style="--i:' + Math.min(i, 10) + '">' +
         '<button type="button" class="lt-row" data-lrow="' + esc(l[2]) + '" aria-expanded="' + open + '">' +
         '<span class="c-date">' + (l[1] ? '<i class="new"></i><span class="sr">New. </span>' : "") + esc(l[0]) + '</span><span class="c-name"><b>' + esc(l[2]) + '</b><small>' + esc(l[7]) + '</small></span><span class="c-bu">' + esc(BUS[l[4]]) + '</span><span class="c-utm"><u>' + esc(l[5]) + '</u></span><span class="c-m"><span class="mc ' + l[6] + '">' + MATCH[l[6]] + '</span></span><span class="c-chev">' + chevD() + "</span></button>" +
         (open ? leadExp(l) : "") + "</div>";
