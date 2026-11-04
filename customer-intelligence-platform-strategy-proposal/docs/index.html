@@ -872,18 +872,6 @@ html[data-v="3"] .v3ov{display:grid;grid-template-columns:minmax(0,1fr) 300px;ga
   html[data-v="3"] *,html[data-v="3"] *::before{animation:none !important;transition:none !important}
   .pexp,.lt-exp{animation:none}
 }
-/* V3 entrance: laptop zoom */
-html.intro body{overflow:hidden}
-html.intro .app{position:fixed;inset:0;z-index:902;overflow:hidden;min-height:0;height:100vh;will-change:transform;backface-visibility:hidden;transform-origin:50% 50%}
-html.intro .vswitch,html.intro .toast{opacity:0;pointer-events:none}
-.vswitch{transition:opacity .5s}
-.lap-bg{position:fixed;inset:0;z-index:900;background:radial-gradient(120% 90% at 50% 18%,#F8F8FA 0%,#E6E6EA 58%,#D4D4DA 100%)}
-.lap-bezel{position:fixed;z-index:901;background:#0E0E10;border-radius:calc(var(--b) * 1.15);box-shadow:inset 0 0 0 2px #3A3A40,0 50px 90px rgba(0,0,0,.2);transform-origin:50% 50%}
-.lap-notch{position:fixed;z-index:903;width:180px;height:calc(var(--b) * .6);background:#0E0E10;border-radius:0 0 16px 16px}
-.lap-base{position:fixed;z-index:901;height:calc(var(--b) * .95);background:linear-gradient(#E2E2E6,#C2C2C8 55%,#A3A3AB);border-radius:6px 6px 40px 40px / 6px 6px 18px 18px;box-shadow:0 34px 70px rgba(0,0,0,.28)}
-.lap-base i{position:absolute;left:50%;top:0;width:15%;height:38%;transform:translateX(-50%);background:#ADADB4;border-radius:0 0 14px 14px}
-.lap-skip{position:fixed;z-index:904;right:20px;bottom:20px;height:36px;padding:0 16px;border-radius:999px;border:none;background:rgba(20,20,24,.82);color:#fff;font:500 13px "Inter",-apple-system,sans-serif;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-.lap-skip:hover{background:#000}
 </style>
 </head>
 <body>
@@ -2338,7 +2326,7 @@ html.intro .vswitch,html.intro .toast{opacity:0;pointer-events:none}
     v3Enter((location.hash.replace(/^#\/?/, "") || "overview").split("/")[0]);
   }
   setVersion(document.documentElement.getAttribute("data-v") || "2");
-  $("#vswitch").addEventListener("click", function (e) { var b = e.target.closest("[data-v]"); if (!b) return; if (b.getAttribute("data-v") === "3") INTRO.pending = true; setVersion(b.getAttribute("data-v"), true); });
+  $("#vswitch").addEventListener("click", function (e) { var b = e.target.closest("[data-v]"); if (b) setVersion(b.getAttribute("data-v"), true); });
 
   /* ---------- V3: live overview and motion ---------- */
   var REDUCED = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
@@ -2555,54 +2543,6 @@ html.intro .vswitch,html.intro .toast{opacity:0;pointer-events:none}
     P.open = P.open === g ? null : g; renderPeople();
   });
 
-  // V3 entrance: the live app starts inside a laptop, then the camera zooms into its screen.
-  var INTRO = { pending: false, running: false };
-  try { INTRO.pending = sessionStorage.getItem("cip-intro") !== "1"; } catch (e) { INTRO.pending = true; }
-  function playIntro(viewName) {
-    var app = $("#app");
-    INTRO.pending = false;
-    if (INTRO.running || REDUCED || !app || app.hidden || !app.animate) return;
-    INTRO.running = true;
-    try { sessionStorage.setItem("cip-intro", "1"); } catch (e) {}
-    window.scrollTo(0, 0);
-    var W = window.innerWidth, H = window.innerHeight, B = Math.round(Math.min(W, H) * 0.035) + 12;
-    var s = Math.min(0.6, (W - 64) / (W + 2 * B), (H * 0.74) / (H + 2.9 * B));
-    var ty = -H * 0.045;
-    var make = function (cls, tag) { var el = document.createElement(tag || "div"); el.className = cls; el.style.setProperty("--b", B + "px"); document.body.appendChild(el); return el; };
-    var bg = make("lap-bg"), bez = make("lap-bezel"), base = make("lap-base"), notch = make("lap-notch"), skip = make("lap-skip", "button");
-    [bg, bez, base, notch].forEach(function (el) { el.setAttribute("aria-hidden", "true"); });
-    skip.type = "button"; skip.textContent = "Skip intro";
-    base.innerHTML = "<i></i>";
-    bez.style.inset = (-B) + "px";
-    var bw = (W + 2 * B) * 1.16, bt = H + B;
-    base.style.cssText += ";left:" + (W / 2 - bw / 2) + "px;top:" + bt + "px;width:" + bw + "px;transform-origin:" + (bw / 2) + "px " + (H / 2 - bt) + "px";
-    notch.style.cssText += ";left:" + (W / 2 - 90) + "px;top:" + (-B) + "px;transform-origin:90px " + (H / 2 + B) + "px";
-    document.documentElement.classList.add("intro");
-    var P0 = "translateY(" + ty + "px) perspective(1600px) rotateX(18deg) scale(" + s + ")";
-    var P1 = "translateY(" + (ty * 0.5) + "px) perspective(1600px) rotateX(0deg) scale(" + (s * 1.06) + ")";
-    var kf = [{ transform: P0, offset: 0 }, { transform: P0, offset: 0.16, easing: "cubic-bezier(.45,0,.25,1)" }, { transform: P1, offset: 0.48, easing: "cubic-bezier(.75,0,.2,1)" }, { transform: "translateY(0px) perspective(1600px) rotateX(0deg) scale(1)", offset: 1 }];
-    var opts = { duration: 2700, fill: "both" };
-    var anims = [app, bez, base, notch].map(function (el) { return el.animate(kf, opts); });
-    anims.push(app.animate([{ borderRadius: "18px" }, { borderRadius: "18px", offset: 0.6 }, { borderRadius: "0px" }], opts));
-    anims.push(bg.animate([{ opacity: 1 }, { opacity: 1, offset: 0.7 }, { opacity: 0 }], opts));
-    anims.push(skip.animate([{ opacity: 0 }, { opacity: 1, offset: 0.12 }, { opacity: 1, offset: 0.8 }, { opacity: 0 }], opts));
-    var done = false;
-    function finish() {
-      if (done) return; done = true;
-      anims.forEach(function (a) { a.cancel(); });
-      [bg, bez, base, notch, skip].forEach(function (el) { el.remove(); });
-      document.documentElement.classList.remove("intro");
-      document.removeEventListener("keydown", onKey);
-      INTRO.running = false;
-      var view = $('.view[data-view="' + viewName + '"]'); if (view) rollIn(view);
-      requestAnimationFrame(slideAll);
-    }
-    function onKey(e) { if (e.key === "Escape") finish(); }
-    anims[0].onfinish = finish;
-    skip.addEventListener("click", finish);
-    document.addEventListener("keydown", onKey);
-  }
-
   var V3READY = true;
   function v3Enter(name) {
     if (!V3READY) return;
@@ -2610,7 +2550,6 @@ html.intro .vswitch,html.intro .toast{opacity:0;pointer-events:none}
     var view = $('.view[data-view="' + name + '"]');
     if (view) rollIn(view);
     requestAnimationFrame(slideAll);
-    if (INTRO.pending && S && S.step === "app") playIntro(name);
   }
 
   // Start on a known caller so the screen isn't empty.
