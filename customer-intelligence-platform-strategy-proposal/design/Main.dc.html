@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Customer Intelligence · Overview</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F5F7}
+a{color:#1D1D1F;text-decoration:none}a:hover{color:#D7192A}
+button{font-family:inherit}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #F5F5F7; color: #1D1D1F; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', 'Helvetica Neue', sans-serif; display: flex; flex-wrap: wrap; -webkit-font-smoothing: antialiased; letter-spacing: -0.01em">
+
+  <nav aria-label="Primary" style="flex: 1 1 220px; max-width: 100%; box-sizing: border-box; padding: 28px 16px; display: flex; flex-direction: column; gap: 32px">
+    <div style="padding: 0 12px; font-size: 19px; font-weight: 700; letter-spacing: -0.03em"><span style="color: #D7192A">up</span>Grad <span style="font-weight: 500; color: #6E6E73">Intelligence</span></div>
+    <div style="display: flex; flex-direction: column; gap: 2px">
+      <a href="Main.dc.html" aria-current="page" style="display: flex; align-items: center; min-height: 40px; padding: 0 12px; border-radius: 10px; background: #E8E8ED; font-size: 14px; font-weight: 600">Overview</a>
+      <a href="Profile360.dc.html" style="display: flex; align-items: center; min-height: 40px; padding: 0 12px; border-radius: 10px; font-size: 14px">Look up a person</a>
+      <a href="Identity.dc.html" style="display: flex; align-items: center; justify-content: space-between; min-height: 40px; padding: 0 12px; border-radius: 10px; font-size: 14px">Identity &amp; audits <span style="font-size: 13px; color: #6E6E73">188</span></a>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 2px">
+      <div style="padding: 0 12px 6px; font-size: 12px; color: #6E6E73">Later phases</div>
+      <div style="display: flex; align-items: center; min-height: 36px; padding: 0 12px; font-size: 14px; color: #6E6E73">Decisioning</div>
+      <div style="display: flex; align-items: center; min-height: 36px; padding: 0 12px; font-size: 14px; color: #6E6E73">Cross-sell</div>
+    </div>
+  </nav>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 40px clamp(16px, 4vw, 64px) 96px">
+    <div style="max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 64px">
+
+      <header style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px">
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <h1 style="margin: 0; font-size: 40px; line-height: 1.05; font-weight: 700; letter-spacing: -0.035em">Overview</h1>
+          <p style="margin: 0; font-size: 16px; color: #6E6E73">Phase 1 · Building one memory of every learner</p>
+        </div>
+        <div role="group" aria-label="Time range" style="display: flex; background: #E8E8ED; border-radius: 10px; padding: 3px; gap: 2px">
+          <sc-for list="{{ ranges }}" as="r" hint-placeholder-count="3">
+            <button type="button" onClick="{{ r.pick }}" aria-pressed="{{ r.pressed }}" style="border: none; cursor: pointer; min-width: 64px; height: 32px; padding: 0 14px; border-radius: 8px; font-size: 13px; font-weight: 500; background: {{ r.bg }}; color: {{ r.fg }}; box-shadow: {{ r.shadow }}">{{ r.label }}</button>
+          </sc-for>
+        </div>
+      </header>
+
+      <!-- Hero: the stranger problem -->
+      <section aria-label="People known across businesses" style="position: relative; overflow: hidden; border-radius: 28px; background: #111113; color: #F5F5F7; padding: clamp(32px, 5vw, 56px); display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: space-between">
+        <div aria-hidden="true" style="position: absolute; right: -200px; bottom: -260px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(closest-side, rgba(227,38,47,0.32), rgba(227,38,47,0) 72%)"></div>
+        <div style="position: relative; flex: 1 1 380px; display: flex; flex-direction: column; gap: 20px">
+          <div style="font-size: 15px; font-weight: 500; color: #A1A1A6">Known to more than one business</div>
+          <div style="font-size: clamp(56px, 8vw, 96px); line-height: 0.95; font-weight: 700; letter-spacing: -0.05em">727K</div>
+          <p style="margin: 0; font-size: 19px; line-height: 1.4; max-width: 460px; font-weight: 500; letter-spacing: -0.015em">learners moved between Unacademy, Internshala and Working Professionals. <span style="color: #A1A1A6">Until now, each business met them as a stranger.</span></p>
+        </div>
+        <div style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 12px">
+          <div style="position: relative; width: 168px; height: 168px">
+            <svg width="168" height="168" viewBox="0 0 168 168" role="img" aria-label="71.4 percent of active leads resolved to one profile">
+              <circle cx="84" cy="84" r="74" fill="none" stroke="#2C2C2E" stroke-width="8"></circle>
+              <circle cx="84" cy="84" r="74" fill="none" stroke="#E3262F" stroke-width="8" stroke-linecap="round" stroke-dasharray="332 465" transform="rotate(-90 84 84)"></circle>
+            </svg>
+            <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 700; letter-spacing: -0.04em">71%</div>
+          </div>
+          <div style="font-size: 13px; color: #A1A1A6; text-align: center">of active leads now<br>resolve to one profile</div>
+        </div>
+      </section>
+
+      <!-- Objective 1 -->
+      <section aria-labelledby="o1" style="display: flex; flex-direction: column; gap: 16px">
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <div style="font-size: 13px; color: #6E6E73">Objective 1 · Phase 1 success criteria</div>
+          <h2 id="o1" style="margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.03em">Know our customers</h2>
+        </div>
+        <div style="background: #FFFFFF; border-radius: 22px; padding: 8px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))">
+          <div style="padding: 24px 28px; display: flex; flex-direction: column; gap: 8px; box-shadow: 1px 0 0 #E5E5EA">
+            <div style="font-size: 13px; color: #6E6E73">Leads resolved</div>
+            <div style="font-size: 32px; font-weight: 600; letter-spacing: -0.035em">71.4%</div>
+            <div style="font-size: 13px; color: #6E6E73">{{ kpi.resolvedDelta }} · target [X]%</div>
+          </div>
+          <div style="padding: 24px 28px; display: flex; flex-direction: column; gap: 8px; box-shadow: 1px 0 0 #E5E5EA">
+            <div style="font-size: 13px; color: #6E6E73">Wrong merges</div>
+            <div style="font-size: 32px; font-weight: 600; letter-spacing: -0.035em">{{ kpi.falseMerge }}</div>
+            <div style="font-size: 13px; color: #6E6E73">of audited merges · cap [X]%</div>
+          </div>
+          <div style="padding: 24px 28px; display: flex; flex-direction: column; gap: 8px; box-shadow: 1px 0 0 #E5E5EA">
+            <div style="font-size: 13px; color: #6E6E73">Profile completeness</div>
+            <div style="font-size: 32px; font-weight: 600; letter-spacing: -0.035em">62</div>
+            <div style="font-size: 13px; color: #6E6E73">average score of 100</div>
+          </div>
+          <div style="padding: 24px 28px; display: flex; flex-direction: column; gap: 8px">
+            <div style="font-size: 13px; color: #6E6E73">Teams using the 360 view</div>
+            <div style="font-size: 32px; font-weight: 600; letter-spacing: -0.035em">2 of 3</div>
+            <div style="font-size: 13px; color: #6E6E73">{{ kpi.lookups }} lookups on calls</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Objective 3 -->
+      <section aria-labelledby="o3" style="display: flex; flex-direction: column; gap: 16px">
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <div style="font-size: 13px; color: #6E6E73">Objective 3 · sizing the opportunity</div>
+          <h2 id="o3" style="margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.03em">Stop buying back our own learners</h2>
+        </div>
+        <div style="background: #FFFFFF; border-radius: 22px; padding: clamp(24px, 3vw, 36px); display: flex; flex-wrap: wrap; gap: 48px">
+          <div style="flex: 1 1 280px; display: flex; flex-direction: column; gap: 12px">
+            <div style="font-size: 56px; font-weight: 700; letter-spacing: -0.05em; line-height: 1">{{ kpi.knownLeads }}</div>
+            <p style="margin: 0; font-size: 16px; line-height: 1.5; color: #6E6E73; max-width: 340px">paid leads {{ kpi.rangeLabel }} were people upGrad already knew. Each was bought at full CAC.</p>
+          </div>
+          <div style="flex: 1 1 340px; display: flex; flex-direction: column; gap: 22px; justify-content: center">
+            <div style="font-size: 13px; color: #6E6E73">Conversion to enrolment</div>
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <div style="display: flex; justify-content: space-between; font-size: 14px"><span>Leads we already knew</span><span style="font-weight: 600">11.8%</span></div>
+              <div style="height: 6px; border-radius: 999px; background: #F0F0F2"><div style="width: 100%; height: 100%; border-radius: 999px; background: #E3262F"></div></div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px">
+              <div style="display: flex; justify-content: space-between; font-size: 14px"><span>Cold leads</span><span style="font-weight: 600">4.9%</span></div>
+              <div style="height: 6px; border-radius: 999px; background: #F0F0F2"><div style="width: 42%; height: 100%; border-radius: 999px; background: #1D1D1F"></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Objective 2 + foundation -->
+      <div style="display: flex; flex-wrap: wrap; gap: 32px">
+        <section aria-labelledby="o2" style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+          <div style="display: flex; flex-direction: column; gap: 4px">
+            <div style="font-size: 13px; color: #6E6E73">Objective 2 · insight only in Phase 1</div>
+            <h2 id="o2" style="margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.03em">Right moment, right need</h2>
+          </div>
+          <div style="background: #FFFFFF; border-radius: 22px; padding: 0 24px">
+            <a href="#" style="display: flex; align-items: center; gap: 16px; min-height: 76px; box-shadow: 0 1px 0 #E5E5EA">
+              <span style="flex: 1; display: flex; flex-direction: column; gap: 3px"><span style="font-size: 15px; font-weight: 500">Graduating in 6–8 months</span><span style="font-size: 13px; color: #6E6E73">Internship window</span></span>
+              <span style="font-size: 17px; font-weight: 600">126K</span>
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"></path></svg>
+            </a>
+            <a href="#" style="display: flex; align-items: center; gap: 16px; min-height: 76px; box-shadow: 0 1px 0 #E5E5EA">
+              <span style="flex: 1; display: flex; flex-direction: column; gap: 3px"><span style="font-size: 15px; font-weight: 500">2–3 years into first job</span><span style="font-size: 13px; color: #6E6E73">Upskilling window</span></span>
+              <span style="font-size: 17px; font-weight: 600">88K</span>
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"></path></svg>
+            </a>
+            <a href="#" style="display: flex; align-items: center; gap: 16px; min-height: 76px">
+              <span style="flex: 1; display: flex; flex-direction: column; gap: 3px"><span style="font-size: 15px; font-weight: 500">Interned, not yet employed</span><span style="font-size: 13px; color: #6E6E73">No upGrad product serves this</span></span>
+              <span style="font-size: 17px; font-weight: 600">41K</span>
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"></path></svg>
+            </a>
+          </div>
+          <p style="margin: 0; font-size: 13px; color: #6E6E73; padding: 0 4px">For product and planning. No automated outreach until Decisioning.</p>
+        </section>
+
+        <section aria-labelledby="fd" style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+          <div style="display: flex; flex-direction: column; gap: 4px">
+            <div style="font-size: 13px; color: #6E6E73">Foundation</div>
+            <h2 id="fd" style="margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.03em">Clean data, given with consent</h2>
+          </div>
+          <div style="background: #FFFFFF; border-radius: 22px; padding: 0 24px">
+            <a href="#" style="display: flex; align-items: center; gap: 16px; min-height: 76px; box-shadow: 0 1px 0 #E5E5EA">
+              <span style="flex: 1; display: flex; flex-direction: column; gap: 3px"><span style="font-size: 15px; font-weight: 500">Events on the common schema</span><span style="font-size: 13px; color: #D7192A">Working Professionals site at 84%</span></span>
+              <span style="font-size: 17px; font-weight: 600">90%</span>
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"></path></svg>
+            </a>
+            <a href="#" style="display: flex; align-items: center; gap: 16px; min-height: 76px; box-shadow: 0 1px 0 #E5E5EA">
+              <span style="flex: 1; display: flex; flex-direction: column; gap: 3px"><span style="font-size: 15px; font-weight: 500">Consent to share across upGrad</span><span style="font-size: 13px; color: #6E6E73">Checked before any outreach</span></span>
+              <span style="font-size: 17px; font-weight: 600">41%</span>
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"></path></svg>
+            </a>
+            <a href="#" style="display: flex; align-items: center; gap: 16px; min-height: 76px">
+              <span style="flex: 1; display: flex; flex-direction: column; gap: 3px"><span style="font-size: 15px; font-weight: 500">Minors awaiting guardian consent</span><span style="font-size: 13px; color: #6E6E73">Held in the restricted store</span></span>
+              <span style="font-size: 17px; font-weight: 600">12.4K</span>
+              <svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"></path></svg>
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <p style="margin: 0; font-size: 12px; color: #6E6E73; text-align: center">Sample data for design review</p>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"defaultRange":{"editor":"enum","options":["7D","30D","90D"],"default":"30D"},"$preview":{"width":1440,"height":1900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { range: null };
+  }
+  renderVals() {
+    const range = this.state.range || this.props.defaultRange || '30D';
+    const data = {
+      '7D':  { rangeLabel: 'in the last 7 days',  resolvedDelta: '+0.6 pts', falseMerge: '0.07%', knownLeads: '9.8K',  lookups: '7.9K' },
+      '30D': { rangeLabel: 'in the last 30 days', resolvedDelta: '+2.9 pts', falseMerge: '0.08%', knownLeads: '41.2K', lookups: '34.6K' },
+      '90D': { rangeLabel: 'in the last 90 days', resolvedDelta: '+8.2 pts', falseMerge: '0.11%', knownLeads: '118K',  lookups: '88.2K' }
+    };
+    const ranges = ['7D', '30D', '90D'].map((r) => ({
+      label: r,
+      pressed: r === range ? 'true' : 'false',
+      bg: r === range ? '#FFFFFF' : 'transparent',
+      fg: r === range ? '#1D1D1F' : '#6E6E73',
+      shadow: r === range ? '0 1px 3px rgba(0,0,0,0.12)' : 'none',
+      pick: () => this.setState({ range: r })
+    }));
+    return { kpi: data[range], ranges };
+  }
+}
+</script>
+</body>
+</html>

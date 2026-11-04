@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Identity &amp; audits</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F5F7}
+a{color:#1D1D1F;text-decoration:none}a:hover{color:#D7192A}
+button{font-family:inherit}
+</style>
+</helmet>
+<div style="min-height: 100vh; background: #F5F5F7; color: #1D1D1F; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', 'Helvetica Neue', sans-serif; display: flex; flex-wrap: wrap; -webkit-font-smoothing: antialiased; letter-spacing: -0.01em">
+
+  <nav aria-label="Primary" style="flex: 1 1 220px; max-width: 100%; box-sizing: border-box; padding: 28px 16px; display: flex; flex-direction: column; gap: 32px">
+    <div style="padding: 0 12px; font-size: 19px; font-weight: 700; letter-spacing: -0.03em"><span style="color: #D7192A">up</span>Grad <span style="font-weight: 500; color: #6E6E73">Intelligence</span></div>
+    <div style="display: flex; flex-direction: column; gap: 2px">
+      <a href="Main.dc.html" style="display: flex; align-items: center; min-height: 40px; padding: 0 12px; border-radius: 10px; font-size: 14px">Overview</a>
+      <a href="Profile360.dc.html" style="display: flex; align-items: center; min-height: 40px; padding: 0 12px; border-radius: 10px; font-size: 14px">Look up a person</a>
+      <a href="Identity.dc.html" aria-current="page" style="display: flex; align-items: center; justify-content: space-between; min-height: 40px; padding: 0 12px; border-radius: 10px; background: #E8E8ED; font-size: 14px; font-weight: 600">Identity &amp; audits <span style="font-size: 13px; color: #6E6E73; font-weight: 400">{{ left }}</span></a>
+    </div>
+  </nav>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 40px clamp(16px, 4vw, 64px) 96px">
+    <div style="max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 64px">
+
+      <header style="display: flex; flex-direction: column; gap: 8px">
+        <h1 style="margin: 0; font-size: 40px; line-height: 1.05; font-weight: 700; letter-spacing: -0.035em">Identity &amp; audits</h1>
+        <p style="margin: 0; font-size: 16px; color: #6E6E73; max-width: 600px">Merging two different people is worse than missing a match. So we only merge on proof, and audit what we merge.</p>
+      </header>
+
+      <!-- Rules -->
+      <section aria-labelledby="rl" style="display: flex; flex-direction: column; gap: 16px">
+        <h2 id="rl" style="margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.025em">How matching works</h2>
+        <div style="background: #FFFFFF; border-radius: 22px; padding: 0 24px">
+          <div style="display: flex; align-items: center; gap: 16px; min-height: 76px; flex-wrap: wrap; box-shadow: 0 1px 0 #E5E5EA">
+            <span style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 3px; padding: 12px 0"><span style="font-size: 15px; font-weight: 500">Same verified phone or email</span><span style="font-size: 13px; color: #6E6E73">Merged automatically · {{ kpi.merged }} {{ kpi.rangeLabel }}</span></span>
+            <span style="font-size: 15px; font-weight: 600">Merge</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 16px; min-height: 76px; flex-wrap: wrap; box-shadow: 0 1px 0 #E5E5EA">
+            <span style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 3px; padding: 12px 0"><span style="font-size: 15px; font-weight: 500">Shared phone, like a parent's</span><span style="font-size: 13px; color: #6E6E73">Kept as separate people · {{ kpi.linked }} {{ kpi.rangeLabel }}</span></span>
+            <span style="font-size: 15px; font-weight: 600">Link only</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 16px; min-height: 76px; flex-wrap: wrap">
+            <span style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 3px; padding: 12px 0"><span style="font-size: 15px; font-weight: 500">Similar name, device or location</span><span style="font-size: 13px; color: #6E6E73">Not used as evidence. No guessing.</span></span>
+            <span style="font-size: 15px; font-weight: 600; color: #6E6E73">Ignore</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Audit -->
+      <section aria-labelledby="au" style="display: flex; flex-direction: column; gap: 16px">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap">
+          <div style="display: flex; flex-direction: column; gap: 4px">
+            <h2 id="au" style="margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.025em">Audit a merge</h2>
+            <p style="margin: 0; font-size: 14px; color: #6E6E73">A random sample of automatic merges. Wrong ones set the false-merge rate.</p>
+          </div>
+          <span style="font-size: 14px; color: #6E6E73">{{ done }} of 200 this week</span>
+        </div>
+        <div style="background: #FFFFFF; border-radius: 22px; padding: clamp(24px, 3vw, 36px); display: flex; flex-direction: column; gap: 28px">
+          <div style="display: flex; flex-direction: column; gap: 6px">
+            <div style="font-size: 13px; color: #6E6E73">Merged on {{ sel.on }}</div>
+            <p style="margin: 0; font-size: 19px; line-height: 1.4; font-weight: 500; letter-spacing: -0.015em">{{ sel.summary }}</p>
+          </div>
+
+          <div style="overflow-x: auto">
+            <table style="width: 100%; min-width: 520px; border-collapse: collapse; font-size: 15px">
+              <thead>
+                <tr style="text-align: left">
+                  <th scope="col" style="width: 22%; padding: 0 0 14px; font-size: 13px; font-weight: 400; color: #6E6E73"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Field</span></th>
+                  <th scope="col" style="padding: 0 0 14px; font-size: 13px; font-weight: 400; color: #6E6E73">{{ sel.leftLabel }}</th>
+                  <th scope="col" style="padding: 0 0 14px; font-size: 13px; font-weight: 400; color: #6E6E73">{{ sel.rightLabel }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <sc-for list="{{ sel.rows }}" as="r" hint-placeholder-count="4">
+                  <tr>
+                    <th scope="row" style="text-align: left; font-weight: 400; font-size: 13px; color: #6E6E73; padding: 14px 0; border-top: 1px solid #E5E5EA">{{ r.k }}</th>
+                    <td style="padding: 14px 16px 14px 0; border-top: 1px solid #E5E5EA; color: {{ r.color }}">{{ r.a }}</td>
+                    <td style="padding: 14px 0; border-top: 1px solid #E5E5EA; color: {{ r.color }}">{{ r.b }}</td>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+
+          <sc-if value="{{ sel.decided }}" hint-placeholder-val="{{ false }}">
+            <div role="status" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; background: #F5F5F7; border-radius: 14px; padding: 12px 16px; font-size: 14px">
+              <span>{{ sel.decidedLabel }}</span>
+              <button type="button" onClick="{{ undo }}" style="border: none; background: transparent; color: #1D1D1F; font-size: 14px; font-weight: 600; cursor: pointer; min-height: 36px">Undo</button>
+            </div>
+          </sc-if>
+
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center">
+            <button type="button" onClick="{{ prev }}" aria-label="Previous merge" style="width: 44px; height: 44px; border-radius: 50%; border: none; background: #F5F5F7; color: #1D1D1F; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 1L1 7l6 6"></path></svg></button>
+            <button type="button" onClick="{{ next }}" aria-label="Next merge" style="width: 44px; height: 44px; border-radius: 50%; border: none; background: #F5F5F7; color: #1D1D1F; cursor: pointer; display: flex; align-items: center; justify-content: center"><svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"></path></svg></button>
+            <span style="flex: 1"></span>
+            <button type="button" onClick="{{ wrong }}" style="height: 44px; padding: 0 22px; border-radius: 999px; border: none; background: #F5F5F7; color: #D7192A; font-size: 15px; font-weight: 500; cursor: pointer">Wrong, unmerge</button>
+            <button type="button" onClick="{{ right }}" style="height: 44px; padding: 0 24px; border-radius: 999px; border: none; background: #1D1D1F; color: #FFFFFF; font-size: 15px; font-weight: 500; cursor: pointer">Same person</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Log -->
+      <section aria-labelledby="lg" style="display: flex; flex-direction: column; gap: 16px">
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <h2 id="lg" style="margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.025em">Merge log</h2>
+          <p style="margin: 0; font-size: 14px; color: #6E6E73">Every merge is recorded with its reason, and can be undone.</p>
+        </div>
+        <div style="background: #FFFFFF; border-radius: 22px; padding: 0 24px">
+          <sc-for list="{{ log }}" as="l" hint-placeholder-count="4">
+            <div style="display: flex; align-items: center; gap: 16px; min-height: 68px; flex-wrap: wrap; box-shadow: {{ l.line }}">
+              <span style="flex: 1 1 240px; display: flex; flex-direction: column; gap: 3px; padding: 12px 0"><span style="font-size: 15px; font-weight: 500">{{ l.who }}</span><span style="font-size: 13px; color: #6E6E73">{{ l.action }} · {{ l.rule }}</span></span>
+              <span style="font-size: 13px; color: #6E6E73">{{ l.when }}</span>
+              <button type="button" style="border: none; background: transparent; color: #1D1D1F; font-size: 14px; font-weight: 500; cursor: pointer; min-height: 44px; padding: 0 4px">{{ l.reverse }}</button>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      <p style="margin: 0; font-size: 12px; color: #6E6E73; text-align: center">Sample data for design review</p>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1760}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { sel: 0, decisions: {} };
+  }
+  renderVals() {
+    const cases = [
+      { on: 'verified phone', summary: 'Same verified phone, but the dates of birth are four years apart.', leftLabel: 'Unacademy · 2019', rightLabel: 'Internshala · 2025',
+        rows: [['Name', 'Priya Sharma', 'Priya Sharma'], ['Phone', '+91 99•• ••12 08', '+91 99•• ••12 08'], ['Email', 'priya.s•••@gmail.com', 'sharma.p•••@outlook.com'], ['Date of birth', '14 Mar 2003', '02 Aug 1999']] },
+      { on: 'verified email', summary: 'One learner moved from Internshala to Working Professionals.', leftLabel: 'Internshala · 2022', rightLabel: 'Working Professionals · 2026',
+        rows: [['Name', 'Arjun Kumar', 'Arjun Kumar'], ['Phone', '+91 90•• ••58 44', '+91 90•• ••58 44'], ['Email', 'arjun.k•••@gmail.com', 'arjun.k•••@gmail.com'], ['City', 'Hyderabad', 'Hyderabad']] },
+      { on: 'verified phone', summary: 'Unacademy alumnus later applied for internships.', leftLabel: 'Unacademy · 2020', rightLabel: 'Internshala · 2024',
+        rows: [['Name', 'Rohan Mehta', 'Rohan M.'], ['Phone', '+91 97•• ••30 61', '+91 97•• ••30 61'], ['Email', 'rohan.m•••@gmail.com', 'rohan.m•••@gmail.com'], ['City', 'Indore', 'Pune']] }
+    ];
+    const idx = this.state.sel;
+    const d = this.state.decisions;
+    const c = cases[idx];
+    const labels = { right: 'Confirmed as the same person.', wrong: 'Unmerged into two people. Counted toward the false-merge rate.' };
+    const sel = {
+      on: c.on, summary: c.summary, leftLabel: c.leftLabel, rightLabel: c.rightLabel,
+      rows: c.rows.map(([k, a, b]) => ({ k, a, b, color: a === b ? '#1D1D1F' : '#D7192A' })),
+      decided: !!d[idx],
+      decidedLabel: d[idx] ? labels[d[idx]] : ''
+    };
+    const decide = (v) => () => {
+      const next = Object.assign({}, d);
+      next[idx] = v;
+      this.setState({ decisions: next });
+    };
+    const undo = () => {
+      const next = Object.assign({}, d);
+      delete next[idx];
+      this.setState({ decisions: next });
+    };
+    const done = 12 + Object.keys(d).length;
+    const raw = [
+      { who: 'Rohan Mehta', action: 'Merged automatically', rule: 'verified phone', when: '10:14', reverse: 'Unmerge' },
+      { who: 'Kabir and Meera Rao', action: 'Linked, not merged', rule: 'shared parent phone', when: '09:58', reverse: 'Unlink' },
+      { who: 'Priya Sharma', action: 'Unmerged in audit', rule: 'different dates of birth', when: '09:02', reverse: 'Re-merge' },
+      { who: 'Arjun Kumar', action: 'Merged automatically', rule: 'verified email', when: 'Yesterday', reverse: 'Unmerge' }
+    ];
+    const log = raw.map((l, i) => Object.assign({}, l, { line: i < raw.length - 1 ? '0 1px 0 #E5E5EA' : 'none' }));
+    return {
+      sel, log, undo,
+      kpi: { merged: '96.2K', linked: '31.7K', rangeLabel: 'in 30 days' },
+      right: decide('right'), wrong: decide('wrong'),
+      prev: () => this.setState({ sel: (idx + cases.length - 1) % cases.length }),
+      next: () => this.setState({ sel: (idx + 1) % cases.length }),
+      done: String(done),
+      left: String(200 - done)
+    };
+  }
+}
+</script>
+</body>
+</html>

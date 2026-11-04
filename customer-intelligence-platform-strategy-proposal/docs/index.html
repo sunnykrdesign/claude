@@ -1,0 +1,1134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in · upGrad Customer Intelligence</title>
+<meta name="description" content="Phase 1 prototype of the upGrad Customer Intelligence Platform, from sign-in to dashboard. Sample data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F5F7; --card:#FFFFFF; --text:#1D1D1F; --muted:#6E6E73; --line:#E5E5EA; --border:#D2D2D7;
+  --fill:#E8E8ED; --track:#F0F0F2; --chev:#C7C7CC;
+  --red:#E3262F; --red-text:#D7192A; --red-soft:#FDE8E9; --focus:#0071E3;
+  --radius:22px;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg)}
+body{color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Helvetica Neue",sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-0.01em;line-height:1.35}
+a{color:var(--text);text-decoration:none}
+a:hover{color:var(--red-text)}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:8px}
+[hidden]{display:none !important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ================= AUTH (dark, full-screen) ================= */
+.auth{position:relative;min-height:100vh;display:flex;flex-direction:column;overflow:hidden;color:#F5F5F7;color-scheme:dark;
+  background:radial-gradient(ellipse 70% 60% at 50% 50%,#17171B 0%,#0B0B0D 70%)}
+#burst{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.auth-top{position:relative;z-index:2;display:flex;justify-content:center;padding:20px 16px 0}
+.pill{display:flex;align-items:center;gap:20px;padding:10px 20px;border-radius:999px;background:rgba(28,28,30,.55);border:1px solid rgba(255,255,255,.08);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);font-size:13px;color:#A1A1A6}
+.pill .brand{padding:0;font-size:16px;color:#F5F5F7}
+.pill .sep{width:1px;height:14px;background:rgba(255,255,255,.14)}
+.auth .brand .up{color:#FF3B45}
+.auth .brand .tail{color:#A1A1A6}
+.auth-stage{position:relative;z-index:2;flex:1;display:flex;align-items:center;justify-content:center;padding:32px 16px 48px}
+.auth-box{width:100%;max-width:400px;display:flex;flex-direction:column;gap:24px;padding:32px 28px;border-radius:22px;
+  background:rgba(22,22,24,.78);border:1px solid rgba(255,255,255,.09);box-shadow:0 30px 80px rgba(0,0,0,.55);
+  -webkit-backdrop-filter:blur(24px) saturate(140%);backdrop-filter:blur(24px) saturate(140%)}
+.auth-foot{position:relative;z-index:2;text-align:center;font-size:12px;color:#8E8E93;padding:0 16px 24px}
+.auth-head{display:flex;flex-direction:column;gap:8px}
+.auth-head h1{margin:0;font-size:28px;line-height:1.1;font-weight:700;letter-spacing:-0.03em;color:#F5F5F7}
+.auth-head p{margin:0;font-size:15px;color:#A1A1A6;line-height:1.45}
+.auth-head p b{color:#F5F5F7;font-weight:500}
+.stack{display:flex;flex-direction:column;gap:12px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field label{font-size:13px;color:#A1A1A6}
+.input{height:50px;border-radius:12px;padding:0 16px;font:inherit;font-size:17px;outline:none;width:100%;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#F5F5F7}
+.input::placeholder{color:#6E6E73}
+.input:focus{border-color:#0A84FF;box-shadow:0 0 0 3px rgba(10,132,255,.28)}
+.input[aria-invalid="true"]{border-color:#FF6961}
+.input.code{text-align:center;font-size:26px;letter-spacing:.5em;padding-left:calc(16px + .5em);font-variant-numeric:tabular-nums}
+.error{margin:0;font-size:13px;color:#FF6961;line-height:1.4}
+.hint{margin:0;font-size:13px;color:#8E8E93;line-height:1.45}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:44px;padding:0 22px;border-radius:999px;border:none;font-size:15px;font-weight:500}
+.btn.block{width:100%;height:50px;border-radius:12px;font-size:16px}
+.btn.light{background:#F5F5F7;color:#0B0B0D}
+.btn.light:hover{background:#fff;color:#0B0B0D}
+.btn.light:disabled{background:rgba(255,255,255,.16);color:rgba(255,255,255,.45);cursor:not-allowed}
+.btn.ghost{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#F5F5F7}
+.btn.ghost:hover{background:rgba(255,255,255,.1);color:#F5F5F7}
+.btn.dark{background:var(--text);color:#fff}
+.btn.dark:hover{background:#000;color:#fff}
+.btn.soft{background:var(--bg);color:var(--text)}
+.btn.soft.danger{color:var(--red-text)}
+.btn.sm{height:40px;font-size:14px;padding:0 20px}
+.or{display:flex;align-items:center;gap:12px;font-size:13px;color:#8E8E93}
+.or::before,.or::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.1)}
+.linkish{border:none;background:transparent;padding:0;font-size:14px;font-weight:500;color:#F5F5F7;text-decoration:underline;text-decoration-color:rgba(255,255,255,.35);text-underline-offset:3px;min-height:32px}
+.linkish:hover{color:#fff;text-decoration-color:#fff}
+.linkish:disabled{color:#8E8E93;text-decoration:none;cursor:default}
+.legal{font-size:12px;color:#8E8E93;line-height:1.5;margin:0}
+.choice{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:0 16px}
+.choice button{width:100%;display:flex;align-items:center;gap:16px;min-height:68px;border:none;background:transparent;text-align:left;padding:12px 0;box-shadow:0 1px 0 rgba(255,255,255,.08);color:#F5F5F7}
+.choice button:last-child{box-shadow:none}
+.choice button:hover .t{color:#FF6B72}
+.choice .txt{flex:1;display:flex;flex-direction:column;gap:3px}
+.choice .t{font-size:15px;font-weight:500}
+.choice .d{font-size:13px;color:#A1A1A6}
+.rules{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:4px 16px}
+.rules div{display:flex;gap:14px;padding:14px 0;box-shadow:0 1px 0 rgba(255,255,255,.08);font-size:14px;line-height:1.45;color:#E5E5EA}
+.rules div:last-child{box-shadow:none}
+.rules .n{flex:0 0 22px;height:22px;border-radius:50%;background:rgba(255,255,255,.1);font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;color:#F5F5F7}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.45;cursor:pointer;color:#F5F5F7}
+.check input{width:20px;height:20px;margin:1px 0 0;accent-color:#F5F5F7;flex:0 0 auto}
+.who-bar{display:flex;align-items:center;gap:12px;font-size:14px;color:#A1A1A6;flex-wrap:wrap}
+.who-bar b{color:#F5F5F7;font-weight:500}
+.spinner{width:18px;height:18px;border-radius:50%;border:2px solid rgba(0,0,0,.2);border-top-color:#0B0B0D;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){.spinner{animation:none}}
+@media (max-width: 520px){.pill .opt{display:none}.auth-box{padding:28px 20px}}
+/* ================= APP ================= */
+.app{display:flex;min-height:100vh}
+.side{flex:0 0 248px;position:sticky;top:0;height:100vh;padding:28px 16px 20px;display:flex;flex-direction:column;gap:32px}
+.brand{padding:0 12px;font-size:19px;font-weight:700;letter-spacing:-0.03em}
+.brand .up{color:var(--red-text)}
+.brand .tail{font-weight:500;color:var(--muted)}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:40px;padding:0 12px;border-radius:10px;font-size:14px;white-space:nowrap}
+.nav a[aria-current="page"]{background:var(--fill);font-weight:600;color:var(--text)}
+.nav .count{font-size:13px;color:var(--muted);font-weight:400}
+.later{display:flex;flex-direction:column;gap:2px}
+.later .label{padding:0 12px 6px;font-size:12px;color:var(--muted)}
+.later div:not(.label){display:flex;align-items:center;min-height:36px;padding:0 12px;font-size:14px;color:var(--muted)}
+.me{margin-top:auto;display:flex;flex-direction:column;gap:10px;padding:16px 12px 0;box-shadow:0 -1px 0 var(--line)}
+.me .id{display:flex;align-items:center;gap:10px;min-width:0}
+.me .av{flex:0 0 34px;height:34px;border-radius:50%;background:var(--text);color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.me .nm{display:flex;flex-direction:column;min-width:0}
+.me .nm b{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.me .nm span{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.me .acts{display:flex;gap:16px}
+.me .acts button{border:none;background:transparent;padding:0;min-height:32px;font-size:13px;color:var(--muted)}
+.me .acts button:hover{color:var(--red-text)}
+.main{flex:1;min-width:0;padding:40px clamp(16px,4vw,64px) 96px}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:64px}
+
+@media (max-width: 820px){
+  .app{flex-direction:column}
+  .side{position:static;height:auto;flex:none;padding:16px 16px 0;gap:12px}
+  .side .top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .nav{flex-direction:row;overflow-x:auto;gap:4px;padding-bottom:4px}
+  .later{display:none}
+  .me{margin:0;padding:0;box-shadow:none;flex-direction:row;align-items:center;justify-content:space-between}
+  .me .nm span{display:none}
+  .main{padding-top:24px}
+  .wrap{gap:48px}
+}
+
+/* Type */
+.page-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px}
+.main h1{margin:0;font-size:clamp(32px,5vw,40px);line-height:1.05;font-weight:700;letter-spacing:-0.035em}
+.main h2{margin:0;font-size:22px;font-weight:700;letter-spacing:-0.025em}
+.main h2.lg{font-size:26px;letter-spacing:-0.03em}
+.sub{margin:0;font-size:16px;color:var(--muted)}
+.eyebrow{font-size:13px;color:var(--muted)}
+.muted{color:var(--muted)}
+.red{color:var(--red-text)}
+.note{margin:0;font-size:13px;color:var(--muted);padding:0 4px}
+.footnote{margin:0;font-size:12px;color:var(--muted);text-align:center}
+.section{display:flex;flex-direction:column;gap:16px}
+.section-head{display:flex;flex-direction:column;gap:4px}
+.section-head.row{flex-direction:row;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px}
+
+/* Segmented */
+.seg{display:flex;background:var(--fill);border-radius:10px;padding:3px;gap:2px}
+.seg button{border:none;background:transparent;color:var(--muted);min-width:56px;height:32px;padding:0 14px;border-radius:8px;font-size:13px;font-weight:500}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.seg.sm button{height:30px;min-width:0;padding:0 12px}
+
+/* Cards */
+.card{background:var(--card);border-radius:var(--radius)}
+.card.pad{padding:clamp(24px,3vw,36px)}
+.hero{position:relative;overflow:hidden;border-radius:28px;background:#111113;color:#F5F5F7;padding:clamp(32px,5vw,56px);display:flex;flex-wrap:wrap;gap:40px;align-items:center;justify-content:space-between}
+.hero::after{content:"";position:absolute;right:-200px;bottom:-260px;width:560px;height:560px;border-radius:50%;background:radial-gradient(closest-side,rgba(227,38,47,.32),rgba(227,38,47,0) 72%);pointer-events:none}
+.hero > *{position:relative;z-index:1}
+.hero .copy{flex:1 1 380px;display:flex;flex-direction:column;gap:20px}
+.hero .kicker{font-size:15px;font-weight:500;color:#A1A1A6}
+.hero .big{font-size:clamp(56px,8vw,96px);line-height:.95;font-weight:700;letter-spacing:-0.05em}
+.hero p{margin:0;font-size:19px;line-height:1.4;max-width:460px;font-weight:500;letter-spacing:-0.015em}
+.hero p span{color:#A1A1A6}
+.ring{display:flex;flex-direction:column;align-items:center;gap:12px}
+.ring .dial{position:relative;width:168px;height:168px}
+.ring .dial div{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:700;letter-spacing:-0.04em}
+.ring .cap{font-size:13px;color:#A1A1A6;text-align:center}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));padding:8px 0}
+.metric{padding:24px 28px;display:flex;flex-direction:column;gap:8px;box-shadow:1px 0 0 var(--line)}
+.metric:last-child{box-shadow:none}
+.metric .k{font-size:13px;color:var(--muted)}
+.metric .v{font-size:32px;font-weight:600;letter-spacing:-0.035em}
+.metric .d{font-size:13px;color:var(--muted)}
+@media (max-width: 520px){.metric{box-shadow:0 1px 0 var(--line)}}
+.split{display:flex;flex-wrap:wrap;gap:48px}
+.split .lead{flex:1 1 280px;display:flex;flex-direction:column;gap:12px}
+.split .lead .num{font-size:56px;font-weight:700;letter-spacing:-0.05em;line-height:1}
+.split .lead p{margin:0;font-size:16px;line-height:1.5;color:var(--muted);max-width:340px}
+.bars{flex:1 1 340px;display:flex;flex-direction:column;gap:22px;justify-content:center}
+.bar{display:flex;flex-direction:column;gap:8px}
+.bar .t{display:flex;justify-content:space-between;font-size:14px}
+.bar .t b{font-weight:600}
+.bar .track{height:6px;border-radius:999px;background:var(--track)}
+.bar .track i{display:block;height:100%;border-radius:999px;background:var(--text)}
+.bar .track i.accent{background:var(--red)}
+.cols{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start}
+.cols > *{flex:1 1 380px;min-width:0}
+
+/* Lists */
+.list{background:var(--card);border-radius:var(--radius);padding:0 24px}
+.list .row{display:flex;align-items:center;gap:16px;min-height:72px;box-shadow:0 1px 0 var(--line);flex-wrap:wrap}
+.list .row:last-child{box-shadow:none}
+.list .row.tight{min-height:56px;flex-wrap:nowrap}
+.list .row.tight .txt{flex:1 1 auto;min-width:0}
+.list .row .txt{flex:1 1 220px;display:flex;flex-direction:column;gap:3px;padding:12px 0}
+.list .row .title{font-size:15px;font-weight:500}
+.list .row .title.plain{font-weight:400}
+.list .row .desc{font-size:13px;color:var(--muted)}
+.list .row .val{font-size:17px;font-weight:600}
+.list .row .side-val{font-size:14px;color:var(--muted)}
+.list .row .red{color:var(--red-text)}
+.list a.row:hover .title{color:var(--red-text)}
+.chev{flex:0 0 auto}
+.textbtn{border:none;background:transparent;color:var(--text);font-size:14px;font-weight:500;min-height:44px;padding:0 4px}
+.textbtn:hover{color:var(--red-text)}
+.icon-btn{width:44px;height:44px;border-radius:50%;border:none;background:var(--bg);color:var(--text);display:flex;align-items:center;justify-content:center}
+
+/* Lookup */
+.search{display:flex;align-items:center;gap:12px;background:var(--card);border-radius:16px;padding:0 20px;height:56px}
+.search input{flex:1;min-width:0;border:none;outline:none;background:transparent;font:inherit;font-size:17px;color:var(--text)}
+.person{display:flex;flex-wrap:wrap;align-items:center;gap:24px}
+.avatar{width:80px;height:80px;border-radius:50%;background:var(--fill);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:600;letter-spacing:-0.03em}
+.person .who{flex:1 1 300px;display:flex;flex-direction:column;gap:6px}
+.person .who p{margin:0;font-size:17px}
+.banner{display:flex;gap:14px;align-items:flex-start;background:var(--red-soft);border-radius:16px;padding:16px 20px;font-size:15px;line-height:1.45}
+.banner b{display:block;font-weight:600;color:var(--red-text);margin-bottom:2px}
+.journey{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px}
+.step{display:flex;flex-direction:column;gap:10px}
+.step .line{display:flex;align-items:center;gap:10px}
+.step .line i{width:10px;height:10px;border-radius:50%;background:var(--text);flex:0 0 auto}
+.step .line i.now{background:var(--red);box-shadow:0 0 0 4px var(--red-soft)}
+.step .line i.future{background:transparent;border:1.5px solid var(--chev)}
+.step .line span{flex:1;height:1px;background:var(--line)}
+.step .when{font-size:13px;color:var(--muted)}
+.step .when.now{color:var(--red-text);font-weight:500}
+.step .name{font-size:17px;font-weight:600}
+.step .name.future{color:var(--muted)}
+.step .what{font-size:14px;color:var(--muted);line-height:1.45}
+.attr{display:flex;flex-direction:column;gap:3px;padding:14px 0;box-shadow:0 1px 0 var(--line)}
+.attr:last-child{box-shadow:none}
+.attr .top{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted)}
+.attr .top span:last-child{font-size:12px}
+.attr .value{font-size:15px;font-weight:500}
+.timeline{background:var(--card);border-radius:var(--radius);padding:8px 24px}
+.event{display:flex;gap:20px;padding:18px 0;box-shadow:0 1px 0 var(--line)}
+.event:last-child{box-shadow:none}
+.event .when{flex:0 0 72px;font-size:13px;color:var(--muted);padding-top:1px}
+.event .body{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.event .title{font-size:15px;font-weight:500}
+.event .desc{font-size:13px;color:var(--muted);line-height:1.45}
+.left-col{flex:2 1 320px !important;display:flex;flex-direction:column;gap:40px}
+.right-col{flex:3 1 420px !important}
+.revealbtn{align-self:flex-start;border:none;background:transparent;padding:0 4px;min-height:36px;font-size:14px;font-weight:500;color:var(--text);text-decoration:underline;text-underline-offset:3px}
+
+/* Audit */
+.audit{display:flex;flex-direction:column;gap:28px}
+.audit .summary{margin:0;font-size:19px;line-height:1.4;font-weight:500;letter-spacing:-0.015em}
+.table-wrap{overflow-x:auto}
+table.compare{width:100%;min-width:520px;border-collapse:collapse;font-size:15px}
+table.compare thead th{text-align:left;padding:0 0 14px;font-size:13px;font-weight:400;color:var(--muted)}
+table.compare tbody th{text-align:left;font-weight:400;font-size:13px;color:var(--muted);padding:14px 0;border-top:1px solid var(--line);width:22%}
+table.compare td{padding:14px 16px 14px 0;border-top:1px solid var(--line)}
+table.compare td.diff{color:var(--red-text)}
+
+/* Auth footer links */
+.auth-foot{display:flex;justify-content:center;align-items:center;gap:10px}
+.auth-foot button{border:none;background:transparent;padding:0 2px;min-height:36px;font-size:13px;color:#C7C7CC;text-decoration:underline;text-decoration-color:rgba(255,255,255,.3);text-underline-offset:3px}
+.auth-foot button:hover{color:#fff;text-decoration-color:#fff}
+
+/* Preview bar */
+.preview-bar{max-width:1040px;margin:0 auto 32px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:#1D1D1F;color:#F5F5F7;border-radius:14px;padding:8px 8px 8px 18px;font-size:14px}
+.preview-bar b{font-weight:600}
+.preview-bar .grow{flex:1}
+.preview-bar button{border:none;border-radius:999px;height:34px;padding:0 14px;font-size:13px;font-weight:500;background:rgba(255,255,255,.12);color:#fff}
+.preview-bar button:last-child{background:#F5F5F7;color:#1D1D1F}
+@media (max-width:520px){.preview-bar .opt,.preview-bar [data-action="share"]{display:none}.preview-bar{font-size:13px;flex-wrap:nowrap}}
+
+/* Share sheet */
+dialog.sheet{border:none;padding:0;border-radius:22px;width:min(480px,calc(100vw - 32px));max-height:calc(100vh - 32px);background:#fff;color:var(--text);box-shadow:0 30px 80px rgba(0,0,0,.3)}
+dialog.sheet::backdrop{background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.sheet-body{padding:24px;display:flex;flex-direction:column;gap:20px}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.sheet-head h2{margin:0;font-size:22px;font-weight:700;letter-spacing:-0.025em}
+.sheet-head .x{width:32px;height:32px;border-radius:50%;border:none;background:var(--fill);color:var(--text);display:flex;align-items:center;justify-content:center}
+.sheet-note{margin:-12px 0 0;font-size:14px;color:var(--muted)}
+.opts{background:var(--bg);border-radius:14px;padding:0 16px}
+.opt-row{display:flex;align-items:center;gap:16px;min-height:64px;box-shadow:0 1px 0 var(--line);cursor:pointer}
+.opt-row:last-child{box-shadow:none}
+.opt-row .txt{flex:1;display:flex;flex-direction:column;gap:2px;padding:10px 0}
+.opt-row .t{font-size:15px;font-weight:500}
+.opt-row .d{font-size:13px;color:var(--muted)}
+.opt-row.off{opacity:.45;cursor:default}
+.switch{appearance:none;-webkit-appearance:none;flex:0 0 auto;width:46px;height:28px;border-radius:999px;background:#E5E5EA;position:relative;margin:0;cursor:pointer;transition:background .2s}
+.switch::after{content:"";position:absolute;top:2px;left:2px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .2s}
+.switch:checked{background:#34C759}
+.switch:checked::after{transform:translateX(18px)}
+.fselect{flex:0 1 auto;max-width:52%;height:36px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text);font:inherit;font-size:14px;padding:0 10px}
+.fselect:disabled{opacity:.5}
+.field-light{display:flex;flex-direction:column;gap:8px}
+.field-light label{font-size:13px;color:var(--muted)}
+.finput{width:100%;min-width:0;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font:inherit;font-size:14px;padding:0 12px;height:40px;outline:none}
+.finput:focus{border-color:var(--focus);box-shadow:0 0 0 3px rgba(0,113,227,.18)}
+textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12px;line-height:1.5}
+.copyrow{display:flex;gap:8px}
+.copyrow .btn{white-space:nowrap;flex:0 0 auto}
+.sheet-actions{display:flex;gap:8px;flex-wrap:wrap}
+.embed summary{cursor:pointer;font-size:14px;font-weight:500;min-height:32px;display:flex;align-items:center}
+.embed[open] summary{margin-bottom:12px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:#1D1D1F;color:#fff;padding:10px 18px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:100}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion: reduce){.toast,.switch,.switch::after{transition:none}}
+.status{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--bg);border-radius:14px;padding:8px 8px 8px 16px;font-size:14px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.actions .grow{flex:1}
+</style>
+</head>
+<body>
+
+<!-- =========================================================
+     AUTH
+     ========================================================= -->
+<div class="auth" id="auth">
+  <canvas id="burst" aria-hidden="true"></canvas>
+
+  <header class="auth-top">
+    <div class="pill">
+      <span class="opt">Phase 1 prototype</span>
+      <span class="sep opt" aria-hidden="true"></span>
+      <span class="brand"><span class="up">up</span>Grad <span class="tail">Intelligence</span></span>
+      <span class="sep opt" aria-hidden="true"></span>
+      <span class="opt">Sample data</span>
+    </div>
+  </header>
+
+  <div class="auth-stage">
+    <div class="auth-box">
+
+      <!-- Step 1: Sign in -->
+      <section data-step="signin" aria-labelledby="t-signin" class="stack" style="gap:24px">
+        <div class="auth-head">
+          <h1 id="t-signin">Sign in</h1>
+          <p>One learner, one memory, across every upGrad business.</p>
+        </div>
+        <div class="stack">
+          <button type="button" class="btn ghost block" id="googleBtn">
+            <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+            <span id="googleLabel">Continue with Google</span>
+          </button>
+          <div class="or">or</div>
+          <form class="stack" id="emailForm" novalidate>
+            <div class="field">
+              <label for="email">Work email</label>
+              <input class="input" id="email" type="email" inputmode="email" autocomplete="username" placeholder="name@upgrad.com" aria-describedby="emailErr">
+              <p class="error" id="emailErr" hidden></p>
+            </div>
+            <button type="submit" class="btn light block">Continue</button>
+          </form>
+        </div>
+        <p class="legal">For upGrad, Unacademy and Internshala employees. Every sign-in and every view of learner data is logged.</p>
+      </section>
+
+      <!-- Step 2: Code -->
+      <section data-step="otp" aria-labelledby="t-otp" class="stack" style="gap:24px" hidden>
+        <div class="auth-head">
+          <h1 id="t-otp">Check your email</h1>
+          <p>We sent a 6-digit code to <b id="otpEmail"></b>.</p>
+        </div>
+        <form class="stack" id="otpForm" novalidate>
+          <div class="field">
+            <label for="code">Sign-in code</label>
+            <input class="input code" id="code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]*" aria-describedby="codeErr codeHint">
+            <p class="error" id="codeErr" hidden></p>
+            <p class="hint" id="codeHint">Prototype: any 6 digits will work.</p>
+          </div>
+          <button type="submit" class="btn light block" id="verifyBtn">Verify</button>
+        </form>
+        <div class="who-bar">
+          <button type="button" class="linkish" id="resendBtn" disabled>Resend code</button>
+          <span id="resendTimer" aria-live="polite"></span>
+          <span style="flex:1"></span>
+          <button type="button" class="linkish" data-action="restart">Use a different email</button>
+        </div>
+      </section>
+
+      <!-- Step 3: Team -->
+      <section data-step="team" aria-labelledby="t-team" class="stack" style="gap:24px" hidden>
+        <div class="auth-head">
+          <h1 id="t-team">Choose your team</h1>
+          <p>What you see depends on your team. You can switch later.</p>
+        </div>
+        <div class="choice" id="teamList"></div>
+        <div class="who-bar">
+          <span>Signed in as <b id="teamEmail"></b></span>
+          <button type="button" class="linkish" data-action="restart">Not you?</button>
+        </div>
+      </section>
+
+      <!-- Step 4: Rules -->
+      <section data-step="ack" aria-labelledby="t-ack" class="stack" style="gap:24px" hidden>
+        <div class="auth-head">
+          <h1 id="t-ack">Before you start</h1>
+          <p>This tool shows personal data about learners. Three rules apply.</p>
+        </div>
+        <div class="rules">
+          <div><span class="n">1</span><span>Contact details stay hidden until you say why you need them. Every reveal is logged.</span></div>
+          <div><span class="n">2</span><span>Only contact a learner for purposes they agreed to. Consent is shown on every profile.</span></div>
+          <div><span class="n">3</span><span>Data about minors is restricted until a guardian consents.</span></div>
+        </div>
+        <label class="check"><input type="checkbox" id="ackBox"> <span>I'll use learner data only for the purposes above.</span></label>
+        <div class="stack">
+          <button type="button" class="btn light block" id="ackBtn" disabled>Go to dashboard</button>
+          <button type="button" class="linkish" style="align-self:center" data-action="back-team">Back</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <footer class="auth-foot">
+    <button type="button" data-action="preview">Preview without signing in</button>
+    <span aria-hidden="true">·</span>
+    <button type="button" data-action="share">Share</button>
+  </footer>
+</div>
+<!-- =========================================================
+     APP
+     ========================================================= -->
+<div class="app" id="app" hidden>
+  <aside class="side">
+    <div class="top">
+      <div class="brand"><span class="up">up</span>Grad <span class="tail">Intelligence</span></div>
+    </div>
+    <nav class="nav" aria-label="Primary">
+      <a href="#/overview" data-route="overview">Overview</a>
+      <a href="#/lookup" data-route="lookup">Look up a person</a>
+      <a href="#/identity" data-route="identity">Identity &amp; audits <span class="count" data-bind="auditsLeft">188</span></a>
+    </nav>
+    <div class="later" aria-label="Later phases">
+      <div class="label">Later phases</div>
+      <div>Decisioning</div>
+      <div>Cross-sell</div>
+    </div>
+    <div class="me">
+      <div class="id">
+        <span class="av" id="meAv" aria-hidden="true"></span>
+        <span class="nm"><b id="meName"></b><span id="meTeam"></span></span>
+      </div>
+      <div class="acts">
+        <button type="button" data-action="share">Share</button>
+        <button type="button" data-action="switch-team">Switch team</button>
+        <button type="button" data-action="signout" id="signoutBtn">Sign out</button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="preview-bar" id="previewBar" hidden>
+      <span>You're previewing with sample data<span class="opt">, seen as <b id="previewTeam"></b></span>.</span>
+      <span class="grow"></span>
+      <button type="button" data-action="share">Share</button>
+      <button type="button" data-action="signout">Sign in</button>
+    </div>
+
+    <!-- ============ OVERVIEW ============ -->
+    <div class="wrap view" data-view="overview" hidden>
+      <header class="page-head">
+        <div class="section-head" style="gap:8px">
+          <h1>Overview</h1>
+          <p class="sub">Phase 1 · Building one memory of every learner</p>
+        </div>
+        <div class="seg" role="group" aria-label="Time range" id="range">
+          <button type="button" data-range="7D" aria-pressed="false">7D</button>
+          <button type="button" data-range="30D" aria-pressed="true">30D</button>
+          <button type="button" data-range="90D" aria-pressed="false">90D</button>
+        </div>
+      </header>
+
+      <section class="hero" aria-label="People known across businesses">
+        <div class="copy">
+          <div class="kicker">Known to more than one business</div>
+          <div class="big">727K</div>
+          <p>learners moved between Unacademy, Internshala and Working Professionals. <span>Until now, each business met them as a stranger.</span></p>
+        </div>
+        <div class="ring">
+          <div class="dial">
+            <svg width="168" height="168" viewBox="0 0 168 168" role="img" aria-label="71 percent of active leads resolve to one profile">
+              <circle cx="84" cy="84" r="74" fill="none" stroke="#2C2C2E" stroke-width="8"></circle>
+              <circle cx="84" cy="84" r="74" fill="none" stroke="#E3262F" stroke-width="8" stroke-linecap="round" stroke-dasharray="332 465" transform="rotate(-90 84 84)"></circle>
+            </svg>
+            <div aria-hidden="true">71%</div>
+          </div>
+          <div class="cap">of active leads now<br>resolve to one profile</div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="o1">
+        <div class="section-head">
+          <div class="eyebrow">Objective 1 · Phase 1 success criteria</div>
+          <h2 class="lg" id="o1">Know our customers</h2>
+        </div>
+        <div class="card metrics">
+          <div class="metric"><div class="k">Leads resolved</div><div class="v">71.4%</div><div class="d"><span data-bind="resolvedDelta">+2.9 pts</span> · target [X]%</div></div>
+          <div class="metric"><div class="k">Wrong merges</div><div class="v" data-bind="falseMerge">0.08%</div><div class="d">of audited merges · cap [X]%</div></div>
+          <div class="metric"><div class="k">Profile completeness</div><div class="v">62</div><div class="d">average score of 100</div></div>
+          <div class="metric"><div class="k">Teams using the 360 view</div><div class="v">2 of 3</div><div class="d"><span data-bind="lookups">34.6K</span> lookups on calls</div></div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="o3">
+        <div class="section-head">
+          <div class="eyebrow">Objective 3 · sizing the opportunity</div>
+          <h2 class="lg" id="o3">Stop buying back our own learners</h2>
+        </div>
+        <div class="card pad split">
+          <div class="lead">
+            <div class="num" data-bind="knownLeads">41.2K</div>
+            <p>paid leads <span data-bind="rangeLabel">in the last 30 days</span> were people upGrad already knew. Each was bought at full CAC.</p>
+          </div>
+          <div class="bars">
+            <div class="eyebrow">Conversion to enrolment</div>
+            <div class="bar"><div class="t"><span>Leads we already knew</span><b>11.8%</b></div><div class="track"><i class="accent" style="width:100%"></i></div></div>
+            <div class="bar"><div class="t"><span>Cold leads</span><b>4.9%</b></div><div class="track"><i style="width:42%"></i></div></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="cols">
+        <section class="section" aria-labelledby="o2">
+          <div class="section-head">
+            <div class="eyebrow">Objective 2 · insight only in Phase 1</div>
+            <h2 class="lg" id="o2">Right moment, right need</h2>
+          </div>
+          <div class="list">
+            <a class="row" href="#/overview"><span class="txt"><span class="title">Graduating in 6–8 months</span><span class="desc">Internship window</span></span><span class="val">126K</span><svg class="chev" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></a>
+            <a class="row" href="#/overview"><span class="txt"><span class="title">2–3 years into first job</span><span class="desc">Upskilling window</span></span><span class="val">88K</span><svg class="chev" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></a>
+            <a class="row" href="#/overview"><span class="txt"><span class="title">Interned, not yet employed</span><span class="desc">No upGrad product serves this</span></span><span class="val">41K</span><svg class="chev" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></a>
+          </div>
+          <p class="note">For product and planning. No automated outreach until Decisioning.</p>
+        </section>
+
+        <section class="section" aria-labelledby="fd">
+          <div class="section-head">
+            <div class="eyebrow">Foundation</div>
+            <h2 class="lg" id="fd">Clean data, given with consent</h2>
+          </div>
+          <div class="list">
+            <a class="row" href="#/overview"><span class="txt"><span class="title">Events on the common schema</span><span class="desc red">Working Professionals site at 84%</span></span><span class="val">90%</span><svg class="chev" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></a>
+            <a class="row" href="#/overview"><span class="txt"><span class="title">Consent to share across upGrad</span><span class="desc">Checked before any outreach</span></span><span class="val">41%</span><svg class="chev" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></a>
+            <a class="row" href="#/overview"><span class="txt"><span class="title">Minors awaiting guardian consent</span><span class="desc">Held in the restricted store</span></span><span class="val">12.4K</span><svg class="chev" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></a>
+          </div>
+        </section>
+      </div>
+
+      <p class="footnote">Sample data for design review</p>
+    </div>
+
+    <!-- ============ LOOKUP ============ -->
+    <div class="wrap view" data-view="lookup" hidden style="gap:56px">
+      <div class="section" style="gap:12px">
+        <label for="lookup" class="eyebrow">Who's on the line?</label>
+        <div class="search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6E6E73" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <input id="lookup" type="search" value="+91 98•• ••41 27" placeholder="Phone number or email" autocomplete="off">
+        </div>
+      </div>
+
+      <header class="person">
+        <div class="avatar" aria-hidden="true">AI</div>
+        <div class="who">
+          <h1>Ananya Iyer</h1>
+          <p>Known to upGrad since June 2021 <span class="muted">· 2 businesses · not a new lead</span></p>
+        </div>
+        <a class="btn dark sm" href="#/lookup" id="crmBtn">Open in Internshala CRM</a>
+      </header>
+
+      <div class="banner" id="crossBanner" role="note" hidden>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D7192A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:0 0 auto;margin-top:1px"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.5"/></svg>
+        <div><b>Don't contact Ananya about <span id="crossBu"></span></b>She hasn't agreed to offers from other upGrad businesses. You can view her profile for context only.</div>
+      </div>
+
+      <section class="section" aria-labelledby="jr">
+        <h2 id="jr">Journey with upGrad</h2>
+        <div class="card pad journey">
+          <div class="step"><div class="line"><i></i><span></span></div><div class="when">2021 – 2022</div><div class="name">Unacademy</div><div class="what">Alumna · JEE Main prep</div></div>
+          <div class="step"><div class="line"><i class="now"></i><span></span></div><div class="when now">Now</div><div class="name">Internshala</div><div class="what">Active · owned by Internshala sales</div></div>
+          <div class="step"><div class="line"><i class="future"></i></div><div class="when">Graduates June 2026</div><div class="name future">Working Professionals</div><div class="what">Not a customer yet</div></div>
+        </div>
+      </section>
+
+      <div class="cols">
+        <div class="left-col">
+          <section class="section" aria-labelledby="cs">
+            <h2 id="cs">Before you reach out</h2>
+            <div class="list">
+              <div class="row tight"><span class="txt"><span class="title plain">Counseling calls</span></span><span class="side-val">Allowed</span></div>
+              <div class="row tight"><span class="txt"><span class="title plain">Marketing messages</span></span><span class="side-val">Allowed</span></div>
+              <div class="row tight"><span class="txt"><span class="title plain">Offers from other businesses</span></span><span class="side-val red" style="font-weight:500">Not given</span></div>
+            </div>
+            <p class="note">Consent is recorded per purpose and checked before any outreach.</p>
+          </section>
+
+          <section class="section" aria-labelledby="ct">
+            <h2 id="ct">Contact details</h2>
+            <div class="list">
+              <div class="row tight"><span class="txt"><span class="title plain" id="phone">+91 98•• ••41 27</span></span><span class="desc">Verified</span></div>
+              <div class="row tight"><span class="txt"><span class="title plain" id="emailVal">an•••@gmail.com</span></span><span class="desc">Verified</span></div>
+              <div class="row tight"><span class="txt"><span class="title plain">Parent's phone</span></span><span class="desc">Linked, never merged</span></div>
+            </div>
+            <button type="button" class="revealbtn" id="reveal">Show for this counseling call</button>
+            <p class="note" id="revealNote" role="status" hidden></p>
+          </section>
+
+          <section class="section" aria-labelledby="ab">
+            <h2 id="ab">About</h2>
+            <div class="list" style="padding:0 22px">
+              <div class="attr"><div class="top"><span>Graduation</span><span>Declared on Internshala</span></div><div class="value">June 2026</div></div>
+              <div class="attr"><div class="top"><span>Degree</span><span>Declared on Internshala</span></div><div class="value">B.Tech, Computer Science</div></div>
+              <div class="attr"><div class="top"><span>Career interest</span><span>Observed from browsing</span></div><div class="value">Data analytics</div></div>
+              <div class="attr"><div class="top"><span>Life stage</span><span>Inferred by rule</span></div><div class="value">Final-year student</div></div>
+            </div>
+          </section>
+        </div>
+
+        <section class="section right-col" aria-labelledby="act">
+          <div class="section-head row">
+            <h2 id="act">Activity</h2>
+            <div class="seg sm" role="group" aria-label="Filter by business" id="buFilter">
+              <button type="button" data-bu="all" aria-pressed="true">All</button>
+              <button type="button" data-bu="U" aria-pressed="false">Unacademy</button>
+              <button type="button" data-bu="I" aria-pressed="false">Internshala</button>
+              <button type="button" data-bu="W" aria-pressed="false">WP</button>
+            </div>
+          </div>
+          <div class="timeline" id="timeline"></div>
+          <p class="note">Read-only. Notes and calls are logged in each business's own CRM and flow back here.</p>
+        </section>
+      </div>
+
+      <p class="footnote">Sample profile for design review</p>
+    </div>
+
+    <!-- ============ IDENTITY ============ -->
+    <div class="wrap view" data-view="identity" hidden>
+      <header class="section-head" style="gap:8px">
+        <h1>Identity &amp; audits</h1>
+        <p class="sub" style="max-width:600px">Merging two different people is worse than missing a match. So we only merge on proof, and audit what we merge.</p>
+      </header>
+
+      <section class="section" aria-labelledby="rl">
+        <h2 id="rl">How matching works</h2>
+        <div class="list">
+          <div class="row"><span class="txt"><span class="title">Same verified phone or email</span><span class="desc">Merged automatically · 96.2K in 30 days</span></span><span class="val" style="font-size:15px">Merge</span></div>
+          <div class="row"><span class="txt"><span class="title">Shared phone, like a parent's</span><span class="desc">Kept as separate people · 31.7K in 30 days</span></span><span class="val" style="font-size:15px">Link only</span></div>
+          <div class="row"><span class="txt"><span class="title">Similar name, device or location</span><span class="desc">Not used as evidence. No guessing.</span></span><span class="val muted" style="font-size:15px">Ignore</span></div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="au">
+        <div class="section-head row">
+          <div class="section-head">
+            <h2 id="au">Audit a merge</h2>
+            <p class="sub" style="font-size:14px">A random sample of automatic merges. Wrong ones set the false-merge rate.</p>
+          </div>
+          <span class="muted" style="font-size:14px"><span data-bind="auditsDone">12</span> of 200 this week</span>
+        </div>
+        <div class="card pad audit">
+          <div class="section-head" style="gap:6px">
+            <div class="eyebrow">Merged on <span id="auditOn"></span></div>
+            <p class="summary" id="auditSummary"></p>
+          </div>
+          <div class="table-wrap">
+            <table class="compare">
+              <thead><tr><th scope="col"><span class="sr">Field</span></th><th scope="col" id="auditLeft"></th><th scope="col" id="auditRight"></th></tr></thead>
+              <tbody id="auditRows"></tbody>
+            </table>
+          </div>
+          <div class="status" id="auditStatus" role="status" hidden>
+            <span id="auditStatusText"></span>
+            <button type="button" class="textbtn" id="auditUndo" style="font-weight:600">Undo</button>
+          </div>
+          <div class="actions">
+            <button type="button" class="icon-btn" id="auditPrev" aria-label="Previous merge"><svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 1L1 7l6 6"/></svg></button>
+            <button type="button" class="icon-btn" id="auditNext" aria-label="Next merge"><svg width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></button>
+            <span class="grow"></span>
+            <button type="button" class="btn soft danger" id="auditWrong">Wrong, unmerge</button>
+            <button type="button" class="btn dark" id="auditRight">Same person</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="lg">
+        <div class="section-head">
+          <h2 id="lg">Merge log</h2>
+          <p class="sub" style="font-size:14px">Every merge is recorded with its reason, and can be undone.</p>
+        </div>
+        <div class="list" id="mergeLog"></div>
+      </section>
+
+      <p class="footnote">Sample data for design review</p>
+    </div>
+  </main>
+</div>
+
+<!-- =========================================================
+     SHARE SHEET
+     ========================================================= -->
+<dialog class="sheet" id="shareDlg" aria-labelledby="shareTitle">
+  <div class="sheet-body">
+    <div class="sheet-head">
+      <h2 id="shareTitle">Share this prototype</h2>
+      <button type="button" class="x" id="shareClose" aria-label="Close"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M1 1l10 10M11 1L1 11"/></svg></button>
+    </div>
+    <p class="sheet-note">Anyone with the link can open it. It only contains sample data.</p>
+
+    <div class="opts">
+      <label class="opt-row"><span class="txt"><span class="t">Skip sign-in</span><span class="d">Opens straight into preview mode</span></span><input type="checkbox" class="switch" id="sharePreview" checked></label>
+      <label class="opt-row" for="shareTeam"><span class="txt"><span class="t">See it as</span><span class="d">Each team sees different screens</span></span>
+        <select id="shareTeam" class="fselect">
+          <option value="central">Central data team</option>
+          <option value="internshala">Internshala counselor</option>
+          <option value="wp">WP counselor</option>
+          <option value="unacademy">Unacademy counselor</option>
+        </select>
+      </label>
+      <label class="opt-row" id="shareScreenRow"><span class="txt"><span class="t">Open on this screen</span><span class="d" id="shareScreenName"></span></span><input type="checkbox" class="switch" id="shareScreen" checked></label>
+    </div>
+
+    <div class="field-light">
+      <label for="shareUrl">Link</label>
+      <div class="copyrow">
+        <input id="shareUrl" class="finput" type="text" readonly>
+        <button type="button" class="btn dark sm" id="copyLink">Copy link</button>
+      </div>
+    </div>
+
+    <div class="sheet-actions">
+      <a class="btn soft sm" id="openPreview" href="#" target="_blank" rel="noopener">Open preview</a>
+      <button type="button" class="btn soft sm" id="nativeShare" hidden>More options…</button>
+    </div>
+
+    <details class="embed">
+      <summary>Embed on a website</summary>
+      <div class="field-light">
+        <label for="embedCode">Paste this into any web page</label>
+        <textarea id="embedCode" class="finput code" rows="3" readonly></textarea>
+        <button type="button" class="btn soft sm" id="copyEmbed" style="align-self:flex-start">Copy embed code</button>
+      </div>
+    </details>
+  </div>
+</dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+  var bind = function (key, val) { $$('[data-bind="' + key + '"]').forEach(function (el) { el.textContent = val; }); };
+
+  /* ---------- Session (prototype only: no real authentication) ---------- */
+  var KEY = "upgrad-ci-session";
+  var S = load() || { step: "signin" };
+  function load() { try { return JSON.parse(sessionStorage.getItem(KEY)); } catch (e) { return null; } }
+  function save() { try { sessionStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+  var TEAMS = {
+    central:    { label: "Central data team", desc: "Overview, person lookup and identity audits", routes: ["overview", "lookup", "identity"], home: "overview", bu: null },
+    internshala:{ label: "Internshala counseling", desc: "Look up learners during calls", routes: ["lookup"], home: "lookup", bu: "Internshala" },
+    wp:         { label: "Working Professionals counseling", desc: "Look up learners during calls", routes: ["lookup"], home: "lookup", bu: "Working Professionals" },
+    unacademy:  { label: "Unacademy counseling", desc: "Look up learners during calls", routes: ["lookup"], home: "lookup", bu: "Unacademy" }
+  };
+  var ALLOWED = /@(upgrad|unacademy|internshala)\.com$/i;
+
+  /* ---------- Preview links: ?preview=1&team=wp#/lookup ---------- */
+  function startPreview(team) {
+    S = { step: "app", preview: true, name: "Guest preview", email: "", team: TEAMS[team] ? team : "central", acked: true };
+    save();
+  }
+  (function () {
+    var q = new URLSearchParams(location.search);
+    if (q.get("preview") === "1") { startPreview(q.get("team")); clearQuery(); }
+  })();
+  function clearQuery() { if (location.search) history.replaceState(null, "", location.pathname + location.hash); }
+
+  function nameFrom(email) {
+    var local = email.split("@")[0].replace(/[0-9]+/g, "");
+    var parts = local.split(/[._-]+/).filter(Boolean);
+    if (!parts.length) parts = ["upGrad", "colleague"];
+    return parts.map(function (p) { return p.charAt(0).toUpperCase() + p.slice(1).toLowerCase(); }).join(" ");
+  }
+  function initials(name) { return name.split(" ").map(function (p) { return p.charAt(0); }).join("").slice(0, 2).toUpperCase(); }
+
+  /* ---------- Top-level render ---------- */
+  function render() {
+    var signedIn = S.step === "app" && (S.email || S.preview) && S.team && TEAMS[S.team];
+    $("#auth").hidden = !!signedIn;
+    $("#app").hidden = !signedIn;
+    if (signedIn) { Burst.stop(); renderApp(); return; }
+    Burst.start();
+    if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+    $$("[data-step]").forEach(function (el) { el.hidden = el.getAttribute("data-step") !== S.step; });
+    var titles = { signin: "Sign in", otp: "Check your email", team: "Choose your team", ack: "Before you start" };
+    document.title = (titles[S.step] || "Sign in") + " · upGrad Customer Intelligence";
+    if (S.step === "otp") { $("#otpEmail").textContent = S.email; startResend(); focusSoon("#code"); }
+    if (S.step === "team") { $("#teamEmail").textContent = S.preview ? "a guest (preview)" : S.email; renderTeams(); }
+    if (S.step === "ack") { $("#ackBox").checked = false; $("#ackBtn").disabled = true; }
+    if (S.step === "signin") focusSoon("#email");
+  }
+  function go(step) { S.step = step; save(); render(); window.scrollTo(0, 0); }
+  function focusSoon(sel) { setTimeout(function () { var el = $(sel); if (el && !el.closest("[hidden]")) el.focus(); }, 30); }
+
+  /* ---------- Step 1: sign in ---------- */
+  function showErr(input, errEl, msg) {
+    input.setAttribute("aria-invalid", msg ? "true" : "false");
+    errEl.textContent = msg || ""; errEl.hidden = !msg;
+  }
+  $("#emailForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var input = $("#email"), v = input.value.trim();
+    if (!v) return showErr(input, $("#emailErr"), "Enter your work email.");
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) return showErr(input, $("#emailErr"), "That doesn't look like an email address.");
+    if (!ALLOWED.test(v)) return showErr(input, $("#emailErr"), "Use your upGrad, Unacademy or Internshala email. Personal accounts can't see learner data.");
+    showErr(input, $("#emailErr"), "");
+    S.email = v.toLowerCase(); S.name = nameFrom(S.email); S.sso = false;
+    go("otp");
+  });
+  $("#email").addEventListener("input", function () { showErr(this, $("#emailErr"), ""); });
+  $("#googleBtn").addEventListener("click", function () {
+    var btn = this; btn.disabled = true;
+    $("#googleLabel").textContent = "Signing in…";
+    setTimeout(function () {
+      btn.disabled = false; $("#googleLabel").textContent = "Continue with Google";
+      var typed = $("#email").value.trim();
+      S.email = ALLOWED.test(typed) ? typed.toLowerCase() : "demo.user@upgrad.com";
+      S.name = nameFrom(S.email); S.sso = true;
+      go("team");
+    }, 700);
+  });
+
+  /* ---------- Step 2: code ---------- */
+  var timer = null;
+  function startResend() {
+    var left = 30; clearInterval(timer);
+    $("#resendBtn").disabled = true;
+    var tick = function () {
+      if (left <= 0) { clearInterval(timer); $("#resendBtn").disabled = false; $("#resendTimer").textContent = ""; return; }
+      $("#resendTimer").textContent = "in " + left + "s"; left--;
+    };
+    tick(); timer = setInterval(tick, 1000);
+  }
+  $("#resendBtn").addEventListener("click", function () { startResend(); $("#codeHint").textContent = "New code sent. Prototype: any 6 digits will work."; });
+  $("#code").addEventListener("input", function () {
+    this.value = this.value.replace(/\D/g, "").slice(0, 6);
+    showErr(this, $("#codeErr"), "");
+    if (this.value.length === 6) $("#otpForm").requestSubmit ? $("#otpForm").requestSubmit() : $("#verifyBtn").click();
+  });
+  $("#otpForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var input = $("#code");
+    if (input.value.length !== 6) return showErr(input, $("#codeErr"), "Enter all 6 digits.");
+    var btn = $("#verifyBtn"); btn.disabled = true; btn.innerHTML = '<span class="spinner" aria-hidden="true"></span><span class="sr">Verifying</span>';
+    setTimeout(function () { btn.disabled = false; btn.textContent = "Verify"; input.value = ""; clearInterval(timer); go("team"); }, 600);
+  });
+
+  /* ---------- Step 3: team ---------- */
+  function renderTeams() {
+    $("#teamList").innerHTML = Object.keys(TEAMS).map(function (k) {
+      var t = TEAMS[k];
+      return '<button type="button" data-team="' + k + '"><span class="txt"><span class="t">' + esc(t.label) + '</span><span class="d">' + esc(t.desc) +
+        '</span></span><svg class="chev" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l6 6-6 6"/></svg></button>';
+    }).join("");
+  }
+  $("#teamList").addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-team]"); if (!b) return;
+    S.team = b.getAttribute("data-team");
+    if (S.acked) { S.step = "app"; save(); location.hash = "#/" + TEAMS[S.team].home; render(); }
+    else go("ack");
+  });
+
+  /* ---------- Step 4: rules ---------- */
+  $("#ackBox").addEventListener("change", function () { $("#ackBtn").disabled = !this.checked; });
+  $("#ackBtn").addEventListener("click", function () {
+    S.acked = true; S.step = "app"; save();
+    location.hash = "#/" + TEAMS[S.team].home; render();
+  });
+
+  /* ---------- Shared actions ---------- */
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("[data-action]"); if (!a) return;
+    var act = a.getAttribute("data-action");
+    if (act === "restart" || act === "signout") { S = { step: "signin" }; save(); clearInterval(timer); clearQuery(); $("#email").value = ""; render(); }
+    if (act === "back-team") go("team");
+    if (act === "switch-team") { S.step = "team"; save(); render(); }
+    if (act === "preview") { startPreview("central"); location.hash = "#/overview"; render(); }
+    if (act === "share") openShare();
+  });
+
+  /* ---------- App ---------- */
+  var titles = { overview: "Overview", lookup: "Look up a person", identity: "Identity & audits" };
+  function renderApp() {
+    var team = TEAMS[S.team];
+    $("#meName").textContent = S.name;
+    $("#meTeam").textContent = team.label;
+    $("#meAv").textContent = S.preview ? "G" : initials(S.name);
+    $("#previewBar").hidden = !S.preview;
+    $("#previewTeam").textContent = team.label;
+    $("#signoutBtn").textContent = S.preview ? "Sign in" : "Sign out";
+    $$(".nav a").forEach(function (a) { a.hidden = team.routes.indexOf(a.getAttribute("data-route")) < 0; });
+    $(".nav").hidden = team.routes.length < 2;
+    $(".later").hidden = !!team.bu;
+
+    var name = (location.hash.replace(/^#\/?/, "") || team.home).split("/")[0];
+    if (team.routes.indexOf(name) < 0) { name = team.home; history.replaceState(null, "", "#/" + name); }
+    $$(".view").forEach(function (v) { v.hidden = v.getAttribute("data-view") !== name; });
+    $$(".nav a").forEach(function (a) {
+      if (a.getAttribute("data-route") === name) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+    });
+    document.title = titles[name] + " · upGrad Customer Intelligence";
+
+    // Role-aware lookup: other businesses can view but not contact
+    var cross = team.bu && team.bu !== "Internshala";
+    $("#crossBanner").hidden = !cross;
+    $("#crossBu").textContent = team.bu || "";
+    $("#crmBtn").hidden = !!cross;
+  }
+  window.addEventListener("hashchange", function () { if (S.step === "app") { renderApp(); window.scrollTo(0, 0); } });
+
+  /* ---------- Overview: time range ---------- */
+  var ranges = {
+    "7D":  { rangeLabel: "in the last 7 days",  resolvedDelta: "+0.6 pts", falseMerge: "0.07%", knownLeads: "9.8K",  lookups: "7.9K" },
+    "30D": { rangeLabel: "in the last 30 days", resolvedDelta: "+2.9 pts", falseMerge: "0.08%", knownLeads: "41.2K", lookups: "34.6K" },
+    "90D": { rangeLabel: "in the last 90 days", resolvedDelta: "+8.2 pts", falseMerge: "0.11%", knownLeads: "118K",  lookups: "88.2K" }
+  };
+  $("#range").addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-range]"); if (!b) return;
+    $$("#range button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+    var d = ranges[b.getAttribute("data-range")];
+    Object.keys(d).forEach(function (k) { bind(k, d[k]); });
+  });
+
+  /* ---------- Lookup ---------- */
+  var names = { U: "Unacademy", I: "Internshala", W: "Working Professionals" };
+  var events = [
+    { b: "W", when: "Today", title: "Read the Data Science programme page", detail: "3 visits this week" },
+    { b: "I", when: "Yesterday", title: "Accepted internship offer", detail: "Data analyst, Bengaluru" },
+    { b: "I", when: "28 Oct", title: "Counseling call", detail: "Asked about part-time courses after graduation" },
+    { b: "I", when: "21 Oct", title: "Applied to 4 internships", detail: "Analyst roles" },
+    { b: "I", when: "2 Sep", title: "Completed Excel & SQL training", detail: "Certificate issued" },
+    { b: "U", when: "Apr 2022", title: "Completed JEE Main course", detail: "214 classes attended" }
+  ];
+  function renderTimeline(bu) {
+    $("#timeline").innerHTML = events.filter(function (e) { return bu === "all" || e.b === bu; }).map(function (e) {
+      return '<div class="event"><div class="when">' + esc(e.when) + '</div><div class="body"><div class="title">' + esc(e.title) +
+        '</div><div class="desc">' + esc(names[e.b]) + " · " + esc(e.detail) + "</div></div></div>";
+    }).join("");
+  }
+  $("#buFilter").addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-bu]"); if (!b) return;
+    $$("#buFilter button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+    renderTimeline(b.getAttribute("data-bu"));
+  });
+  $("#reveal").addEventListener("click", function () {
+    $("#phone").textContent = "+91 98234 41127";
+    $("#emailVal").textContent = "ananya.iyer21@gmail.com";
+    $("#reveal").hidden = true;
+    var n = $("#revealNote"); n.hidden = false;
+    n.textContent = "Shown to " + (S.name || "you") + " for counseling. This access is logged.";
+  });
+
+  /* ---------- Identity: audit ---------- */
+  var cases = [
+    { on: "verified phone", summary: "Same verified phone, but the dates of birth are four years apart.", left: "Unacademy · 2019", right: "Internshala · 2025",
+      rows: [["Name", "Priya Sharma", "Priya Sharma"], ["Phone", "+91 99•• ••12 08", "+91 99•• ••12 08"], ["Email", "priya.s•••@gmail.com", "sharma.p•••@outlook.com"], ["Date of birth", "14 Mar 2003", "02 Aug 1999"]] },
+    { on: "verified email", summary: "One learner moved from Internshala to Working Professionals.", left: "Internshala · 2022", right: "Working Professionals · 2026",
+      rows: [["Name", "Arjun Kumar", "Arjun Kumar"], ["Phone", "+91 90•• ••58 44", "+91 90•• ••58 44"], ["Email", "arjun.k•••@gmail.com", "arjun.k•••@gmail.com"], ["City", "Hyderabad", "Hyderabad"]] },
+    { on: "verified phone", summary: "Unacademy alumnus later applied for internships.", left: "Unacademy · 2020", right: "Internshala · 2024",
+      rows: [["Name", "Rohan Mehta", "Rohan M."], ["Phone", "+91 97•• ••30 61", "+91 97•• ••30 61"], ["Email", "rohan.m•••@gmail.com", "rohan.m•••@gmail.com"], ["City", "Indore", "Pune"]] }
+  ];
+  var audit = { i: 0, decisions: {} };
+  var labels = { right: "Confirmed as the same person.", wrong: "Unmerged into two people. Counted toward the false-merge rate." };
+  function renderAudit() {
+    var c = cases[audit.i], d = audit.decisions[audit.i];
+    $("#auditOn").textContent = c.on;
+    $("#auditSummary").textContent = c.summary;
+    $("#auditLeft").textContent = c.left;
+    $("#auditRight").textContent = c.right;
+    $("#auditRows").innerHTML = c.rows.map(function (r) {
+      var cls = r[1] === r[2] ? "" : ' class="diff"';
+      return '<tr><th scope="row">' + esc(r[0]) + "</th><td" + cls + ">" + esc(r[1]) + "</td><td" + cls + ">" + esc(r[2]) + "</td></tr>";
+    }).join("");
+    $("#auditStatus").hidden = !d;
+    $("#auditStatusText").textContent = d ? labels[d] : "";
+    var done = 12 + Object.keys(audit.decisions).length;
+    bind("auditsDone", String(done));
+    bind("auditsLeft", String(200 - done));
+  }
+  function decide(v) { audit.decisions[audit.i] = v; renderAudit(); }
+  $("#auditRight").addEventListener("click", function () { decide("right"); });
+  $("#auditWrong").addEventListener("click", function () { decide("wrong"); });
+  $("#auditUndo").addEventListener("click", function () { delete audit.decisions[audit.i]; renderAudit(); });
+  $("#auditPrev").addEventListener("click", function () { audit.i = (audit.i + cases.length - 1) % cases.length; renderAudit(); });
+  $("#auditNext").addEventListener("click", function () { audit.i = (audit.i + 1) % cases.length; renderAudit(); });
+
+  var log = [
+    { who: "Rohan Mehta", action: "Merged automatically", rule: "verified phone", when: "10:14", reverse: "Unmerge" },
+    { who: "Kabir and Meera Rao", action: "Linked, not merged", rule: "shared parent phone", when: "09:58", reverse: "Unlink" },
+    { who: "Priya Sharma", action: "Unmerged in audit", rule: "different dates of birth", when: "09:02", reverse: "Re-merge" },
+    { who: "Arjun Kumar", action: "Merged automatically", rule: "verified email", when: "Yesterday", reverse: "Unmerge" }
+  ];
+  $("#mergeLog").innerHTML = log.map(function (l) {
+    return '<div class="row"><span class="txt"><span class="title">' + esc(l.who) + '</span><span class="desc">' + esc(l.action) + " · " + esc(l.rule) +
+      '</span></span><span class="desc">' + esc(l.when) + '</span><button type="button" class="textbtn">' + esc(l.reverse) + "</button></div>";
+  }).join("");
+
+  /* ---------- Share sheet ---------- */
+  var dlg = $("#shareDlg");
+  var toastTimer = null;
+  function toast(msg) {
+    var t = $("#toast"); t.textContent = msg; t.classList.add("show");
+    clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.classList.remove("show"); }, 2000);
+  }
+  function currentRoute() {
+    if (S.step !== "app") return "";
+    return (location.hash.replace(/^#\/?/, "") || "").split("/")[0] || TEAMS[S.team].home;
+  }
+  function shareUrl() {
+    var preview = $("#sharePreview").checked, team = $("#shareTeam").value;
+    var route = (preview && !$("#shareScreenRow").hidden && $("#shareScreen").checked) ? currentRoute() : "";
+    if (route && TEAMS[team].routes.indexOf(route) < 0) route = TEAMS[team].home;
+    var q = preview ? "?preview=1" + (team !== "central" ? "&team=" + team : "") : "";
+    return location.href.split(/[?#]/)[0] + q + (route ? "#/" + route : "");
+  }
+  function refreshShare() {
+    var preview = $("#sharePreview").checked;
+    $("#shareTeam").disabled = !preview;
+    $("#shareTeam").closest(".opt-row").classList.toggle("off", !preview);
+    $("#shareScreen").disabled = !preview;
+    $("#shareScreenRow").classList.toggle("off", !preview);
+    var r = currentRoute(), team = TEAMS[$("#shareTeam").value];
+    if (r) $("#shareScreenName").textContent = team.routes.indexOf(r) < 0 ? titles[team.home] + " (this team can't see " + titles[r] + ")" : titles[r];
+    var url = shareUrl();
+    $("#shareUrl").value = url;
+    $("#openPreview").href = url;
+    $("#embedCode").value = '<iframe src="' + url + '" title="upGrad Customer Intelligence prototype" width="100%" height="900" style="border:0;border-radius:16px" loading="lazy"></iframe>';
+  }
+  function openShare() {
+    var route = currentRoute();
+    $("#shareScreenRow").hidden = !route;
+    $("#shareScreenName").textContent = route ? titles[route] : "";
+    $("#shareTeam").value = S.step === "app" && S.team ? S.team : "central";
+    $("#nativeShare").hidden = !navigator.share;
+    refreshShare();
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
+    setTimeout(function () { $("#copyLink").focus(); }, 30);
+  }
+  function copy(text, input, msg) {
+    var done = function () { toast(msg); };
+    var fallback = function () {
+      input.focus(); input.select();
+      try { document.execCommand("copy"); done(); } catch (e) { toast("Select the text and copy it"); }
+    };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done, fallback);
+    else fallback();
+  }
+  ["#sharePreview", "#shareTeam", "#shareScreen"].forEach(function (s) { $(s).addEventListener("change", refreshShare); });
+  $("#copyLink").addEventListener("click", function () { copy($("#shareUrl").value, $("#shareUrl"), "Link copied"); });
+  $("#copyEmbed").addEventListener("click", function () { copy($("#embedCode").value, $("#embedCode"), "Embed code copied"); });
+  $("#shareUrl").addEventListener("focus", function () { this.select(); });
+  $("#nativeShare").addEventListener("click", function () {
+    navigator.share({ title: "upGrad Customer Intelligence", text: "Phase 1 prototype (sample data)", url: $("#shareUrl").value }).catch(function () {});
+  });
+  $("#shareClose").addEventListener("click", function () { dlg.close ? dlg.close() : dlg.removeAttribute("open"); });
+  dlg.addEventListener("click", function (e) { if (e.target === dlg && dlg.close) dlg.close(); });
+
+  /* ---------- Sign-in background: many touchpoints converging on one learner ---------- */
+  var Burst = (function () {
+    var cv = $("#burst"), ctx = cv.getContext("2d"), rays = [], raf = 0, w = 0, h = 0, dpr = 1, t0 = 0;
+    var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function seed() {
+      rays = [];
+      var reach = Math.min(w, h), n = Math.round(Math.min(220, Math.max(110, (w * h) / 9000)));
+      for (var i = 0; i < n; i++) {
+        var red = Math.random() < 0.07;
+        rays.push({
+          a: Math.random() * Math.PI * 2,
+          r0: 40 + Math.random() * 60,
+          len: reach * (0.22 + Math.random() * 0.42),
+          dot: 0.8 + Math.random() * (red ? 2.6 : 2.2),
+          mid: Math.random() < 0.25 ? 0.4 + Math.random() * 0.4 : 0,
+          alpha: 0.06 + Math.random() * 0.22,
+          phase: Math.random() * Math.PI * 2,
+          red: red
+        });
+      }
+    }
+    function size() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = cv.clientWidth; h = cv.clientHeight;
+      cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      seed();
+    }
+    function draw(t) {
+      ctx.clearRect(0, 0, w, h);
+      var cx = w / 2, cy = h / 2, spin = still ? 0 : t * 0.000025;
+      for (var i = 0; i < rays.length; i++) {
+        var r = rays[i], a = r.a + spin, c = Math.cos(a), s = Math.sin(a);
+        var tw = still ? 1 : 0.65 + 0.35 * Math.sin(t * 0.0012 + r.phase);
+        var x0 = cx + c * r.r0, y0 = cy + s * r.r0, x1 = cx + c * (r.r0 + r.len), y1 = cy + s * (r.r0 + r.len);
+        var g = ctx.createLinearGradient(x1, y1, x0, y0);
+        var col = r.red ? "227,38,47" : "255,255,255";
+        g.addColorStop(0, "rgba(" + col + "," + (r.alpha * tw * (r.red ? 2.2 : 1)) + ")");
+        g.addColorStop(1, "rgba(" + col + ",0)");
+        ctx.strokeStyle = g; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
+        ctx.fillStyle = r.red ? "rgba(255,59,69," + (0.85 * tw) + ")" : "rgba(255,255,255," + Math.min(0.8, r.alpha * 2.4 * tw) + ")";
+        ctx.beginPath(); ctx.arc(x1, y1, r.dot, 0, Math.PI * 2); ctx.fill();
+        if (r.mid) {
+          var mx = cx + c * (r.r0 + r.len * r.mid), my = cy + s * (r.r0 + r.len * r.mid);
+          ctx.beginPath(); ctx.arc(mx, my, r.dot * 0.6, 0, Math.PI * 2); ctx.fill();
+        }
+      }
+    }
+    function loop(t) { draw(t - t0); raf = requestAnimationFrame(loop); }
+    window.addEventListener("resize", function () { if (!$("#auth").hidden) { size(); if (still) draw(0); } });
+    return {
+      start: function () {
+        if (raf || !ctx) return;
+        size();
+        if (still) { draw(0); return; }
+        t0 = performance.now(); raf = requestAnimationFrame(loop);
+      },
+      stop: function () { if (raf) cancelAnimationFrame(raf); raf = 0; }
+    };
+  })();
+
+  renderTimeline("all");
+  renderAudit();
+  render();
+})();
+</script>
+</body>
+</html>
