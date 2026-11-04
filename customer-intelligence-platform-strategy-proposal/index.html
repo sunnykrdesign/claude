@@ -265,6 +265,66 @@ button{font-family:inherit;cursor:pointer}
 .backbtn{align-self:flex-start;margin:-32px 0 -24px}
 .more-row{display:flex;justify-content:center;padding:8px 0 10px}
 
+/* Profile card and detail cards */
+.pcard{background:var(--card);border-radius:var(--radius);padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:24px}
+.pcard-top{display:flex;flex-wrap:wrap;align-items:center;gap:24px}
+.pcard .avatar{width:104px;height:104px;font-size:34px;flex:0 0 auto}
+.photo{object-fit:cover;display:block}
+.pcard .who{flex:1 1 300px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.pcard .who h1{font-size:clamp(28px,4vw,36px)}
+.pcard .headline{margin:0;font-size:17px;font-weight:500}
+.pcard .matched{margin:0;font-size:14px;color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:20px 24px;padding-top:20px;border-top:1px solid var(--line)}
+.fact{display:flex;flex-direction:column;gap:4px;min-width:0}
+.fact .k{font-size:12px;color:var(--muted)}
+.fact .v{font-size:16px;font-weight:600;letter-spacing:-0.01em}
+.meter{display:block;height:4px;border-radius:999px;background:var(--track);margin-top:4px}
+.meter i{display:block;height:100%;border-radius:999px;background:var(--text)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:20px;align-items:start}
+.scard{background:var(--card);border-radius:var(--radius);padding:4px 22px 14px;min-width:0}
+.scard-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 0 4px}
+.scard-head h2{font-size:19px !important}
+.scard-foot{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding-top:8px}
+.scard-foot .note{padding:0}
+.scard .attr-list .row{min-height:52px;box-shadow:0 1px 0 var(--line);display:flex;align-items:center;gap:16px}
+.scard .attr-list .row:last-child{box-shadow:none}
+.scard .attr-list .row .txt{flex:1;min-width:0}
+.scard .attr-list .side-val{font-size:14px;color:var(--muted)}
+.scard .attr-list .side-val.red{color:var(--red-text)}
+.scard .attr .value{overflow-wrap:anywhere}
+.hidden-val{color:var(--muted);letter-spacing:.15em}
+.li-empty{margin:0;padding:10px 0 4px;font-size:14px;color:var(--muted);line-height:1.5}
+.tag.green{background:#E3F6E8;color:#1D7A34}
+.mini-av.photo,.avatar.photo{padding:0}
+.mini-av{overflow:hidden}
+
+/* Data model */
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;align-items:start}
+.tcard{background:var(--card);border-radius:18px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.tcard.core{background:#111113;color:#F5F5F7}
+.tcard.core .tdesc,.tcard.core .ty,.tcard.core .nt{color:#A1A1A6}
+.tcard.core .tf{box-shadow:0 1px 0 rgba(255,255,255,.1)}
+.tcard.core .tag{background:rgba(255,255,255,.12);color:#E5E5EA}
+.tcard-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.tcard-head code{font-size:16px;font-weight:600}
+code{font-family:ui-monospace,"SF Mono",Menlo,monospace}
+.tdesc{margin:0;font-size:13px;color:var(--muted);line-height:1.45}
+.tfields{display:flex;flex-direction:column}
+.tf{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;padding:7px 0;box-shadow:0 1px 0 var(--line);font-size:13px}
+.tf:last-child{box-shadow:none}
+.tf code{font-size:13px;font-weight:500}
+.tf .ty{color:var(--muted);font-size:12px}
+.tf .nt{flex-basis:100%;color:var(--muted);font-size:12px}
+.store{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:14px}
+.store div{display:flex;flex-direction:column;gap:2px}
+.store span{font-size:12px;color:var(--muted)}
+table.access{width:100%;min-width:620px;border-collapse:collapse;font-size:14px}
+table.access th,table.access td{text-align:left;padding:12px 12px 12px 0;border-top:1px solid var(--line)}
+table.access thead th{border-top:none;font-size:13px;font-weight:400;color:var(--muted);vertical-align:bottom}
+table.access tbody th{font-weight:500}
+table.access td.no{color:var(--red-text)}
+table.access td.partial{color:var(--muted)}
+
 /* Audit */
 .audit{display:flex;flex-direction:column;gap:28px}
 .audit .summary{margin:0;font-size:19px;line-height:1.4;font-weight:500;letter-spacing:-0.015em}
@@ -444,6 +504,7 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
       <a href="#/overview" data-route="overview">Overview</a>
       <a href="#/lookup" data-route="lookup">Look up a person</a>
       <a href="#/identity" data-route="identity">Identity &amp; audits <span class="count" data-bind="auditsLeft">188</span></a>
+      <a href="#/data" data-route="data">Data model</a>
     </nav>
     <div class="later" aria-label="Later phases">
       <div class="label">Later phases</div>
@@ -641,6 +702,51 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
 
       <p class="footnote">Sample data for design review</p>
     </div>
+    <!-- ============ DATA MODEL ============ -->
+    <div class="wrap view" data-view="data" hidden>
+      <header class="section-head" style="gap:8px">
+        <h1>Data model</h1>
+        <p class="sub" style="max-width:640px">One profile per person, built from every business. Personal, education, professional and financial details sit in their own tables, all joined on one person_id.</p>
+      </header>
+
+      <section class="section" aria-labelledby="dm-v">
+        <h2 id="dm-v">How every value is stored</h2>
+        <div class="card pad" style="display:flex;flex-direction:column;gap:16px">
+          <p style="margin:0;font-size:15px;color:var(--muted)">Each value keeps where it came from, so a counselor can trust it and a wrong one can be traced and fixed.</p>
+          <div class="store">
+            <div><span>Field</span><code>education.subject</code></div>
+            <div><span>Value</span>B.Tech, Computer Science</div>
+            <div><span>source_bu</span>Internshala</div>
+            <div><span>source_type</span>declared</div>
+            <div><span>updated_at</span>12 Jul 2025</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="dm-t">
+        <div class="section-head">
+          <h2 id="dm-t">Tables</h2>
+          <p class="sub" style="font-size:14px">The person table is the centre. Every other table links to it by person_id (→ person).</p>
+        </div>
+        <div class="tgrid" id="dataModel"></div>
+      </section>
+
+      <section class="section" aria-labelledby="dm-a">
+        <div class="section-head">
+          <h2 id="dm-a">Who can see what</h2>
+          <p class="sub" style="font-size:14px">"On reveal" means the viewer gives a reason first, and the reveal is written to access_log.</p>
+        </div>
+        <div class="card pad table-wrap">
+          <table class="access">
+            <thead><tr><th scope="col">Section</th><th scope="col">Central data team</th><th scope="col">Owning business</th><th scope="col">Other business, with consent</th><th scope="col">Other business, no consent</th></tr></thead>
+            <tbody id="accessRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <p class="footnote">Design proposal for Phase 1 · sample schema</p>
+    </div>
+
   </main>
 </div>
 
@@ -708,7 +814,7 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
   function save() { try { sessionStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
 
   var TEAMS = {
-    central:    { label: "Central data team", desc: "Overview, person lookup and identity audits", routes: ["overview", "lookup", "identity"], home: "overview", bu: null },
+    central:    { label: "Central data team", desc: "Overview, person lookup and identity audits", routes: ["overview", "lookup", "identity", "data"], home: "overview", bu: null },
     internshala:{ label: "Internshala counseling", desc: "Look up learners during calls", routes: ["lookup"], home: "lookup", bu: "Internshala" },
     wp:         { label: "Working Professionals counseling", desc: "Look up learners during calls", routes: ["lookup"], home: "lookup", bu: "Working Professionals" },
     unacademy:  { label: "Unacademy counseling", desc: "Look up learners during calls", routes: ["lookup"], home: "lookup", bu: "Unacademy" }
@@ -839,7 +945,7 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
   });
 
   /* ---------- App ---------- */
-  var titles = { overview: "Overview", lookup: "Look up a person", identity: "Identity & audits" };
+  var titles = { overview: "Overview", lookup: "Look up a person", identity: "Identity & audits", data: "Data model" };
   function renderApp() {
     var team = TEAMS[S.team];
     $("#meName").textContent = S.name;
@@ -879,10 +985,11 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
 
   /* ---------- Lookup ---------- */
   // Sample people. Phones are stored as 10 digits, emails in lowercase.
+  // Each detail row is [field, source, value]. Source = business · how we got it.
   var BU = { U: "Unacademy", I: "Internshala", W: "Working Professionals" };
   var PEOPLE = {
     ananya: {
-      name: "Ananya Iyer", since: "June 2021", owner: "Internshala",
+      name: "Ananya Iyer", headline: "Final-year B.Tech student · Data analyst intern", age: 21, city: "Chennai", since: "June 2021", owner: "Internshala", complete: 78,
       phones: ["9823441127"], emails: ["ananya.iyer21@gmail.com"],
       linked: [{ label: "Parent's phone", phone: "9845012390" }],
       consent: { calls: true, marketing: true, cross: false },
@@ -891,7 +998,11 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
         { bu: "Internshala", when: "Now", what: "Active · owned by Internshala sales", state: "now" },
         { bu: "Working Professionals", when: "Graduates June 2026", what: "Not a customer yet", state: "future" }
       ],
-      about: [["Graduation", "Declared on Internshala", "June 2026"], ["Degree", "Declared on Internshala", "B.Tech, Computer Science"], ["Career interest", "Observed from browsing", "Data analytics"], ["Life stage", "Inferred by rule", "Final-year student"]],
+      personal: [["Date of birth", "Internshala · declared", "14 Feb 2005"], ["Gender", "Internshala · declared", "Female"], ["Languages", "Internshala · declared", "English, Tamil, Hindi"], ["City", "Internshala · declared", "Chennai, Tamil Nadu"]],
+      education: [["Class 12", "Unacademy · declared", "CBSE · 91% · 2022"], ["Entrance exam", "Unacademy · declared", "JEE Main 2022 · 96.4 percentile"], ["Degree", "Internshala · declared", "B.Tech, Computer Science"], ["College", "Internshala · declared", "SRM Institute, Chennai"], ["Graduation", "Internshala · declared", "June 2026"], ["upGrad courses", "Internshala · recorded", "Excel & SQL training · certified"]],
+      professional: [["Status", "Inferred by rule", "Final-year student"], ["Internship", "Internshala · recorded", "Data analyst intern, Bengaluru · offer accepted"], ["Skills", "Internshala · declared", "SQL, Excel, Python"], ["Career interest", "Working Professionals · observed", "Data analytics"], ["Work experience", "Inferred by rule", "None yet"]],
+      finance: [["Paid to upGrad", "Internshala · recorded", "₹1,999 · 1 payment"], ["Earlier purchases", "Unacademy · recorded", "₹8,400 · Plus subscription, 2 payments"], ["Loans and EMIs", "All businesses · recorded", "None on record"], ["Family income", "Internshala · declared", "₹6–9 lakh a year"], ["Payment preference", "Working Professionals · observed", "Looked at monthly instalments"]],
+      linkedin: null,
       events: [
         ["W", "Today", "Read the Data Science programme page", "3 visits this week"],
         ["I", "Yesterday", "Accepted internship offer", "Data analyst, Bengaluru"],
@@ -914,18 +1025,24 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
       ]
     },
     arjun: {
-      name: "Arjun Kumar", since: "August 2022", owner: "Working Professionals",
+      name: "Arjun Kumar", headline: "Data analyst · PG Diploma in Data Science student", age: 26, city: "Hyderabad", since: "August 2022", owner: "Working Professionals", complete: 92,
+      photo: "assets/profile-arjun.jpg",
       phones: ["9012358844"], emails: ["arjun.kumar88@gmail.com"], linked: [],
       consent: { calls: true, marketing: true, cross: true },
       journey: [
         { bu: "Internshala", when: "2022 – 2024", what: "Interned · Data analyst, Hyderabad", state: "past" },
         { bu: "Working Professionals", when: "Now", what: "Enrolled · PG Diploma in Data Science", state: "now" }
       ],
-      about: [["Graduation", "Declared on Internshala", "May 2023"], ["Job", "Declared on Working Professionals", "Data analyst, 2 years"], ["Career interest", "Observed from browsing", "Machine learning"], ["Life stage", "Inferred by rule", "Early career"]],
+      personal: [["Date of birth", "Internshala · declared", "9 Mar 2000"], ["Gender", "Internshala · declared", "Male"], ["Languages", "Working Professionals · declared", "English, Hindi, Telugu"], ["City", "Working Professionals · declared", "Hyderabad, Telangana"]],
+      education: [["Class 12", "Internshala · declared", "Telangana Board · 88% · 2018"], ["Degree", "Internshala · declared", "B.Com, Computer Applications"], ["College", "Internshala · declared", "Osmania University, Hyderabad"], ["Graduated", "Internshala · declared", "May 2023"], ["upGrad courses", "Working Professionals · recorded", "PG Diploma in Data Science · module 4 of 11"]],
+      professional: [["Current role", "LinkedIn · synced", "Data analyst at a fintech company"], ["Experience", "LinkedIn · synced", "2 years 6 months"], ["Earlier", "Internshala · recorded", "Data analyst intern, Hyderabad · 2023 – 2024"], ["Skills", "LinkedIn · synced", "SQL, Power BI, Python"], ["Career goal", "Working Professionals · declared", "Move into machine learning"]],
+      finance: [["Programme fee", "Working Professionals · recorded", "₹2,85,000 after a 10% early-bird scholarship"], ["Paid so far", "Working Professionals · recorded", "₹1,90,000 · 2 of 3 instalments, both on time"], ["Education loan", "Working Professionals · recorded", "₹95,000 via a partner lender · EMI ₹8,450 a month"], ["Annual income", "Working Professionals · declared", "₹6–9 lakh"], ["Payment risk", "Inferred by rule", "Low · no missed payments"]],
+      linkedin: { url: "linkedin.com/in/arjun-kumar-sample", headline: "Data Analyst | SQL · Power BI · Python", company: "Fintech company, Hyderabad", network: "500+ connections", connected: "September 2025", synced: "2 days ago" },
       events: [
         ["W", "Today", "Attended live class", "Regression models"],
         ["W", "3 Nov", "Submitted assignment", "Module 4 · scored 86%"],
         ["W", "12 Oct", "Paid second instalment", "On time"],
+        ["W", "15 Sep", "Connected LinkedIn", "From the upGrad app"],
         ["W", "2 Sep", "Enrolled", "PG Diploma in Data Science"],
         ["W", "20 Aug", "Counseling call", "Compared weekend and evening batches"],
         ["W", "11 Aug", "Requested a callback", "Data Science programme"],
@@ -935,7 +1052,7 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
       ]
     },
     rohan: {
-      name: "Rohan Mehta", since: "January 2020", owner: "Internshala",
+      name: "Rohan Mehta", headline: "Third-year B.Sc Biotechnology student", age: 23, city: "Pune", since: "January 2020", owner: "Internshala", complete: 64,
       phones: ["9765013061"], emails: ["rohan.mehta07@gmail.com"], linked: [],
       consent: { calls: true, marketing: false, cross: true },
       journey: [
@@ -943,7 +1060,11 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
         { bu: "Internshala", when: "Now", what: "Active · applying to internships", state: "now" },
         { bu: "Working Professionals", when: "Graduates May 2027", what: "Not a customer yet", state: "future" }
       ],
-      about: [["Degree", "Declared on Internshala", "B.Sc, Biotechnology"], ["City", "Declared on Internshala", "Pune"], ["Career interest", "Observed from browsing", "Clinical research"], ["Life stage", "Inferred by rule", "Third-year student"]],
+      personal: [["Date of birth", "Unacademy · declared", "21 Jul 2003"], ["Gender", "Unacademy · declared", "Male"], ["Languages", "Internshala · declared", "Hindi, English, Marathi"], ["City", "Internshala · declared", "Pune, Maharashtra (was Indore)"]],
+      education: [["Class 12", "Unacademy · declared", "MP Board · 84% · 2021"], ["Entrance exam", "Unacademy · declared", "NEET 2021 · 512 marks"], ["Degree", "Internshala · declared", "B.Sc, Biotechnology"], ["College", "Internshala · declared", "Fergusson College, Pune"], ["Graduation", "Internshala · declared", "May 2027"]],
+      professional: [["Status", "Inferred by rule", "Third-year student"], ["Internships", "Internshala · recorded", "None yet · 3 applications"], ["Skills", "Internshala · declared", "Lab techniques, Excel"], ["Career interest", "Internshala · observed", "Clinical research"]],
+      finance: [["Paid to upGrad", "Unacademy · recorded", "₹14,000 · NEET course, 1 payment"], ["Scholarship", "Internshala · declared", "State merit scholarship"], ["Family income", "Internshala · declared", "₹3–6 lakh a year"], ["Payment preference", "Not known", "Not known yet"]],
+      linkedin: null,
       events: [
         ["I", "2 Nov", "Applied to 3 internships", "Clinical research roles"],
         ["I", "19 Oct", "Saved 8 internships", "Pune and remote"],
@@ -953,7 +1074,7 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
       ]
     },
     meera: {
-      name: "Meera Rao", since: "March 2024", owner: "Internshala", age: 19,
+      name: "Meera Rao", headline: "Second-year B.Com student", age: 19, city: "Bengaluru", since: "March 2024", owner: "Internshala", complete: 58,
       phones: ["8123456790"], emails: ["meera.rao.blr@gmail.com"],
       linked: [{ label: "Family phone", phone: "9900122334" }],
       consent: { calls: true, marketing: true, cross: true },
@@ -961,7 +1082,11 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
         { bu: "Internshala", when: "Now", what: "Active · second-year B.Com", state: "now" },
         { bu: "Working Professionals", when: "Graduates April 2027", what: "Not a customer yet", state: "future" }
       ],
-      about: [["Degree", "Declared on Internshala", "B.Com"], ["City", "Declared on Internshala", "Bengaluru"], ["Career interest", "Observed from browsing", "Digital marketing"], ["Life stage", "Inferred by rule", "Second-year student"]],
+      personal: [["Date of birth", "Internshala · declared", "3 Jan 2007"], ["Gender", "Internshala · declared", "Female"], ["Languages", "Internshala · declared", "English, Kannada"], ["City", "Internshala · declared", "Bengaluru, Karnataka"]],
+      education: [["Class 12", "Internshala · declared", "Karnataka PU · 89% · 2024"], ["Degree", "Internshala · declared", "B.Com, second year"], ["College", "Internshala · declared", "Christ University, Bengaluru"], ["Graduation", "Internshala · declared", "April 2027"], ["upGrad courses", "Internshala · recorded", "Digital Marketing training · in progress"]],
+      professional: [["Status", "Inferred by rule", "Second-year student"], ["Skills", "Internshala · declared", "Canva, social media"], ["Career interest", "Internshala · observed", "Digital marketing"]],
+      finance: [["Paid to upGrad", "Internshala · recorded", "Nothing yet · free course"], ["Family income", "Internshala · declared", "Not shared"]],
+      linkedin: null,
       events: [
         ["I", "1 Nov", "Applied to 2 internships", "Digital marketing"],
         ["I", "15 Oct", "Started Digital Marketing training", "Free course"],
@@ -969,11 +1094,11 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
       ]
     },
     kabir: {
-      name: "Kabir Rao", since: "June 2025", owner: "Unacademy", age: 16, restricted: true,
+      name: "Kabir Rao", headline: "Class 11 student", age: 16, city: "Bengaluru", since: "June 2025", owner: "Unacademy", restricted: true, complete: 0,
       phones: [], emails: [], linked: [{ label: "Family phone", phone: "9900122334" }],
       consent: { calls: false, marketing: false, cross: false },
       journey: [{ bu: "Unacademy", when: "Now", what: "Active · Class 11", state: "now" }],
-      about: [], events: []
+      personal: [], education: [], professional: [], finance: [], linkedin: null, events: []
     }
   };
 
@@ -988,9 +1113,9 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
   });
 
   var SAMPLES = [
-    { q: "+91 98234 41127", t: "One person" },
+    { q: "arjun.kumar88@gmail.com", t: "Full profile, LinkedIn connected" },
+    { q: "+91 98234 41127", t: "Known to 2 businesses" },
     { q: "+91 99001 22334", t: "Shared family phone" },
-    { q: "arjun.kumar88@gmail.com", t: "Moved business" },
     { q: "+91 91234 56789", t: "New to upGrad" }
   ];
 
@@ -998,7 +1123,9 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
   function maskPhone(d) { return "+91 " + d.slice(0, 2) + "•• ••" + d.slice(6, 8) + " " + d.slice(8); }
   function maskEmail(e) { var i = e.indexOf("@"); return e.slice(0, 2) + "•••" + e.slice(i); }
   function first(p) { return p.name.split(" ")[0]; }
-  function initialsOf(p) { return initials(p.name); }
+  function avatarHTML(p, cls) {
+    return p.photo ? '<img class="' + cls + ' photo" src="' + esc(p.photo) + '" alt="Photo of ' + esc(p.name) + '">' : '<div class="' + cls + '" aria-hidden="true">' + esc(initials(p.name)) + "</div>";
+  }
 
   // Turn what the counselor typed into one standard key, or explain what's wrong.
   function normalize(raw) {
@@ -1017,7 +1144,9 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
   }
 
   var PAGE = 6;
-  var L = { status: "idle", label: "", matches: [], person: null, how: "", bu: "all", shown: PAGE, revealed: false };
+  function freshView() { return { bu: "all", shown: PAGE, revealed: false, finRevealed: false, liRequested: false }; }
+  var L = { status: "idle", label: "", matches: [], person: null, how: "" };
+  var V = freshView();
   var lookupTimer = null;
 
   function runLookup(raw, instant) {
@@ -1027,7 +1156,8 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
     input.value = n.label;
     var hits = INDEX[n.key] || [];
     var done = function () {
-      L = { status: hits.length ? (hits.length > 1 ? "many" : "one") : "none", label: n.label, matches: hits, person: null, how: "", bu: "all", shown: PAGE, revealed: false };
+      L = { status: hits.length ? (hits.length > 1 ? "many" : "one") : "none", label: n.label, matches: hits, person: null, how: "" };
+      V = freshView();
       if (hits.length === 1) { L.person = hits[0].id; L.how = hits[0].how; }
       renderLookup();
     };
@@ -1065,8 +1195,8 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
   function manyHTML() {
     var rows = L.matches.map(function (m) {
       var p = PEOPLE[m.id], cur = p.journey.filter(function (j) { return j.state === "now"; })[0];
-      var desc = esc(p.owner) + " · since " + esc(p.since.split(" ")[1]) + (p.age ? " · age " + p.age : "");
-      return '<button type="button" class="row" data-open="' + m.id + '"><span class="mini-av" aria-hidden="true">' + esc(initialsOf(p)) + '</span>' +
+      var desc = esc(p.owner) + " · since " + esc(p.since.split(" ")[1]) + " · age " + p.age;
+      return '<button type="button" class="row" data-open="' + m.id + '">' + avatarHTML(p, "mini-av") +
         '<span class="txt"><span class="title">' + esc(p.name) + (p.restricted ? '<span class="tag red">Under 18</span>' : "") + '</span><span class="desc">' + desc + (cur ? " · " + esc(cur.what) : "") + "</span></span>" + chev() + "</button>";
     }).join("");
     return '<section class="section" aria-labelledby="mh"><div class="section-head"><div class="eyebrow">' + esc(L.label) + '</div>' +
@@ -1075,57 +1205,93 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
       '<p class="note">It\'s a shared family phone, so these people are linked but never merged. Ask the caller who they are, then pick them.</p></section>';
   }
 
+  function rowsHTML(rows, hide) {
+    return rows.map(function (a) {
+      return '<div class="attr"><div class="top"><span>' + esc(a[0]) + "</span><span>" + esc(a[1]) + '</span></div><div class="value' + (hide ? " hidden-val" : "") + '">' + (hide ? "••••••" : esc(a[2])) + "</div></div>";
+    }).join("");
+  }
+  function cardHTML(id, title, aside, body, foot) {
+    return '<section class="scard" aria-labelledby="' + id + '"><div class="scard-head"><h2 id="' + id + '">' + title + "</h2>" + (aside || "") + "</div>" + body + (foot ? '<div class="scard-foot">' + foot + "</div>" : "") + "</section>";
+  }
+
   function profileHTML(p, team) {
     var otherBu = team.bu && team.bu !== p.owner;
     var noContact = otherBu && !p.consent.cross;
-    var nb = p.journey.filter(function (j) { return j.state !== "future"; }).length;
+    var bizCount = p.journey.filter(function (j) { return j.state !== "future"; }).length;
     var h = "";
     if (L.matches.length > 1) h += '<button type="button" class="textbtn backbtn" data-back>‹ Back to ' + L.matches.length + " people on this number</button>";
-    h += '<header class="person"><div class="avatar" aria-hidden="true">' + esc(initialsOf(p)) + '</div><div class="who"><h1>' + esc(p.name) + "</h1>" +
-      "<p>Known to upGrad since " + esc(p.since) + ' <span class="muted">· ' + nb + (nb > 1 ? " businesses" : " business") + " · not a new lead</span></p>" +
-      '<span class="matched">Matched on ' + esc(L.how) + "</span></div>" +
-      (otherBu || p.restricted ? "" : '<button type="button" class="btn dark sm" data-crm="' + esc(p.owner) + '">Open in ' + esc(p.owner) + " CRM</button>") + "</header>";
+
+    // Profile card: photo and the basics a counselor needs in the first second.
+    h += '<section class="pcard" aria-label="Profile"><div class="pcard-top">' + avatarHTML(p, "avatar") +
+      '<div class="who"><h1>' + esc(p.name) + "</h1><p class=\"headline\">" + esc(p.headline) + "</p>" +
+      '<p class="matched">Known to upGrad since ' + esc(p.since) + " · not a new lead · matched on " + esc(L.how) + "</p></div>" +
+      (otherBu || p.restricted ? "" : '<button type="button" class="btn dark sm" data-crm="' + esc(p.owner) + '">Open in ' + esc(p.owner) + " CRM</button>") + "</div>" +
+      '<div class="facts">' +
+      '<div class="fact"><span class="k">Age</span><span class="v">' + p.age + (p.restricted ? ' <span class="tag red">Under 18</span>' : "") + "</span></div>" +
+      '<div class="fact"><span class="k">City</span><span class="v">' + esc(p.city) + "</span></div>" +
+      '<div class="fact"><span class="k">Owned by</span><span class="v">' + esc(p.owner) + "</span></div>" +
+      '<div class="fact"><span class="k">Businesses</span><span class="v">' + bizCount + " of 3</span></div>" +
+      (p.restricted ? "" : '<div class="fact"><span class="k">Profile complete</span><span class="v">' + p.complete + '%</span><span class="meter" aria-hidden="true"><i style="width:' + p.complete + '%"></i></span></div>') +
+      "</div></section>";
 
     if (p.restricted) {
-      h += '<div class="banner" role="note">' + warn() + "<div><b>Restricted: " + esc(first(p)) + " is under 18</b>Details stay hidden until a guardian consents. Don't market to this learner. If the guardian is on the line, " + esc(p.owner) + " can send them the consent request.</div></div>";
-      h += journeyHTML(p);
-      return h;
+      h += '<div class="banner" role="note">' + warn() + "<div><b>Restricted: " + esc(first(p)) + " is under 18</b>Personal, education and financial details stay hidden until a guardian consents. Don't market to this learner. If the guardian is on the line, " + esc(p.owner) + " can send them the consent request.</div></div>";
+      return h + journeyHTML(p);
     }
     if (noContact) h += '<div class="banner" role="note">' + warn() + "<div><b>Don't contact " + esc(first(p)) + " about " + esc(team.bu) + "</b>" + esc(first(p)) + " hasn't agreed to offers from other upGrad businesses. You can view this profile for context only.</div></div>";
     h += journeyHTML(p);
 
+    // Detail cards
     var yes = function (v) { return v ? '<span class="side-val">Allowed</span>' : '<span class="side-val red" style="font-weight:500">Not given</span>'; };
-    h += '<div class="cols"><div class="left-col">';
-    h += '<section class="section" aria-labelledby="cs"><h2 id="cs">Before you reach out</h2><div class="list">' +
+    var consent = '<div class="attr-list">' +
       '<div class="row tight"><span class="txt"><span class="title plain">Counseling calls</span></span>' + yes(p.consent.calls) + "</div>" +
       '<div class="row tight"><span class="txt"><span class="title plain">Marketing messages</span></span>' + yes(p.consent.marketing) + "</div>" +
-      '<div class="row tight"><span class="txt"><span class="title plain">Offers from other businesses</span></span>' + yes(p.consent.cross) + "</div>" +
-      '</div><p class="note">Consent is recorded per purpose and checked before any outreach.</p></section>';
+      '<div class="row tight"><span class="txt"><span class="title plain">Offers from other businesses</span></span>' + yes(p.consent.cross) + "</div></div>";
 
-    var rows = p.phones.map(function (d) { return '<div class="row tight"><span class="txt"><span class="title plain">' + esc(L.revealed ? fmtPhone(d) : maskPhone(d)) + '</span></span><span class="desc">Verified</span></div>'; }).join("") +
-      p.emails.map(function (e) { return '<div class="row tight"><span class="txt"><span class="title plain">' + esc(L.revealed ? e : maskEmail(e)) + '</span></span><span class="desc">Verified</span></div>'; }).join("") +
-      p.linked.map(function (l) { return '<div class="row tight"><span class="txt"><span class="title plain">' + esc(l.label) + '</span></span><span class="desc">Linked, never merged</span></div>'; }).join("");
-    h += '<section class="section" aria-labelledby="ct"><h2 id="ct">Contact details</h2><div class="list">' + rows + "</div>";
-    if (noContact) h += '<p class="note">Hidden: no consent for contact from ' + esc(team.bu) + ".</p>";
-    else if (L.revealed) h += '<p class="note" role="status">Shown to ' + esc(S.name || "you") + " for counseling. This access is logged.</p>";
-    else h += '<button type="button" class="revealbtn" data-reveal>Show for this counseling call</button>';
-    h += "</section>";
+    var contact = p.phones.map(function (d) { return ["Phone", "Verified", V.revealed ? fmtPhone(d) : maskPhone(d)]; })
+      .concat(p.emails.map(function (e) { return ["Email", "Verified", V.revealed ? e : maskEmail(e)]; }))
+      .concat(p.linked.map(function (l) { return [l.label, "Linked, never merged", V.revealed ? fmtPhone(l.phone) : maskPhone(l.phone)]; }));
+    var personalFoot = noContact ? '<p class="note">Contact details hidden: no consent for contact from ' + esc(team.bu) + ".</p>"
+      : V.revealed ? '<p class="note" role="status">Shown to ' + esc(S.name || "you") + " for counseling. This access is logged.</p>"
+      : '<button type="button" class="revealbtn" data-reveal>Show contact details for this call</button>';
 
-    h += '<section class="section" aria-labelledby="ab"><h2 id="ab">About</h2><div class="list" style="padding:0 22px">' + p.about.map(function (a) {
-      return '<div class="attr"><div class="top"><span>' + esc(a[0]) + "</span><span>" + esc(a[1]) + '</span></div><div class="value">' + esc(a[2]) + "</div></div>";
-    }).join("") + "</div></section></div>";
+    var fin = otherBu ? '<p class="note" style="padding:8px 0 4px">Financial details aren\'t shared with other businesses.</p>' : rowsHTML(p.finance, !V.finRevealed);
+    var finFoot = otherBu ? "" : V.finRevealed ? '<p class="note" role="status">Shown to ' + esc(S.name || "you") + " for a fee or loan discussion. This access is logged.</p>"
+      : '<button type="button" class="revealbtn" data-fin>Show for a fee or loan discussion</button>';
 
+    var li = p.linkedin, liBody, liFoot, liAside;
+    if (li) {
+      liAside = '<span class="tag green">Connected</span>';
+      liBody = rowsHTML([["Headline", "From LinkedIn", li.headline], ["Current company", "From LinkedIn", li.company], ["Network", "From LinkedIn", li.network], ["Profile", "Public URL", li.url]]);
+      liFoot = '<p class="note">Connected by ' + esc(first(p)) + " in " + esc(li.connected) + " · synced " + esc(li.synced) + '</p><button type="button" class="btn soft sm" data-li-open>Open on LinkedIn</button>';
+    } else {
+      liAside = '<span class="tag">Not connected</span>';
+      liBody = '<p class="li-empty">' + esc(first(p)) + " hasn't connected LinkedIn. Only the learner can connect it, from their upGrad account. We never copy profiles without permission.</p>";
+      liFoot = V.liRequested ? '<p class="note" role="status">Request sent by SMS. The profile appears here once ' + esc(first(p)) + " connects it.</p>"
+        : (noContact ? "" : '<button type="button" class="btn soft sm" data-li-request>Send a connect request</button>');
+    }
+
+    h += '<div class="section"><div class="section-head"><div class="eyebrow">One profile, from every business</div><h2 class="lg">Profile details</h2></div><div class="sgrid">' +
+      cardHTML("c-consent", "Before you reach out", "", consent, '<p class="note">Consent is recorded per purpose and checked before any outreach.</p>') +
+      cardHTML("c-personal", "Personal", "", rowsHTML(p.personal) + rowsHTML(contact), personalFoot) +
+      cardHTML("c-edu", "Education", "", rowsHTML(p.education)) +
+      cardHTML("c-pro", "Professional", "", rowsHTML(p.professional)) +
+      cardHTML("c-fin", "Financial", '<span class="tag">Sensitive</span>', fin, finFoot) +
+      cardHTML("c-li", "LinkedIn", liAside, liBody, liFoot) +
+      "</div></div>";
+
+    // Activity
     var bus = ["all"].concat(["U", "I", "W"].filter(function (b) { return p.events.some(function (e) { return e[0] === b; }); }));
-    var list = p.events.filter(function (e) { return L.bu === "all" || e[0] === L.bu; });
-    var shown = list.slice(0, L.shown), left = list.length - shown.length;
-    h += '<section class="section right-col" aria-labelledby="act"><div class="section-head row"><h2 id="act">Activity <span class="muted" style="font-weight:500;font-size:15px">' + list.length + "</span></h2>";
+    var list = p.events.filter(function (e) { return V.bu === "all" || e[0] === V.bu; });
+    var shown = list.slice(0, V.shown), left = list.length - shown.length;
+    h += '<section class="section" aria-labelledby="act"><div class="section-head row"><h2 id="act">Activity <span class="muted" style="font-weight:500;font-size:15px">' + list.length + "</span></h2>";
     if (bus.length > 2) h += '<div class="seg sm" role="group" aria-label="Filter by business">' + bus.map(function (b) {
-      return '<button type="button" data-bu="' + b + '" aria-pressed="' + (L.bu === b) + '">' + (b === "all" ? "All" : b === "W" ? "WP" : BU[b]) + "</button>";
+      return '<button type="button" data-bu="' + b + '" aria-pressed="' + (V.bu === b) + '">' + (b === "all" ? "All" : b === "W" ? "WP" : BU[b]) + "</button>";
     }).join("") + "</div>";
     h += '</div><div class="timeline">' + shown.map(function (e) {
       return '<div class="event"><div class="when">' + esc(e[1]) + '</div><div class="body"><div class="title">' + esc(e[2]) + '</div><div class="desc">' + esc(BU[e[0]]) + " · " + esc(e[3]) + "</div></div></div>";
     }).join("") + (left > 0 ? '<div class="more-row"><button type="button" class="textbtn" data-more>Show ' + Math.min(PAGE, left) + " more · " + left + " older</button></div>" : "") +
-      '</div><p class="note">Read-only. Notes and calls are logged in each business\'s own CRM and flow back here.</p></section></div>';
+      '</div><p class="note">Read-only. Notes and calls are logged in each business\'s own CRM and flow back here.</p></section>';
     return h;
   }
 
@@ -1148,17 +1314,67 @@ textarea.finput{height:auto;padding:10px 12px;resize:none;font-family:ui-monospa
     var t = e.target.closest("button"); if (!t) return;
     if (t.hasAttribute("data-open")) {
       var id = t.getAttribute("data-open");
-      L.person = id; L.how = L.matches.filter(function (m) { return m.id === id; })[0].how; L.bu = "all"; L.shown = PAGE; L.revealed = false;
+      L.person = id; L.how = L.matches.filter(function (m) { return m.id === id; })[0].how; V = freshView();
       renderLookup(); window.scrollTo(0, 0);
     } else if (t.hasAttribute("data-back")) { L.person = null; renderLookup(); }
-    else if (t.hasAttribute("data-reveal")) { L.revealed = true; renderLookup(); }
-    else if (t.hasAttribute("data-more")) { L.shown += PAGE; renderLookup(); }
-    else if (t.hasAttribute("data-bu")) { L.bu = t.getAttribute("data-bu"); L.shown = PAGE; renderLookup(); }
+    else if (t.hasAttribute("data-reveal")) { V.revealed = true; renderLookup(); }
+    else if (t.hasAttribute("data-fin")) { V.finRevealed = true; renderLookup(); }
+    else if (t.hasAttribute("data-li-request")) { V.liRequested = true; renderLookup(); }
+    else if (t.hasAttribute("data-li-open")) { toast("Prototype: this would open the LinkedIn profile"); }
+    else if (t.hasAttribute("data-more")) { V.shown += PAGE; renderLookup(); }
+    else if (t.hasAttribute("data-bu")) { V.bu = t.getAttribute("data-bu"); V.shown = PAGE; renderLookup(); }
     else if (t.hasAttribute("data-crm")) { toast("Prototype: this would open the " + t.getAttribute("data-crm") + " CRM"); }
     else if (t.hasAttribute("data-clear")) { L.status = "idle"; $("#lookup").value = ""; renderLookup(); $("#lookup").focus(); }
   });
+
+  /* ---------- Data model ---------- */
+  var TABLES = [
+    { n: "person", d: "One row per real person. Everything else hangs off person_id.", s: "Personal data", core: true,
+      f: [["person_id", "uuid", "Primary key"], ["display_name", "text", ""], ["date_of_birth", "date", ""], ["is_minor", "boolean", "Locks the profile"], ["city", "text", ""], ["owner_bu", "enum", "Business that owns the relationship"], ["created_at", "timestamp", ""]] },
+    { n: "identifier", d: "Phones and emails used to find someone. Lookups hit this table.", s: "Personal data",
+      f: [["person_id", "uuid", "→ person"], ["type", "phone | email", ""], ["value_hash", "text", "Indexed, exact match"], ["verified_at", "timestamp", ""], ["is_shared", "boolean", "Family phone: link, never merge"], ["source_bu", "enum", ""]] },
+    { n: "consent", d: "What the person agreed to, per purpose. Checked before any outreach.", s: "Basic",
+      f: [["person_id", "uuid", "→ person"], ["purpose", "calls | marketing | cross_bu | guardian", ""], ["granted", "boolean", ""], ["source_bu", "enum", ""], ["recorded_at", "timestamp", ""]] },
+    { n: "personal_detail", d: "Gender, languages, address and other declared facts.", s: "Personal data",
+      f: [["person_id", "uuid", "→ person"], ["field", "text", ""], ["value", "text", ""], ["source_bu", "enum", ""], ["source_type", "declared | observed | inferred", ""], ["updated_at", "timestamp", ""]] },
+    { n: "education", d: "School, entrance exams, degree, and upGrad courses taken.", s: "Personal data",
+      f: [["person_id", "uuid", "→ person"], ["level", "school | exam | degree | course", ""], ["institution", "text", ""], ["subject", "text", ""], ["score", "text", ""], ["year", "int", ""], ["source_bu", "enum", ""]] },
+    { n: "employment", d: "Internships and jobs, from Internshala, the learner, or LinkedIn.", s: "Personal data",
+      f: [["person_id", "uuid", "→ person"], ["kind", "internship | job", ""], ["employer", "text", ""], ["role", "text", ""], ["started_on", "date", ""], ["ended_on", "date", ""], ["skills", "text[]", ""], ["source", "enum", "Incl. linkedin"]] },
+    { n: "finance", d: "Payments, instalments, loans, scholarships and income band.", s: "Sensitive",
+      f: [["person_id", "uuid", "→ person"], ["kind", "payment | instalment | loan | scholarship | income_band", ""], ["amount_inr", "numeric", ""], ["status", "text", ""], ["source_bu", "enum", ""], ["recorded_at", "timestamp", ""]] },
+    { n: "linked_account", d: "Accounts the learner connected themselves, such as LinkedIn.", s: "Personal data",
+      f: [["person_id", "uuid", "→ person"], ["provider", "linkedin", ""], ["profile_url", "text", ""], ["headline", "text", ""], ["current_company", "text", ""], ["connected_at", "timestamp", "By the learner only"], ["last_synced_at", "timestamp", ""], ["revoked_at", "timestamp", ""]] },
+    { n: "event", d: "Everything a person did, in any business. Feeds the activity timeline.", s: "Basic",
+      f: [["person_id", "uuid", "→ person"], ["bu", "enum", ""], ["type", "text", "Common event schema"], ["occurred_at", "timestamp", ""], ["detail", "json", ""]] },
+    { n: "merge_log", d: "Every merge or link, with its rule. Each one can be undone.", s: "Basic",
+      f: [["merge_id", "uuid", ""], ["person_ids", "uuid[]", "→ person"], ["rule", "text", ""], ["decided_by", "auto | auditor", ""], ["reversed_at", "timestamp", ""]] },
+    { n: "access_log", d: "Who viewed or revealed what, and why.", s: "Basic",
+      f: [["viewer", "text", ""], ["person_id", "uuid", "→ person"], ["purpose", "text", ""], ["fields_revealed", "text[]", ""], ["at", "timestamp", ""]] }
+  ];
+  var ACCESS = [
+    ["Basic details", "Yes", "Yes", "Yes", "Yes"],
+    ["Contact details", "On reveal", "On reveal", "On reveal", "No"],
+    ["Personal", "Yes", "Yes", "Yes", "Yes"],
+    ["Education", "Yes", "Yes", "Yes", "Yes"],
+    ["Professional", "Yes", "Yes", "Yes", "Yes"],
+    ["Financial", "On reveal", "On reveal", "No", "No"],
+    ["LinkedIn", "Yes", "Yes", "Yes", "Yes"],
+    ["Activity", "Yes", "Yes", "Yes", "Yes"],
+    ["Under-18 profiles", "Basics only", "Basics only", "Basics only", "Basics only"]
+  ];
+  $("#dataModel").innerHTML = TABLES.map(function (t) {
+    return '<section class="tcard' + (t.core ? " core" : "") + '" aria-label="Table ' + esc(t.n) + '"><div class="tcard-head"><code>' + esc(t.n) + '</code><span class="tag' + (t.s === "Sensitive" ? " red" : "") + '">' + esc(t.s) + "</span></div>" +
+      '<p class="tdesc">' + esc(t.d) + '</p><div class="tfields">' + t.f.map(function (f) {
+        return '<div class="tf"><code>' + esc(f[0]) + '</code><span class="ty">' + esc(f[1]) + "</span>" + (f[2] ? '<span class="nt">' + esc(f[2]) + "</span>" : "") + "</div>";
+      }).join("") + "</div></section>";
+  }).join("");
+  $("#accessRows").innerHTML = ACCESS.map(function (r) {
+    return "<tr><th scope=\"row\">" + esc(r[0]) + "</th>" + r.slice(1).map(function (v) { return '<td class="' + (v === "No" ? "no" : v === "Yes" ? "" : "partial") + '">' + esc(v) + "</td>"; }).join("") + "</tr>";
+  }).join("");
+
   // Start on a known caller so the screen isn't empty.
-  runLookup("+91 98234 41127", true);
+  runLookup("arjun.kumar88@gmail.com", true);
 
   /* ---------- Identity: audit ---------- */
   var cases = [

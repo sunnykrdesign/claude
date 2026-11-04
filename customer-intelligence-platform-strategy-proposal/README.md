@@ -44,14 +44,23 @@ The **Look up a person** screen searches sample data by exact phone or email (na
 
 | Search | What it shows |
 | --- | --- |
+| `arjun.kumar88@gmail.com` | Full profile with a photo, all detail sections and LinkedIn connected |
 | `+91 98234 41127` | One person: Ananya, known to Unacademy and Internshala, with a paged activity timeline |
 | `+91 99001 22334` | A shared family phone: two linked people to choose from, one of them under 18 (restricted) |
-| `arjun.kumar88@gmail.com` | Someone who moved from Internshala to Working Professionals |
 | Any other valid number or email | New to upGrad |
 
 Phone numbers work with or without `+91`, spaces or a leading `0`. Counselors from a business the person hasn't consented to see a "don't contact" banner and no contact details.
 
-## Screens
+## Profile and data model
+
+Each profile opens with a card holding the photo and basic details (age, city, owning business, businesses, profile completeness), then the journey, then one card each for **Before you reach out**, **Personal**, **Education**, **Professional**, **Financial** and **LinkedIn**, then the activity timeline. Every value shows where it came from (business, and whether it was declared, observed, inferred or synced).
+
+- **Contact and financial details** are hidden until the viewer gives a reason; reveals are logged. Other businesses never see financial details.
+- **LinkedIn** is shown only when the learner connected it themselves. Otherwise a counselor can send a connect request.
+- **Data model** (central data team only, `#/data`) shows the tables behind the profile — `person`, `identifier`, `consent`, `personal_detail`, `education`, `employment`, `finance`, `linked_account`, `event`, `merge_log`, `access_log` — and who can see each section.
+
+Sample photo: `assets/profile-arjun.jpg`.
+
 
 | File | Screen | What it answers |
 | --- | --- | --- |
