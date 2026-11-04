@@ -870,9 +870,6 @@ html[data-v="3"] .v3ov{display:grid;grid-template-columns:minmax(0,1fr) 300px;ga
   html[data-v="3"] *,html[data-v="3"] *::before{animation:none !important;transition:none !important}
   .pexp,.lt-exp{animation:none}
 }
-/* Profile cards stack in balanced columns, so short cards leave no holes */
-.sgrid{display:block;columns:2 320px;column-gap:20px}
-.sgrid > .scard{display:block;break-inside:avoid;margin:0 0 20px;width:100%}
 .scard{scroll-margin-top:88px}
 .scard.flash{animation:flash 1.3s var(--ease)}
 @keyframes flash{0%{box-shadow:0 0 0 5px rgba(29,29,31,.10)}100%{box-shadow:0 0 0 0 rgba(29,29,31,0)}}
@@ -885,9 +882,40 @@ html[data-v="3"] .v3ov{display:grid;grid-template-columns:minmax(0,1fr) 300px;ga
 html[data-v="3"] .jump{background:rgba(228,228,232,.9);box-shadow:inset 0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(16,16,24,.06)}
 html[data-v="3"] [data-slide] > button[aria-current="location"]{color:var(--text) !important}
 @media (min-width:1181px){html[data-v="3"] .v3rail{position:sticky;top:20px}}
-html .sgrid.bal{columns:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px;row-gap:0;align-items:start}
-.scol{display:flex;flex-direction:column;gap:20px;min-width:0}
-.scol > .scard{margin:0}
+/* Profile cards: one column on every screen size */
+.sgrid{display:flex;flex-direction:column;align-items:stretch;gap:20px;columns:auto}
+.sgrid > .scard{margin:0}
+.scard{container-type:inline-size}
+/* Wide cards read as rows: label | value | source */
+@container (min-width:560px){
+  .attr{display:grid;grid-template-columns:minmax(150px,210px) minmax(0,1fr) auto;grid-template-areas:"label value src" ". merge .";column-gap:28px;row-gap:3px;align-items:baseline;padding:15px 0}
+  .attr .top{display:contents}
+  .attr .top > span:first-child{grid-area:label;font-size:13px;color:var(--muted)}
+  .attr .top > .src{grid-area:src;justify-self:end}
+  .attr .value{grid-area:value;font-size:14.5px;font-weight:400;color:var(--text)}
+  .attr .merge{grid-area:merge}
+}
+.attr .value{font-weight:450}
+/* Left profile column (V2, V3 on desktop): lighter, calmer hierarchy */
+@media (min-width:1100px){
+  html:is([data-v="2"],[data-v="3"]) .prail .pcard{padding:26px 24px 22px;gap:0}
+  html:is([data-v="2"],[data-v="3"]) .prail .pcard-top{gap:14px}
+  html:is([data-v="2"],[data-v="3"]) .prail .pcard .avatar{width:72px;height:72px;font-size:24px}
+  html:is([data-v="2"],[data-v="3"]) .prail .pcard .who{gap:6px}
+  html:is([data-v="2"],[data-v="3"]) .prail .pcard .who h1{font-size:22px;font-weight:600;letter-spacing:-0.02em;line-height:1.2}
+  html:is([data-v="2"],[data-v="3"]) .prail .headline{font-size:14px;font-weight:400;color:#48484D;line-height:1.5}
+  html:is([data-v="2"],[data-v="3"]) .prail .matched{font-size:12.5px;line-height:1.55}
+  html:is([data-v="2"],[data-v="3"]) .prail .btn{height:40px;font-size:14px;font-weight:500;margin-top:4px}
+  html:is([data-v="2"],[data-v="3"]) .prail .facts{display:flex;flex-direction:column;gap:0;margin-top:22px;padding-top:2px;border-top:1px solid var(--line)}
+  html:is([data-v="2"],[data-v="3"]) .prail .fact{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 12px;padding:12px 0;box-shadow:0 1px 0 var(--line)}
+  html:is([data-v="2"],[data-v="3"]) .prail .fact:last-child{box-shadow:none}
+  html:is([data-v="2"],[data-v="3"]) .prail .fact .k{font-size:13px;color:var(--muted)}
+  html:is([data-v="2"],[data-v="3"]) .prail .fact .v{font-size:14px;font-weight:500;letter-spacing:-0.005em;text-align:right}
+  html:is([data-v="2"],[data-v="3"]) .prail .fact .meter{flex-basis:100%;margin-top:6px;height:3px}
+  html:is([data-v="2"],[data-v="3"]) .prail .reach{flex-direction:column;align-items:flex-start;gap:10px;margin-top:4px;padding-top:16px}
+  html:is([data-v="2"],[data-v="3"]) .prail .reach .k{font-size:13px}
+  html:is([data-v="2"],[data-v="3"]) .prail .reach li{height:28px;padding:0 11px;font-size:12px;font-weight:500}
+}
 </style>
 </head>
 <body>
@@ -1885,7 +1913,6 @@ html .sgrid.bal{columns:auto;display:grid;grid-template-columns:repeat(2,minmax(
     }
     if (L.status === "many" && !L.person) { box.innerHTML = manyHTML(); return; }
     box.innerHTML = profileHTML(PEOPLE[L.person], team);
-    balanceCards();
   }
 
   function manyHTML() {
@@ -2123,32 +2150,6 @@ html .sgrid.bal{columns:auto;display:grid;grid-template-columns:repeat(2,minmax(
     var all = $$('[role="tab"]', $("#lookupResult")), i = all.indexOf(t) + (e.key === "ArrowRight" ? 1 : -1);
     all[(i + all.length) % all.length].click(); e.preventDefault();
   });
-
-  // Two balanced columns of profile cards, each kept in reading order.
-  function balanceCards() {
-    $$("#panel .sgrid").forEach(function (g) {
-      var cards = $$(".scard", g);
-      if (cards.length < 3) return;
-      g.classList.toggle("bal", false);
-      cards.forEach(function (c) { g.appendChild(c); });
-      $$(".scol", g).forEach(function (c) { g.removeChild(c); });
-      if (g.clientWidth < 680) return;
-      var hs = cards.map(function (c) { return c.getBoundingClientRect().height; });
-      var cols = [document.createElement("div"), document.createElement("div")];
-      cols.forEach(function (c) { c.className = "scol"; });
-      // Try every split (7 cards = 64 options with the first card fixed left) and keep the most even one.
-      var best = 0, bestDiff = Infinity;
-      for (var m = 0; m < (1 << (cards.length - 1)); m++) {
-        var t = [hs[0], 0];
-        for (var j = 1; j < cards.length; j++) t[(m >> (j - 1)) & 1] += hs[j] + 20;
-        var d = Math.abs(t[0] - t[1]); if (d < bestDiff - 1) { bestDiff = d; best = m; }
-      }
-      cards.forEach(function (c, i) { cols[i === 0 ? 0 : (best >> (i - 1)) & 1].appendChild(c); });
-      g.classList.toggle("bal", true); g.appendChild(cols[0]); g.appendChild(cols[1]);
-    });
-  }
-  var balTimer = null;
-  window.addEventListener("resize", function () { clearTimeout(balTimer); balTimer = setTimeout(balanceCards, 150); });
 
   // Section bar on the Learner profile: jump to a card; the current one follows your scroll.
   function jumpHTML(items) {
