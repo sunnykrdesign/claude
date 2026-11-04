@@ -50,7 +50,8 @@ A switch in the bottom-right corner (or `?v=1`, `?v=2`, `?v=3` in the URL) chang
   - **Paid leads, checked against the profile:** a table of recent paid leads, filtered by business tabs with a sliding indicator. Clicking a row lifts it into a card with a red top edge, AI fields (next-best programme, intent) and actions.
   - **Business cards:** one per business, with a live profile count and an animated consent ring, plus a bar chart of lookups this week.
   - **Motion everywhere in V3:** tabs and segments use the same sliding indicator. Cards rise in with a stagger. People directory rows open into the same detail card.
-  - **Reduced motion:** all of this switches off when the system asks for reduced motion.
+  - **Entrance:** the live app first appears on a laptop screen, tilted. The tilt flattens, then the view zooms in until the screen fills the window, and the numbers roll in as it lands. This plays once per browser session in V3 and replays whenever you click **V3**. **Skip intro** or Esc ends it early.
+  - **Reduced motion:** all of this, including the entrance, switches off when the system asks for reduced motion.
 
 ## People directory
 
