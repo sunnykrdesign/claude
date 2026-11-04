@@ -62,7 +62,7 @@ A switch in the bottom-right corner (or `?v=1`, `?v=2`, `?v=3` in the URL) chang
 
 ## Sample lookups
 
-The **Look up a person** screen searches sample data by exact phone or email (names are never used). Try:
+The **Look up a person** screen searches sample data by exact phone or email (names are never used). The screen has no sample buttons, so type one of these:
 
 | Search | What it shows |
 | --- | --- |

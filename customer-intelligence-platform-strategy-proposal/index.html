@@ -246,8 +246,6 @@ button{font-family:inherit;cursor:pointer}
 /* Lookup states */
 .search button{flex:0 0 auto}
 .field-err{margin:0;font-size:13px;color:var(--red-text);padding:0 4px}
-.samples{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-.samples .eyebrow{margin-right:4px}
 .chip{border:1px solid var(--border);background:var(--card);border-radius:999px;min-height:36px;padding:0 14px;font-size:13px;color:var(--text)}
 .chip span{color:var(--muted)}
 .chip:hover{border-color:var(--text);color:var(--text)}
@@ -1201,7 +1199,6 @@ html[data-v="3"] .v3ov{display:grid;grid-template-columns:minmax(0,1fr) 300px;ga
           <button type="submit" class="btn dark sm">Look up</button>
         </div>
         <p class="field-err" id="lookupErr" hidden></p>
-        <div class="samples" id="samples" aria-label="Sample lookups"></div>
       </form>
 
       <div class="result" id="lookupResult" aria-live="polite"></div>
@@ -1794,14 +1791,6 @@ html[data-v="3"] .v3ov{display:grid;grid-template-columns:minmax(0,1fr) 300px;ga
     p.linked.forEach(function (l) { addKey("p:" + l.phone, id, "linked " + l.label.toLowerCase()); });
   });
 
-  var SAMPLES = [
-    { q: "arjun.kumar88@gmail.com", t: "Learning with WP" },
-    { q: "+91 98234 41127", t: "Known to 3 businesses" },
-    { q: "rohan.mehta07@gmail.com", t: "Study Abroad lead" },
-    { q: "+91 99001 22334", t: "Shared family phone" },
-    { q: "+91 91234 56789", t: "New to upGrad" }
-  ];
-
   function fmtPhone(d) { return "+91 " + d.slice(0, 5) + " " + d.slice(5); }
   function maskPhone(d) { return "+91 " + d.slice(0, 2) + "•• ••" + d.slice(6, 8) + " " + d.slice(8); }
   function maskEmail(e) { var i = e.indexOf("@"); return e.slice(0, 2) + "•••" + e.slice(i); }
@@ -2089,10 +2078,6 @@ html[data-v="3"] .v3ov{display:grid;grid-template-columns:minmax(0,1fr) 300px;ga
     return h;
   }
 
-  $("#samples").innerHTML = '<span class="eyebrow">Sample lookups</span>' + SAMPLES.map(function (s) {
-    return '<button type="button" class="chip" data-q="' + esc(s.q) + '">' + esc(s.q) + " <span>· " + esc(s.t) + "</span></button>";
-  }).join("");
-  $("#samples").addEventListener("click", function (e) { var b = e.target.closest("[data-q]"); if (b) runLookup(b.getAttribute("data-q")); });
   $("#lookupForm").addEventListener("submit", function (e) { e.preventDefault(); runLookup($("#lookup").value); });
   $("#lookup").addEventListener("input", function () { $("#lookupErr").hidden = true; this.removeAttribute("aria-invalid"); });
   $("#lookupResult").addEventListener("click", function (e) {
