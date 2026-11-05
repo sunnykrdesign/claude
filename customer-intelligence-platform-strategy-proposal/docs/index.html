@@ -958,21 +958,21 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
 
 /* Layout 2: top header (horizontal) */
 @media (min-width:1100px){
-  html[data-v="3"] #lookupResult[data-layout="top"] .playout{display:flex;flex-direction:column;align-items:stretch;gap:28px}
-  html[data-v="3"] #lookupResult[data-layout="top"] .prail{position:static}
-  html[data-v="3"] #lookupResult[data-layout="top"] .prail .pcard{padding:26px 28px 22px;gap:0}
-  html[data-v="3"] #lookupResult[data-layout="top"] .prail .pcard-top{flex-direction:row;align-items:center;gap:20px}
-  html[data-v="3"] #lookupResult[data-layout="top"] .prail .pcard .avatar{width:68px;height:68px}
-  html[data-v="3"] #lookupResult[data-layout="top"] .prail .pcard .who{flex:1 1 auto;gap:4px}
-  html[data-v="3"] #lookupResult[data-layout="top"] .prail .pcard .who h1{font-size:24px}
-  html[data-v="3"] #lookupResult[data-layout="top"] .prail .btn{width:auto;flex:0 0 auto;margin:0}
-  html[data-v="3"] #lookupResult[data-layout="top"] .prail .facts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin-top:22px;padding-top:0;border-top:1px solid var(--line)}
-  html[data-v="3"] #lookupResult[data-layout="top"] .prail .fact{flex-direction:column;align-items:flex-start;gap:4px;padding:16px 20px 2px 0;box-shadow:none}
-  html[data-v="3"] #lookupResult[data-layout="top"] .prail .fact + .fact{padding-left:20px;box-shadow:inset 1px 0 0 var(--line)}
-  html[data-v="3"] #lookupResult[data-layout="top"] .prail .fact .v{text-align:left}
-  html[data-v="3"] #lookupResult[data-layout="top"] .prail .fact .meter{flex:0 0 auto;width:100%;height:3px;margin-top:6px}
-  html[data-v="3"] #lookupResult[data-layout="top"] .prail .reach{flex-direction:row;align-items:center;gap:12px;margin-top:18px;padding-top:16px}
-  html[data-v="3"] #lookupResult[data-layout="top"] .pmain .snap{grid-template-columns:repeat(6,minmax(0,1fr))}
+  #lookupResult[data-layout="top"] .playout{display:flex;flex-direction:column;align-items:stretch;gap:28px}
+  #lookupResult[data-layout="top"] .prail{position:static}
+  #lookupResult[data-layout="top"] .prail .pcard{padding:26px 28px 22px;gap:0}
+  #lookupResult[data-layout="top"] .prail .pcard-top{flex-direction:row;align-items:center;gap:20px}
+  #lookupResult[data-layout="top"] .prail .pcard .avatar{width:68px;height:68px}
+  #lookupResult[data-layout="top"] .prail .pcard .who{flex:1 1 auto;gap:4px}
+  #lookupResult[data-layout="top"] .prail .pcard .who h1{font-size:24px}
+  #lookupResult[data-layout="top"] .prail .btn{width:auto;flex:0 0 auto;margin:0}
+  #lookupResult[data-layout="top"] .prail .facts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin-top:22px;padding-top:0;border-top:1px solid var(--line)}
+  #lookupResult[data-layout="top"] .prail .fact{flex-direction:column;align-items:flex-start;gap:4px;padding:16px 20px 2px 0;box-shadow:none}
+  #lookupResult[data-layout="top"] .prail .fact + .fact{padding-left:20px;box-shadow:inset 1px 0 0 var(--line)}
+  #lookupResult[data-layout="top"] .prail .fact .v{text-align:left}
+  #lookupResult[data-layout="top"] .prail .fact .meter{flex:0 0 auto;width:100%;height:3px;margin-top:6px}
+  #lookupResult[data-layout="top"] .prail .reach{flex-direction:row;align-items:center;gap:12px;margin-top:18px;padding-top:16px}
+  #lookupResult[data-layout="top"] .pmain .snap{grid-template-columns:repeat(6,minmax(0,1fr))}
 }
 
 /* Vertical section list */
@@ -1017,17 +1017,12 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
 .dv{display:grid;gap:24px;align-items:start}
 .dv-left{grid-template-columns:220px minmax(0,1fr)}
 .dv-right{grid-template-columns:minmax(0,1fr) 220px}
-.dv-right .vtabs{order:2}
-.dv .vtabs{position:sticky;top:20px}
 .vpanel{display:flex;flex-direction:column;gap:16px;min-width:0}
 .vpanel.fresh > *{animation:rise .4s var(--ease) backwards}
 @media (min-width:1100px){
-  html[data-v="3"] #lookupResult[data-layout="rail"][data-tabs="left"] .prail{position:static;display:flex;flex-direction:column;gap:16px}
 }
 @media (max-width:1099px){
   .dv-left,.dv-right{grid-template-columns:1fr}
-  .dv-right .vtabs{order:0}
-  .dv .vtabs{position:static}
 }
 @media (prefers-reduced-motion: reduce){.vpanel.fresh > *{animation:none}}
 /* Review panel: layout wireframe */
@@ -1055,6 +1050,53 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
 .rv-legend i.w-t{background:#8FB1F5}
 .rv-sub{font-size:12px;color:#C7C7CC;margin-top:2px}
 #panel.vpanel{padding-top:0}
+/* ================= Profile layouts, all versions ================= */
+/* Left panel: the person card stays pinned while you scroll */
+@media (min-width:1100px){
+  #lookupResult[data-layout="rail"] .playout{display:grid;grid-template-columns:320px minmax(0,1fr);gap:28px;align-items:start}
+  #lookupResult[data-layout="rail"] .prail{position:sticky;top:16px;display:flex;flex-direction:column;gap:16px;max-height:calc(100vh - 32px);overflow-y:auto;scrollbar-width:none}
+  #lookupResult[data-layout="rail"] .prail::-webkit-scrollbar{display:none}
+  #lookupResult[data-layout="rail"] .prail .pcard{padding:24px 22px 20px;gap:0}
+  #lookupResult[data-layout="rail"] .prail .pcard-top{flex-direction:column;align-items:flex-start;gap:14px}
+  #lookupResult[data-layout="rail"] .prail .pcard .avatar{width:64px;height:64px;font-size:22px}
+  #lookupResult[data-layout="rail"] .prail .pcard .who{flex:none;gap:6px}
+  #lookupResult[data-layout="rail"] .prail .pcard .who h1{font-size:22px;font-weight:600;letter-spacing:-0.02em;line-height:1.2}
+  #lookupResult[data-layout="rail"] .prail .headline{font-size:14px;font-weight:400;color:#48484D;line-height:1.5}
+  #lookupResult[data-layout="rail"] .prail .matched{font-size:12.5px;line-height:1.55}
+  #lookupResult[data-layout="rail"] .prail .btn{width:100%;height:40px;font-size:14px;margin-top:4px}
+  #lookupResult[data-layout="rail"] .prail .facts{display:flex;flex-direction:column;gap:0;margin-top:20px;padding-top:2px;border-top:1px solid var(--line)}
+  #lookupResult[data-layout="rail"] .prail .fact{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 12px;padding:11px 0;box-shadow:0 1px 0 var(--line)}
+  #lookupResult[data-layout="rail"] .prail .fact:last-child{box-shadow:none}
+  #lookupResult[data-layout="rail"] .prail .fact .k{font-size:13px}
+  #lookupResult[data-layout="rail"] .prail .fact .v{font-size:14px;font-weight:500;text-align:right}
+  #lookupResult[data-layout="rail"] .prail .fact .meter{flex-basis:100%;margin-top:6px;height:3px}
+  #lookupResult[data-layout="rail"] .prail .reach{flex-direction:column;align-items:flex-start;gap:10px;margin-top:4px;padding-top:16px}
+  #lookupResult[data-layout="rail"] .prail .reach li{height:28px;padding:0 11px;font-size:12px}
+  #lookupResult[data-layout="rail"] .pmini{display:none}
+  #lookupResult[data-layout="top"] .prail{position:static}
+}
+/* One set of section tabs, kept in view */
+.pbar{position:sticky;top:0;z-index:12;display:flex;align-items:center;gap:16px;padding:12px 0;margin-top:-12px;background:var(--bg);transition:box-shadow .25s}
+#lookupResult.hdr-off .pbar{box-shadow:0 1px 0 var(--line)}
+.pbar .tabs{flex:1 1 auto;min-width:0}
+.pmini{display:flex;align-items:center;gap:10px;min-width:0;max-width:0;opacity:0;overflow:hidden;white-space:nowrap;transition:max-width .4s var(--ease),max-height .4s var(--ease),opacity .25s,padding .3s}
+#lookupResult.hdr-off .pmini{max-width:340px;opacity:1}
+.pmini .mini-av{flex:0 0 34px;height:34px;font-size:12px}
+.pmini span{display:flex;flex-direction:column;min-width:0}
+.pmini b{font-size:14px;font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.pmini small{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis}
+.vcol{display:flex;flex-direction:column;gap:12px;min-width:0}
+.dv .vcol{position:sticky;top:16px}
+.dv-right .vcol{order:2}
+.vcol .pmini{max-width:none;max-height:0;padding:0 14px;background:var(--card);border-radius:16px}
+#lookupResult.hdr-off .vcol .pmini{max-width:none;max-height:72px;padding:12px 14px}
+@media (max-width:1099px){
+  .dv-right .vcol{order:0}
+  .dv .vcol{position:sticky;top:0;z-index:12;background:var(--bg);padding:8px 0}
+}
+.acount{font-size:13px;color:var(--muted)}
+.afilter select{appearance:none;-webkit-appearance:none;height:34px;padding:0 32px 0 12px;border:1px solid var(--border);border-radius:10px;font:inherit;font-size:13px;color:var(--text);cursor:pointer;background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236E6E73' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 11px center}
+.afilter select:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 </style>
 </head>
 <body>
@@ -2080,7 +2122,14 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
     }
     if (L.status === "many" && !L.person) { box.innerHTML = manyHTML(); return; }
     box.innerHTML = profileHTML(PEOPLE[L.person], team);
+    hdrCheck();
   }
+  // Once the person card scrolls out of view, the sticky bar shows a slim copy of it.
+  function hdrCheck() {
+    var r = $("#lookupResult"), card = r && r.querySelector(".prail .pcard");
+    if (r) r.classList.toggle("hdr-off", !!card && card.getBoundingClientRect().bottom < 72);
+  }
+  window.addEventListener("scroll", hdrCheck, { passive: true });
 
   function manyHTML() {
     var rows = L.matches.map(function (m) {
@@ -2151,21 +2200,22 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
 
     h += momentsHTML(p);
 
-    h += snapshotHTML(p, otherBu) + lifecycleHTML(p);
 
-    // Details in five sections: Personal, Education, Professional, Financial, Activity.
-    // V3 layouts can place the tabs on top, or as a vertical list on the left or right.
-    var tabsAt = isV3() ? TABS : "top", personAt = isV3() ? PERSON : "rail", vert = tabsAt !== "top";
+    // Details in five sections: Personal, Education, Professional, Financial, Activity. One set of tabs, always in view.
+    // Layouts: person card on the left or across the top; tabs in a row on top, or a list on the left or right.
+    var tabsAt = TABS, personAt = PERSON, vert = tabsAt !== "top";
     var cur = SECT.some(function (x) { return x[0] === V.tab; }) ? V.tab : "personal", fresh = cur !== V.seen; V.seen = cur; V.tab = cur;
     var list = '<div class="' + (vert ? "pnav vtabs" : "tabs") + '" role="tablist" aria-label="Profile sections"' + (vert ? ' aria-orientation="vertical"' : "") + ' id="ptabs" data-slide>' + SECT.map(function (t) {
       var on = t[0] === cur;
       return '<button type="button" role="tab" id="tab-' + t[0] + '" aria-controls="panel" aria-selected="' + on + '" tabindex="' + (on ? 0 : -1) + '" data-tab="' + t[0] + '">' + t[1] + "</button>";
     }).join("") + "</div>";
     var panel = '<div id="panel" class="' + (vert ? "vpanel" : "") + (fresh ? " fresh" : "") + '" role="tabpanel" aria-labelledby="tab-' + cur + '">' + sectionBody(cur, p, team, otherBu, noContact) + "</div>";
-    var open = '<section class="section" aria-label="Profile details">';
-    if (!vert) return playout(back, rail, h + open + list + panel + "</section>");
+    // A slim copy of the person, shown in the sticky bar once the full card scrolls away.
+    var mini = '<div class="pmini" aria-hidden="true">' + avatarHTML(p, "mini-av") + "<span><b>" + esc(p.name) + "</b><small>" + esc(p.stage + " · " + p.ageBand + " · " + p.city) + "</small></span></div>";
+    var open = '<section class="section pdet" aria-label="Profile details">';
+    if (!vert) return playout(back, rail, h + open + '<div class="pbar">' + mini + list + "</div>" + panel + "</section>");
     if (tabsAt === "left" && personAt === "rail") return playout(back, rail + list, h + open + panel + "</section>");
-    return playout(back, rail, h + open + '<div class="dv dv-' + tabsAt + '">' + list + panel + "</div></section>");
+    return playout(back, rail, h + open + '<div class="dv dv-' + tabsAt + '"><div class="vcol">' + mini + list + "</div>" + panel + "</div></section>");
   }
   var SECT = [["personal", "Personal"], ["education", "Education"], ["professional", "Professional"], ["financial", "Financial"], ["activity", "Activity"]];
   function insightCard(id, title, rows) {
@@ -2179,7 +2229,7 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
       insightCard("c-outlook", "Outlook", [["Intent", i.intent, i.intentD], ["Next-best programme", i.nbp, "Rules first, model later"]].concat((i.scores || []).map(function (sc) { return [sc[0], sc[1], "Model " + sc[2]]; })));
     if (key === "financial") return learnerHTML(p, team, otherBu, noContact, ["c-fin"]) +
       insightCard("c-money", "With upGrad", [["Lifetime revenue", otherBu ? "Owning business only" : i.revenue, otherBu ? "" : i.revenueD], ["Programmes purchased", i.bought], ["Re-acquired", i.reacq ? "Yes" : "No", i.reacqD]]);
-    return insightCard("c-engage", "Engagement", [["Relationship", i.state + " · " + p.lifecycle.length + (p.lifecycle.length > 1 ? " businesses" : " business")], ["First seen · last active", i.first + " · " + i.last],
+    return lifecycleHTML(p) + insightCard("c-engage", "Engagement", [["Relationship", i.state + " · " + p.lifecycle.length + (p.lifecycle.length > 1 ? " businesses" : " business")], ["First seen · last active", i.first + " · " + i.last],
       ["Speed to lead", i.speed, "Lead created → first call"], ["Contact fatigue", i.fatigue, "Outbound touches across businesses"], ["Learning health", i.health, i.healthD]]) + activityHTML(p, otherBu);
   }
   function momentsHTML(p) {
@@ -2188,21 +2238,6 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
     }).join("") + "</div></section>" : "";
   }
   function playout(back, rail, main) { return back + '<div class="playout"><div class="prail">' + rail + '</div><div class="pmain">' + main + "</div></div>"; }
-
-  function snapshotHTML(p, otherBu) {
-    var i = p.ins;
-    var tiles = [
-      ["Relationship", i.state, p.lifecycle.length + (p.lifecycle.length > 1 ? " businesses" : " business")],
-      ["Lifetime revenue", otherBu ? "Hidden" : i.revenue, otherBu ? "Owning business only" : i.bought],
-      ["Intent", i.intent, i.intentD || "Rules first, counsellor input"],
-      ["Learning health", i.health, i.healthD || "—"],
-      ["Contact in 7 · 30 days", i.fatigue.split(" · ").map(function (x) { return x.split(" ")[0]; }).join(" · "), "Outbound touches, all businesses"],
-      ["Re-acquired", i.reacq ? "Yes" : "No", i.reacq ? "We paid for someone we knew" : "No paid lead for a known person"]
-    ];
-    return '<section class="section" aria-labelledby="sn"><h2 id="sn" class="sr">At a glance</h2><div class="snap">' + tiles.map(function (t, n) {
-      return '<div class="tile' + (n === 5 && i.reacq ? " warn" : "") + '"><span class="k">' + esc(t[0]) + '</span><span class="v">' + esc(t[1]) + '</span><span class="d">' + esc(t[2]) + "</span></div>";
-    }).join("") + "</div></section>";
-  }
 
   // Insight 1: lifecycle state per business.
   function lifecycleHTML(p) {
@@ -2277,12 +2312,14 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
     var cats = ["all"].concat(Object.keys(CATS).filter(function (k) { return evs.some(function (e) { return e[2] === k; }); }));
     var list = evs.filter(function (e) { return (V.bu === "all" || e[0] === V.bu) && (V.cat === "all" || e[2] === V.cat); });
     var shown = list.slice(0, V.shown), left = list.length - shown.length;
-    var h = '<div class="filters"><div class="fchips" role="group" aria-label="Filter by event type" id="aCat" data-slide>' + cats.map(function (k) {
-      return '<button type="button" class="fchip" data-cat="' + k + '" aria-pressed="' + (V.cat === k) + '">' + (k === "all" ? "All " + evs.length : esc(CATS[k])) + "</button>";
-    }).join("") + "</div>";
-    if (bus.length > 2) h += '<div class="seg sm" role="group" aria-label="Filter by business" id="aBu" data-slide>' + bus.map(function (b) {
-      return '<button type="button" data-bu="' + b + '" aria-pressed="' + (V.bu === b) + '">' + (b === "all" ? "All" : esc(BUS[b])) + "</button>";
-    }).join("") + "</div>";
+    // One small filter instead of a row of chips, so Activity doesn't add a second navigation.
+    var opt = function (val, label) {
+      var sel = val === "all" ? V.cat === "all" && V.bu === "all" : val === "c:" + V.cat || val === "b:" + V.bu;
+      return '<option value="' + val + '"' + (sel ? " selected" : "") + ">" + esc(label) + "</option>";
+    };
+    var h = '<div class="filters"><span class="acount">' + list.length + " of " + evs.length + ' events</span><label class="afilter"><span class="sr">Filter activity</span><select data-afilter>' + opt("all", "All activity") +
+      '<optgroup label="Type">' + cats.slice(1).map(function (k) { return opt("c:" + k, CATS[k]); }).join("") + "</optgroup>" +
+      (bus.length > 2 ? '<optgroup label="Business">' + bus.slice(1).map(function (b) { return opt("b:" + b, BU[b]); }).join("") + "</optgroup>" : "") + "</select></label>";
     h += '</div><div class="timeline">' + (shown.length ? shown.map(function (e) {
       return '<div class="event"><div class="when">' + esc(e[1]) + '</div><div class="body"><div class="title">' + esc(e[3]) + '</div><div class="desc">' + esc(e[4]) + '</div><div class="emeta"><span class="ecat">' + esc(CATS[e[2]]) + "</span>" + esc(BU[e[0]]) + " · " + srcChip(e[5]) + "</div></div></div>";
     }).join("") : '<p class="note" style="padding:16px 0">Nothing here for this filter.</p>') + (left > 0 ? '<div class="more-row"><button type="button" class="textbtn" data-more>Show ' + Math.min(PAGE, left) + " more · " + left + " older</button></div>" : "") +
@@ -2311,6 +2348,12 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
     else if (t.hasAttribute("data-clear")) { L.status = "idle"; $("#lookup").value = ""; renderLookup(); $("#lookup").focus(); }
   });
   // Arrow keys move between profile tabs.
+  $("#lookupResult").addEventListener("change", function (e) {
+    var sel = e.target.closest("[data-afilter]"); if (!sel) return;
+    var v = sel.value; V.cat = "all"; V.bu = "all"; V.shown = PAGE;
+    if (v.indexOf("c:") === 0) V.cat = v.slice(2); else if (v.indexOf("b:") === 0) V.bu = v.slice(2);
+    renderLookup(); var again = $("[data-afilter]"); if (again) again.focus();
+  });
   $("#lookupResult").addEventListener("keydown", function (e) {
     var t = e.target.closest('[role="tab"]'); if (!t) return;
     var list = t.closest('[role="tablist"]') || t.parentNode, vert = list.getAttribute("aria-orientation") === "vertical";
@@ -2813,18 +2856,17 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
     return p + " · " + t;
   }
   function rvSync() {
-    var v = document.documentElement.getAttribute("data-v"), on3 = v === "3";
-    $$("#rvPerson button").forEach(function (b) { b.setAttribute("aria-pressed", on3 && b.getAttribute("data-person-at") === PERSON); });
-    $$("#rvTabs button").forEach(function (b) { b.setAttribute("aria-pressed", on3 && b.getAttribute("data-tabs-at") === TABS); });
+    var v = document.documentElement.getAttribute("data-v");
+    $$("#rvPerson button").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-person-at") === PERSON); });
+    $$("#rvTabs button").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-tabs-at") === TABS); });
     $("#rvThumb").innerHTML = rvThumb(PERSON, TABS);
-    $("#rvThumb").classList.toggle("off", !on3);
-    $("#rvLayoutNote").textContent = on3 ? describeLayout() : "These layouts are for V3. Picking one switches to V3.";
-    $("#rvSummary").textContent = "V" + v + (on3 ? " · " + layoutLabel() : "");
+    $("#rvLayoutNote").textContent = describeLayout();
+    $("#rvSummary").textContent = "V" + v + " · " + layoutLabel();
   }
   function describeLayout() {
-    var who = PERSON === "rail" ? "Person card on the left" : "Person card across the top";
-    var tabs = TABS === "top" ? "section tabs in a row above the details" : TABS === "left" ? (PERSON === "rail" ? "section tabs listed under the person card" : "section tabs listed on the left") : "section tabs listed on the right";
-    return who + ", " + tabs + ".";
+    var who = PERSON === "rail" ? "The person card stays pinned on the left" : "The person card runs across the top; once it scrolls away, a slim bar keeps their name in view";
+    var tabs = TABS === "top" ? "the section tabs stay pinned above the details" : TABS === "left" ? (PERSON === "rail" ? "the section tabs sit under the person card" : "the section tabs stay pinned on the left") : "the section tabs stay pinned on the right";
+    return who + ", and " + tabs + ".";
   }
   function rvOpen(open) {
     RV.open = open; $("#rvPanel").hidden = !open; $("#rvToggle").setAttribute("aria-expanded", open);
@@ -2833,7 +2875,6 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
   function rvApply() {
     try { localStorage.setItem("cip-person", PERSON); localStorage.setItem("cip-tabs", TABS); } catch (er) {}
     applyLookupLayout();
-    if (document.documentElement.getAttribute("data-v") !== "3") setVersion("3", true);
     renderLookup(); rvSync(); requestAnimationFrame(slideAll);
   }
   $("#rvToggle").addEventListener("click", function () { rvOpen(!RV.open); });

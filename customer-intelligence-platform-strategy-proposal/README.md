@@ -43,7 +43,7 @@ Preview links look like this:
 A **Review** button in the bottom-right corner opens the review controls. They're for design review only, not part of the product:
 
 - **Design version:** V1, V2 or V3. You can also add `?v=1`, `?v=2` or `?v=3` to the URL.
-- **Look up a person · layout** (V3): pick where the **person card** sits (Left panel or Top header) and where the **section tabs** sit (Top, Left or Right). That makes six combinations, and a small diagram shows the current one. Picking a layout switches to V3.
+- **Look up a person · layout** (all versions): pick where the **person card** sits (Left panel or Top header) and where the **section tabs** sit (Top, Left or Right). That makes six combinations, and a small diagram shows the current one.
 
 Your choices are remembered on that browser.
 
@@ -57,7 +57,6 @@ Your choices are remembered on that browser.
   - **Paid leads, checked against the profile:** a table of recent paid leads, filtered by business tabs with a sliding indicator. Clicking a row lifts it into a card with a red top edge, AI fields (next-best programme, intent) and actions.
   - **Business cards:** one per business, with a live profile count and an animated consent ring, plus a bar chart of lookups this week.
   - **Motion everywhere in V3:** tabs and segments use the same sliding indicator. Cards rise in with a stagger. People directory rows open into the same detail card.
-  - **Profile layouts:** the person card goes on the left or across the top, and the section tabs go in a row on top or as a vertical list on the left or right. Choose from the Review panel.
   - **Reduced motion:** all of this switches off when the system asks for reduced motion.
 
 ## People directory
@@ -88,16 +87,19 @@ The profile and data model follow the four data sheets (Learner Profile, Academi
 
 - **Header card:** photo, life stage, age band (the date of birth isn't stored), city, owning business, profile completeness, global person ID and **Reachable now** per channel (call, email, SMS, WhatsApp, ads).
 - **Worth acting on:** moments such as an intake that has passed, a new enquiry in another business or a certificate issued.
-- **At a glance:** relationship state, lifetime revenue, intent, learning health, contact fatigue and the re-acquisition flag.
-- **Where they are with each business:** lifecycle per business, Prospect → Lead → Counselled → Paid → Learning → Completed → Alumni.
 - **Five sections, one row of tabs:**
   - **Personal:** contact, personal details, consent.
   - **Education:** education before upGrad, courses with upGrad, skills.
   - **Professional:** career, aspiration, outlook (intent, next-best programme, call-analysis scores).
   - **Financial:** financial profile, plus revenue and programmes bought with upGrad.
-  - **Activity:** an engagement summary, then the timeline filtered by type and business.
+  - **Activity:** where they are with each business (Prospect → … → Alumni), an engagement summary, then the timeline. One filter narrows the timeline by type or business.
 
   One section shows at a time, and the arrow keys move between them.
+- **Always in view:** the person and the section tabs stay on screen while you scroll, in every layout.
+  - In the left-panel layouts, the person card stays pinned.
+  - In the top-header layouts, a slim bar with the photo, name and key facts takes over once the card scrolls away.
+  - The tabs stay pinned at the top, or beside the details when they're listed on the left or right.
+- **Less up front:** above the tabs there's only the person card and any "Worth acting on" moments.
 - **Card layout:** the detail cards stack in one column on every screen size. On wider cards each row reads label | value | source. In V2 and V3 the left profile column uses lighter type and lists its facts as label and value pairs.
 - Every value shows its source system (Prism, LSQ, HubSpot, OMS, SA/WP Sales Insights, CMS or a rule). Where sources conflicted, the merge rule that picked the value is shown.
 - **Sensitivity:** T1 contact details are hidden until the viewer gives a reason. T2 values are bands only: the financial profile needs a reason before it's shown. Other businesses never see T2 values, payments or revenue. Every reveal is logged.
