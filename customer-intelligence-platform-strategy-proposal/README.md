@@ -45,6 +45,10 @@ A **Review** button in the bottom-right corner opens the review controls. They'r
 - **Design version:** V1, V2 or V3. You can also add `?v=1`, `?v=2` or `?v=3` to the URL.
 - **Look up a person · layout** (all versions): pick where the **person card** sits (Left panel or Top header) and where the **section tabs** sit (Top, Left or Right). That makes six combinations, and a small diagram shows the current one.
 
+- **Sidebar menu:** an on/off switch for each sidebar item: Overview, People, Look up a person, Identity & audits, Data dictionary and Later phases.
+  - Hidden items leave the sidebar, and links to them open the next visible page.
+  - At least one page always stays on.
+
 Your choices are remembered on that browser.
 
 ## Design versions
