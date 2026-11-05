@@ -1110,7 +1110,9 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
 .lockbar > div{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:2px}
 .lockbar b{font-size:15px;font-weight:600}
 .lockbar > div span{font-size:13px;color:var(--muted);line-height:1.45}
-.lock-sw{flex:0 0 auto;display:flex}
+.eyebtn{flex:0 0 40px;height:40px;border:none;border-radius:12px;background:var(--fill);color:var(--text);display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s}
+.eyebtn:hover{background:var(--border)}
+.eyebtn[aria-pressed="true"]{background:var(--text);color:#fff}
 .lockform{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:16px 20px;animation:reveal .35s var(--ease) backwards}
 .lockform input{flex:1 1 220px;min-width:0;height:40px;padding:0 14px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font:inherit;font-size:14px;letter-spacing:.08em}
 .lockform input::placeholder{letter-spacing:0}
@@ -2260,9 +2262,10 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
     var open = V.finOpen, ask = V.finAsk && !open;
     var ic = open ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 017.5-2"/></svg>'
       : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>';
-    var status = open ? "Visible to you until you turn this off or open another person. This access is logged." : ask ? "Enter the team password to view budget, funding, salary band and revenue." : "Locked. Turn on to view, with the team password.";
+    var status = open ? "Visible to you until you hide them or open another person. This access is logged." : ask ? "Enter the team password to view budget, funding, salary band and revenue." : "Hidden. Select the eye and enter the team password to view.";
+    var eye = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12s3.5-6.5 9.5-6.5S21.5 12 21.5 12s-3.5 6.5-9.5 6.5S2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/>' + (open ? "" : '<path d="M4 4l16 16"/>') + "</svg>";
     var h = '<div class="card lockbar' + (open ? " open" : "") + '"><span class="lock-ic">' + ic + '</span><div><b>Financial details</b><span>' + status + '</span></div>' +
-      '<label class="lock-sw"><span class="sr">Show financial details</span><input type="checkbox" class="switch" data-finlock' + (open || ask ? " checked" : "") + "></label></div>";
+      '<button type="button" class="eyebtn" data-fineye aria-pressed="' + open + '" aria-label="' + (open ? "Hide financial details" : "Show financial details") + '" title="' + (open ? "Hide financial details" : "Show financial details") + '">' + eye + "</button></div>";
     if (ask) h += '<form class="card lockform" data-unlock novalidate><label for="lockPw" class="sr">Team password</label><input id="lockPw" type="password" placeholder="Team password" autocomplete="off"' + (V.lockErr ? ' aria-invalid="true" aria-describedby="lockErr"' : "") + '>' +
       '<button type="submit" class="btn dark sm">Unlock</button><button type="button" class="textbtn" data-lockcancel>Cancel</button>' + (V.lockErr ? '<p class="lock-err" id="lockErr" role="alert">' + esc(V.lockErr) + "</p>" : "") + "</form>";
     return h;
@@ -2393,9 +2396,13 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
   });
   // Arrow keys move between profile tabs.
   $("#lookupResult").addEventListener("change", function (e) {
-    var sw = e.target.closest("[data-finlock]"); if (!sw) return;
-    if (sw.checked) { V.finAsk = true; V.lockErr = ""; renderLookup(); var pw = $("#lockPw"); if (pw) pw.focus(); }
-    else { V.finOpen = false; V.finAsk = false; V.lockErr = ""; renderLookup(); toast("Financial details locked"); }
+  });
+  // The eye: hidden -> ask for the team password; visible -> hide again.
+  $("#lookupResult").addEventListener("click", function (e) {
+    if (!e.target.closest("[data-fineye]")) return;
+    if (V.finOpen) { V.finOpen = false; V.finAsk = false; V.lockErr = ""; renderLookup(); toast("Financial details hidden"); var b = $("[data-fineye]"); if (b) b.focus(); return; }
+    V.finAsk = !V.finAsk; V.lockErr = ""; renderLookup();
+    var pw = $("#lockPw"); if (pw) pw.focus(); else { var b2 = $("[data-fineye]"); if (b2) b2.focus(); }
   });
   $("#lookupResult").addEventListener("submit", function (e) {
     var form = e.target.closest("[data-unlock]"); if (!form) return;

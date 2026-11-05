@@ -105,8 +105,8 @@ The profile and data model follow the four data sheets (Learner Profile, Academi
   - In the top-header layouts, a slim bar with the photo, name and key facts takes over once the card scrolls away.
   - The tabs stay pinned at the top, or beside the details when they're listed on the left or right.
 - **Locked financial details:** the Financial section starts locked, and its tab shows a small lock. You can see which fields exist, but every value is masked.
-  - Turning on **Show financial details** asks for the team password (demo: `upgrad2026`). The right password shows the values for that profile.
-  - Turning the switch off locks it again, and so does opening another person.
+  - Selecting the **eye** at the top of the section asks for the team password (demo: `upgrad2026`). The right password shows the values for that profile.
+  - Selecting the eye again hides them, and so does opening another person.
   - After three wrong tries, unlocking pauses for 30 seconds.
   - Counsellors from another business never see financial details, password or not.
   - In this prototype the password is checked in the browser. The real product should check it on the server, against the viewer's role, and log each unlock.
