@@ -38,9 +38,22 @@ Preview links look like this:
 
 `team` can be `central`, `internshala`, `wp` or `unacademy`.
 
-## Design versions
+## Review panel
 
-A switch in the bottom-right corner (or `?v=1`, `?v=2`, `?v=3` in the URL) changes the look of the whole prototype. The choice is remembered on that browser.
+A **Review** button in the bottom-right corner opens the review controls. They're for design review only, not part of the product:
+
+- **Design version:** V1, V2 or V3. You can also add `?v=1`, `?v=2` or `?v=3` to the URL.
+- **Profile layout:** Side panel, Top header or Side menu, for V3. Picking one switches to V3.
+- **Scenarios:** one tap opens a screen or case, set up with the right team and person:
+  - screens: Overview, People, Identity & audits, Data dictionary;
+  - lookups: Arjun, Ananya seen by a WP counsellor, Rohan, the shared family phone, Kabir (a minor), a new caller;
+  - the sign-in flow.
+
+  To add a scenario, add one line to `SCENARIOS` in `index.html`.
+
+Your choices are remembered on that browser.
+
+## Design versions
 
 - **V1:** the original layout, with generous spacing.
 - **V2:** a framed, light workspace. It is denser, with a bento-style Overview, a sticky profile rail, outlined cards and pastel avatars.
@@ -50,10 +63,10 @@ A switch in the bottom-right corner (or `?v=1`, `?v=2`, `?v=3` in the URL) chang
   - **Paid leads, checked against the profile:** a table of recent paid leads, filtered by business tabs with a sliding indicator. Clicking a row lifts it into a card with a red top edge, AI fields (next-best programme, intent) and actions.
   - **Business cards:** one per business, with a live profile count and an animated consent ring, plus a bar chart of lookups this week.
   - **Motion everywhere in V3:** tabs and segments use the same sliding indicator. Cards rise in with a stagger. People directory rows open into the same detail card.
-  - **Profile layouts:** a **Profile layout** dropdown on Look up a person switches between three layouts. The choice is remembered on that browser.
+  - **Profile layouts:** three layouts for the profile, picked from the Review panel:
     - **Side panel:** the person on the left, details on the right.
     - **Top header:** the person, key facts and reachable channels across the top, with details full width below.
-    - **Side navigation:** a compact person card and one vertical menu (Summary · Contact … Financial · Learning & skills · Activity · Insights), showing one section at a time.
+    - **Side menu:** a compact person card and one vertical menu, showing one section at a time.
   - **Reduced motion:** all of this switches off when the system asks for reduced motion.
 
 ## People directory
