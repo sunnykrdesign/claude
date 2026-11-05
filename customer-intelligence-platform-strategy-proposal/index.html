@@ -876,12 +876,6 @@ html[data-v="3"] .v3ov{display:grid;grid-template-columns:minmax(0,1fr) 300px;ga
 .scard.flash{animation:flash 1.3s var(--ease)}
 @keyframes flash{0%{box-shadow:0 0 0 5px rgba(29,29,31,.10)}100%{box-shadow:0 0 0 0 rgba(29,29,31,0)}}
 /* Section bar */
-.jump{position:relative;align-self:flex-start;max-width:100%;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding:5px;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%);border-radius:14px;box-shadow:0 0 0 1px var(--line),0 8px 24px rgba(16,16,24,.06)}
-.jump::-webkit-scrollbar{display:none}
-.jump button{flex:0 0 auto;border:none;background:transparent;height:34px;padding:0 14px;border-radius:10px;font-size:13px;font-weight:500;color:var(--muted);transition:color .25s,background .25s}
-.jump button:hover{color:var(--text)}
-.jump button[aria-selected="true"]{background:var(--text);color:#fff}
-html[data-v="3"] .jump{background:rgba(228,228,232,.9);box-shadow:inset 0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(16,16,24,.06)}
 html[data-v="3"] [data-slide] > button[aria-current="location"]{color:var(--text) !important}
 @media (min-width:1181px){html[data-v="3"] .v3rail{position:sticky;top:20px}}
 /* Profile cards: one column on every screen size */
@@ -960,8 +954,6 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
 .eng[open] summary svg{transform:rotate(180deg)}
 .eng .tgrid{padding:0 24px 24px}
 .eng .tcard:not(.core){background:var(--track);box-shadow:none}
-.sgrid.fresh > .scard{animation:rise .4s var(--ease) backwards}
-@media (prefers-reduced-motion: reduce){.sgrid.fresh > .scard{animation:none}}
 /* ================= V3 profile layouts ================= */
 
 /* Layout 2: top header (horizontal) */
@@ -983,17 +975,7 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
   html[data-v="3"] #lookupResult[data-layout="top"] .pmain .snap{grid-template-columns:repeat(6,minmax(0,1fr))}
 }
 
-/* Layout 3: side navigation (vertical) */
-.nlayout{display:grid;grid-template-columns:268px minmax(0,1fr);gap:28px;align-items:start}
-.nside{position:sticky;top:20px;display:flex;flex-direction:column;gap:16px;min-width:0}
-.nid{background:#fff;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:0 1px 2px rgba(16,16,24,.03),0 10px 30px rgba(16,16,24,.045)}
-.nid-top{display:flex;align-items:flex-start;gap:12px;min-width:0}
-.nid .avatar{width:52px;height:52px;font-size:18px;flex:0 0 52px}
-.nid .who{display:flex;flex-direction:column;gap:3px;min-width:0}
-.main .nid .who h1{font-size:17px;font-weight:600;letter-spacing:-0.02em;line-height:1.25}
-.nid .headline{margin:0;font-size:12.5px;color:#48484D;line-height:1.45}
-.nid .matched{margin:0;font-size:11.5px;color:var(--muted);line-height:1.5}
-.nid .btn{width:100%;height:38px;font-size:13px}
+/* Vertical section list */
 .pnav{display:flex;flex-direction:column;gap:1px;background:#fff;border-radius:20px;padding:8px;box-shadow:0 1px 2px rgba(16,16,24,.03),0 10px 30px rgba(16,16,24,.045)}
 .pnav .ngh{display:block;padding:12px 12px 6px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#9C9CA4}
 .pnav .ngh:first-child{padding-top:6px}
@@ -1001,26 +983,12 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
 .pnav button:hover{color:var(--text)}
 html[data-v="3"] .pnav .slider{background:#F1F1F4;box-shadow:none;border-radius:10px}
 html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
-.nmain{display:flex;flex-direction:column;gap:24px;min-width:0}
-.nmain.fresh > *{animation:rise .4s var(--ease) backwards}
-.nmain .kfacts{padding:24px 26px;gap:0}
-.nmain .kfacts .facts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;padding-top:0;border-top:none}
-.nmain .kfacts .fact{padding:0 18px 0 0;gap:4px}
-.nmain .kfacts .fact + .fact{padding-left:18px;box-shadow:inset 1px 0 0 var(--line)}
-.nmain .kfacts .fact .v{font-size:15px;font-weight:500}
-.nmain .kfacts .reach{margin-top:20px;padding-top:16px}
-.nmain .snap{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:1099px){
-  .nlayout{grid-template-columns:1fr;gap:20px}
-  .nside{position:static}
   .pnav{flex-direction:row;overflow-x:auto;scrollbar-width:none}
   .pnav::-webkit-scrollbar{display:none}
   .pnav .ngh{display:none}
   .pnav button{flex:0 0 auto}
-  .nmain .kfacts .facts{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:14px}
-  .nmain .kfacts .fact:nth-child(odd){padding-left:0;box-shadow:none}
 }
-@media (prefers-reduced-motion: reduce){.nmain.fresh > *{animation:none}}
 /* ================= Review panel (not part of the product) ================= */
 .review{position:fixed;z-index:60;right:16px;bottom:16px;display:flex;flex-direction:column;align-items:flex-end;gap:10px;font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:-0.01em}
 .rv-toggle{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px 0 12px;border:none;border-radius:999px;background:rgba(20,20,24,.9);color:#fff;font-size:13px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.25);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
@@ -1041,18 +1009,52 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
 .rv-seg button:hover{color:#fff}
 .rv-seg button[aria-pressed="true"]{background:#fff;color:#111}
 .rv-note{margin:0;font-size:12px;line-height:1.45;color:#8E8E93}
-.rv-list{display:flex;flex-direction:column;gap:2px}
-.rv-gh{display:block;padding:8px 10px 4px;font-size:11px;color:#636366}
-.rv-gh:first-child{padding-top:0}
-.rv-list button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;width:100%;padding:9px 10px;border:none;border-radius:10px;background:transparent;color:#F5F5F7;text-align:left}
-.rv-list button b{font-size:13px;font-weight:500}
-.rv-list button span{font-size:11.5px;color:#8E8E93}
-.rv-list button:hover{background:rgba(255,255,255,.06)}
-.rv-list button[aria-current="true"]{background:rgba(255,255,255,.12)}
 @media (max-width:520px){
   .review{left:12px;right:12px;bottom:12px}
   .rv-panel{width:100%;max-height:70vh}
 }
+/* V3: section tabs as one vertical list (left or right) */
+.dv{display:grid;gap:24px;align-items:start}
+.dv-left{grid-template-columns:220px minmax(0,1fr)}
+.dv-right{grid-template-columns:minmax(0,1fr) 220px}
+.dv-right .vtabs{order:2}
+.dv .vtabs{position:sticky;top:20px}
+.vpanel{display:flex;flex-direction:column;gap:16px;min-width:0}
+.vpanel.fresh > *{animation:rise .4s var(--ease) backwards}
+@media (min-width:1100px){
+  html[data-v="3"] #lookupResult[data-layout="rail"][data-tabs="left"] .prail{position:static;display:flex;flex-direction:column;gap:16px}
+}
+@media (max-width:1099px){
+  .dv-left,.dv-right{grid-template-columns:1fr}
+  .dv-right .vtabs{order:0}
+  .dv .vtabs{position:static}
+}
+@media (prefers-reduced-motion: reduce){.vpanel.fresh > *{animation:none}}
+/* Review panel: layout wireframe */
+.rv-panel > *,.rv-sec > *{flex-shrink:0}
+.rv-thumb{height:104px;padding:8px;border-radius:12px;background:rgba(255,255,255,.06);display:flex;transition:opacity .25s}
+.rv-thumb.off{opacity:.4}
+.rv-thumb b{display:flex;gap:4px;flex:1 1 0;min-width:0;min-height:0}
+.rv-thumb .w-col{flex-direction:column}
+.rv-thumb .w-row{flex-direction:row}
+.rv-thumb .w-side{flex:0 0 30%}
+.rv-thumb i{display:block;border-radius:3px;background:rgba(255,255,255,.12);flex:1 1 0;min-width:0;min-height:0}
+.rv-thumb i.w-p{background:rgba(255,255,255,.85)}
+.rv-thumb i.w-p.w-tall{flex:0 0 52%}
+.rv-thumb i.w-p.w-wide{flex:0 0 26%}
+.rv-thumb i.w-s{flex:0 0 20%;background:rgba(255,255,255,.28)}
+.rv-thumb i.w-t{background:#8FB1F5}
+.rv-thumb i.w-t.w-h{flex:0 0 12%}
+.rv-thumb .w-row > i.w-t.w-v{flex:0 0 26%}
+.rv-thumb .w-side > i.w-t.w-v{flex:1 1 0}
+.rv-legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11px;color:#8E8E93}
+.rv-legend span{display:inline-flex;align-items:center;gap:5px}
+.rv-legend i{width:8px;height:8px;border-radius:2px;background:rgba(255,255,255,.12)}
+.rv-legend i.w-p{background:rgba(255,255,255,.85)}
+.rv-legend i.w-s{background:rgba(255,255,255,.28)}
+.rv-legend i.w-t{background:#8FB1F5}
+.rv-sub{font-size:12px;color:#C7C7CC;margin-top:2px}
+#panel.vpanel{padding-top:0}
 </style>
 </head>
 <body>
@@ -1609,8 +1611,13 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
   <div class="rv-panel" id="rvPanel" role="dialog" aria-label="Review controls" tabindex="-1" hidden>
     <div class="rv-head"><b>Review</b><span>For design review, not part of the product</span><button type="button" class="rv-x" id="rvClose" aria-label="Close review panel"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M1 1l10 10M11 1L1 11"/></svg></button></div>
     <div class="rv-sec"><span class="rv-k">Design version</span><div class="rv-seg" id="vswitch" role="group" aria-label="Design version"><button type="button" data-v="1" aria-pressed="false">V1</button><button type="button" data-v="2" aria-pressed="false">V2</button><button type="button" data-v="3" aria-pressed="false">V3</button></div></div>
-    <div class="rv-sec"><span class="rv-k">Profile layout</span><div class="rv-seg" id="rvLayout" role="group" aria-label="Profile layout"></div><p class="rv-note" id="rvLayoutNote"></p></div>
-    <div class="rv-sec"><span class="rv-k">Scenarios</span><div class="rv-list" id="rvScen"></div></div>
+    <div class="rv-sec"><span class="rv-k">Look up a person · layout</span>
+      <div class="rv-thumb" id="rvThumb" aria-hidden="true"></div>
+      <div class="rv-legend" aria-hidden="true"><span><i class="w-p"></i>Person</span><span><i class="w-s"></i>Summary</span><span><i class="w-t"></i>Section tabs</span><span><i></i>Details</span></div>
+      <span class="rv-sub">Person card</span><div class="rv-seg" id="rvPerson" role="group" aria-label="Person card position"></div>
+      <span class="rv-sub">Section tabs</span><div class="rv-seg" id="rvTabs" role="group" aria-label="Section tabs position"></div>
+      <p class="rv-note" id="rvLayoutNote"></p>
+    </div>
   </div>
   <button type="button" class="rv-toggle" id="rvToggle" aria-expanded="false" aria-controls="rvPanel"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12s3.5-6.5 9.5-6.5S21.5 12 21.5 12s-3.5 6.5-9.5 6.5S2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg>Review <span id="rvSummary"></span></button>
 </div>
@@ -1810,10 +1817,17 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
   var STAGES = ["Prospect", "Lead", "Counselled", "Paid", "Learning", "Completed", "Alumni"];
   var STAGE_AT = { Dropped: 5, Deferred: 5, Refunded: 5 };
   // Profile layouts to compare in V3: side panel, top header, side navigation.
-  var LAYOUTS = [["rail", "Side panel", "Person on the left, details on the right"], ["top", "Top header", "Person across the top, details full width below"], ["nav", "Side menu", "One menu on the left, one section at a time"]];
-  var LAYOUT = "rail";
-  try { LAYOUT = localStorage.getItem("cip-layout") || "rail"; } catch (e) {}
-  if (!LAYOUTS.some(function (l) { return l[0] === LAYOUT; })) LAYOUT = "rail";
+  var PERSONS = [["rail", "Left panel"], ["top", "Top header"]];
+  var TABPOS = [["top", "Top"], ["left", "Left"], ["right", "Right"]];
+  var PERSON = "rail", TABS = "top";
+  try {
+    PERSON = localStorage.getItem("cip-person") || PERSON; TABS = localStorage.getItem("cip-tabs") || TABS;
+    var oldLayout = localStorage.getItem("cip-layout");
+    if (oldLayout && !localStorage.getItem("cip-person")) { PERSON = oldLayout === "top" ? "top" : "rail"; TABS = oldLayout === "nav" ? "left" : "top"; }
+  } catch (e) {}
+  if (["rail", "top"].indexOf(PERSON) < 0) PERSON = "rail";
+  if (["top", "left", "right"].indexOf(TABS) < 0) TABS = "top";
+  function applyLookupLayout() { var r = $("#lookupResult"); if (r) { r.setAttribute("data-layout", PERSON); r.setAttribute("data-tabs", TABS); } }
   var CATS = { A: "Attribution", M: "Marketing", E: "Enquiries", X: "Interactions", P: "Payments", L: "Learning", S: "Support", C: "Consent" };
 
   var PEOPLE = {
@@ -2015,7 +2029,7 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
   }
 
   var PAGE = 6;
-  function freshView() { return { tab: "profile", sec: "c-id", nav: "summary", bu: "all", cat: "all", shown: PAGE, revealed: false, finRevealed: false }; }
+  function freshView() { return { tab: "personal", bu: "all", cat: "all", shown: PAGE, revealed: false, finRevealed: false }; }
   var L = { status: "idle", label: "", matches: [], person: null, how: "" };
   var V = freshView();
   var lookupTimer = null;
@@ -2044,7 +2058,7 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
     return ok ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
       : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
   }
-  function srcChip(s) { return '<span class="src">' + esc(s) + "</span>"; }
+  function srcChip(s) { return s ? '<span class="src">' + esc(s) + "</span>" : ""; }
 
   function renderLookup() {
     var box = $("#lookupResult"); if (!box) return;
@@ -2135,45 +2149,43 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
     }
     if (noContact) h += '<div class="banner" role="note">' + warn() + "<div><b>Don't contact " + esc(first(p)) + " about " + esc(team.bu) + "</b>" + esc(first(p)) + " hasn't agreed to offers from other upGrad businesses. You can view this profile for context only.</div></div>";
 
-    if (isV3() && LAYOUT === "nav") return navLayout(p, team, otherBu, noContact, back, h, part);
     h += momentsHTML(p);
 
     h += snapshotHTML(p, otherBu) + lifecycleHTML(p);
 
-    // Four parts of the profile, one tab each.
-    var tabs = [["profile", "Learner profile"], ["learning", "Learning & skills"], ["activity", "Activity"], ["insights", "Insights"]];
-    h += '<section class="section" aria-label="Profile details"><div class="tabs" role="tablist" aria-label="Profile parts" id="ptabs" data-slide>' + tabs.map(function (t) {
-      return '<button type="button" role="tab" id="tab-' + t[0] + '" aria-controls="panel" aria-selected="' + (V.tab === t[0]) + '" tabindex="' + (V.tab === t[0] ? 0 : -1) + '" data-tab="' + t[0] + '">' + t[1] + "</button>";
-    }).join("") + '</div><div id="panel" class="' + (V.tab !== V.seen ? "fresh" : "") + '" role="tabpanel" aria-labelledby="tab-' + V.tab + '">'; V.seen = V.tab;
-    if (V.tab === "profile") h += learnerHTML(p, team, otherBu, noContact);
-    else if (V.tab === "learning") h += learningHTML(p);
-    else if (V.tab === "activity") h += activityHTML(p, otherBu);
-    else h += insightsHTML(p, otherBu);
-    return playout(back, rail, h + "</div></section>");
+    // Details in five sections: Personal, Education, Professional, Financial, Activity.
+    // V3 layouts can place the tabs on top, or as a vertical list on the left or right.
+    var tabsAt = isV3() ? TABS : "top", personAt = isV3() ? PERSON : "rail", vert = tabsAt !== "top";
+    var cur = SECT.some(function (x) { return x[0] === V.tab; }) ? V.tab : "personal", fresh = cur !== V.seen; V.seen = cur; V.tab = cur;
+    var list = '<div class="' + (vert ? "pnav vtabs" : "tabs") + '" role="tablist" aria-label="Profile sections"' + (vert ? ' aria-orientation="vertical"' : "") + ' id="ptabs" data-slide>' + SECT.map(function (t) {
+      var on = t[0] === cur;
+      return '<button type="button" role="tab" id="tab-' + t[0] + '" aria-controls="panel" aria-selected="' + on + '" tabindex="' + (on ? 0 : -1) + '" data-tab="' + t[0] + '">' + t[1] + "</button>";
+    }).join("") + "</div>";
+    var panel = '<div id="panel" class="' + (vert ? "vpanel" : "") + (fresh ? " fresh" : "") + '" role="tabpanel" aria-labelledby="tab-' + cur + '">' + sectionBody(cur, p, team, otherBu, noContact) + "</div>";
+    var open = '<section class="section" aria-label="Profile details">';
+    if (!vert) return playout(back, rail, h + open + list + panel + "</section>");
+    if (tabsAt === "left" && personAt === "rail") return playout(back, rail + list, h + open + panel + "</section>");
+    return playout(back, rail, h + open + '<div class="dv dv-' + tabsAt + '">' + list + panel + "</div></section>");
+  }
+  var SECT = [["personal", "Personal"], ["education", "Education"], ["professional", "Professional"], ["financial", "Financial"], ["activity", "Activity"]];
+  function insightCard(id, title, rows) {
+    return cardHTML(id, title, '<span class="tag">Derived</span>', rowsHTML(rows.filter(function (r) { return r[1]; }).map(function (r) { return [r[0], r[1], "", "", r[2] || ""]; })));
+  }
+  function sectionBody(key, p, team, otherBu, noContact) {
+    var i = p.ins || {};
+    if (key === "personal") return learnerHTML(p, team, otherBu, noContact, ["c-id", "c-personal", "c-consent"]);
+    if (key === "education") return learnerHTML(p, team, otherBu, noContact, ["c-edu"]) + learningHTML(p);
+    if (key === "professional") return learnerHTML(p, team, otherBu, noContact, ["c-career", "c-asp"]) +
+      insightCard("c-outlook", "Outlook", [["Intent", i.intent, i.intentD], ["Next-best programme", i.nbp, "Rules first, model later"]].concat((i.scores || []).map(function (sc) { return [sc[0], sc[1], "Model " + sc[2]]; })));
+    if (key === "financial") return learnerHTML(p, team, otherBu, noContact, ["c-fin"]) +
+      insightCard("c-money", "With upGrad", [["Lifetime revenue", otherBu ? "Owning business only" : i.revenue, otherBu ? "" : i.revenueD], ["Programmes purchased", i.bought], ["Re-acquired", i.reacq ? "Yes" : "No", i.reacqD]]);
+    return insightCard("c-engage", "Engagement", [["Relationship", i.state + " · " + p.lifecycle.length + (p.lifecycle.length > 1 ? " businesses" : " business")], ["First seen · last active", i.first + " · " + i.last],
+      ["Speed to lead", i.speed, "Lead created → first call"], ["Contact fatigue", i.fatigue, "Outbound touches across businesses"], ["Learning health", i.health, i.healthD]]) + activityHTML(p, otherBu);
   }
   function momentsHTML(p) {
     return p.moments.length ? '<section class="section" aria-labelledby="mo"><h2 id="mo">Worth acting on</h2><div class="moments">' + p.moments.map(function (m) {
       return '<div class="moment"><span class="dot" aria-hidden="true"></span><div><b>' + esc(m[0]) + "</b><span>" + esc(m[1]) + "</span></div></div>";
     }).join("") + "</div></section>" : "";
-  }
-  // Layout 3: one vertical menu on the left, one section at a time on the right.
-  var NAV = [["Overview", [["summary", "Summary"]]], ["Learner profile", [["c-id", "Contact"], ["c-consent", "Consent"], ["c-personal", "Personal"], ["c-edu", "Education"], ["c-career", "Career"], ["c-asp", "Aspiration"], ["c-fin", "Financial"]]], ["With upGrad", [["learning", "Learning & skills"], ["activity", "Activity"], ["insights", "Insights"]]]];
-  function navLayout(p, team, otherBu, noContact, back, banner, part) {
-    var cur = V.nav || "summary", fresh = cur !== V.navSeen; V.navSeen = cur;
-    var nav = '<div class="pnav" id="pnav" role="tablist" aria-orientation="vertical" aria-label="Profile sections" data-slide>' + NAV.map(function (g) {
-      return '<span class="ngh" aria-hidden="true">' + esc(g[0]) + "</span>" + g[1].map(function (it) {
-        var on = it[0] === cur;
-        return '<button type="button" role="tab" id="nv-' + it[0] + '" aria-controls="npanel" aria-selected="' + on + '" tabindex="' + (on ? 0 : -1) + '" data-nav="' + it[0] + '">' + esc(it[1]) + "</button>";
-      }).join("");
-    }).join("") + "</div>";
-    var body;
-    if (cur === "summary") body = '<section class="pcard kfacts" aria-label="Key facts">' + part.facts + part.reach + "</section>" + momentsHTML(p) + snapshotHTML(p, otherBu) + lifecycleHTML(p);
-    else if (cur === "learning") body = learningHTML(p);
-    else if (cur === "activity") body = activityHTML(p, otherBu);
-    else if (cur === "insights") body = insightsHTML(p, otherBu);
-    else body = learnerHTML(p, team, otherBu, noContact, cur);
-    return back + '<div class="nlayout"><aside class="nside"><section class="nid" aria-label="Profile"><div class="nid-top">' + avatarHTML(p, "avatar") + part.who + "</div>" + part.crm + "</section>" + nav + "</aside>" +
-      '<div class="nmain' + (fresh ? " fresh" : "") + '" id="npanel" role="tabpanel" aria-labelledby="nv-' + cur + '">' + banner + body + "</div></div>";
   }
   function playout(back, rail, main) { return back + '<div class="playout"><div class="prail">' + rail + '</div><div class="pmain">' + main + "</div></div>"; }
 
@@ -2203,7 +2215,7 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
       }).join("") + "</div></section>";
   }
 
-  function learnerHTML(p, team, otherBu, noContact, only) {
+  function learnerHTML(p, team, otherBu, noContact, only) { // only: list of card keys
     var c = p.consent;
     var contact = '<div class="attr-list">' +
       p.phones.map(function (x) { return idRow("Phone", V.revealed ? fmtPhone(x.d) : maskPhone(x.d), x.tag, x.v, x.src); }).join("") +
@@ -2237,9 +2249,7 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
       "c-asp": function () { return cardHTML("c-asp", "Aspiration", "", rowsHTML(p.aspiration)); },
       "c-fin": function () { return cardHTML("c-fin", "Financial profile", '<span class="tag red">T2 · bands only</span>', fin, finFoot); }
     };
-    if (only) return C[only] ? C[only]() : "";
-    var sec = C[V.sec] ? V.sec : "c-id", fresh = sec !== V.secSeen; V.secSeen = sec;
-    return secTabsHTML(sec) + '<div class="sgrid' + (fresh ? " fresh" : "") + '" id="secpanel" role="tabpanel" aria-labelledby="jt-' + sec + '">' + C[sec]() + "</div>";
+    return (only || ["c-id"]).map(function (k) { return C[k] ? C[k]() : ""; }).join("");
   }
   function idRow(label, value, tag, verified, src) {
     return '<div class="row tight"><span class="txt"><span class="title plain">' + esc(value) + '</span><span class="desc">' + esc(label) + (tag ? " · " + esc(tag) : "") + "</span></span>" +
@@ -2280,31 +2290,6 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
     return h;
   }
 
-  function insightsHTML(p, otherBu) {
-    var i = p.ins;
-    var rows = [
-      ["Overall relationship", i.state + " · " + p.lifecycle.length + " businesses touched", "Highest state across businesses"],
-      ["Known to more than one business", p.lifecycle.length > 1 ? "Yes · " + p.lifecycle.map(function (r) { return BUS[r.bu]; }).join(", ") : "No", "Count of businesses with a record"],
-      ["First seen · last active", i.first + " · " + i.last, "Earliest and latest event"],
-      ["Lifetime revenue", otherBu ? "Owning business only" : i.revenue, otherBu ? "Payments minus refunds, in INR" : i.revenueD],
-      ["Programmes purchased", i.bought, "Distinct programmes paid for"],
-      ["Re-acquired", i.reacq ? "Yes" : "No", i.reacqD || "Did we pay to acquire someone we already knew?"],
-      ["Intent", i.intent, i.intentD || "Rules first, counsellor value as input"],
-      ["Speed to lead", i.speed, "Lead created → first call"],
-      ["Contact fatigue", i.fatigue, "Outbound touches across businesses"],
-      ["Learning health", i.health, i.healthD || "Progress, attendance, submissions"],
-      ["Next-best programme", i.nbp, "Rules first, model later"]
-    ];
-    var h = '<div class="list ins">' + rows.map(function (r) {
-      return '<div class="row"><span class="txt"><span class="title">' + esc(r[0]) + '</span><span class="desc">' + esc(r[2]) + '</span></span><span class="ival">' + esc(r[1]) + "</span></div>";
-    }).join("") + "</div>";
-    if (i.scores.length) h += '<div class="section-head" style="margin-top:12px"><h3 class="h3">From call analysis</h3><p class="sub" style="font-size:14px">Scores from Sales Insights. Study Abroad and WP scores use different models, so they can\'t be compared.</p></div>' +
-      '<div class="list ins">' + i.scores.map(function (r) {
-        return '<div class="row"><span class="txt"><span class="title">' + esc(r[0]) + '</span><span class="desc">Model ' + esc(r[2]) + '</span></span><span class="ival">' + esc(r[1]) + "</span></div>";
-      }).join("") + "</div>";
-    return h;
-  }
-
   $("#lookupForm").addEventListener("submit", function (e) { e.preventDefault(); runLookup($("#lookup").value); });
   $("#lookup").addEventListener("input", function () { $("#lookupErr").hidden = true; this.removeAttribute("aria-invalid"); });
   $("#lookupResult").addEventListener("click", function (e) {
@@ -2335,25 +2320,7 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
     all[(i + all.length) % all.length].click(); e.preventDefault();
   });
 
-  // Section tabs on the Learner profile: tap a section to see just that card, no long scroll.
-  var SECTIONS = [["c-id", "Contact"], ["c-consent", "Consent"], ["c-personal", "Personal"], ["c-edu", "Education"], ["c-career", "Career"], ["c-asp", "Aspiration"], ["c-fin", "Financial"]];
-  function secTabsHTML(cur) {
-    return '<div class="jump" id="jump" role="tablist" aria-label="Profile sections" data-slide>' + SECTIONS.map(function (s) {
-      var on = s[0] === cur;
-      return '<button type="button" role="tab" id="jt-' + s[0] + '" aria-controls="secpanel" aria-selected="' + on + '" tabindex="' + (on ? 0 : -1) + '" data-sec="' + s[0] + '">' + esc(s[1]) + "</button>";
-    }).join("") + "</div>";
-  }
-  $("#lookupResult").setAttribute("data-layout", LAYOUT);
-  $("#lookupResult").addEventListener("click", function (e) {
-    var n = e.target.closest("[data-nav]"); if (!n) return;
-    V.nav = n.getAttribute("data-nav"); renderLookup(); window.scrollTo(0, 0);
-    var f = document.getElementById("nv-" + V.nav); if (f) f.focus();
-  });
-  $("#lookupResult").addEventListener("click", function (e) {
-    var b = e.target.closest("[data-sec]"); if (!b) return;
-    V.sec = b.getAttribute("data-sec"); renderLookup();
-    var f = document.getElementById("jt-" + V.sec); if (f) f.focus();
-  });
+  applyLookupLayout();
 
   /* ---------- Data dictionary ---------- */
   var CAT = JSON.parse($("#catalog").textContent);
@@ -2827,72 +2794,54 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
   });
 
   /* ---------- Review panel (for design review only, not part of the product) ---------- */
-  // Add a scenario by adding one line: [title, what it shows, { team, route, q (lookup), person, signin }].
-  var SCENARIOS = [
-    ["Screens", [
-      ["Overview", "Phase 1 dashboard · central data team", { team: "central", route: "overview" }],
-      ["People directory", "Learners, leads and alumni", { team: "central", route: "people" }],
-      ["Identity & audits", "Merge sampling and the merge log", { team: "central", route: "identity" }],
-      ["Data dictionary", "117 items, coverage and source health", { team: "central", route: "data" }]
-    ]],
-    ["Look up a person", [
-      ["Arjun · learning with WP", "Full profile with photo · re-acquired lead", { team: "central", route: "lookup", q: "arjun.kumar88@gmail.com" }],
-      ["Ananya · seen by a WP counsellor", "No cross-business consent · contact hidden", { team: "wp", route: "lookup", q: "+91 98234 41127" }],
-      ["Rohan · Study Abroad lead", "Sales Insights scores · intake passed", { team: "central", route: "lookup", q: "rohan.mehta07@gmail.com" }],
-      ["Shared family phone", "Two linked people to choose from", { team: "internshala", route: "lookup", q: "+91 99001 22334" }],
-      ["Kabir · a minor", "Restricted profile, basics only", { team: "unacademy", route: "lookup", person: "kabir" }],
-      ["New to upGrad", "No match · create a lead", { team: "internshala", route: "lookup", q: "+91 91234 56789" }]
-    ]],
-    ["Flows", [
-      ["Sign in from the start", "Email, code, team and rules", { signin: true }]
-    ]]
-  ];
-  var RV = { open: false, cur: null };
-  $("#rvLayout").innerHTML = LAYOUTS.map(function (l) { return '<button type="button" data-layout="' + l[0] + '" aria-pressed="' + (l[0] === LAYOUT) + '">' + esc(l[1]) + "</button>"; }).join("");
-  $("#rvScen").innerHTML = SCENARIOS.map(function (g, gi) {
-    return '<span class="rv-gh">' + esc(g[0]) + "</span>" + g[1].map(function (sc, i) {
-      return '<button type="button" data-scen="' + gi + "." + i + '"><b>' + esc(sc[0]) + "</b><span>" + esc(sc[1]) + "</span></button>";
-    }).join("");
-  }).join("");
+  var RV = { open: false };
+  $("#rvPerson").innerHTML = PERSONS.map(function (x) { return '<button type="button" data-person-at="' + x[0] + '" aria-pressed="false">' + esc(x[1]) + "</button>"; }).join("");
+  $("#rvTabs").innerHTML = TABPOS.map(function (x) { return '<button type="button" data-tabs-at="' + x[0] + '" aria-pressed="false">' + esc(x[1]) + "</button>"; }).join("");
+  // A tiny wireframe of the current arrangement: person, summary, tabs, content.
+  function rvThumb(person, tabs) {
+    var T = '<i class="w-t ' + (tabs === "top" ? "w-h" : "w-v") + '"></i>', C = '<i class="w-c"></i>', S = '<i class="w-s"></i>';
+    var detail = tabs === "top" ? '<b class="w-col">' + T + C + "</b>" : tabs === "left" ? '<b class="w-row">' + T + C + "</b>" : '<b class="w-row">' + C + T + "</b>";
+    if (person === "rail") {
+      var inRail = tabs === "left";
+      return '<b class="w-row"><b class="w-col w-side"><i class="w-p w-tall"></i>' + (inRail ? T : "") + '</b><b class="w-col">' + S + (inRail ? C : detail) + "</b></b>";
+    }
+    return '<b class="w-col"><i class="w-p w-wide"></i>' + S + detail + "</b>";
+  }
+  function layoutLabel() {
+    var p = PERSONS.filter(function (x) { return x[0] === PERSON; })[0][1];
+    var t = { top: "tabs on top", left: "tabs on the left", right: "tabs on the right" }[TABS];
+    return p + " · " + t;
+  }
   function rvSync() {
-    var v = document.documentElement.getAttribute("data-v"), lay = LAYOUTS.filter(function (l) { return l[0] === LAYOUT; })[0];
-    $$("#rvLayout button").forEach(function (b) { b.setAttribute("aria-pressed", v === "3" && b.getAttribute("data-layout") === LAYOUT); });
-    $("#rvLayoutNote").textContent = v === "3" ? lay[2] + "." : "Layouts are for V3. Picking one switches to V3.";
-    $("#rvSummary").textContent = "V" + v + (v === "3" ? " · " + lay[1] : "");
-    $$("#rvScen [data-scen]").forEach(function (b) { if (b.getAttribute("data-scen") === RV.cur) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current"); });
+    var v = document.documentElement.getAttribute("data-v"), on3 = v === "3";
+    $$("#rvPerson button").forEach(function (b) { b.setAttribute("aria-pressed", on3 && b.getAttribute("data-person-at") === PERSON); });
+    $$("#rvTabs button").forEach(function (b) { b.setAttribute("aria-pressed", on3 && b.getAttribute("data-tabs-at") === TABS); });
+    $("#rvThumb").innerHTML = rvThumb(PERSON, TABS);
+    $("#rvThumb").classList.toggle("off", !on3);
+    $("#rvLayoutNote").textContent = on3 ? describeLayout() : "These layouts are for V3. Picking one switches to V3.";
+    $("#rvSummary").textContent = "V" + v + (on3 ? " · " + layoutLabel() : "");
+  }
+  function describeLayout() {
+    var who = PERSON === "rail" ? "Person card on the left" : "Person card across the top";
+    var tabs = TABS === "top" ? "section tabs in a row above the details" : TABS === "left" ? (PERSON === "rail" ? "section tabs listed under the person card" : "section tabs listed on the left") : "section tabs listed on the right";
+    return who + ", " + tabs + ".";
   }
   function rvOpen(open) {
     RV.open = open; $("#rvPanel").hidden = !open; $("#rvToggle").setAttribute("aria-expanded", open);
     if (open) { rvSync(); $("#rvPanel").focus(); }
   }
-  function runScenario(o) {
-    if (o.signin) { S = { step: "signin" }; save(); render(); window.scrollTo(0, 0); return; }
-    if (!S || S.step !== "app" || S.team !== o.team) startPreview(o.team);
-    if (location.hash !== "#/" + o.route) history.replaceState(null, "", "#/" + o.route);
-    render();
-    if (o.q) runLookup(o.q, true);
-    if (o.person) {
-      L = { status: "one", label: "", matches: [{ id: o.person, how: "linked family phone" }], person: o.person, how: "linked family phone" };
-      V = freshView(); $("#lookup").value = ""; renderLookup();
-    }
-    window.scrollTo(0, 0); requestAnimationFrame(slideAll);
+  function rvApply() {
+    try { localStorage.setItem("cip-person", PERSON); localStorage.setItem("cip-tabs", TABS); } catch (er) {}
+    applyLookupLayout();
+    if (document.documentElement.getAttribute("data-v") !== "3") setVersion("3", true);
+    renderLookup(); rvSync(); requestAnimationFrame(slideAll);
   }
   $("#rvToggle").addEventListener("click", function () { rvOpen(!RV.open); });
   $("#rvClose").addEventListener("click", function () { rvOpen(false); $("#rvToggle").focus(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && RV.open) { rvOpen(false); $("#rvToggle").focus(); } });
   $("#vswitch").addEventListener("click", function () { requestAnimationFrame(rvSync); });
-  $("#rvLayout").addEventListener("click", function (e) {
-    var b = e.target.closest("[data-layout]"); if (!b) return;
-    LAYOUT = b.getAttribute("data-layout"); try { localStorage.setItem("cip-layout", LAYOUT); } catch (er) {}
-    $("#lookupResult").setAttribute("data-layout", LAYOUT);
-    if (document.documentElement.getAttribute("data-v") !== "3") setVersion("3", true);
-    renderLookup(); rvSync(); requestAnimationFrame(slideAll);
-  });
-  $("#rvScen").addEventListener("click", function (e) {
-    var b = e.target.closest("[data-scen]"); if (!b) return;
-    var k = b.getAttribute("data-scen").split("."); RV.cur = b.getAttribute("data-scen");
-    runScenario(SCENARIOS[+k[0]][1][+k[1]][2]); rvSync();
-  });
+  $("#rvPerson").addEventListener("click", function (e) { var b = e.target.closest("[data-person-at]"); if (b) { PERSON = b.getAttribute("data-person-at"); rvApply(); } });
+  $("#rvTabs").addEventListener("click", function (e) { var b = e.target.closest("[data-tabs-at]"); if (b) { TABS = b.getAttribute("data-tabs-at"); rvApply(); } });
   rvSync();
 
   var V3READY = true;
