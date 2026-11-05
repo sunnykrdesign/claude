@@ -91,9 +91,10 @@ The profile and data model follow the four data sheets (Learner Profile, Academi
 - **Card layout:** the detail cards stack in one column on every screen size. On wider cards each row reads label | value | source. In V2 and V3 the left profile column uses lighter type and lists its facts as label and value pairs.
 - Every value shows its source system (Prism, LSQ, HubSpot, OMS, SA/WP Sales Insights, CMS or a rule). Where sources conflicted, the merge rule that picked the value is shown.
 - **Sensitivity:** T1 contact details are hidden until the viewer gives a reason. T2 values are bands only: the financial profile needs a reason before it's shown. Other businesses never see T2 values, payments or revenue. Every reveal is logged.
-- **Data model** (central data team only, `#/data`) is a searchable data dictionary of all 117 items:
-  - each item lists its LSQ, HubSpot, Prism, OMS and Sales Insights source fields, merge rule, storage and sensitivity tier, plus a P0/P1/P2 priority;
-  - the page also shows the source systems, the shared event envelope, the tables (`person`, `identifier`, `attribute_value`, `enrolment`, `event`, `business_status`, `consent`, `merge_log`, `access_log`) and who can see what.
+- **Data dictionary** (central data team only, `#/data`) lists all 117 items from the four sheets:
+  - **For each item:** sample coverage (share of profiles that have it), main source and its share of values, last sync, and whether its mapping is verified (from each sheet's "Check" column), plus its source fields, merge rule, storage, sensitivity tier and P0/P1/P2 priority.
+  - **Across the page:** headline numbers (P0 coverage, weak P0 items, sources syncing, mappings verified), source health, who can see what and how a value is stored.
+  - **Tables:** the tables behind the profile sit in a collapsed "For engineers" section.
 
 Sample photo: `assets/profile-arjun.jpg`.
 
