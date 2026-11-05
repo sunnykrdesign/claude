@@ -106,15 +106,15 @@ button{font-family:inherit;cursor:pointer}
 .later{display:flex;flex-direction:column;gap:2px}
 .later .label{padding:0 12px 6px;font-size:12px;color:var(--muted)}
 .later div:not(.label){display:flex;align-items:center;min-height:36px;padding:0 12px;font-size:14px;color:var(--muted)}
-.me{margin-top:auto;display:flex;flex-direction:column;gap:10px;padding:16px 12px 0;box-shadow:0 -1px 0 var(--line)}
+.me{margin-top:auto;display:flex;flex-direction:column;gap:10px;padding:14px;background:#fff;border-radius:18px}
 .me .id{display:flex;align-items:center;gap:10px;min-width:0}
 .me .av{flex:0 0 34px;height:34px;border-radius:50%;background:var(--text);color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center}
 .me .nm{display:flex;flex-direction:column;min-width:0}
 .me .nm b{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .me .nm span{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.me .acts{display:flex;gap:16px}
-.me .acts button{border:none;background:transparent;padding:0;min-height:32px;font-size:13px;color:var(--muted)}
-.me .acts button:hover{color:var(--red-text)}
+.me .acts{display:flex;gap:12px}
+.me .acts button{flex:1 1 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:32px;padding:6px 0;border:none;background:transparent;border-radius:10px;font-size:10px;font-weight:400;line-height:1.2;color:#6E6E73;white-space:nowrap;transition:background .2s,color .2s}
+.me .acts button:hover{background:var(--fill);color:var(--text)}
 .main{flex:1;min-width:0;padding:40px clamp(16px,4vw,64px) 96px}
 .wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:64px}
 
@@ -126,6 +126,8 @@ button{font-family:inherit;cursor:pointer}
   .later{display:none}
   .me{margin:0;padding:0;box-shadow:none;flex-direction:row;align-items:center;justify-content:space-between}
   .me .nm span{display:none}
+  .me{background:transparent;border-radius:0}
+  .me .acts button{flex:0 0 auto;padding:4px 8px}
   .main{padding-top:24px}
   .wrap{gap:48px}
 }
@@ -598,7 +600,7 @@ html[data-v="2"] .side{background:#FBFBFC;border-right:1px solid var(--line);hei
 html[data-v="2"] .nav a{min-height:40px;color:#55555C;font-weight:500}
 html[data-v="2"] .nav a[aria-current="page"]{background:#fff;color:var(--text);box-shadow:0 1px 2px rgba(20,20,40,.06),0 0 0 1px var(--line)}
 html[data-v="2"] .nav a[aria-current="page"] svg{color:var(--red-text)}
-html[data-v="2"] .me{background:#fff;border-radius:16px;padding:14px;box-shadow:0 0 0 1px var(--line)}
+html[data-v="2"] .me{background:#fff;border-radius:18px;padding:14px;box-shadow:0 0 0 1px var(--line)}
 html[data-v="2"] .main,html[data-v="3"] .main{padding:28px clamp(16px,2.6vw,36px) 72px}
 html[data-v="2"] .wrap,html[data-v="3"] .wrap{max-width:1240px;gap:36px}
 html[data-v="2"] .view[data-view="lookup"],html[data-v="3"] .view[data-view="lookup"]{gap:32px !important}
@@ -1091,9 +1093,9 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
         <span class="nm"><b id="meName"></b><span id="meTeam"></span></span>
       </div>
       <div class="acts">
-        <button type="button" data-action="share">Share</button>
-        <button type="button" data-action="switch-team">Switch team</button>
-        <button type="button" data-action="signout" id="signoutBtn">Sign out</button>
+        <button type="button" data-action="share"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"/><path d="M8 7l4-4 4 4"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg><span>Share</span></button>
+        <button type="button" data-action="switch-team"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h14l-4-4"/><path d="M20 16H6l4 4"/></svg><span>Switch team</span></button>
+        <button type="button" data-action="signout" id="signoutBtn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h4a2 2 0 012 2v12a2 2 0 01-2 2h-4"/><path d="M10 16l-4-4 4-4"/><path d="M6 12h10"/></svg><span>Sign out</span></button>
       </div>
     </div>
   </aside>
@@ -1538,7 +1540,7 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
 
   /* ---------- Preview links: ?preview=1&team=wp#/lookup ---------- */
   function startPreview(team) {
-    S = { step: "app", preview: true, name: "Guest preview", email: "", team: TEAMS[team] ? team : "central", acked: true };
+    S = { step: "app", preview: true, name: "Demo User", email: "", team: TEAMS[team] ? team : "central", acked: true };
     save();
   }
   (function () {
@@ -1665,10 +1667,9 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
     var team = TEAMS[S.team];
     $("#meName").textContent = S.name;
     $("#meTeam").textContent = team.label;
-    $("#meAv").textContent = S.preview ? "G" : initials(S.name);
+    $("#meAv").textContent = initials(S.name);
     $("#previewBar").hidden = !S.preview;
     $("#previewTeam").textContent = team.label;
-    $("#signoutBtn").textContent = S.preview ? "Sign in" : "Sign out";
     $$(".nav a").forEach(function (a) { a.hidden = team.routes.indexOf(a.getAttribute("data-route")) < 0; });
     $(".nav").hidden = team.routes.length < 2;
     $(".later").hidden = !!team.bu;
