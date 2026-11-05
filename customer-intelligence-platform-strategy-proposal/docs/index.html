@@ -876,11 +876,11 @@ html[data-v="3"] .v3ov{display:grid;grid-template-columns:minmax(0,1fr) 300px;ga
 .scard.flash{animation:flash 1.3s var(--ease)}
 @keyframes flash{0%{box-shadow:0 0 0 5px rgba(29,29,31,.10)}100%{box-shadow:0 0 0 0 rgba(29,29,31,0)}}
 /* Section bar */
-.jump{position:sticky;top:12px;z-index:6;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding:5px;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%);border-radius:14px;box-shadow:0 0 0 1px var(--line),0 8px 24px rgba(16,16,24,.06)}
+.jump{position:relative;align-self:flex-start;max-width:100%;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding:5px;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%);border-radius:14px;box-shadow:0 0 0 1px var(--line),0 8px 24px rgba(16,16,24,.06)}
 .jump::-webkit-scrollbar{display:none}
 .jump button{flex:0 0 auto;border:none;background:transparent;height:34px;padding:0 14px;border-radius:10px;font-size:13px;font-weight:500;color:var(--muted);transition:color .25s,background .25s}
 .jump button:hover{color:var(--text)}
-.jump button[aria-current="location"]{background:var(--text);color:#fff}
+.jump button[aria-selected="true"]{background:var(--text);color:#fff}
 html[data-v="3"] .jump{background:rgba(228,228,232,.9);box-shadow:inset 0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(16,16,24,.06)}
 html[data-v="3"] [data-slide] > button[aria-current="location"]{color:var(--text) !important}
 @media (min-width:1181px){html[data-v="3"] .v3rail{position:sticky;top:20px}}
@@ -960,6 +960,8 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
 .eng[open] summary svg{transform:rotate(180deg)}
 .eng .tgrid{padding:0 24px 24px}
 .eng .tcard:not(.core){background:var(--track);box-shadow:none}
+.sgrid.fresh > .scard{animation:rise .4s var(--ease) backwards}
+@media (prefers-reduced-motion: reduce){.sgrid.fresh > .scard{animation:none}}
 </style>
 </head>
 <body>
@@ -1909,7 +1911,7 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
   }
 
   var PAGE = 6;
-  function freshView() { return { tab: "profile", bu: "all", cat: "all", shown: PAGE, revealed: false, finRevealed: false }; }
+  function freshView() { return { tab: "profile", sec: "c-id", bu: "all", cat: "all", shown: PAGE, revealed: false, finRevealed: false }; }
   var L = { status: "idle", label: "", matches: [], person: null, how: "" };
   var V = freshView();
   var lookupTimer = null;
@@ -2097,15 +2099,17 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
     var consent = '<div class="attr-list">' + yes("call", "Calls") + yes("email", "Email") + yes("sms", "SMS") + yes("whatsapp", "WhatsApp") + yes("ads", "Marketing and ads") + yes("callback", "Callback") + yes("cross", "Offers from other businesses") + "</div>";
     var consentFoot = '<p class="note">' + esc(c.basis) + (c.since ? " · recorded " + esc(c.since) : "") + ". Checked before any outreach; every change is logged in Activity.</p>";
 
-    return jumpHTML([["c-id", "Contact"], ["c-consent", "Consent"], ["c-personal", "Personal"], ["c-edu", "Education"], ["c-career", "Career"], ["c-asp", "Aspiration"], ["c-fin", "Financial"]]) + '<div class="sgrid">' +
-      cardHTML("c-id", "Identity & contact", '<span class="tag">T1 · vault</span>', contact, contactFoot) +
-      cardHTML("c-consent", "Consent & preferences", "", consent, consentFoot) +
-      cardHTML("c-personal", "Personal details", "", rowsHTML(p.personal, { otherBu: otherBu })) +
-      cardHTML("c-edu", "Education before upGrad", "", rowsHTML(p.education)) +
-      cardHTML("c-career", "Career", "", rowsHTML(p.career)) +
-      cardHTML("c-asp", "Aspiration", "", rowsHTML(p.aspiration)) +
-      cardHTML("c-fin", "Financial profile", '<span class="tag red">T2 · bands only</span>', fin, finFoot) +
-      "</div>";
+    var C = {
+      "c-id": function () { return cardHTML("c-id", "Identity & contact", '<span class="tag">T1 · vault</span>', contact, contactFoot); },
+      "c-consent": function () { return cardHTML("c-consent", "Consent & preferences", "", consent, consentFoot); },
+      "c-personal": function () { return cardHTML("c-personal", "Personal details", "", rowsHTML(p.personal, { otherBu: otherBu })); },
+      "c-edu": function () { return cardHTML("c-edu", "Education before upGrad", "", rowsHTML(p.education)); },
+      "c-career": function () { return cardHTML("c-career", "Career", "", rowsHTML(p.career)); },
+      "c-asp": function () { return cardHTML("c-asp", "Aspiration", "", rowsHTML(p.aspiration)); },
+      "c-fin": function () { return cardHTML("c-fin", "Financial profile", '<span class="tag red">T2 · bands only</span>', fin, finFoot); }
+    };
+    var sec = C[V.sec] ? V.sec : "c-id", fresh = sec !== V.secSeen; V.secSeen = sec;
+    return secTabsHTML(sec) + '<div class="sgrid' + (fresh ? " fresh" : "") + '" id="secpanel" role="tabpanel" aria-labelledby="jt-' + sec + '">' + C[sec]() + "</div>";
   }
   function idRow(label, value, tag, verified, src) {
     return '<div class="row tight"><span class="txt"><span class="title plain">' + esc(value) + '</span><span class="desc">' + esc(label) + (tag ? " · " + esc(tag) : "") + "</span></span>" +
@@ -2194,43 +2198,23 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
   // Arrow keys move between profile tabs.
   $("#lookupResult").addEventListener("keydown", function (e) {
     var t = e.target.closest('[role="tab"]'); if (!t || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
-    var all = $$('[role="tab"]', $("#lookupResult")), i = all.indexOf(t) + (e.key === "ArrowRight" ? 1 : -1);
+    var all = $$('[role="tab"]', t.parentNode), i = all.indexOf(t) + (e.key === "ArrowRight" ? 1 : -1);
     all[(i + all.length) % all.length].click(); e.preventDefault();
   });
 
-  // Section bar on the Learner profile: jump to a card; the current one follows your scroll.
-  function jumpHTML(items) {
-    return '<nav class="jump" id="jump" data-slide aria-label="Jump to a section">' + items.map(function (it, i) {
-      return '<button type="button" data-jump="s-' + it[0] + '"' + (i === 0 ? ' aria-current="location"' : "") + ">" + esc(it[1]) + "</button>";
-    }).join("") + "</nav>";
-  }
-  var JUMPING = 0;
-  function setJump(id) {
-    var nav = $("#jump"); if (!nav) return;
-    $$("[data-jump]", nav).forEach(function (x) { if (x.getAttribute("data-jump") === id) x.setAttribute("aria-current", "location"); else x.removeAttribute("aria-current"); });
-    var a = nav.querySelector('[aria-current="location"]');
-    if (a && nav.scrollWidth > nav.clientWidth) nav.scrollTo({ left: Math.max(0, a.offsetLeft - 24), behavior: REDUCED ? "auto" : "smooth" });
-    slideAll();
+  // Section tabs on the Learner profile: tap a section to see just that card, no long scroll.
+  var SECTIONS = [["c-id", "Contact"], ["c-consent", "Consent"], ["c-personal", "Personal"], ["c-edu", "Education"], ["c-career", "Career"], ["c-asp", "Aspiration"], ["c-fin", "Financial"]];
+  function secTabsHTML(cur) {
+    return '<div class="jump" id="jump" role="tablist" aria-label="Profile sections" data-slide>' + SECTIONS.map(function (s) {
+      var on = s[0] === cur;
+      return '<button type="button" role="tab" id="jt-' + s[0] + '" aria-controls="secpanel" aria-selected="' + on + '" tabindex="' + (on ? 0 : -1) + '" data-sec="' + s[0] + '">' + esc(s[1]) + "</button>";
+    }).join("") + "</div>";
   }
   $("#lookupResult").addEventListener("click", function (e) {
-    var b = e.target.closest("[data-jump]"); if (!b) return;
-    var id = b.getAttribute("data-jump"), el = document.getElementById(id); if (!el) return;
-    JUMPING = Date.now(); setJump(id);
-    el.scrollIntoView({ behavior: REDUCED ? "auto" : "smooth", block: "start" });
-    el.classList.toggle("flash", false); void el.offsetWidth; el.classList.toggle("flash", true);
+    var b = e.target.closest("[data-sec]"); if (!b) return;
+    V.sec = b.getAttribute("data-sec"); renderLookup();
+    var f = document.getElementById("jt-" + V.sec); if (f) f.focus();
   });
-  window.addEventListener("scroll", function () {
-    var nav = $("#jump"); if (!nav || !nav.offsetParent || Date.now() - JUMPING < 900) return;
-    var line = nav.getBoundingClientRect().bottom + 32, best = null, bestTop = -Infinity;
-    $$("[data-jump]", nav).forEach(function (b) {
-      var el = document.getElementById(b.getAttribute("data-jump")); if (!el) return;
-      var t = el.getBoundingClientRect().top;
-      if (t <= line && t > bestTop) { bestTop = t; best = b.getAttribute("data-jump"); }
-    });
-    best = best || nav.querySelector("[data-jump]").getAttribute("data-jump");
-    var cur = nav.querySelector('[aria-current="location"]');
-    if (!cur || cur.getAttribute("data-jump") !== best) setJump(best);
-  }, { passive: true });
 
   /* ---------- Data dictionary ---------- */
   var CAT = JSON.parse($("#catalog").textContent);
