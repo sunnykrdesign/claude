@@ -1103,6 +1103,23 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
 .rv-switch{width:38px;height:22px;background:rgba(255,255,255,.18)}
 .rv-switch::after{width:18px;height:18px}
 .rv-switch:checked::after{transform:translateX(16px)}
+/* Locked sections */
+.lockbar{display:flex;align-items:center;gap:14px;padding:16px 20px}
+.lock-ic{flex:0 0 38px;height:38px;border-radius:12px;background:var(--fill);color:var(--text);display:flex;align-items:center;justify-content:center;transition:background .25s,color .25s}
+.lockbar.open .lock-ic{background:#E3F6E8;color:#1D7A34}
+.lockbar > div{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:2px}
+.lockbar b{font-size:15px;font-weight:600}
+.lockbar > div span{font-size:13px;color:var(--muted);line-height:1.45}
+.lock-sw{flex:0 0 auto;display:flex}
+.lockform{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:16px 20px;animation:reveal .35s var(--ease) backwards}
+.lockform input{flex:1 1 220px;min-width:0;height:40px;padding:0 14px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font:inherit;font-size:14px;letter-spacing:.08em}
+.lockform input::placeholder{letter-spacing:0}
+.lockform input:focus{outline:2px solid var(--focus);outline-offset:1px}
+.lockform input[aria-invalid="true"]{border-color:var(--red)}
+.lock-err{flex-basis:100%;margin:0;font-size:13px;color:var(--red-text)}
+.tlock{margin-left:6px;vertical-align:-1px;opacity:.65}
+.rv-code{font-family:var(--mono);font-size:12px;padding:1px 6px;border-radius:5px;background:rgba(255,255,255,.12);color:#fff}
+@media (prefers-reduced-motion: reduce){.lockform{animation:none}}
 </style>
 </head>
 <body>
@@ -1666,6 +1683,9 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
       <span class="rv-sub">Section tabs</span><div class="rv-seg" id="rvTabs" role="group" aria-label="Section tabs position"></div>
       <p class="rv-note" id="rvLayoutNote"></p>
     </div>
+    <div class="rv-sec"><span class="rv-k">Locked sections</span>
+      <p class="rv-note">Financial details in Look up a person are locked. The demo team password is <code class="rv-code">upgrad2026</code>.</p>
+    </div>
     <div class="rv-sec"><span class="rv-k">Sidebar menu</span>
       <div class="rv-rows" id="rvNav"></div>
       <p class="rv-note">Turn items off to review the product without them. Counsellor teams only ever see Look up a person.</p>
@@ -2086,7 +2106,7 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
   }
 
   var PAGE = 6;
-  function freshView() { return { tab: "personal", bu: "all", cat: "all", shown: PAGE, revealed: false, finRevealed: false }; }
+  function freshView() { return { tab: "personal", bu: "all", cat: "all", shown: PAGE, revealed: false, finOpen: false, finAsk: false, lockErr: "" }; }
   var L = { status: "idle", label: "", matches: [], person: null, how: "" };
   var V = freshView();
   var lookupTimer = null;
@@ -2218,8 +2238,8 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
     var tabsAt = TABS, personAt = PERSON, vert = tabsAt !== "top";
     var cur = SECT.some(function (x) { return x[0] === V.tab; }) ? V.tab : "personal", fresh = cur !== V.seen; V.seen = cur; V.tab = cur;
     var list = '<div class="' + (vert ? "pnav vtabs" : "tabs") + '" role="tablist" aria-label="Profile sections"' + (vert ? ' aria-orientation="vertical"' : "") + ' id="ptabs" data-slide>' + SECT.map(function (t) {
-      var on = t[0] === cur;
-      return '<button type="button" role="tab" id="tab-' + t[0] + '" aria-controls="panel" aria-selected="' + on + '" tabindex="' + (on ? 0 : -1) + '" data-tab="' + t[0] + '">' + t[1] + "</button>";
+      var on = t[0] === cur, locked = t[0] === "financial" && !otherBu && !V.finOpen;
+      return '<button type="button" role="tab" id="tab-' + t[0] + '" aria-controls="panel" aria-selected="' + on + '" tabindex="' + (on ? 0 : -1) + '" data-tab="' + t[0] + '">' + t[1] + (locked ? '<svg class="tlock" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg><span class="sr"> (locked)</span>' : "") + "</button>";
     }).join("") + "</div>";
     var panel = '<div id="panel" class="' + (vert ? "vpanel" : "") + (fresh ? " fresh" : "") + '" role="tabpanel" aria-labelledby="tab-' + cur + '">' + sectionBody(cur, p, team, otherBu, noContact) + "</div>";
     // A slim copy of the person, shown in the sticky bar once the full card scrolls away.
@@ -2230,8 +2250,22 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
     return playout(back, rail, h + open + '<div class="dv dv-' + tabsAt + '"><div class="vcol">' + mini + list + "</div>" + panel + "</div></section>");
   }
   var SECT = [["personal", "Personal"], ["education", "Education"], ["professional", "Professional"], ["financial", "Financial"], ["activity", "Activity"]];
-  function insightCard(id, title, rows) {
-    return cardHTML(id, title, '<span class="tag">Derived</span>', rowsHTML(rows.filter(function (r) { return r[1]; }).map(function (r) { return [r[0], r[1], "", "", r[2] || ""]; })));
+  function insightCard(id, title, rows, hide) {
+    return cardHTML(id, title, '<span class="tag">Derived</span>', rowsHTML(rows.filter(function (r) { return r[1]; }).map(function (r) { return [r[0], r[1], "", "", r[2] || ""]; }), { hide: !!hide }));
+  }
+  // Locked sections: Financial stays masked until someone turns it on with the team password.
+  // Prototype only: in the product the check runs on the server, against the viewer's role, and is logged.
+  var TEAM_PW = "upgrad2026", LOCKOUT = { tries: 0, until: 0 };
+  function lockbarHTML() {
+    var open = V.finOpen, ask = V.finAsk && !open;
+    var ic = open ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 017.5-2"/></svg>'
+      : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>';
+    var status = open ? "Visible to you until you turn this off or open another person. This access is logged." : ask ? "Enter the team password to view budget, funding, salary band and revenue." : "Locked. Turn on to view, with the team password.";
+    var h = '<div class="card lockbar' + (open ? " open" : "") + '"><span class="lock-ic">' + ic + '</span><div><b>Financial details</b><span>' + status + '</span></div>' +
+      '<label class="lock-sw"><span class="sr">Show financial details</span><input type="checkbox" class="switch" data-finlock' + (open || ask ? " checked" : "") + "></label></div>";
+    if (ask) h += '<form class="card lockform" data-unlock novalidate><label for="lockPw" class="sr">Team password</label><input id="lockPw" type="password" placeholder="Team password" autocomplete="off"' + (V.lockErr ? ' aria-invalid="true" aria-describedby="lockErr"' : "") + '>' +
+      '<button type="submit" class="btn dark sm">Unlock</button><button type="button" class="textbtn" data-lockcancel>Cancel</button>' + (V.lockErr ? '<p class="lock-err" id="lockErr" role="alert">' + esc(V.lockErr) + "</p>" : "") + "</form>";
+    return h;
   }
   function sectionBody(key, p, team, otherBu, noContact) {
     var i = p.ins || {};
@@ -2239,8 +2273,8 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
     if (key === "education") return learnerHTML(p, team, otherBu, noContact, ["c-edu"]) + learningHTML(p);
     if (key === "professional") return learnerHTML(p, team, otherBu, noContact, ["c-career", "c-asp"]) +
       insightCard("c-outlook", "Outlook", [["Intent", i.intent, i.intentD], ["Next-best programme", i.nbp, "Rules first, model later"]].concat((i.scores || []).map(function (sc) { return [sc[0], sc[1], "Model " + sc[2]]; })));
-    if (key === "financial") return learnerHTML(p, team, otherBu, noContact, ["c-fin"]) +
-      insightCard("c-money", "With upGrad", [["Lifetime revenue", otherBu ? "Owning business only" : i.revenue, otherBu ? "" : i.revenueD], ["Programmes purchased", i.bought], ["Re-acquired", i.reacq ? "Yes" : "No", i.reacqD]]);
+    if (key === "financial") return (otherBu ? "" : lockbarHTML()) + learnerHTML(p, team, otherBu, noContact, ["c-fin"]) +
+      insightCard("c-money", "With upGrad", [["Lifetime revenue", otherBu ? "Owning business only" : i.revenue, otherBu ? "" : i.revenueD], ["Programmes purchased", i.bought], ["Re-acquired", i.reacq ? "Yes" : "No", i.reacqD]], !otherBu && !V.finOpen);
     return lifecycleHTML(p) + insightCard("c-engage", "Engagement", [["Relationship", i.state + " · " + p.lifecycle.length + (p.lifecycle.length > 1 ? " businesses" : " business")], ["First seen · last active", i.first + " · " + i.last],
       ["Speed to lead", i.speed, "Lead created → first call"], ["Contact fatigue", i.fatigue, "Outbound touches across businesses"], ["Learning health", i.health, i.healthD]]) + activityHTML(p, otherBu);
   }
@@ -2276,9 +2310,8 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
       : '<button type="button" class="revealbtn" data-reveal>Show contact details for this call</button>';
     if (noContact) contact = '<div class="ids" style="border:none;padding-top:8px"><span class="k">Global person ID</span><code>' + esc(p.gid) + "</code></div>";
 
-    var fin = otherBu ? '<p class="note" style="padding:8px 0 4px">The financial profile isn\'t shared with other businesses.</p>' : rowsHTML(p.finance, { hide: !V.finRevealed });
-    var finFoot = otherBu ? "" : V.finRevealed ? '<p class="note" role="status">Shown to ' + esc(S.name || "you") + " for a fee or loan discussion. This access is logged.</p>"
-      : '<button type="button" class="revealbtn" data-fin>Show for a fee or loan discussion</button>';
+    var fin = otherBu ? '<p class="note" style="padding:8px 0 4px">The financial profile isn\'t shared with other businesses.</p>' : rowsHTML(p.finance, { hide: !V.finOpen });
+    var finFoot = "";
 
     var yes = function (k, label) {
       var ok = !!c[k];
@@ -2352,7 +2385,6 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
     } else if (t.hasAttribute("data-back")) { L.person = null; renderLookup(); }
     else if (t.hasAttribute("data-tab")) { V.tab = t.getAttribute("data-tab"); renderLookup(); var f = $("#tab-" + V.tab); if (f) f.focus(); }
     else if (t.hasAttribute("data-reveal")) { V.revealed = true; renderLookup(); }
-    else if (t.hasAttribute("data-fin")) { V.finRevealed = true; renderLookup(); }
     else if (t.hasAttribute("data-more")) { V.shown += PAGE; renderLookup(); }
     else if (t.hasAttribute("data-bu")) { V.bu = t.getAttribute("data-bu"); V.shown = PAGE; renderLookup(); }
     else if (t.hasAttribute("data-cat")) { V.cat = t.getAttribute("data-cat"); V.shown = PAGE; renderLookup(); }
@@ -2360,6 +2392,29 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
     else if (t.hasAttribute("data-clear")) { L.status = "idle"; $("#lookup").value = ""; renderLookup(); $("#lookup").focus(); }
   });
   // Arrow keys move between profile tabs.
+  $("#lookupResult").addEventListener("change", function (e) {
+    var sw = e.target.closest("[data-finlock]"); if (!sw) return;
+    if (sw.checked) { V.finAsk = true; V.lockErr = ""; renderLookup(); var pw = $("#lockPw"); if (pw) pw.focus(); }
+    else { V.finOpen = false; V.finAsk = false; V.lockErr = ""; renderLookup(); toast("Financial details locked"); }
+  });
+  $("#lookupResult").addEventListener("submit", function (e) {
+    var form = e.target.closest("[data-unlock]"); if (!form) return;
+    e.preventDefault();
+    var now = Date.now(), val = ($("#lockPw") || {}).value || "";
+    if (LOCKOUT.until > now) { V.lockErr = "Too many tries. Try again in " + Math.ceil((LOCKOUT.until - now) / 1000) + " seconds."; renderLookup(); $("#lockPw").focus(); return; }
+    if (val === TEAM_PW) {
+      LOCKOUT.tries = 0; V.finOpen = true; V.finAsk = false; V.lockErr = ""; renderLookup();
+      toast("Financial details unlocked · logged"); var t = $("#tab-financial"); if (t) t.focus(); return;
+    }
+    LOCKOUT.tries += 1;
+    if (LOCKOUT.tries >= 3) { LOCKOUT.tries = 0; LOCKOUT.until = now + 30000; V.lockErr = "That's 3 wrong tries. Unlocking is paused for 30 seconds."; }
+    else V.lockErr = !val ? "Enter the team password." : "That password isn't right. Ask your team lead for the current one.";
+    renderLookup(); $("#lockPw").focus();
+  });
+  $("#lookupResult").addEventListener("click", function (e) {
+    if (!e.target.closest("[data-lockcancel]")) return;
+    V.finAsk = false; V.lockErr = ""; renderLookup();
+  });
   $("#lookupResult").addEventListener("change", function (e) {
     var sel = e.target.closest("[data-afilter]"); if (!sel) return;
     var v = sel.value; V.cat = "all"; V.bu = "all"; V.shown = PAGE;

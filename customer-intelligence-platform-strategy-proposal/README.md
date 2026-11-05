@@ -45,6 +45,7 @@ A **Review** button in the bottom-right corner opens the review controls. They'r
 - **Design version:** V1, V2 or V3. You can also add `?v=1`, `?v=2` or `?v=3` to the URL.
 - **Look up a person · layout** (all versions): pick where the **person card** sits (Left panel or Top header) and where the **section tabs** sit (Top, Left or Right). That makes six combinations, and a small diagram shows the current one.
 
+- **Locked sections:** shows the demo team password.
 - **Sidebar menu:** an on/off switch for each sidebar item: Overview, People, Look up a person, Identity & audits, Data dictionary and Later phases.
   - Hidden items leave the sidebar, and links to them open the next visible page.
   - At least one page always stays on.
@@ -103,6 +104,12 @@ The profile and data model follow the four data sheets (Learner Profile, Academi
   - In the left-panel layouts, the person card stays pinned.
   - In the top-header layouts, a slim bar with the photo, name and key facts takes over once the card scrolls away.
   - The tabs stay pinned at the top, or beside the details when they're listed on the left or right.
+- **Locked financial details:** the Financial section starts locked, and its tab shows a small lock. You can see which fields exist, but every value is masked.
+  - Turning on **Show financial details** asks for the team password (demo: `upgrad2026`). The right password shows the values for that profile.
+  - Turning the switch off locks it again, and so does opening another person.
+  - After three wrong tries, unlocking pauses for 30 seconds.
+  - Counsellors from another business never see financial details, password or not.
+  - In this prototype the password is checked in the browser. The real product should check it on the server, against the viewer's role, and log each unlock.
 - **Less up front:** above the tabs there's only the person card and any "Worth acting on" moments.
 - **Card layout:** the detail cards stack in one column on every screen size. On wider cards each row reads label | value | source. In V2 and V3 the left profile column uses lighter type and lists its facts as label and value pairs.
 - Every value shows its source system (Prism, LSQ, HubSpot, OMS, SA/WP Sales Insights, CMS or a rule). Where sources conflicted, the merge rule that picked the value is shown.
