@@ -50,6 +50,10 @@ A switch in the bottom-right corner (or `?v=1`, `?v=2`, `?v=3` in the URL) chang
   - **Paid leads, checked against the profile:** a table of recent paid leads, filtered by business tabs with a sliding indicator. Clicking a row lifts it into a card with a red top edge, AI fields (next-best programme, intent) and actions.
   - **Business cards:** one per business, with a live profile count and an animated consent ring, plus a bar chart of lookups this week.
   - **Motion everywhere in V3:** tabs and segments use the same sliding indicator. Cards rise in with a stagger. People directory rows open into the same detail card.
+  - **Profile layouts:** a **Profile layout** dropdown on Look up a person switches between three layouts. The choice is remembered on that browser.
+    - **Side panel:** the person on the left, details on the right.
+    - **Top header:** the person, key facts and reachable channels across the top, with details full width below.
+    - **Side navigation:** a compact person card and one vertical menu (Summary · Contact … Financial · Learning & skills · Activity · Insights), showing one section at a time.
   - **Reduced motion:** all of this switches off when the system asks for reduced motion.
 
 ## People directory

@@ -962,6 +962,73 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
 .eng .tcard:not(.core){background:var(--track);box-shadow:none}
 .sgrid.fresh > .scard{animation:rise .4s var(--ease) backwards}
 @media (prefers-reduced-motion: reduce){.sgrid.fresh > .scard{animation:none}}
+/* ================= V3 profile layouts ================= */
+.layout-pick{display:none}
+html[data-v="3"] .layout-pick{display:flex;align-items:center;flex-wrap:wrap;gap:10px 12px;margin:-8px 0 -12px}
+.layout-pick label{font-size:13px;color:var(--muted)}
+.lsel{position:relative;display:inline-flex;align-items:center}
+.lsel select{appearance:none;-webkit-appearance:none;height:38px;padding:0 36px 0 14px;border:none;border-radius:12px;background:#fff;color:var(--text);font:inherit;font-size:14px;font-weight:500;cursor:pointer;box-shadow:0 1px 2px rgba(16,16,24,.04),0 0 0 1px var(--line)}
+.lsel select:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.lsel svg{position:absolute;right:13px;pointer-events:none;color:var(--muted)}
+.ldesc{font-size:13px;color:var(--muted)}
+
+/* Layout 2: top header (horizontal) */
+@media (min-width:1100px){
+  html[data-v="3"] #lookupResult[data-layout="top"] .playout{display:flex;flex-direction:column;align-items:stretch;gap:28px}
+  html[data-v="3"] #lookupResult[data-layout="top"] .prail{position:static}
+  html[data-v="3"] #lookupResult[data-layout="top"] .prail .pcard{padding:26px 28px 22px;gap:0}
+  html[data-v="3"] #lookupResult[data-layout="top"] .prail .pcard-top{flex-direction:row;align-items:center;gap:20px}
+  html[data-v="3"] #lookupResult[data-layout="top"] .prail .pcard .avatar{width:68px;height:68px}
+  html[data-v="3"] #lookupResult[data-layout="top"] .prail .pcard .who{flex:1 1 auto;gap:4px}
+  html[data-v="3"] #lookupResult[data-layout="top"] .prail .pcard .who h1{font-size:24px}
+  html[data-v="3"] #lookupResult[data-layout="top"] .prail .btn{width:auto;flex:0 0 auto;margin:0}
+  html[data-v="3"] #lookupResult[data-layout="top"] .prail .facts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin-top:22px;padding-top:0;border-top:1px solid var(--line)}
+  html[data-v="3"] #lookupResult[data-layout="top"] .prail .fact{flex-direction:column;align-items:flex-start;gap:4px;padding:16px 20px 2px 0;box-shadow:none}
+  html[data-v="3"] #lookupResult[data-layout="top"] .prail .fact + .fact{padding-left:20px;box-shadow:inset 1px 0 0 var(--line)}
+  html[data-v="3"] #lookupResult[data-layout="top"] .prail .fact .v{text-align:left}
+  html[data-v="3"] #lookupResult[data-layout="top"] .prail .fact .meter{flex:0 0 auto;width:100%;height:3px;margin-top:6px}
+  html[data-v="3"] #lookupResult[data-layout="top"] .prail .reach{flex-direction:row;align-items:center;gap:12px;margin-top:18px;padding-top:16px}
+  html[data-v="3"] #lookupResult[data-layout="top"] .pmain .snap{grid-template-columns:repeat(6,minmax(0,1fr))}
+}
+
+/* Layout 3: side navigation (vertical) */
+.nlayout{display:grid;grid-template-columns:268px minmax(0,1fr);gap:28px;align-items:start}
+.nside{position:sticky;top:20px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.nid{background:#fff;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:0 1px 2px rgba(16,16,24,.03),0 10px 30px rgba(16,16,24,.045)}
+.nid-top{display:flex;align-items:flex-start;gap:12px;min-width:0}
+.nid .avatar{width:52px;height:52px;font-size:18px;flex:0 0 52px}
+.nid .who{display:flex;flex-direction:column;gap:3px;min-width:0}
+.main .nid .who h1{font-size:17px;font-weight:600;letter-spacing:-0.02em;line-height:1.25}
+.nid .headline{margin:0;font-size:12.5px;color:#48484D;line-height:1.45}
+.nid .matched{margin:0;font-size:11.5px;color:var(--muted);line-height:1.5}
+.nid .btn{width:100%;height:38px;font-size:13px}
+.pnav{display:flex;flex-direction:column;gap:1px;background:#fff;border-radius:20px;padding:8px;box-shadow:0 1px 2px rgba(16,16,24,.03),0 10px 30px rgba(16,16,24,.045)}
+.pnav .ngh{display:block;padding:12px 12px 6px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#9C9CA4}
+.pnav .ngh:first-child{padding-top:6px}
+.pnav button{display:flex;align-items:center;height:38px;padding:0 12px;border:none;border-radius:10px;background:transparent;text-align:left;font-size:14px;color:#5C5C63}
+.pnav button:hover{color:var(--text)}
+html[data-v="3"] .pnav .slider{background:#F1F1F4;box-shadow:none;border-radius:10px}
+html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
+.nmain{display:flex;flex-direction:column;gap:24px;min-width:0}
+.nmain.fresh > *{animation:rise .4s var(--ease) backwards}
+.nmain .kfacts{padding:24px 26px;gap:0}
+.nmain .kfacts .facts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;padding-top:0;border-top:none}
+.nmain .kfacts .fact{padding:0 18px 0 0;gap:4px}
+.nmain .kfacts .fact + .fact{padding-left:18px;box-shadow:inset 1px 0 0 var(--line)}
+.nmain .kfacts .fact .v{font-size:15px;font-weight:500}
+.nmain .kfacts .reach{margin-top:20px;padding-top:16px}
+.nmain .snap{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1099px){
+  .nlayout{grid-template-columns:1fr;gap:20px}
+  .nside{position:static}
+  .pnav{flex-direction:row;overflow-x:auto;scrollbar-width:none}
+  .pnav::-webkit-scrollbar{display:none}
+  .pnav .ngh{display:none}
+  .pnav button{flex:0 0 auto}
+  .nmain .kfacts .facts{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:14px}
+  .nmain .kfacts .fact:nth-child(odd){padding-left:0;box-shadow:none}
+}
+@media (prefers-reduced-motion: reduce){.nmain.fresh > *{animation:none}}
 </style>
 </head>
 <body>
@@ -1293,6 +1360,11 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
         <p class="field-err" id="lookupErr" hidden></p>
       </form>
 
+      <div class="layout-pick" id="layoutPick">
+        <label for="layoutSel">Profile layout</label>
+        <span class="lsel"><select id="layoutSel"></select><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
+        <span class="ldesc" id="layoutDesc"></span>
+      </div>
       <div class="result" id="lookupResult" aria-live="polite"></div>
 
       <p class="footnote">Sample profiles for design review</p>
@@ -1710,6 +1782,11 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
   var BUS = { U: "Unacademy", I: "Internshala", W: "WP", S: "Study Abroad" };
   var STAGES = ["Prospect", "Lead", "Counselled", "Paid", "Learning", "Completed", "Alumni"];
   var STAGE_AT = { Dropped: 5, Deferred: 5, Refunded: 5 };
+  // Profile layouts to compare in V3: side panel, top header, side navigation.
+  var LAYOUTS = [["rail", "Side panel", "Person on the left, details on the right"], ["top", "Top header", "Person across the top, details full width below"], ["nav", "Side navigation", "One menu on the left, one section at a time"]];
+  var LAYOUT = "rail";
+  try { LAYOUT = localStorage.getItem("cip-layout") || "rail"; } catch (e) {}
+  if (!LAYOUTS.some(function (l) { return l[0] === LAYOUT; })) LAYOUT = "rail";
   var CATS = { A: "Attribution", M: "Marketing", E: "Enquiries", X: "Interactions", P: "Payments", L: "Learning", S: "Support", C: "Consent" };
 
   var PEOPLE = {
@@ -1911,7 +1988,7 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
   }
 
   var PAGE = 6;
-  function freshView() { return { tab: "profile", sec: "c-id", bu: "all", cat: "all", shown: PAGE, revealed: false, finRevealed: false }; }
+  function freshView() { return { tab: "profile", sec: "c-id", nav: "summary", bu: "all", cat: "all", shown: PAGE, revealed: false, finRevealed: false }; }
   var L = { status: "idle", label: "", matches: [], person: null, how: "" };
   var V = freshView();
   var lookupTimer = null;
@@ -2007,21 +2084,23 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
     var h = "";
     if (L.matches.length > 1) h += '<button type="button" class="textbtn backbtn" data-back>‹ Back to ' + L.matches.length + " people on this number</button>";
 
-    // Header card: photo, who they are, and whether we may reach them right now.
+    // Header pieces: who they are, key facts, and whether we may reach them right now.
     var chans = reach(p, team), back = h; h = "";
-    var rail = '<section class="pcard" aria-label="Profile"><div class="pcard-top">' + avatarHTML(p, "avatar") +
-      '<div class="who"><h1>' + esc(p.name) + '</h1><p class="headline">' + esc(p.headline) + "</p>" +
-      '<p class="matched">Known since ' + esc(p.since) + " · matched on " + esc(L.how) + ' · <code class="gid">' + esc(p.gid) + "</code></p></div>" +
-      (otherBu || p.restricted ? "" : '<button type="button" class="btn dark sm" data-crm="' + esc(p.owner) + '">Open in ' + esc(p.owner) + " CRM</button>") + "</div>" +
-      '<div class="facts">' +
-      '<div class="fact"><span class="k">Life stage</span><span class="v">' + esc(p.stage) + "</span></div>" +
-      '<div class="fact"><span class="k">Age band</span><span class="v">' + esc(p.ageBand) + (p.restricted ? ' <span class="tag red">Minor</span>' : "") + "</span></div>" +
-      '<div class="fact"><span class="k">City</span><span class="v">' + esc(p.city) + "</span></div>" +
-      '<div class="fact"><span class="k">Owned by</span><span class="v">' + esc(p.owner) + "</span></div>" +
-      (p.restricted ? "" : '<div class="fact"><span class="k">Profile complete</span><span class="v">' + p.complete + '%</span><span class="meter" aria-hidden="true"><i style="width:' + p.complete + '%"></i></span></div>') +
-      '</div><div class="reach"><span class="k">Reachable now' + (team.bu ? " by " + esc(team.bu === "Working Professionals" ? "WP" : team.bu) : "") + '</span><ul>' + chans.map(function (x) {
+    var part = {
+      who: '<div class="who"><h1>' + esc(p.name) + '</h1><p class="headline">' + esc(p.headline) + "</p>" +
+        '<p class="matched">Known since ' + esc(p.since) + " · matched on " + esc(L.how) + ' · <code class="gid">' + esc(p.gid) + "</code></p></div>",
+      crm: otherBu || p.restricted ? "" : '<button type="button" class="btn dark sm" data-crm="' + esc(p.owner) + '">Open in ' + esc(p.owner) + " CRM</button>",
+      facts: '<div class="facts">' +
+        '<div class="fact"><span class="k">Life stage</span><span class="v">' + esc(p.stage) + "</span></div>" +
+        '<div class="fact"><span class="k">Age band</span><span class="v">' + esc(p.ageBand) + (p.restricted ? ' <span class="tag red">Minor</span>' : "") + "</span></div>" +
+        '<div class="fact"><span class="k">City</span><span class="v">' + esc(p.city) + "</span></div>" +
+        '<div class="fact"><span class="k">Owned by</span><span class="v">' + esc(p.owner) + "</span></div>" +
+        (p.restricted ? "" : '<div class="fact"><span class="k">Profile complete</span><span class="v">' + p.complete + '%</span><span class="meter" aria-hidden="true"><i style="width:' + p.complete + '%"></i></span></div>') + "</div>",
+      reach: '<div class="reach"><span class="k">Reachable now' + (team.bu ? " by " + esc(team.bu === "Working Professionals" ? "WP" : team.bu) : "") + '</span><ul>' + chans.map(function (x) {
         return '<li class="' + (x[1] ? "ok" : "no") + '">' + tick(x[1]) + esc(x[0]) + '<span class="sr">: ' + (x[1] ? "yes" : "no") + "</span></li>";
-      }).join("") + "</ul></div></section>";
+      }).join("") + "</ul></div>"
+    };
+    var rail = '<section class="pcard" aria-label="Profile"><div class="pcard-top">' + avatarHTML(p, "avatar") + part.who + part.crm + "</div>" + part.facts + part.reach + "</section>";
 
     if (p.restricted) {
       h += '<div class="banner" role="note">' + warn() + "<div><b>Restricted: " + esc(first(p)) + " is a minor</b>Only basics are shown until a guardian consents. No marketing, no profiling. If the guardian is on the line, " + esc(p.owner) + " can send them the consent request.</div></div>";
@@ -2029,9 +2108,8 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
     }
     if (noContact) h += '<div class="banner" role="note">' + warn() + "<div><b>Don't contact " + esc(first(p)) + " about " + esc(team.bu) + "</b>" + esc(first(p)) + " hasn't agreed to offers from other upGrad businesses. You can view this profile for context only.</div></div>";
 
-    if (p.moments.length) h += '<section class="section" aria-labelledby="mo"><h2 id="mo">Worth acting on</h2><div class="moments">' + p.moments.map(function (m) {
-      return '<div class="moment"><span class="dot" aria-hidden="true"></span><div><b>' + esc(m[0]) + "</b><span>" + esc(m[1]) + "</span></div></div>";
-    }).join("") + "</div></section>";
+    if (isV3() && LAYOUT === "nav") return navLayout(p, team, otherBu, noContact, back, h, part);
+    h += momentsHTML(p);
 
     h += snapshotHTML(p, otherBu) + lifecycleHTML(p);
 
@@ -2045,6 +2123,30 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
     else if (V.tab === "activity") h += activityHTML(p, otherBu);
     else h += insightsHTML(p, otherBu);
     return playout(back, rail, h + "</div></section>");
+  }
+  function momentsHTML(p) {
+    return p.moments.length ? '<section class="section" aria-labelledby="mo"><h2 id="mo">Worth acting on</h2><div class="moments">' + p.moments.map(function (m) {
+      return '<div class="moment"><span class="dot" aria-hidden="true"></span><div><b>' + esc(m[0]) + "</b><span>" + esc(m[1]) + "</span></div></div>";
+    }).join("") + "</div></section>" : "";
+  }
+  // Layout 3: one vertical menu on the left, one section at a time on the right.
+  var NAV = [["Overview", [["summary", "Summary"]]], ["Learner profile", [["c-id", "Contact"], ["c-consent", "Consent"], ["c-personal", "Personal"], ["c-edu", "Education"], ["c-career", "Career"], ["c-asp", "Aspiration"], ["c-fin", "Financial"]]], ["With upGrad", [["learning", "Learning & skills"], ["activity", "Activity"], ["insights", "Insights"]]]];
+  function navLayout(p, team, otherBu, noContact, back, banner, part) {
+    var cur = V.nav || "summary", fresh = cur !== V.navSeen; V.navSeen = cur;
+    var nav = '<div class="pnav" id="pnav" role="tablist" aria-orientation="vertical" aria-label="Profile sections" data-slide>' + NAV.map(function (g) {
+      return '<span class="ngh" aria-hidden="true">' + esc(g[0]) + "</span>" + g[1].map(function (it) {
+        var on = it[0] === cur;
+        return '<button type="button" role="tab" id="nv-' + it[0] + '" aria-controls="npanel" aria-selected="' + on + '" tabindex="' + (on ? 0 : -1) + '" data-nav="' + it[0] + '">' + esc(it[1]) + "</button>";
+      }).join("");
+    }).join("") + "</div>";
+    var body;
+    if (cur === "summary") body = '<section class="pcard kfacts" aria-label="Key facts">' + part.facts + part.reach + "</section>" + momentsHTML(p) + snapshotHTML(p, otherBu) + lifecycleHTML(p);
+    else if (cur === "learning") body = learningHTML(p);
+    else if (cur === "activity") body = activityHTML(p, otherBu);
+    else if (cur === "insights") body = insightsHTML(p, otherBu);
+    else body = learnerHTML(p, team, otherBu, noContact, cur);
+    return back + '<div class="nlayout"><aside class="nside"><section class="nid" aria-label="Profile"><div class="nid-top">' + avatarHTML(p, "avatar") + part.who + "</div>" + part.crm + "</section>" + nav + "</aside>" +
+      '<div class="nmain' + (fresh ? " fresh" : "") + '" id="npanel" role="tabpanel" aria-labelledby="nv-' + cur + '">' + banner + body + "</div></div>";
   }
   function playout(back, rail, main) { return back + '<div class="playout"><div class="prail">' + rail + '</div><div class="pmain">' + main + "</div></div>"; }
 
@@ -2074,7 +2176,7 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
       }).join("") + "</div></section>";
   }
 
-  function learnerHTML(p, team, otherBu, noContact) {
+  function learnerHTML(p, team, otherBu, noContact, only) {
     var c = p.consent;
     var contact = '<div class="attr-list">' +
       p.phones.map(function (x) { return idRow("Phone", V.revealed ? fmtPhone(x.d) : maskPhone(x.d), x.tag, x.v, x.src); }).join("") +
@@ -2108,6 +2210,7 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
       "c-asp": function () { return cardHTML("c-asp", "Aspiration", "", rowsHTML(p.aspiration)); },
       "c-fin": function () { return cardHTML("c-fin", "Financial profile", '<span class="tag red">T2 · bands only</span>', fin, finFoot); }
     };
+    if (only) return C[only] ? C[only]() : "";
     var sec = C[V.sec] ? V.sec : "c-id", fresh = sec !== V.secSeen; V.secSeen = sec;
     return secTabsHTML(sec) + '<div class="sgrid' + (fresh ? " fresh" : "") + '" id="secpanel" role="tabpanel" aria-labelledby="jt-' + sec + '">' + C[sec]() + "</div>";
   }
@@ -2197,8 +2300,11 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
   });
   // Arrow keys move between profile tabs.
   $("#lookupResult").addEventListener("keydown", function (e) {
-    var t = e.target.closest('[role="tab"]'); if (!t || (e.key !== "ArrowRight" && e.key !== "ArrowLeft")) return;
-    var all = $$('[role="tab"]', t.parentNode), i = all.indexOf(t) + (e.key === "ArrowRight" ? 1 : -1);
+    var t = e.target.closest('[role="tab"]'); if (!t) return;
+    var list = t.closest('[role="tablist"]') || t.parentNode, vert = list.getAttribute("aria-orientation") === "vertical";
+    var fwd = vert ? "ArrowDown" : "ArrowRight", bwd = vert ? "ArrowUp" : "ArrowLeft";
+    if (e.key !== fwd && e.key !== bwd) return;
+    var all = $$('[role="tab"]', list), i = all.indexOf(t) + (e.key === fwd ? 1 : -1);
     all[(i + all.length) % all.length].click(); e.preventDefault();
   });
 
@@ -2210,6 +2316,21 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
       return '<button type="button" role="tab" id="jt-' + s[0] + '" aria-controls="secpanel" aria-selected="' + on + '" tabindex="' + (on ? 0 : -1) + '" data-sec="' + s[0] + '">' + esc(s[1]) + "</button>";
     }).join("") + "</div>";
   }
+  $("#layoutSel").innerHTML = LAYOUTS.map(function (l) { return '<option value="' + l[0] + '">' + esc(l[1]) + "</option>"; }).join("");
+  function applyLayout() {
+    $("#layoutSel").value = LAYOUT; $("#lookupResult").setAttribute("data-layout", LAYOUT);
+    $("#layoutDesc").textContent = LAYOUTS.filter(function (l) { return l[0] === LAYOUT; })[0][2];
+  }
+  applyLayout();
+  $("#layoutSel").addEventListener("change", function () {
+    LAYOUT = this.value; try { localStorage.setItem("cip-layout", LAYOUT); } catch (e) {}
+    applyLayout(); renderLookup(); requestAnimationFrame(slideAll);
+  });
+  $("#lookupResult").addEventListener("click", function (e) {
+    var n = e.target.closest("[data-nav]"); if (!n) return;
+    V.nav = n.getAttribute("data-nav"); renderLookup(); window.scrollTo(0, 0);
+    var f = document.getElementById("nv-" + V.nav); if (f) f.focus();
+  });
   $("#lookupResult").addEventListener("click", function (e) {
     var b = e.target.closest("[data-sec]"); if (!b) return;
     V.sec = b.getAttribute("data-sec"); renderLookup();
@@ -2471,7 +2592,7 @@ html[data-v="3"] .dm-head{font-family:var(--mono);font-size:10.5px;letter-spacin
     v3Enter((location.hash.replace(/^#\/?/, "") || "overview").split("/")[0]);
   }
   setVersion(document.documentElement.getAttribute("data-v") || "2");
-  $("#vswitch").addEventListener("click", function (e) { var b = e.target.closest("[data-v]"); if (b) setVersion(b.getAttribute("data-v"), true); });
+  $("#vswitch").addEventListener("click", function (e) { var b = e.target.closest("[data-v]"); if (!b) return; setVersion(b.getAttribute("data-v"), true); renderLookup(); requestAnimationFrame(slideAll); });
 
   /* ---------- V3: live overview and motion ---------- */
   var REDUCED = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
