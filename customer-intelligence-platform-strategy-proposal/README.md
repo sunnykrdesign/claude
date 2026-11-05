@@ -89,7 +89,7 @@ Phone numbers work with or without `+91`, spaces or a leading `0`. Only verified
 
 The profile and data model follow the four data sheets (Learner Profile, Academic & Skill Profile, Activity Data, Insights).
 
-- **Header card:** photo, life stage, age band (the date of birth isn't stored), city, owning business, profile completeness, global person ID and **Reachable now** per channel (call, email, SMS, WhatsApp, ads).
+- **Header card:** photo, life stage, age band (the date of birth isn't stored), city, owning business, profile completeness and the global person ID. Which channels are allowed is in **Personal › Consent & preferences**.
 - **Worth acting on:** moments such as an intake that has passed, a new enquiry in another business or a certificate issued.
 - **Five sections, one row of tabs:**
   - **Personal:** contact, personal details, consent.

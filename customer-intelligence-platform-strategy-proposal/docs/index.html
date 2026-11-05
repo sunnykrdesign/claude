@@ -2190,7 +2190,7 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
     if (L.matches.length > 1) h += '<button type="button" class="textbtn backbtn" data-back>‹ Back to ' + L.matches.length + " people on this number</button>";
 
     // Header pieces: who they are, key facts, and whether we may reach them right now.
-    var chans = reach(p, team), back = h; h = "";
+    var back = h; h = "";
     var part = {
       who: '<div class="who"><h1>' + esc(p.name) + '</h1><p class="headline">' + esc(p.headline) + "</p>" +
         '<p class="matched">Known since ' + esc(p.since) + " · matched on " + esc(L.how) + ' · <code class="gid">' + esc(p.gid) + "</code></p></div>",
@@ -2200,12 +2200,9 @@ html[data-v="3"] .pnav > button[aria-selected="true"]{font-weight:500}
         '<div class="fact"><span class="k">Age band</span><span class="v">' + esc(p.ageBand) + (p.restricted ? ' <span class="tag red">Minor</span>' : "") + "</span></div>" +
         '<div class="fact"><span class="k">City</span><span class="v">' + esc(p.city) + "</span></div>" +
         '<div class="fact"><span class="k">Owned by</span><span class="v">' + esc(p.owner) + "</span></div>" +
-        (p.restricted ? "" : '<div class="fact"><span class="k">Profile complete</span><span class="v">' + p.complete + '%</span><span class="meter" aria-hidden="true"><i style="width:' + p.complete + '%"></i></span></div>') + "</div>",
-      reach: '<div class="reach"><span class="k">Reachable now' + (team.bu ? " by " + esc(team.bu === "Working Professionals" ? "WP" : team.bu) : "") + '</span><ul>' + chans.map(function (x) {
-        return '<li class="' + (x[1] ? "ok" : "no") + '">' + tick(x[1]) + esc(x[0]) + '<span class="sr">: ' + (x[1] ? "yes" : "no") + "</span></li>";
-      }).join("") + "</ul></div>"
+        (p.restricted ? "" : '<div class="fact"><span class="k">Profile complete</span><span class="v">' + p.complete + '%</span><span class="meter" aria-hidden="true"><i style="width:' + p.complete + '%"></i></span></div>') + "</div>"
     };
-    var rail = '<section class="pcard" aria-label="Profile"><div class="pcard-top">' + avatarHTML(p, "avatar") + part.who + part.crm + "</div>" + part.facts + part.reach + "</section>";
+    var rail = '<section class="pcard" aria-label="Profile"><div class="pcard-top">' + avatarHTML(p, "avatar") + part.who + part.crm + "</div>" + part.facts + "</section>";
 
     if (p.restricted) {
       h += '<div class="banner" role="note">' + warn() + "<div><b>Restricted: " + esc(first(p)) + " is a minor</b>Only basics are shown until a guardian consents. No marketing, no profiling. If the guardian is on the line, " + esc(p.owner) + " can send them the consent request.</div></div>";
